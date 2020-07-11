@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-注册</title>
+    <link rel="stylesheet" type="text/css" href="/css/loginRegister.css"/>
+
+</head>
+<body>
+<!--Head start-->
+<div class="loginHead clearfix">
+    <h1 class="logoImg"><a href="/"><img src="/images/publicImg/bigerLogo.png"/></a></h1>
+    <p class="welcomeLogin">欢迎注册</p>
+    <div class="haveAccountNum">已有账号？<a href="/login">立即登录</a></div>
+</div>
+<!--Head end-->
+
+<div class="registerBox">
+    <div class="registerCon">
+        <form action="" id="registerForm" autocomplete="off">
+            <ul class="registerInfo">
+                <li class="clearfix">
+                    <span class="regiTit">用户名</span>
+                    <input type="text" th:autocomplete="off" class="form-control" id="nickName" name="nickName"
+                           onkeydown="if (event.keyCode==13) {}" placeholder="8-16位字母数字组合，以字母开头"/>
+                    <label id="nickNameError" for="nickName" class="error" style="display: none;"></label>
+                </li>
+                <li class="clearfix">
+                    <span class="regiTit">密码</span>
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="8-16位字母数字组合"/>
+                    <label id="passwordError" for="password" class="error" style="display: none;"></label>
+                </li>
+                <li class="clearfix">
+                    <span class="regiTit">手机号码</span>
+                    <input type="text" class="form-control" id="mobile" name="mobile" placeholder="手机号码"/>
+                    <label id="mobileError" for="mobile" class="error" style="display: none;"> </label>
+                </li>
+                <li class="clearfix">
+                    <span class="regiTit">验证码</span>
+                    <input type="text" class="form-control yzmInput" id="validateCode" name="validateCode"
+                           placeholder="验证码"/>
+                    <span><img class="verifyCodeImage" alt="" style="display: none;"></span>
+                    <label id="verifyCodeError" for="validateCode" class="error" style="display: none;"></label>
+                </li>
+                <li class="clearfix">
+                    <span class="regiTit">短信验证码</span>
+                    <input type="text" class="form-control yzmInput" id="remoteValidateCode" name="remoteValidateCode"
+                           placeholder="短信验证码" value=""/>
+                    <a id="sendremotecodebutton" href="javascript:;" class="getReYzm btnEnabled">获取短信验证码</a>
+                    <label id="remoteValidateCodeError" for="remoteValidateCode" class="error"
+                           style="display: none;"></label>
+                </li>
+            </ul>
+            <div class="readTip">
+                <input type="checkbox" name="protocol" id="protocol" class="" style="margin-right: 5px;">我已阅读并同意
+                <a href="javascript:;" target="_blank" data-target="#agreementModal" data-toggle="modal">《IT服务网网站服务协议》</a>
+                <span class="tip"><label id="protocolLabel" for="protocol" class="error"></label></span>
+            </div>
+        </form>
+        <a id="registerSubmit" href="javascript:;" class="atOnceRe">立即注册</a>
+    </div>
+</div>
+
+<!-- 公共底部 start -->
+<div th:include="/common/footer"></div>
+<!-- 公共底部 end -->
+
+<!--  发送短信验证码 图形验证码  -->
+<script type="text/javascript" th:src="@{/js/codeValidate.js}"></script>
+
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
+
+<!-- 注册 服务协议 模态框 -->
+<div class="modal fade" id="agreementModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content agreeModal">
+            <div class="modal-body" th:replace="/common/agreement/agreementContent"><!--协议内容  -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    //注册表单校验
+    var registerFormValidate = null;
+    $(function() {
+        //加载图形验证码
+        loadVerifyCodeImage();
+        registerFormValidate = $('#registerForm').validate({
+            onfocusout:false,
+            onkeyup:false,
+            focusCleanup:true,
+            rules: {
+                nickName: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 16,
+                    nickName: true
+                },
+                password: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 16,
+                    isPassWord: true,
+                    pwCheck: true
+                },
+                mobile : {
+                    required : true,
+                    isMobile : true
+                },
+                validateCode : {
+                    required : true,
+                    minlength : 4,
+                    maxlength : 4
+                },
+                remoteValidateCode : {
+                    required : true,
+                    minlength : 6,
+                    maxlength : 6
+                },
+                protocol : {
+                    required : true
+                }
+            },
+            messages: {
+                nickName: {
+                    required: '<img src="/images/loginNO.png" alt="">' + " 请输入用户名",
+                    minlength: '<img src="/images/loginNO.png" alt="">' + " 长度只能在8-16个字符之间",
+                    maxlength: '<img src="/images/loginNO.png" alt="">' + " 长度只能在8-16个字符之间",
+                    nickName: '<img src="/images/loginNO.png" alt="">' + " 仅支持字母、数字、下划线组合"
+                },
+                password: {
+                    required: '<img src="/images/loginNO.png" alt="">' + " 请输入密码",
+                    minlength: '<img src="/images/loginNO.png" alt="">' + " 长度在8-16个字符之间",
+                    maxlength: '<img src="/images/loginNO.png" alt="">' + " 长度在8-16个字符之间",
+                    isPassWord: '<img src="/images/loginNO.png" alt="">' + " 长度在8-16个字符之间",
+                    pwCheck: '<img src="/images/loginNO.png" alt="">' + " 请输入字母、数字和符号组合！"
+                },
+                mobile : {
+                    required : '<img src="/images/loginNO.png" alt="">'+" 请输入手机号码",
+                    isMobile : '<img src="/images/loginNO.png" alt="">'+" 手机号码格式不正确"
+                },
+                validateCode: {
+                    required: '<img src="/images/loginNO.png" alt="">' + " 请输入验证码",
+                    minlength: '<img src="/images/loginNO.png" alt="">' + " 验证码错误",
+                    maxlength: '<img src="/images/loginNO.png" alt="">' + " 验证码错误"
+                },
+                remoteValidateCode: {
+                    required: '<img src="/images/loginNO.png" alt="">' + " 请输入短信验证码",
+                    minlength: '<img src="/images/loginNO.png" alt="">' + " 短信验证码错误",
+                    maxlength: '<img src="/images/loginNO.png" alt="">' + " 短信验证码错误"
+                },
+                protocol : {
+                    required : '<img src="/images/loginNO.png" alt="">'+" 请仔细阅读网站协议"
+                },
+            }
+        });
+    });
+
+    //注册操作（对应的flag返回值 在 ResultCode.java 中定义）
+    $('.atOnceRe').click(function(){
+        if(registerFormValidate.form()){
+            jQuery.ajax({
+                async : false,
+                type: "POST",
+                url: pageContext.contextPath+'/register/submit',
+                data: $("#registerForm").serialize(),
+                success: function (data) {
+                    var message = data.msg;
+                    var flag = data.flag;
+                    if (flag == '00000') {
+                        GlobalPrompt.prompt("注册成功,请点击确定登录",function () {
+                            location.href = pageContext.contextPath +"/login" ;
+                        });
+                    } else {
+                        if (flag == '10001') {
+                            $('#nickNameError').html('<img src="/images/loginNO.png">'+' '+message).show();
+                        }
+                        if (flag == '10002') {
+                            $('#mobileError').html('<img src="/images/loginNO.png">'+' '+message).show();
+                        }
+                        if (flag == '10003') {
+                            $('#verifyCodeError').html('<img src="/images/loginNO.png">'+' '+message).show();
+                        }
+                        if (flag == '10004' || flag == '10005' ) {
+                            $('#remoteValidateCodeError').html('<img src="/images/loginNO.png">'+' '+message).show();
+                        }
+                        return true;
+                    }
+                },
+                error :function(e){
+                    return true;
+                }
+            });
+        }
+    });
+
+    //点击发送短信时，加载一次校验
+    function myFormValidate(){
+        var flag = false;
+        flag =  registerFormValidate.element($("#nickName"));
+        if(!flag) return flag;
+        flag =  registerFormValidate.element($("#password"));
+        if(!flag) return flag;
+        flag =  registerFormValidate.element($("#mobile"));
+        if(!flag) return flag;
+        flag =  registerFormValidate.element($("#validateCode"));
+        if(!flag) return flag;
+
+        // 让短信验证码通过校验 *
+        flag = registerFormValidate.element($("#remoteValidateCode")) ;
+        console.log("移除短信校验码的 : "+flag);
+        if(!flag) return true;
+    }
+
+    //********************  发送短信验证码 start  ******************************************//
+    $("#sendremotecodebutton").click(function(){
+        var nickName = $('#nickName').val();
+        var mobile = $('#mobile').val();
+        var validateCode = $('#validateCode').val();
+        if(myFormValidate()){
+            $.ajax({
+                type : "POST",
+                url : PageContext.contextPath+"/mobile/smscodeSend",
+                dataType : "json",
+                data:{
+                    "nickName":nickName,
+                    "validateCode":validateCode,
+                    "mobile": mobile,
+                    "busiType": "register"
+                },
+                error : function() {
+                    $('#remoteValidateCodeError').html('抱歉，程序访问出现错误！请联系管理员。').show();
+                    $("#sendremotecodebutton").removeClass("aDisabledBtn");
+                },
+                success : function(data) {
+                    var flag = data.flag;
+                    var message = data.msg;
+                    if (flag == 'true') {
+                        //调用公共的倒计时方法
+                        commonRemoteValidateCode("#sendremotecodebutton");
+                        $('#remoteValidateCodeError').html(data.msg).show();
+                    } else {
+                        $("#sendremotecodebutton").removeClass("aDisabledBtn");
+                        if (flag == '10001') {
+                            $('#nickNameError').html('<img src="/images/loginNO.png">'+' '+message).show();
+                        }
+                        if (flag == '10002') {
+                            $('#mobileError').html('<img src="/images/loginNO.png">'+' '+message).show();
+                        }
+                        if (flag == '10003') {
+                            $('#verifyCodeError').html('<img src="/images/loginNO.png">'+' '+message).show();
+                        }
+                    }
+                },
+                beforeSend : function() {
+                    $("#sendremotecodebutton").addClass("aDisabledBtn");
+                }
+            });
+        }
+    });
+    //********************  发送短信验证码  end  ******************************************//
+
+
+</script>
+</html>
+
+
+

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-账户中心-云短信</title>
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('saasCenter')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div id="content" class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png"
+                                  alt=""><span>IT服务网服务</span>/<span>云计算SaaS</span>/<span>云短信</span></h5>
+                <div class="banner">
+                    <div class="bg_01">
+                        <h3 class="queryTit">云短信</h3>
+                        <div class="downBtnBox clearfix">
+                            <a href="/appointment/smsCodeSend/download" class="applyForBtn">下载API文档</a>
+                            <a href="javascript:;" class="applyForBtn applySubmit" id="applyForBtn">申请签名审核</a>
+                        </div>
+                        <p class="diffText addW_diffText">
+                            当前仅支持发送手机验证码短信，格式：【签名】您的验证码为：0000(指定不超过六位数字验证码)，有效时间10(指定不超过5位数字)分钟，请尽快完成验证。</p>
+                    </div>
+                </div>
+                <!-- 申请API提交 start-->
+                <div th:replace="/userAccount/saasCenter/applySmsTempletSubmit"></div>
+                <div class="yu_e">
+                    <p>当前账户余额：<strong id="accountBalance"
+                                      th:text="${#numbers.formatDecimal(accountBalance,1,'COMMA',2,'POINT')}"></strong>
+                        元　单次查询费用：<strong id="singleCost"
+                                         th:text="${#numbers.formatDecimal(singleCost,1,'COMMA',2,'POINT')}"></strong>元/次　免费查询次数剩余：
+                        <span id="remainderFreeCount" th:text="${remainderFreeCount}"></span>次</p>
+                </div>
+                <div class="chaxun3">
+                    <form id="dataForm" autocomplete="off">
+                        <div class="input-group">
+                            <!--有申请签名-->
+                            <th:block th:if="${not #lists.isEmpty(userSmsTemplateApplications)}">
+                                <select name="signature" lay-search="" class="form-control input1 valiCity">
+                                    <option value="">请选择</option>
+                                    <option
+                                            th:each="userSmsTemplateApplication : ${userSmsTemplateApplications}"
+                                            th:value="${userSmsTemplateApplication.signature}"
+                                            th:text="${userSmsTemplateApplication.signature}">
+                                    </option>
+                                </select>
+                            </th:block>
+
+                            <!--无申请签名-->
+                            <th:block th:if="${#lists.isEmpty(userSmsTemplateApplications)}">
+                                <input id="signature" name="signature" type="text" class="form-control input1"
+                                       placeholder="输入短信签名" value="IT服务网" readonly="readonly">
+                            </th:block>
+
+                            <input id="mobile" name="mobile" type="text" class="form-control input2"
+                                   placeholder="输入手机号码">
+                            <input id="code" name="code" type="text" class="form-control input3"
+                                   placeholder="输入验证码">
+                            <input id="validation" name="validation" type="text" class="form-control input4"
+                                   placeholder="输入验证码有效时间，整数（单位：分钟）">
+                            <input id="validateCode" type="hidden" name="validateCode" value="1234"/>
+                            <a id="search" href="javascript:;" class="centerBtn changeBtnPos btnEnabled enterEvent">
+                                立即发送
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <th:block th:if="${not #lists.isEmpty(userSmsTemplateApplications)}">
+                    <p class="saasTip">已通过审核签名：
+                        <tbody th:each="userSmsTemplateApplication : ${userSmsTemplateApplications}">
+                        <span th:text="${userSmsTemplateApplication.signature}"></span>
+                        </tbody>
+                </th:block>
+
+                <div class="tipText">
+                    <h3>温馨提示：</h3>
+                    <p>1、单位/个人简称，用于短信签名，长度不超过五个汉字，可以是空值（""），当设为空值时，系统默认签名：【IT服务网】；</p>
+                    <p>2、自定义短信签名，首次需要提交申请后台审核。</p>
+                    <p>3、修改已通过审核签名，请联系我们。</p>
+                </div>
+                <!--<div class="line"></div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 申请API提交  end-->
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
+</body>
+<script type="text/javascript" th:src="@{/plugins/template/jquery.tmpl.min.js}"></script>
+
+<script id="smsCodeSendTmpl" type="text/x-jquery-tmpl">
+<div id="queryResult" class="con1">
+    <h5>发送状况</h5>
+    <dl>
+        <dt class="dt55">接收短信手机号码：</dt>
+        <dd class="dd55">{{= mobile}}</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <dl>
+        <dt class="dt55">短信内容：</dt>
+        <dd class="dd55">
+        <p>{{= content}}</p>
+        </dd>
+        <div style="clear:both;"></div>
+     </dl>
+    <div style="height:80px;"></div>
+</div>
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        //参数校验
+        var dataFormValidate = $("#dataForm").validate({
+            onfocusout: false,
+            onkeyup: false,
+            focusCleanup: true,
+            rules: {
+                signature: {
+                    required: true
+                },
+                mobile: {
+                    required: true,
+                    maxlength: 11,
+                    isMobile: true
+                },
+                code: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 6
+                },
+                validation: {
+                    required: true,
+                    maxlength: 6,
+                    digits:true
+                },
+                validateCode: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 4
+                }
+            },
+            messages: {
+                signature: {
+                    required: "请输入单位/个人简称"
+                },
+                mobile: {
+                    required: "请输入手机号",
+                    minlength: "请输入正确的手机号",
+                    maxlength: "请输入正确的手机号",
+                },
+                code: {
+                    required: " 请输入短信验证码",
+                    minlength: " 短信验证码错误",
+                    maxlength: " 短信验证码错误"
+                },
+                validation: {
+                    required: "请输入有效时间",
+                    maxlength: "长度在1-6个字符之间",
+                    digits:"请输入有效正整数"
+                },
+                validateCode: {
+                    required: " 请输入验证码",
+                    minlength: " 验证码错误",
+                    maxlength: " 验证码错误"
+                }
+            },
+            errorPlacement: function (error, element) {
+                GlobalPrompt.prompt(error.text());
+            }
+        });
+
+        //查询
+        $("#search").click(function () {
+            if (myFormValidate(dataFormValidate)) {
+                AJAX.post(PageContext.contextPath + "/xdkj/service/online/smsCodeSend",
+                $("#dataForm").serialize(),
+                    function (data) {
+                        //查询成功
+                        if (data.status == "0") {
+                            //清除原有查询结果框
+                            if($("#queryResult").length > 0){
+                                $("#queryResult").remove();
+                            }
+                            $('#smsCodeSendTmpl').tmpl(data).insertAfter('#content');
+                            //更新账户余额、免费次数等信息
+                            var mbigerData = data.mbigerData;
+                            if($("#accountBalance").length > 0){
+                                $("#accountBalance").text(mbigerData.accountBalance);
+                            }
+                            if($("#singleCost").length > 0){
+                                $("#singleCost").text(mbigerData.singleCost);
+                            }
+                            if($("#remainderFreeCount").length > 0){
+                                $("#remainderFreeCount").text(mbigerData.remainderFreeCount);
+                            }
+                        } else {
+                            GlobalPrompt.prompt(data.msg);
+                        }
+                    }
+               );
+            }
+        });
+    });
+
+</script>
+</html>
+
+
+

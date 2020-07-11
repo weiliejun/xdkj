@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="servicecallcost">
+    <resultMap id="serviceCallCostResultMap" type="serviceCallCost">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="SERVICE_CODE" jdbcType="VARCHAR" property="serviceCode"/>
+        <result column="MENU_TYPE" jdbcType="VARCHAR" property="menuType"/>
+        <result column="SINGLE_COST" jdbcType="DECIMAL" property="singleCost"/>
+        <result column="SEGMENT_COST" jdbcType="VARCHAR" property="segmentCost"/>
+        <result column="COST_TYPE" jdbcType="VARCHAR" property="costType"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="serviceCallCostColumn">
+        ID, SERVICE_CODE, MENU_TYPE, SINGLE_COST, SEGMENT_COST, COST_TYPE, STATUS, DATA_STATUS,
+        CREATE_TIME, UPDATE_TIME
+    </sql>
+
+    <insert id="addServiceCallCost" parameterType="serviceCallCost">
+        insert into SERVICE_CALL_COST
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="serviceCode != null">
+                SERVICE_CODE,
+            </if>
+            <if test="menuType != null">
+                MENU_TYPE,
+            </if>
+            <if test="singleCost != null">
+                SINGLE_COST,
+            </if>
+            <if test="segmentCost != null">
+                SEGMENT_COST,
+            </if>
+            <if test="costType != null">
+                COST_TYPE,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="serviceCode != null">
+                #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="menuType != null">
+                #{menuType,jdbcType=VARCHAR},
+            </if>
+            <if test="singleCost != null">
+                #{singleCost,jdbcType=DECIMAL},
+            </if>
+            <if test="segmentCost != null">
+                #{segmentCost,jdbcType=VARCHAR},
+            </if>
+            <if test="costType != null">
+                #{costType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateServiceCallCost" parameterType="serviceCallCost">
+        update SERVICE_CALL_COST
+        <set>
+            <if test="serviceCode != null">
+                SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="menuType != null">
+                MENU_TYPE = #{menuType,jdbcType=VARCHAR},
+            </if>
+            <if test="singleCost != null">
+                SINGLE_COST = #{singleCost,jdbcType=DECIMAL},
+            </if>
+            <if test="segmentCost != null">
+                SEGMENT_COST = #{segmentCost,jdbcType=VARCHAR},
+            </if>
+            <if test="costType != null">
+                COST_TYPE = #{costType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <!-- 根据id查询ServiceCallCost -->
+    <select id="getServiceCallCostById" parameterType="java.lang.Integer" resultMap="serviceCallCostResultMap">
+        select
+        <include refid="serviceCallCostColumn"/>
+        from SERVICE_CALL_COST
+        where DATA_STATUS = '0'
+        AND ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 根据动态参数查询ServiceCallCost列表-->
+    <select id="listServiceCallCostsByParams" parameterType="java.util.Map" resultMap="serviceCallCostResultMap">
+        select
+        <include refid="serviceCallCostColumn"/>
+        from SERVICE_CALL_COST
+        where DATA_STATUS = '0'
+        <if test="serviceCode != null">
+            AND SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR}
+        </if>
+        <if test="menuType != null">
+            AND MENU_TYPE = #{menuType,jdbcType=VARCHAR}
+        </if>
+        <if test="singleCost != null">
+            AND SINGLE_COST = #{singleCost,jdbcType=DECIMAL}
+        </if>
+        <if test="segmentCost != null">
+            AND SEGMENT_COST = #{segmentCost,jdbcType=VARCHAR}
+        </if>
+        <if test="costType != null">
+            AND COST_TYPE = #{costType,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=CHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+    </select>
+
+</mapper>

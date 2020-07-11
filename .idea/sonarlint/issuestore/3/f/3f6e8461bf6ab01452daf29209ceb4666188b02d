@@ -1,0 +1,29 @@
+
+A
+java:S1452V"&Remove usage of generic wildcard type.(œÏûƒûÿÿÿÿ
+e
+java:S1192g"PDefine a constant instead of duplicating this literal "ç³»ç»Ÿå¼‚å¸¸ï¼" 3 times.(Šá9
+<
+java:S1452w"&Remove usage of generic wildcard type.(™‘È¥
+a
+java:S1192]"FDefine a constant instead of duplicating this literal "false" 7 times.(è¬¥‰øÿÿÿÿ
+Y
+java:S3752u">Add a "method" parameter to this "@RequestMapping" annotation.(îó’Ãùÿÿÿÿ
+U
+java:S3752œ">Add a "method" parameter to this "@RequestMapping" annotation.(ÓÆ™³
+>
+java:S1148G"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+Y
+java:S3752T">Add a "method" parameter to this "@RequestMapping" annotation.(ØèÌûùÿÿÿÿ
+B
+java:S1452"&Remove usage of generic wildcard type.(½Â Èûÿÿÿÿ
+E
+java:S1066B"/Merge this if statement with the enclosing one.(‰Ã‰ß
+Y
+java:S37526">Add a "method" parameter to this "@RequestMapping" annotation.(õÑëşÿÿÿÿ
+Y
+java:S3752)">Add a "method" parameter to this "@RequestMapping" annotation.(Ô·ğƒøÿÿÿÿ
+b
+java:S2387$"E"userInfoService" is the name of a field in "AbstractBaseController".(Öß•‡8’ÔË±.
+x
+java:S1192^"bDefine a constant instead of duplicating this literal "æœªç™»å½•ï¼Œè¯·ç™»å½•åæ“ä½œï¼" 3 times.(ãåı¦

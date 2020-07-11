@@ -1,0 +1,29 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": 1,
+      "stationName": "马家堡充电桩",
+      "portNo": 16,
+      "online": "在线",
+      "lastOnlineTime": "2018-10-04 15:28:37",
+      "allMoney": 69.56,
+      "allElectric": 30.9,
+      "stationType": "直流桩",
+      "addTime": "2018-10-01 19:24:02"
+    },
+    {
+      "id": 2,
+      "stationName": "新城市广场充电桩",
+      "portNo": 16,
+      "online": "在线",
+      "lastOnlineTime": "2018-10-04 15:28:37",
+      "allMoney": 88.43,
+      "allElectric": 62.52,
+      "stationType": "直流桩",
+      "addTime": "2018-10-01 19:24:02"
+    }
+  ]
+}

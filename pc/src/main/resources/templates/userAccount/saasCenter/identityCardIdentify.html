@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-账户中心-身份证认证</title>
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('saasCenter')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div id="content" class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png"
+                                  alt=""><span>IT服务网服务</span>/<span>云计算SaaS</span>/<span>身份证实名认证</span></h5>
+                <div class="banner">
+                    <div class="bg_01">
+                        <h3 class="queryTit">身份证实名认证</h3>
+                        <a href="/appointment/identityCardIdentify/download" class="applyForBtn">下载API文档</a>
+                        <p class="diffText">互联网身份证二要素实名核验，返回:认证结果、姓名、身份证号码、性别、领证地区及出生日期。</p>
+                    </div>
+                </div>
+                <div class="chaxun4">
+                    <form id="dataForm" autocomplete="off">
+                        <div class="input-group">
+                            <input id="name" type="text" name="name" class="form-control input1"
+                                   placeholder="输入要查询的身份证姓名">
+                            <input id="number" type="text" name="number" class="form-control input2"
+                                   placeholder="输入要查询的身份证号码">
+                            <input id="validateCode" type="hidden" name="validateCode" value="1234"/>
+                            <a id="search" href="javascript:;" class="centerBtn2 btnEnabled enterEvent">
+                                立刻查询
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="yu_e">
+                    <p>当前账户余额：<strong id="accountBalance"
+                                      th:text="${#numbers.formatDecimal(accountBalance,1,'COMMA',2,'POINT')}"></strong>
+                        元　单次查询费用：
+                        <strong id="singleCost"
+                                th:text="${#numbers.formatDecimal(singleCost,1,'COMMA',2,'POINT')}"></strong>元/次　免费查询次数剩余：
+                        <span id="remainderFreeCount" th:text="${remainderFreeCount}"></span>次</p>
+                </div>
+                <div class="line"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
+</body>
+<script type="text/javascript" th:src="@{/plugins/template/jquery.tmpl.min.js}"></script>
+<script id="identityCardIdentifyTmpl" type="text/x-jquery-tmpl">
+    <div id="queryResult" class="con1">
+        <h5>身份证实名认证查询结果</h5>
+        <dl>
+            <dt class="dt66">认证结果：</dt>
+            <dd class="dd66">{{= region}}</dd>
+            <div style="clear:both;"></div>
+        </dl>
+        <dl>
+            <dt class="dt66">姓名：</dt>
+            <dd class="dd66">{{= name}}</dd>
+            <div style="clear:both;"></div>
+        </dl>
+        <dl>
+            <dt class="dt66">身份证号：</dt>
+            <dd class="dd66">{{= number}}</dd>
+            <div style="clear:both;"></div>
+        </dl>
+        <dl>
+            <dt class="dt66">性别：</dt>
+            <dd class="dd66">{{= sex}}</dd>
+            <div style="clear:both;"></div>
+        </dl>
+        <dl>
+            <dt class="dt66">身份证所在地：</dt>
+            <dd class="dd66">{{= area}}</dd>
+            <div style="clear:both;"></div>
+        </dl>
+        <dl>
+            <dt class="dt66">出生日期：</dt>
+            <dd class="dd66">{{= birthday}}</dd>
+            <div style="clear:both;"></div>
+        </dl>
+        <div style="height:80px;"></div>
+    </div>
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        //参数校验
+        var dataFormValidate = $("#dataForm").validate({
+            onfocusout:false,
+            onkeyup:false,
+            focusCleanup:true,
+            rules : {
+                name : {
+                    required : true
+                },
+                number : {
+                    required : true,
+                    isIdCard: true
+                },
+                validateCode : {
+                    required : true,
+                    minlength : 4,
+                    maxlength : 4
+                }
+            },
+            messages : {
+                name : {
+                    required : "请输入姓名"
+                },
+                number : {
+                    required : "请输入身份证号",
+                    isIdCard: "请输入正确身份证号码"
+                },
+                validateCode: {
+                    required: " 请输入验证码",
+                    minlength: " 验证码错误",
+                    maxlength: " 验证码错误"
+                }
+            },
+            errorPlacement: function(error, element) {
+                GlobalPrompt.prompt(error.text());
+            }
+        });
+
+        //查询
+        $("#search").click(function() {
+            if(myFormValidate(dataFormValidate)){
+                AJAX.post(PageContext.contextPath +"/xdkj/service/online/identityCardIdentify",
+                    $("#dataForm").serialize(),
+                    function(data) {
+                        //查询成功
+                        if(data.status == "01"){
+                            //清除原有查询结果框
+                            if($("#queryResult").length > 0){
+                                $("#queryResult").remove();
+                            }
+                            $('#identityCardIdentifyTmpl').tmpl(data).insertAfter('#content');
+                            //更新账户余额、免费次数等信息
+                            var mbigerData = data.mbigerData;
+                            if($("#accountBalance").length > 0){
+                                $("#accountBalance").text(mbigerData.accountBalance);
+                            }
+                            if($("#singleCost").length > 0){
+                                $("#singleCost").text(mbigerData.singleCost);
+                            }
+                            if($("#remainderFreeCount").length > 0){
+                                $("#remainderFreeCount").text(mbigerData.remainderFreeCount);
+                            }
+                        }else{
+                            GlobalPrompt.prompt(data.msg);
+                        }
+                    }
+                );
+            }
+        });
+    });
+
+</script>
+</html>
+
+
+

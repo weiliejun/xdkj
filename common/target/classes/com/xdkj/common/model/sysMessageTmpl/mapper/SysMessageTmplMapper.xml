@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sysMessageTmpl">
+    <resultMap id="sysMessageTmplBaseResultMap" type="sysMessageTmpl">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="PARENT_CODE" property="parentCode" jdbcType="VARCHAR"/>
+        <result column="BUSI_TYPE" property="busiType" jdbcType="VARCHAR"/>
+        <result column="TYPE" property="type" jdbcType="VARCHAR"/>
+        <result column="TITLE" property="title" jdbcType="VARCHAR"/>
+        <result column="CONTENT" property="content" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="STATUS" property="status" jdbcType="CHAR"/>
+        <result column="CREATOR_ID" property="creatorId" jdbcType="INTEGER"/>
+        <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="baseColumnList">
+        ID, PARENT_CODE, BUSI_TYPE, TYPE, TITLE, CONTENT, CREATE_TIME, DATA_STATUS, STATUS,
+        CREATOR_ID, CREATOR_NAME
+    </sql>
+
+    <!--根据id获取消息模板信息  -->
+    <select id="getSysMessageTmplById" resultMap="sysMessageTmplBaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="baseColumnList"/>
+        from SYS_MESSAGE_TMPL
+        where DATA_STATUS = '0'
+        AND ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="addSysMessageTmpl" parameterType="sysMessageTmpl">
+        insert into SYS_MESSAGE_TMPL
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="parentCode != null">
+                PARENT_CODE,
+            </if>
+            <if test="busiType != null">
+                BUSI_TYPE,
+            </if>
+            <if test="type != null">
+                TYPE,
+            </if>
+            <if test="title != null">
+                TITLE,
+            </if>
+            <if test="content != null">
+                CONTENT,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="parentCode != null">
+                #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="busiType != null">
+                #{busiType,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSysMessageTmpl" parameterType="sysMessageTmpl">
+        update SYS_MESSAGE_TMPL
+        <set>
+            <if test="parentCode != null">
+                PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="busiType != null">
+                BUSI_TYPE = #{busiType,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                TYPE = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                TITLE = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                CONTENT = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="listMessageTmplsByParam" resultMap="sysMessageTmplBaseResultMap" parameterType="hashmap">
+        select
+        <include refid="baseColumnList"/>
+        from SYS_MESSAGE_TMPL
+        where DATA_STATUS ="0"
+        <if test="busiType != null">
+            AND BUSI_TYPE = #{busiType,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null">
+            AND TYPE = #{type,jdbcType=VARCHAR}
+        </if>
+        <if test="parentCode != null">
+            AND PARENT_CODE = #{parentCode,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+</mapper>

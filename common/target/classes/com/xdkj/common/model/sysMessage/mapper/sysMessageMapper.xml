@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sysMessage">
+    <resultMap id="sysMessageResultMap" type="sysMessage">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="USER_ID" jdbcType="INTEGER" property="userId"/>
+        <result column="TOPIC" jdbcType="VARCHAR" property="topic"/>
+        <result column="CONTENT" jdbcType="VARCHAR" property="content"/>
+        <result column="TYPE" jdbcType="VARCHAR" property="type"/>
+        <result column="BUSI_TYPE" jdbcType="VARCHAR" property="busiType"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="MOBILE" jdbcType="VARCHAR" property="mobile"/>
+        <result column="CODE" jdbcType="VARCHAR" property="code"/>
+    </resultMap>
+    <sql id="sysMessageColumn">
+        ID, USER_ID, TOPIC, CONTENT, TYPE, BUSI_TYPE, STATUS, CREATE_TIME, REMARK, DATA_STATUS,
+        MOBILE, CODE
+    </sql>
+    <select id="getSysMessageById" parameterType="java.lang.Integer" resultMap="sysMessageResultMap">
+        select
+        <include refid="sysMessageColumn"/>
+        from SYS_MESSAGE
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="addSysMessage" parameterType="sysMessage">
+        insert into SYS_MESSAGE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="topic != null">
+                TOPIC,
+            </if>
+            <if test="content != null">
+                CONTENT,
+            </if>
+            <if test="type != null">
+                TYPE,
+            </if>
+            <if test="busiType != null">
+                BUSI_TYPE,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="mobile != null">
+                MOBILE,
+            </if>
+            <if test="code != null">
+                CODE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="topic != null">
+                #{topic,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="busiType != null">
+                #{busiType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSysMessage" parameterType="sysMessage">
+        update SYS_MESSAGE
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="topic != null">
+                TOPIC = #{topic,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                CONTENT = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                TYPE = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="busiType != null">
+                BUSI_TYPE = #{busiType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                CODE = #{code,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <sql id="listSysMessage_fragment">
+        select
+        <include refid="sysMessageColumn"/>
+        from SYS_MESSAGE
+        where DATA_STATUS = '0'
+        <if test="userId != null">
+            AND USER_ID = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="topic != null">
+            AND TOPIC = #{topic,jdbcType=VARCHAR}
+        </if>
+        <if test="content != null">
+            AND CONTENT = #{content,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null">
+            AND TYPE = #{type,jdbcType=VARCHAR}
+        </if>
+        <if test="busiType != null">
+            AND BUSI_TYPE = #{busiType,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=CHAR}
+        </if>
+        <if test="mobile != null">
+            AND MOBILE like CONCAT('%',#{mobile},'%')
+        </if>
+    </sql>
+
+
+    <select id="getSysMessageByParams" resultMap="sysMessageResultMap" parameterType="hashmap">
+        <include refid="listSysMessage_fragment"/>
+        ORDER BY CREATE_TIME DESC
+        LIMIT 1
+    </select>
+
+
+    <select id="listSysMessagesByParams" resultType="java.util.Map" parameterType="hashmap">
+        SELECT
+        SM.ID AS "id",
+        SM.TOPIC AS "topic",
+        SM.CONTENT AS "content",
+        SM.BUSI_TYPE AS "busiType",
+        SM.CREATE_TIME AS "createTime"
+        FROM SYS_MESSAGE SM
+        WHERE SM.DATA_STATUS = "0"
+        <if test="busiType != null">
+            AND SM.BUSI_TYPE = #{busiType,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null">
+            AND SM.USER_ID = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="status != null">
+            AND SM.STATUS = #{status,jdbcType=INTEGER}
+        </if>
+        <if test="type != null">
+            AND SM.TYPE = #{type,jdbcType=VARCHAR}
+        </if>
+        ORDER BY
+        SM.CREATE_TIME DESC
+    </select>
+
+    <select id="countSysMessagesByParams" resultType="java.lang.Integer" parameterType="hashmap">
+        select COUNT( SM.ID ) AS "numcount"
+        FROM (<include refid="listSysMessage_fragment"/>) SM
+
+    </select>
+
+
+    <!-- 根据id获取用户信息 -->
+    <select id="listSysMessageByParams" parameterType="java.util.Map" resultMap="sysMessageResultMap">
+        <include refid="listSysMessage_fragment"/>
+    </select>
+
+</mapper>

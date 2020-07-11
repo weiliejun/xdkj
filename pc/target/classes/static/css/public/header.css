@@ -1,0 +1,51 @@
+html body{font-family:'Microsoft Yahei';background:#f7f7f7;}
+/*------去掉点击时的虚框-----start----*/
+a:active, a:focus { outline: none }
+/*------去掉点击时的虚框------end-----*/
+.header p,.header h1{margin:0;}
+.headTop{width:100%;height:40px;background:#f7f7f7;}
+.headTopCon{width:1200px;margin:0 auto;}
+.headTopLeft{width:400px;float:left;font-size:14px;color:#666;line-height:40px;}
+.headTopLeft b{font-weight:normal;color:#333;}
+.headTopRight{float:right;}
+.headLogin{float:left;margin-right:40px;}
+.headLogin a{padding-left:12px;line-height:40px;color:#666666;}
+.headLogin a:hover{text-decoration:none;color:#106fb3;}
+.headLogin a:first-child{border-right:2px solid #b5b5b5;padding-right:15px;}
+.headQQ{float:left;line-height:40px;}
+.qqOne{margin-right:10px;}
+.bigerNavBox{width:100%;background:#fff;}
+.bigerNavCon{width:1200px;margin:0 auto;}
+.logoImg{padding:18px 0;width:224px;float:left;}
+.logoImg a{display:block;}
+.navList{float:left;padding-top:40px;padding-left:100px;}
+.navList li{float:left;margin:0 16px;}
+.navList li a{display:block;padding:0 10px;padding-bottom:25px;font-size:16px;color:#666;}
+.navList li a:focus,.navList li a:active{text-decoration:none;outline:none;}
+.navList li a:hover{border-bottom:2px solid #106fb3;text-decoration:none;color:#106fb3;}
+.navList li .navActive{border-bottom:2px solid #106fb3;color:#106fb3;}
+
+.afterLanding{float:left;margin-right:40px;}
+.systemMess{float:left;color:#666;line-height:36px;margin-right:12px;}
+.systemMess i{float:left;width:12px;height:12px;background:url(../../images/messageIcon.png) no-repeat;background-size:12px 12px;margin-top:12px;margin-right:10px;}
+.systemMess span{float:left;margin-right:6px;}
+.systemMess b{float:left;font-weight:normal;}
+.personCenter{width:78px;height:26px;float:left;background:#ddd;text-align:center;line-height:30px;color:#666;line-height:24px;border-radius:4px;margin-top:6px;margin-left:10px;}
+.personCenter:hover,.personCenter:active,.personCenter:focus{color:#666;text-decoration:none;}
+.quitText{float:left;border-left:1px solid #ccc;padding-left:16px;margin-left:20px;margin-top:12px;color:#666;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

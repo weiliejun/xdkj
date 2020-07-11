@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--head start-->
+<div class="applicationPart">
+    <div class="applicationTit clearfix">
+        <h3>在线申请免费API</h3>
+        <a href="javascript:;" class="appliClose"></a>
+    </div>
+    <form id="appointmentForm" name="appointmentForm" action="" method="post">
+        <ul class="applyInfo">
+            <li>
+                <div class="clearfix wInfo">
+                    <span>姓名</span>
+                    <input type="text" class="form-control" placeholder="输入您的姓名" id="customerName" name="customerName"
+                           th:value="${customerName}"/>
+                    <label id="customerNameError" for="customerName" class="error"></label>
+                </div>
+            </li>
+            <li>
+                <div class="clearfix wInfo">
+                    <span>手机号码</span>
+                    <input type="text" class="form-control" placeholder="输入您的手机号" id="customerPhone"
+                           name="customerPhone" th:value="${customerPhone}"/>
+                    <label id="customerPhoneError" for="customerPhone" class="error"></label>
+                </div>
+            </li>
+            <li class="clearfix">
+                <div class="wInfo">
+                    <span class="regiTit">验证码</span>
+                    <input type="text" class="form-control applyYzm" id="validateCode" name="validateCode"
+                           placeholder="验证码"/>
+                    <span><img class="verifyCodeImage" alt="" style="display: none;"></span>
+                    <label id="verifyCodeError" for="validateCode" class="error" style="display: none;"></label>
+                </div>
+            </li>
+            <li id="remoteValidateCodeDiv" style="display: none;">
+                <div class="wInfo clearfix">
+                    <span>短信验证码</span>
+                    <input id="remoteValidateCode" name="remoteValidateCode" type="text" class="form-control applyYzm"
+                           placeholder="输入手机验证码"/>
+                    <a id="sendremotecodebutton" href="javascript:;" class="getYzm btnEnabled">获取验证码</a>
+                    <label id="remoteValidateCodeError" for="remoteValidateCode" class="error"
+                           style="display: none;"></label>
+                </div>
+            </li>
+        </ul>
+        <a href="javascript:;" class="subApply btnEnabled" id="applySubmit">提交申请</a>
+        <p class="applyTip">提交申请后我们会尽快联系您！</p>
+    </form>
+
+
+</div>
+
+<div class="everyCloud applyClound">
+    <div class="demandListBox">
+        <p>免费查询服务</p>
+        <div class="demandList clearfix">
+            <a href="/saas/weatherQuery" class="demandActive">全国天气预报查询</a>
+            <a href="/saas/mobileNumberPlaceQuery">手机号码归属地查询</a>
+            <a href="/saas/ipPlaceQuery">全球IP地址归属地查询</a>
+            <a href="/saas/drivingQuestionsQuery">驾考公开题库查询</a>
+        </div>
+    </div>
+</div>
+
+<!--  发送短信验证码 图形验证码  -->
+<script type="text/javascript" th:src="@{/js/codeValidate.js}"></script>
+
+<script type="text/javascript" th:inline="javascript">
+        $(function(){
+            /********  点击申请api 未登录跳转登录页面 **************/
+            $('.applyForBtn').click(function(){
+                var serviceType = [[${serviceType}]];
+                jQuery.ajax({
+                    type : "POST",
+                    url: "/appointment/getApplyCnt",
+                    data : {"serviceType" : serviceType},
+                    success : function(data) {
+                        if(data.flag =="true"){
+                            $('.applyForBtn').parent('.weatherBanner').css('display','none');
+                            $('.applicationPart').fadeIn();
+                        }else if(data.flag =="nologin"){
+                            window.location.href = pageContext.contextPath + "/login";
+                        }else{
+                            GlobalPrompt.prompt(data.msg);
+                        }
+                    },
+                    error : function(e) {
+                        GlobalPrompt.prompt('抱歉，程序访问出现错误！请联系管理员.');
+                    }
+                });
+                // 判断是否登录
+                /*AJAX.get(
+                    "/islogin",
+                    function (data) {
+                        if(data) {
+                            $('.applyForBtn').parent('.weatherBanner').css('display','none');
+                            $('.applicationPart').fadeIn();
+                        } else {
+                            window.location.href = "/login";
+                        }
+                    }
+                )*/
+            });
+            // 关闭api申请
+            $('.appliClose').click(function(){
+                $(this).parent().parent().css('display','none');
+                $('.weatherBanner').fadeIn();
+            });
+
+            /***** 标签面板：鼠标滑动查询服务时的效果 *****/
+            $('.demandList a').mouseover(function(){
+                $(this).addClass('demandActive').siblings().removeClass('demandActive');
+            });
+        });
+
+</script>
+<script type="text/javascript" th:inline="javascript">
+        //加载图形验证码
+        loadVerifyCodeImage();
+        //********************  API 申请提交 start ******************************************//
+        var appointmentFormValidate = $("#appointmentForm").validate({
+             rules : {
+                 customerPhone : {
+                 required : true,
+                 isMobile : true
+                 },
+                 customerName : {
+                 required : true,
+                 minlength : 1,
+                 maxlength : 20
+                 },
+                 validateCode : {
+                     required : true,
+                     minlength : 4,
+                     maxlength : 4
+                 },
+                 remoteValidateCode : {
+                     required : true,
+                     minlength : 6,
+                     maxlength : 6
+                 }
+             },
+             messages : {
+                 customerPhone : {
+                 required : "请输入手机号码",
+                 isMobile : "手机号码格式不正确"
+                 },
+                 customerName : {
+                 required : "内容不能为空",
+                 minlength : "长度在1-20个字符之间",
+                 maxlength : "长度在1-20个字符之间"
+                 },
+                 validateCode: {
+                     required: " 请输入验证码",
+                     minlength:  " 验证码错误",
+                     maxlength:  " 验证码错误"
+                 },
+                 remoteValidateCode: {
+                     required:  " 请输入短信验证码",
+                     minlength:  " 短信验证码错误",
+                     maxlength:  " 短信验证码错误"
+                 }
+             }
+         });
+         $("#applySubmit").click(function() {
+             var serviceType = [[${serviceType}]];
+             var url =  pageContext.contextPath +"/appointment/apply/"+serviceType+"/submit";
+             if (appointmentFormValidate.form()) {
+                 jQuery.ajax({
+                     type : "POST",
+                     url:url,
+                     data : $("#appointmentForm").serialize(),
+                     success : function(data) {
+                         if(data.flag =="true"){
+                             GlobalPrompt.prompt("您的申请已提交，非常感谢您的支持。",function () {
+                                 location.href = pageContext.contextPath +"/saas";
+                             });
+                         }else if(data.flag =="false"){
+                             loadVerifyCodeImage();
+                             GlobalPrompt.prompt(data.msg);
+                         }else if(data.flag =="nologin"){
+                             GlobalPrompt.prompt(data.msg,function () {
+                                 location.href = pageContext.contextPath +"/login" ;
+                             });
+                         }else{
+                             loadVerifyCodeImage();
+                             if (data.flag == '10003') {
+                                 $('#verifyCodeError').html(data.msg).show();
+                             }
+                             if (data.flag == '10004' || data.flag == '10005' ) {
+                                 $('#remoteValidateCodeError').html(data.msg).show();
+                             }
+                         }
+
+                     },
+                     error : function(e) {
+                         GlobalPrompt.prompt('抱歉，程序访问出现错误！请联系管理员.');
+                     }});
+             }
+         });
+        //********************  API 申请提交   end ******************************************//
+        //********************  发送短信验证码 start  ******************************************//
+        $("#sendremotecodebutton").click(function(){
+            var customerName = $('#customerName').val();
+            var mobile = $('#customerPhone').val();
+            if (customerName == null || customerName == '' ) {
+                $("#sendremotecodebutton").removeClass("aDisabledBtn");
+                $('#customerNameError').html('请输入用户名后重试').show();
+                return;
+            }
+            if (mobile == null || mobile == '' || !isMobile(mobile)) {
+                $("#sendremotecodebutton").removeClass("aDisabledBtn");
+                $('#customerPhoneError').html('请输入手机号后重试').show();
+                return;
+            }
+            $.ajax({
+                type : "POST",
+                url : PageContext.contextPath+"/mobile/smscodeSend",
+                dataType : "json",
+                data:{
+                    "nickName":null,
+                    "validateCode":null,
+                    "mobile": mobile,
+                    "busiType": "sssaApiApply"
+                },
+                error : function() {
+                    $('#remoteValidateCodeError').html('抱歉，程序访问出现错误！请联系管理员。').show();
+                    $("#sendremotecodebutton").removeClass("aDisabledBtn");
+                },
+                success : function(data) {
+                    var result = data.flag;
+                    if (result == 'true') {
+                        //调用公共的倒计时方法
+                        commonRemoteValidateCode("#sendremotecodebutton");
+                        $('#remoteValidateCodeError').html(data.msg).show();
+                    } else {
+                        $("#sendremotecodebutton").removeClass("aDisabledBtn");
+                        $('#remoteValidateCodeError').html(data.msg).show();
+                    }
+                },
+                beforeSend : function() {
+                    $("#sendremotecodebutton").addClass("aDisabledBtn");
+                }
+            });
+        });
+
+        // 校验手机号
+        $(function(){
+            $('#customerPhone').blur(function(){
+                if ($("#appointmentForm").validate().element($("#customerPhone"))) {
+                    var userMobile = [[${customerPhone}]];
+                    if (userMobile == $(this).val()) {
+                        $("#remoteValidateCodeDiv").hide();
+                    } else {
+                        $("#remoteValidateCodeDiv").show();
+                    }
+                }
+            });
+        })
+
+
+</script>
+</html>

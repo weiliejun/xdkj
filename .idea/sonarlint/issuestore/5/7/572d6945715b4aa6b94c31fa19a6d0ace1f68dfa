@@ -1,0 +1,13 @@
+
+j
+java:S4488+"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(úÇÉèıÿÿÿÿ8÷¢ÌÈ±.
+H
+java:S14528"&Remove usage of generic wildcard type.(ÉÈ¤”øÿÿÿÿ8÷¢ÌÈ±.
+j
+java:S4488v"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÁÖËşÿÿÿÿ8÷¢ÌÈ±.
+U
+java:S1854?"8Remove this useless assignment to local variable "flag".(¢Óùƒ8÷¢ÌÈ±.
+c
+java:S1192?"FDefine a constant instead of duplicating this literal "false" 8 times.(¢Óùƒ8÷¢ÌÈ±.
+l
+java:S44886"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(³İĞ°øÿÿÿÿ8÷¢ÌÈ±.

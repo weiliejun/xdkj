@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userSmsTemplateApplication">
+    <resultMap id="userSmsTemplateApplicationBaseResultMap" type="userSmsTemplateApplication">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="TEMPLATE_NAME" property="templateName" jdbcType="VARCHAR"/>
+        <result column="SERVICE_PROVIDERS" property="serviceProviders" jdbcType="VARCHAR"/>
+        <result column="SIGNATURE" property="signature" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="CONTENT" property="content" jdbcType="VARCHAR"/>
+        <result column="USER_ID" property="userId" jdbcType="INTEGER"/>
+        <result column="REVIEW_STATUS" property="reviewStatus" jdbcType="CHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        ID, TEMPLATE_NAME, SERVICE_PROVIDERS, SIGNATURE, MOBILE, CONTENT, USER_ID, REVIEW_STATUS,
+        DATA_STATUS, CREATE_TIME
+    </sql>
+
+    <select id="selectUserSmsTemplateApplicationById" resultMap="userSmsTemplateApplicationBaseResultMap"
+            parameterType="java.lang.Integer">
+        select
+        <include refid="BaseColumnList"/>
+        from USER_SMS_TEMPLATE_APPLICATION
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insertUserSmsTemplateApplication" parameterType="userSmsTemplateApplication">
+        insert into USER_SMS_TEMPLATE_APPLICATION
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="templateName != null">
+                TEMPLATE_NAME,
+            </if>
+            <if test="serviceProviders != null">
+                SERVICE_PROVIDERS,
+            </if>
+            <if test="signature != null">
+                SIGNATURE,
+            </if>
+            <if test="mobile != null">
+                MOBILE,
+            </if>
+            <if test="content != null">
+                CONTENT,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="reviewStatus != null">
+                REVIEW_STATUS,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="templateName != null">
+                #{templateName,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceProviders != null">
+                #{serviceProviders,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null">
+                #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="reviewStatus != null">
+                #{reviewStatus,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateUserSmsTemplateApplication" parameterType="userSmsTemplateApplication">
+        update USER_SMS_TEMPLATE_APPLICATION
+        <set>
+            <if test="templateName != null">
+                TEMPLATE_NAME = #{templateName,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceProviders != null">
+                SERVICE_PROVIDERS = #{serviceProviders,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null">
+                SIGNATURE = #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                CONTENT = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="reviewStatus != null">
+                REVIEW_STATUS = #{reviewStatus,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <sql id="listUserSmsTemplateApplication_fragment">
+        select
+        <include refid="BaseColumnList"/>
+        from USER_SMS_TEMPLATE_APPLICATION
+        WHERE DATA_STATUS ='0'
+        <if test="mobile != null">
+            AND MOBILE like CONCAT('%',#{mobile},'%')
+        </if>
+        <if test="signature != null">
+            AND SIGNATURE like CONCAT('%',#{signature},'%')
+        </if>
+        <if test="content != null">
+            and CONTENT = #{content,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null">
+            and USER_ID = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="reviewStatus != null">
+            and REVIEW_STATUS = #{reviewStatus,jdbcType=CHAR}
+        </if>
+        <if test="reviewStatusFail != null">
+            and REVIEW_STATUS != #{reviewStatusFail,jdbcType=CHAR}
+        </if>
+    </sql>
+
+    <select id="listUserSmsTemplateApplicationsByParams" resultMap="userSmsTemplateApplicationBaseResultMap"
+            parameterType="hashmap">
+        <include refid="listUserSmsTemplateApplication_fragment"/>
+    </select>
+
+    <select id="countUserSmsTemplateApplicationByParams" resultType="java.lang.Integer" parameterType="hashmap">
+        select COUNT( USTA.ID ) AS "numcount"
+        FROM (<include refid="listUserSmsTemplateApplication_fragment"/>) USTA
+    </select>
+
+</mapper>

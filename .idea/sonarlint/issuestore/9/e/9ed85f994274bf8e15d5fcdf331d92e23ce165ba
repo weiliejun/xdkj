@@ -1,0 +1,15 @@
+
+v
+java:S2293["YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»8ÕÇøó².
+~
+java:S1488k"aImmediately return this expression instead of assigning it to the temporary variable "resultMap".(½¼¹ü8ÕÇøó².
+`
+java:S3752h">Add a "method" parameter to this "@RequestMapping" annotation.(¸Ú¦¶øÿÿÿÿ8ÕÇøó².
+l
+java:S4488,"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(¾§¸Ÿøÿÿÿÿ8ÕÇøó².
+v
+java:S2293/"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ÛË»8ÕÇøó².
+e
+java:S4488&"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(û‡ÑŠ8ÕÇøó².
+j
+java:S4488M"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ŠÖöÜýÿÿÿÿ8ÕÇøó².

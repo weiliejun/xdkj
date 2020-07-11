@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userInfoExt">
+    <resultMap id="userInfoExtBaseResultMap" type="com.xdkj.common.model.userInfoExt.bean.UserInfoExt">
+        <id column="USER_ID" property="userId" jdbcType="INTEGER"/>
+        <result column="CHECK_TYPE" property="checkType" jdbcType="VARCHAR"/>
+        <result column="CHECK_STATUS" property="checkStatus" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATION" property="certification" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATION_TYPE" property="certificationType" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATION_FRONT_PIC" property="certificationFrontPic" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATION_BACK_PIC" property="certificationBackPic" jdbcType="VARCHAR"/>
+        <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR"/>
+        <result column="LEGAL_PERSON_NAME" property="legalPersonName" jdbcType="VARCHAR"/>
+        <result column="COMPANY_LOCATION" property="companyLocation" jdbcType="VARCHAR"/>
+        <result column="COMPANY_ADDRESS" property="companyAddress" jdbcType="VARCHAR"/>
+        <result column="BUSINESS_LICENSE_PIC" property="businessLicensePic" jdbcType="VARCHAR"/>
+        <result column="TAX_REGISTRATION_PIC" property="taxRegistrationPic" jdbcType="VARCHAR"/>
+        <result column="ORGANIZATION_CODE_PIC" property="organizationCodePic" jdbcType="VARCHAR"/>
+        <result column="BANK_ACCOUNT_PERMIT_PIC" property="bankAccountPermitPic" jdbcType="VARCHAR"/>
+        <result column="BANK_CREDIT_CODE_PIC" property="bankCreditCodePic" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        USER_ID, CHECK_TYPE, CHECK_STATUS, CERTIFICATION, CERTIFICATION_TYPE, CERTIFICATION_FRONT_PIC,
+        CERTIFICATION_BACK_PIC, COMPANY_NAME, LEGAL_PERSON_NAME, COMPANY_LOCATION, COMPANY_ADDRESS,
+        BUSINESS_LICENSE_PIC, TAX_REGISTRATION_PIC, ORGANIZATION_CODE_PIC, BANK_ACCOUNT_PERMIT_PIC,
+        BANK_CREDIT_CODE_PIC, REMARK, DATA_STATUS, CREATE_TIME, UPDATE_TIME
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="userInfoExtBaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from USER_INFO_EXT
+        where USER_ID = #{userId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from USER_INFO_EXT
+        where USER_ID = #{userId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.xdkj.common.model.userInfoExt.bean.UserInfoExt">
+        insert into USER_INFO_EXT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="checkType != null">
+                CHECK_TYPE,
+            </if>
+            <if test="checkStatus != null">
+                CHECK_STATUS,
+            </if>
+            <if test="certification != null">
+                CERTIFICATION,
+            </if>
+            <if test="certificationType != null">
+                CERTIFICATION_TYPE,
+            </if>
+            <if test="certificationFrontPic != null">
+                CERTIFICATION_FRONT_PIC,
+            </if>
+            <if test="certificationBackPic != null">
+                CERTIFICATION_BACK_PIC,
+            </if>
+            <if test="companyName != null">
+                COMPANY_NAME,
+            </if>
+            <if test="legalPersonName != null">
+                LEGAL_PERSON_NAME,
+            </if>
+            <if test="companyLocation != null">
+                COMPANY_LOCATION,
+            </if>
+            <if test="companyAddress != null">
+                COMPANY_ADDRESS,
+            </if>
+            <if test="businessLicensePic != null">
+                BUSINESS_LICENSE_PIC,
+            </if>
+            <if test="taxRegistrationPic != null">
+                TAX_REGISTRATION_PIC,
+            </if>
+            <if test="organizationCodePic != null">
+                ORGANIZATION_CODE_PIC,
+            </if>
+            <if test="bankAccountPermitPic != null">
+                BANK_ACCOUNT_PERMIT_PIC,
+            </if>
+            <if test="bankCreditCodePic != null">
+                BANK_CREDIT_CODE_PIC,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="checkType != null">
+                #{checkType,jdbcType=VARCHAR},
+            </if>
+            <if test="checkStatus != null">
+                #{checkStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="certification != null">
+                #{certification,jdbcType=VARCHAR},
+            </if>
+            <if test="certificationType != null">
+                #{certificationType,jdbcType=VARCHAR},
+            </if>
+            <if test="certificationFrontPic != null">
+                #{certificationFrontPic,jdbcType=VARCHAR},
+            </if>
+            <if test="certificationBackPic != null">
+                #{certificationBackPic,jdbcType=VARCHAR},
+            </if>
+            <if test="companyName != null">
+                #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="legalPersonName != null">
+                #{legalPersonName,jdbcType=VARCHAR},
+            </if>
+            <if test="companyLocation != null">
+                #{companyLocation,jdbcType=VARCHAR},
+            </if>
+            <if test="companyAddress != null">
+                #{companyAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="businessLicensePic != null">
+                #{businessLicensePic,jdbcType=VARCHAR},
+            </if>
+            <if test="taxRegistrationPic != null">
+                #{taxRegistrationPic,jdbcType=VARCHAR},
+            </if>
+            <if test="organizationCodePic != null">
+                #{organizationCodePic,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountPermitPic != null">
+                #{bankAccountPermitPic,jdbcType=VARCHAR},
+            </if>
+            <if test="bankCreditCodePic != null">
+                #{bankCreditCodePic,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xdkj.common.model.userInfoExt.bean.UserInfoExt">
+        update USER_INFO_EXT
+        <set>
+            <if test="checkType != null">
+                CHECK_TYPE = #{checkType,jdbcType=VARCHAR},
+            </if>
+            <if test="checkStatus != null">
+                CHECK_STATUS = #{checkStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="certification != null">
+                CERTIFICATION = #{certification,jdbcType=VARCHAR},
+            </if>
+            <if test="certificationType != null">
+                CERTIFICATION_TYPE = #{certificationType,jdbcType=VARCHAR},
+            </if>
+            <if test="certificationFrontPic != null">
+                CERTIFICATION_FRONT_PIC = #{certificationFrontPic,jdbcType=VARCHAR},
+            </if>
+            <if test="certificationBackPic != null">
+                CERTIFICATION_BACK_PIC = #{certificationBackPic,jdbcType=VARCHAR},
+            </if>
+            <if test="companyName != null">
+                COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="legalPersonName != null">
+                LEGAL_PERSON_NAME = #{legalPersonName,jdbcType=VARCHAR},
+            </if>
+            <if test="companyLocation != null">
+                COMPANY_LOCATION = #{companyLocation,jdbcType=VARCHAR},
+            </if>
+            <if test="companyAddress != null">
+                COMPANY_ADDRESS = #{companyAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="businessLicensePic != null">
+                BUSINESS_LICENSE_PIC = #{businessLicensePic,jdbcType=VARCHAR},
+            </if>
+            <if test="taxRegistrationPic != null">
+                TAX_REGISTRATION_PIC = #{taxRegistrationPic,jdbcType=VARCHAR},
+            </if>
+            <if test="organizationCodePic != null">
+                ORGANIZATION_CODE_PIC = #{organizationCodePic,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountPermitPic != null">
+                BANK_ACCOUNT_PERMIT_PIC = #{bankAccountPermitPic,jdbcType=VARCHAR},
+            </if>
+            <if test="bankCreditCodePic != null">
+                BANK_CREDIT_CODE_PIC = #{bankCreditCodePic,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where USER_ID = #{userId,jdbcType=INTEGER}
+    </update>
+
+</mapper>

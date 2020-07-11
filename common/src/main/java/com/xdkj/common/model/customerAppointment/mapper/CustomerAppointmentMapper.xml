@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="customerAppointment">
+    <resultMap id="customerAppointmentBaseResultMap" type="customerAppointment">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="USER_ID" property="userId" jdbcType="INTEGER"/>
+        <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR"/>
+        <result column="CUSTOMER_PHONE" property="customerPhone" jdbcType="VARCHAR"/>
+        <result column="SERVICE_CODE" property="serviceCode" jdbcType="VARCHAR"/>
+        <result column="CONSULT_DESC" property="consultDesc" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="CHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID, USER_ID, CUSTOMER_NAME, CUSTOMER_PHONE, SERVICE_CODE, CONSULT_DESC, STATUS, DATA_STATUS,
+        CREATE_TIME, UPDATE_TIME
+    </sql>
+    <select id="getCustomerAppointmentById" resultMap="customerAppointmentBaseResultMap"
+            parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from CUSTOMER_APPOINTMENT
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteCustomerAppointmentById" parameterType="java.lang.Integer">
+        delete from CUSTOMER_APPOINTMENT
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 根据动态参数查询预约列表 ,返回map-->
+    <select id="listCustomerAppointmentByParams" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT
+        a.ID,
+        a.USER_ID,
+        a.CUSTOMER_NAME,
+        a.CUSTOMER_PHONE,
+        a.SERVICE_CODE,
+        a.CONSULT_DESC,
+        a.STATUS,
+        a.DATA_STATUS,
+        a.CREATE_TIME,
+        s.SERVICE_CODE,
+        s.SERVICE_MODULE,
+        s.SERVICE_NAME
+        FROM
+        CUSTOMER_APPOINTMENT a
+        LEFT JOIN SERVICE_INFO s ON a.SERVICE_CODE = s.SERVICE_CODE
+        AND s.DATA_STATUS = '0'
+        WHERE
+        a.DATA_STATUS = '0'
+
+        <if test="customerName != null">
+            AND a.CUSTOMER_NAME like CONCAT('%',#{customerName},'%')
+        </if>
+        <if test="customerPhone != null">
+            AND a.CUSTOMER_PHONE like CONCAT('%',#{customerPhone},'%')
+        </if>
+        <if test="serviceName != null">
+            AND s.SERVICE_NAME like CONCAT('%',#{serviceName},'%')
+        </if>
+        <if test="serviceModule != null">
+            AND s.SERVICE_MODULE = #{serviceModule,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+
+    <insert id="addCustomerAppointment" parameterType="customerAppointment">
+        insert into CUSTOMER_APPOINTMENT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="customerName != null">
+                CUSTOMER_NAME,
+            </if>
+            <if test="customerPhone != null">
+                CUSTOMER_PHONE,
+            </if>
+            <if test="serviceCode != null">
+                SERVICE_CODE,
+            </if>
+            <if test="consultDesc != null">
+                CONSULT_DESC,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="customerName != null">
+                #{customerName,jdbcType=VARCHAR},
+            </if>
+            <if test="customerPhone != null">
+                #{customerPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceCode != null">
+                #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="consultDesc != null">
+                #{consultDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateCustomerAppointment" parameterType="customerAppointment">
+        update CUSTOMER_APPOINTMENT
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="customerName != null">
+                CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+            </if>
+            <if test="customerPhone != null">
+                CUSTOMER_PHONE = #{customerPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceCode != null">
+                SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="consultDesc != null">
+                CONSULT_DESC = #{consultDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <sql id="listCustomerAppointments_fragment">
+        select
+        <include refid="Base_Column_List"/>
+        from CUSTOMER_APPOINTMENT
+        where DATA_STATUS = '0'
+        <if test="id != null">
+            AND ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="userId != null">
+            AND USER_ID = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="customerName != null">
+            AND CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR}
+        </if>
+        <if test="customerPhone != null">
+            AND CUSTOMER_PHONE = #{customerPhone,jdbcType=VARCHAR}
+        </if>
+        <if test="serviceCode != null">
+            AND SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR}
+        </if>
+        <if test="consultDesc != null">
+            AND CONSULT_DESC = #{consultDesc,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=CHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="updateTime != null">
+            AND UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+        </if>
+    </sql>
+
+    <select id="countCustomerAppointmentsByParams" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select COUNT(CA.ID)
+        from (<include refid="listCustomerAppointments_fragment"/>) CA
+    </select>
+
+</mapper>

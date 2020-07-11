@@ -1,0 +1,21 @@
+label.error {
+	font-size: 12px;
+	margin-top:5px;
+	text-align:left;
+	color: #D94A48;
+	margin-bottom:0px;
+	line-height: 16px;
+	padding-left:0px;
+	vertical-align: middle;
+}
+input.error { border: 1px solid #E3696D;  color: #E3696D;}
+textarea.error { border: 1px solid #E3696D; color: #E3696D;}
+span.error {
+	font-size: 12px;
+	text-align:left;
+	color: #D94A48;
+	margin-bottom:0px;
+	line-height: 18px;
+	padding-left:0px;
+	vertical-align: middle;
+}

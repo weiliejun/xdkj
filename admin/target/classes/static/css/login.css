@@ -1,0 +1,90 @@
+html, body, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline; }
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block; }
+body {
+    line-height:1;}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+a{
+    text-decoration: none;
+}
+a:link{
+    text-decoration: none;
+}
+.clear:after{
+    display:block;
+    content:"clear";
+    height:0;
+    clear:both;
+    overflow:hidden;
+    visibility:hidden;
+}
+.clearfix:after{
+    display:block;
+    content:"clear";
+    height:0;
+    clear:both;
+    overflow:hidden;
+    visibility:hidden;
+}
+
+.fl{ float:left;}
+.fr{ float:right;}
+input{ outline:none; background:none; border:none;}
+textarea{ resize:none;}  /*不能拖拽*/
+html body{line-height:1;}
+
+
+h1{margin:0;}
+.wrapBg{width:100%;height:100%;background:url(../images/login/bgImg.png) no-repeat;background-size:100% 100%;position:absolute;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/login/bgImg.png',sizingMethod='scale');  }
+.wrapConBox{width:534px;position:relative;top:42%;left:50%;transform:translate(-50%,-50%);}
+.opcBg{width:534px;height:390px;background:#fff;opacity:0.5;border-radius:26px;display:block;border:12px solid rgba(0,0,0,0.2);}
+.outBox{width:534px;position:absolute;top:0;left:0;}
+.backTop{width:400px;margin:0 auto;border-bottom:2px solid #0077bb;padding:34px 60px 20px 60px;}
+.backTop a{float:left;}
+.backTop h1{float:left;font-size:28px;color:#0077bb;text-shadow:2px 2px 6px #999;margin-left:52px;font-weight:bold;}
+.infoBox{width:290px;margin:0 auto;}
+.backUserInfo{margin:0;}
+.backUserInfo li{width:290px;position:relative;margin-top:18px;}
+.backUserInfo li input{width:290px;height:36px;background-image:url(../images/login/iconUser.png);background-repeat:no-repeat;background-position:8px 8px;padding-left:36px;background-color:#fff;}
+.backUserInfo li .passText{background-image:url(../images/login/iconPass.png);}
+.backUserInfo li .yzmText{background-image:url(../images/login/iconYzm.png);width:160px;}
+.yzmImg{position:absolute;top:0px;right:-33px;width:118px;height:36px;}
+.yzmImg img{width:120px;height:36px;}
+.errorBox{height:32px;padding-top:8px;text-align:center;}
+.errorBox label{color:#cc323d;}
+.remeberNumBox{float:left;color:#333;margin:0;}
+.remeberNumBox input{margin-top:0;}
+.forgetBox{float:right;color:#0077bb;}
+.backLogin{width:290px;height:40px;background:#0077bb;color:#fff;text-align:center;line-height:40px;display:block;margin-top:10px;box-shadow:2px 2px 8px #666;}
+.backLogin:hover,.backLogin:focus{color:#fff;text-decoration:none;}

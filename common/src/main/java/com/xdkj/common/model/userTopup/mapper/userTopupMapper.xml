@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userTopup">
+    <resultMap id="userTopupResultMap" type="userTopup">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="USER_ID" property="userId" jdbcType="INTEGER"/>
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="TOPUP_AMOUNT" property="topupAmount" jdbcType="DECIMAL"/>
+        <result column="TOPUP_TYPE" property="topupType" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="USER_MOBILE" property="userMobile" jdbcType="VARCHAR"/>
+        <result column="TRANSFER_VOUCHER" property="transferVoucher" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="ORD_ID" property="ordId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="userTopupInfoColumn">
+        ID, USER_ID, USER_NAME, TOPUP_AMOUNT, TOPUP_TYPE, STATUS, USER_MOBILE, TRANSFER_VOUCHER,
+        REMARK, DATA_STATUS, CREATE_TIME, UPDATE_TIME, ORD_ID
+    </sql>
+
+    <insert id="addUserTopup" parameterType="userTopup">
+        insert into USER_TOPUP
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="userName != null">
+                USER_NAME,
+            </if>
+            <if test="topupAmount != null">
+                TOPUP_AMOUNT,
+            </if>
+            <if test="topupType != null">
+                TOPUP_TYPE,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="userMobile != null">
+                USER_MOBILE,
+            </if>
+            <if test="transferVoucher != null">
+                TRANSFER_VOUCHER,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+            <if test="ordId != null">
+                ORD_ID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="topupAmount != null">
+                #{topupAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="topupType != null">
+                #{topupType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="userMobile != null">
+                #{userMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="transferVoucher != null">
+                #{transferVoucher,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ordId != null">
+                #{ordId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateUserTopup" parameterType="userTopup">
+        update USER_TOPUP
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                USER_NAME = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="topupAmount != null">
+                TOPUP_AMOUNT = #{topupAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="topupType != null">
+                TOPUP_TYPE = #{topupType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="userMobile != null">
+                USER_MOBILE = #{userMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="transferVoucher != null">
+                TRANSFER_VOUCHER = #{transferVoucher,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ordId != null">
+                ORD_ID = #{ordId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getUserTopupById" parameterType="java.lang.Integer" resultMap="userTopupResultMap">
+        select
+        <include refid="userTopupInfoColumn"/>
+        from USER_TOPUP
+        where ID = #{id,jdbcType=INTEGER}
+        AND DATA_STATUS = '0'
+    </select>
+
+    <select id="listUserTopupsByParams" parameterType="java.util.Map" resultMap="userTopupResultMap">
+        select
+        <include refid="userTopupInfoColumn"/>
+        from USER_TOPUP
+        where DATA_STATUS = '0'
+        <if test="userId != null">
+            AND USER_ID = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="userName != null">
+            AND USER_NAME = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="topupAmount != null">
+            AND TOPUP_AMOUNT = #{topupAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="topupType != null">
+            AND TOPUP_TYPE = #{topupType,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="userMobile != null">
+            AND USER_MOBILE = #{userMobile,jdbcType=VARCHAR}
+        </if>
+        <if test="transferVoucher != null">
+            AND TRANSFER_VOUCHER = #{transferVoucher,jdbcType=VARCHAR}
+        </if>
+        <if test="createTimeStart != null &amp;&amp; createTimeStart != ''">
+            AND SUBSTRING(CREATE_TIME, 1, 10) <![CDATA[>=]]> #{createTimeStart,jdbcType=TIMESTAMP}
+        </if>
+        <if test="createTimeEnd != null &amp;&amp; createTimeStart != ''">
+            AND SUBSTRING(CREATE_TIME, 1, 10) <![CDATA[<=]]> #{createTimeEnd,jdbcType=TIMESTAMP}
+        </if>
+        <if test="ordId != null">
+            AND ORD_ID = #{ordId,jdbcType=VARCHAR}
+        </if>
+        ORDER BY CREATE_TIME DESC
+    </select>
+
+    <select id="countUserTopupTotalAmount" parameterType="java.lang.Integer" resultType="java.math.BigDecimal">
+        select IFNULL(SUM(TOPUP_AMOUNT),0) AS TOTAL_AMOUNT
+        from USER_TOPUP
+        where USER_ID = #{userId,jdbcType=INTEGER}
+        AND DATA_STATUS = '0'
+        AND STATUS = 'success'
+    </select>
+
+</mapper>

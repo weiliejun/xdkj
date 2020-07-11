@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-IaaS</title>
+    <link rel="stylesheet" type="text/css" href="css/cloudComputing.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('IAAS')"></div>
+<!-- 头部公共 end-->
+
+<div class="cloudBanner">
+    <img src="/images/banner_IaaS.jpg"/>
+</div>
+
+<div class="paasContent iaasTop">
+    <div class="paasList clearfix" th:each="iaas,state:${iaasServiceList}">
+        <div class="paasLeft">
+            <h3 th:text="${iaas.serviceName}">虚拟主机管理</h3>
+            <div class="detailsIntroduce">
+                <p th:text="${iaas.serviceDesc}"></p>
+            </div>
+            <a th:href="'/account/iaasCenter/'+${iaas.serviceCode}" class="freeTrial">预约咨询</a>
+        </div>
+        <a th:href="'/appointment/'+${iaas.serviceCode}+'/downloadlocal'" target="_blank" class="paasRight">
+            <img th:src="'/images/serviceImg/'+${iaas.serviceLogo}"/>
+            <span class="downloadGuideTit">下载白皮书</span>
+        </a>
+    </div>
+
+</div>
+
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
+
+
+

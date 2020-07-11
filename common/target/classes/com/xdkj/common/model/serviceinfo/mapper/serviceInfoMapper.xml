@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="serviceinfo">
+    <resultMap id="serviceInfoResultMap" type="serviceInfo">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="SERVICE_CODE" jdbcType="VARCHAR" property="serviceCode"/>
+        <result column="SERVICE_NAME" jdbcType="VARCHAR" property="serviceName"/>
+        <result column="SERVICE_LOGO" jdbcType="VARCHAR" property="serviceLogo"/>
+        <result column="SERVICE_MODULE" jdbcType="VARCHAR" property="serviceModule"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="SERVICE_BRIF" jdbcType="VARCHAR" property="serviceBrif"/>
+        <result column="SERVICE_DESC" jdbcType="VARCHAR" property="serviceDesc"/>
+        <result column="DOC_LINK" jdbcType="VARCHAR" property="docLink"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="serviceInfoColumn">
+        ID, SERVICE_CODE, SERVICE_NAME, SERVICE_LOGO,SERVICE_MODULE, STATUS, SERVICE_BRIF, SERVICE_DESC,
+        DOC_LINK, DATA_STATUS, CREATE_TIME, UPDATE_TIME
+    </sql>
+
+    <insert id="addServiceInfo" parameterType="serviceInfo">
+        insert into SERVICE_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="serviceCode != null">
+                SERVICE_CODE,
+            </if>
+            <if test="serviceName != null">
+                SERVICE_NAME,
+            </if>
+            <if test="serviceLogo != null">
+                SERVICE_LOGO,
+            </if>
+            <if test="serviceModule != null">
+                SERVICE_MODULE,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="serviceBrif != null">
+                SERVICE_BRIF,
+            </if>
+            <if test="serviceDesc != null">
+                SERVICE_DESC,
+            </if>
+            <if test="docLink != null">
+                DOC_LINK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="serviceCode != null">
+                #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceName != null">
+                #{serviceName,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceLogo != null">
+                #{serviceLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceModule != null">
+                #{serviceModule,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="serviceBrif != null">
+                #{serviceBrif,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceDesc != null">
+                #{serviceDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="docLink != null">
+                #{docLink,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateServiceInfo" parameterType="serviceInfo">
+        update SERVICE_INFO
+        <set>
+            <if test="serviceCode != null">
+                SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceName != null">
+                SERVICE_NAME = #{serviceName,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceLogo!= null">
+                SERVICE_LOGO = #{serviceLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceModule != null">
+                SERVICE_MODULE = #{serviceModule,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="serviceBrif != null">
+                SERVICE_BRIF = #{serviceBrif,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceDesc != null">
+                SERVICE_DESC = #{serviceDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="docLink != null">
+                DOC_LINK = #{docLink,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <!-- 根据id查询ServiceInfo -->
+    <select id="getServiceInfoById" parameterType="java.lang.Integer" resultMap="serviceInfoResultMap">
+        select
+        <include refid="serviceInfoColumn"/>
+        from SERVICE_INFO
+        where DATA_STATUS = '0'
+        AND ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 根据动态参数查询ServiceInfo列表 -->
+    <select id="listServiceInfosByParams" parameterType="java.util.Map" resultMap="serviceInfoResultMap">
+        select
+        <include refid="serviceInfoColumn"/>
+        from SERVICE_INFO
+        where DATA_STATUS = '0'
+        <if test="serviceCode != null">
+            AND SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR}
+        </if>
+        <if test="serviceName != null">
+            AND SERVICE_NAME = #{serviceName,jdbcType=VARCHAR}
+        </if>
+        <if test="serviceModule != null">
+            AND SERVICE_MODULE = #{serviceModule,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=CHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+    </select>
+</mapper>

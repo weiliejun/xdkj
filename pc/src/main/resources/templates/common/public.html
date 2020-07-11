@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="commonStyle(title, links, styles)">
+    <meta charset="utf-8">
+    <meta name="keywords" content="IT服务网，互联网技术、SaaS服务、IaaS服务、PaaS服务、系统私人定制"/>
+    <meta name="description" content="IT服务网 www.mbiger.com - 互联网技术平台。"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />-->
+    <title th:replace="${title}">Document</title>
+
+    <!-- 标题/收藏夹 logo -->
+    <link rel="shortcut icon" th:href="@{/images/publicImg/favicon.ico}"/>
+    <!-- 公共CSS start -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/reset.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/header.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/footer.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/swiper.min.css}"/>
+    <!-- 公共CSS end -->
+
+    <!--/* Per-page placeholder for additional links */-->
+    <th:block th:replace="${links}"/>
+    <!--/* Per-page placeholder for additional styles */-->
+    <th:block th:replace="${styles}"/>
+
+    <!-- 公共JS start -->
+    <script type="text/javascript" th:src="@{/js/public/jquery-1.10.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/public/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/public/swiper.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.validate.min.js}"></script>
+    <script type="text/javascript" th:src="@{/plugins/layer/layer.js}"></script>
+    <script type="text/javascript" th:src="@{/js/messages_zh.js}"></script>
+    <script type="text/javascript" th:src="@{/js/public.js}"></script>
+    <script type="text/javascript" th:src="@{/js/user.js}"></script>
+    <!-- 在线客服 -->
+    <!--<script charset="utf-8" src="http://wpa.b.qq.com/cgi/wpa.php"></script>-->
+    <!--<script type="text/javascript" th:src="@{/plugins/QQ/js/wpa_qq.js}"></script>-->
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        var pageContext = {
+            contextPath : [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]]
+        };
+
+        // 回车 触发.enterEvent 按钮的click事件
+        document.onkeydown = function(e) {
+            var ev = document.all ? window.event : e;
+            if (ev.keyCode == 13) {
+                $(".enterEvent").trigger("click");
+                return false;
+            }
+        };
+        /*]]>*/
+
+    </script>
+    <!-- 公共JS end -->
+
+    <!-- 公共插件引用 start -->
+    <script th:replace="/common/plugins/form"></script>
+    <!-- 公共插件引用 end -->
+</head>
+</html>

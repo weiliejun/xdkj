@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-账户中心-定制开发-预约咨询</title>
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('customizationCenter')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png" alt=""><span>IT服务网服务</span>/<span>定制研发</span>/<span
+                        th:text="${serviceInfo.serviceName}"> <!--网站建设--> </span></h5>
+            </div>
+            <div class="con1">
+                <h4>需求描述：</h4>
+                <form id="appointmentForm" name="appointmentForm" action="" method="post">
+                    <input type="hidden" class="form-control" id="serviceType" name="serviceType"
+                           th:value="${serviceType}"/>
+                    <div class="nrk3 myLabelError">
+                        <textarea id="consultDesc" name="consultDesc" class="quesText"
+                                  placeholder="输入您想咨询的问题，提交后我们会尽快联系您！"></textarea>
+                    </div>
+                    <a href="javascript:;" id="butSubmit" class="anniu2 btnEnabled">提交</a>
+                </form>
+                <div style="height:80px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
+
+</body>
+<!-- 预约提交  -->
+<script type="text/javascript" th:src="@{/js/serviceInfo/serviceAppointment.js}"></script>
+
+</html>
+
+
+

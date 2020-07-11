@@ -1,0 +1,145 @@
+<style type="text/css">
+    /*添加图形验证码*/
+    .patternPos{position:relative;z-index:20;display:none;}
+    .patternCon{ width:402px; border: 1px solid #ddd; border-radius: 6px; position: absolute;top:16px;left:270px;background:#fff;box-shadow:5px 5px 18px #ccc;}
+    .cou_arrow{ width: 28px;height: 15px;background: url(../../../static/images/add_arrow_top.png) no-repeat;position: absolute;top: -15px;left: 50%;margin-left: -5px;}
+    .patternTit{ width: 100%;height: 38px;background: #f1f1f1;border-bottom: 1px solid #e2e2e2;border-top-left-radius: 6px;border-top-right-radius: 6px;position:relative;}
+    .patternTit h3{text-align:center;font-size:16px;line-height:38px;color:#333;}
+    .patternTit a{font-size:30px;color:#666;position:absolute;right:10px;top:2px;}
+    .patternTit a:hover,.patternTit a:focus{text-decoration:none;}
+    .patternInput{padding-top:30px;}
+    .patternInput span{float:left;width:90px;text-align:right;padding-right:6px;line-height:38px;}
+    .perRight .daohang .patternInput .pattYzm{height:38px;float:left;width:180px;padding-right:10px;}
+    .patternInput a{float:left;}
+    .patternInput a img{width:120px;height:30px;}
+    .patternBtn{width: 116px;height: 40px;background: #106fb3;color: #fff;font-size: 16px;line-height: 40px;text-align: center;border-radius: 6px;display:block;margin:20px auto 20px;}
+    .patternBtn:hover,.patternBtn:focus{text-decoration:none;color:#fff;}
+
+</style>
+<div class="patternPos">
+    <div class="patternCon">
+        <div class="cou_arrow"></div>
+        <div class="patternInfoBox">
+            <div class="patternTit">
+                <h3>提示</h3>
+                <a href="javascript:;" class="patternClose" onclick="ValidateCodePrompt.close('closeBtn');">×</a>
+            </div>
+            <form id="validateCodeForm" method="post">
+                <div class="patternInfo">
+                    <div class="patternInput clearfix">
+                        <span>验证码：</span>
+                        <input id="validateCode" name="validateCode" type="text" class="form-control pattYzm"
+                               placeholder="请输入图形验证码"/>
+                        <a href="javascript:;" onclick="loadVerifyCodeImage()"><img class="verifyCodeImage" alt=""
+                                                                                    style="display: none;"></a>
+                    </div>
+                    <div class="bsErrorBox">
+                        <label id="validateCodeError" for="validateCode" class="error" style="display: none;"></label>
+                    </div>
+                    <a href="javascript:;" id="promptSubmit" class="patternBtn btnEnabled"
+                       onclick="ValidateCodePrompt.submit();">确认</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var validateCodeFormValidate = $("#validateCodeForm").validate({
+        onfocusout:false,
+        onkeyup:false,
+        focusCleanup:true,
+        rules : {
+            validateCode : {
+                required : true,
+                minlength : 4,
+                maxlength : 4
+            }
+        },
+        messages : {
+            validateCode: {
+                required: " 请输入验证码",
+                minlength:  " 验证码错误",
+                maxlength:  " 验证码错误"
+            }
+        }
+    });
+    var ValidateCodePrompt = {};
+    /**
+     * 弹窗显示
+     * submitProcess: 点击确认按钮时的处理
+     */
+    ValidateCodePrompt.prompt = function(submitProcess){
+        //加载图形验证码
+        loadVerifyCodeImage();
+        // 禁用按钮
+        if($(".btnEnabled").length > 0){
+            $(".btnEnabled").not($("#promptSubmit")).addClass("aDisabledBtn");
+            $(".enterEvent").removeClass("enterEvent").addClass("noEnterEvent");
+        }
+        // 显示弹框
+        $('.patternPos').fadeIn(300);
+        // 获取焦点
+        $("#validateCodeForm #validateCode").focus();
+        // 回车键
+        $("#promptSubmit").addClass("enterEvent");
+        if (submitProcess) {
+            //点击确认按钮时的处理
+            ValidateCodePrompt.submitProcess = submitProcess;
+        }
+    };
+
+    ValidateCodePrompt.submitProcess = function(){};
+    /**
+     * 弹窗关闭
+     */
+    ValidateCodePrompt.submit = function(){
+        if (validateCodeFormValidate.form()) {
+            ValidateCodePrompt.submitProcess();
+            /*jQuery.ajax({
+                type : "POST",
+                url : "/xdkj/service/checkValidateCode",
+                data : $("#validateCodeForm").serialize(),
+                success : function(data) {
+                    if (data.flag == "true") {
+                        ValidateCodePrompt.submitProcess();
+                        ValidateCodePrompt.close("subBtn");
+                    } else {
+                        $("#validateCodeForm #validateCodeError").html(data.msg).show();
+                    }
+                },
+                complete : function() {
+                    loadVerifyCodeImage();
+                    $("#promptSubmit").removeClass("aDisabledBtn");
+                },
+                beforeSend : function() {
+                    // 禁用按钮
+                    $("#promptSubmit").addClass("aDisabledBtn");
+                },
+                error : function(e) {
+                    $("#validateCodeForm #validateCodeError").html('抱歉，程序访问出现错误！请联系管理员.').show();
+                }
+            });*/
+        }
+    };
+    /**
+     * 弹窗关闭
+     */
+    ValidateCodePrompt.close = function(type){
+        // 清空Input框
+        $("#validateCodeForm #validateCode").val('');
+        // 清除错误提示
+        $("#validateCodeForm #validateCodeError").html('').hide();
+        // 清除验证
+        $("#validateCodeForm").validate().resetForm();
+        // 隐藏弹框
+        $('.patternPos').fadeOut(100);
+        // 启用按钮
+        if($(".btnEnabled").length > 0 && type == "closeBtn"){
+            $(".btnEnabled").removeClass("aDisabledBtn");
+        }
+        $(".noEnterEvent").removeClass("noEnterEvent").addClass("enterEvent");
+        $("#promptSubmit").removeClass("aDisabledBtn");
+        $("#promptSubmit").removeClass("enterEvent");
+    };
+
+</script>

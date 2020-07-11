@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div class="backstageApplyBox">
+    <div class="bsApplyTitle clearfix">
+        <h3 class="bsApplyTit">在线申请短信签名模板</h3>
+        <a href="javascript:;" class="bsApplyClose"></a>
+    </div>
+    <div class="tipText">
+        <h3>温馨提示：</h3>
+        <p>1、每个用户最多申请5个签名；</p>
+    </div>
+    <form id="appointmentForm" name="appointmentForm" action="" method="post">
+        <ul class="bsApplyInfo clearfix">
+            <!--<li>
+                <div class="clearfix">
+                    <span class="bsInfoTit">服务提供商</span>
+                    <input type="text" id="serviceProviders" name="serviceProviders"  class="bsInfoTxt form-control"  value="IT服务网"   readonly="readonly"/>
+                </div>
+                <div class="bsErrorBox">
+                    <label id="serviceProvidersError" for="serviceProviders" class="error"></label>
+                </div>
+            </li>-->
+            <li>
+                <div class="clearfix">
+                    <span class="bsInfoTit"><i>* </i>短信签名</span>
+                    <input type="text" id="signature" name="signature" placeholder="输入您的短信签名"
+                           class="bsInfoTxt form-control"/>
+                </div>
+                <div class="bsErrorBox">
+                    <label id="signatureError" for="signature" class="error"></label>
+                </div>
+            </li>
+            <!--<li class="clearfix">
+                <div class="clearfix">
+                    <span class="bsInfoTit"><i>* </i>手机号码</span>
+                    <input type="text"  id="mobile" name="mobile" placeholder="输入您的手机号" class="bsInfoTxt form-control" />
+                </div>
+                <div class="bsErrorBox">
+                    <label  id="mobileError" for="mobile" class="error"></label>
+                </div>
+            </li>
+            <li class="clearfix">
+                <div class="clearfix">
+                    <span class="bsInfoTit">短信内容</span>
+                    <textarea  id="smsContent" name="content"  placeholder="请输入短信内容" class="quesText ydxText" ></textarea>
+                </div>
+                <div class="bsErrorBox">
+                    <label id="contentError"  for="smsContent" class="error"></label>
+                </div>
+            </li>-->
+        </ul>
+        <a href="javascript:;" class="bsSubmitBtn btnEnabled" id="applySubmit">提交申请</a>
+        <p class="bsSubTip">提交申请，1-3个工作日完成审核！</p>
+    </form>
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+        //********************  API 申请提交 start ******************************************//
+        var appointmentFormValidate = $("#appointmentForm").validate({
+             rules : {
+                 signature : {
+                     required : true,
+                     minlength : 1,
+                     maxlength : 10
+                 }
+             },
+             messages : {
+                 signature : {
+                 required : "内容不能为空",
+                 minlength : "长度在1-20个字符之间",
+                 maxlength : "长度在1-20个字符之间"
+                 }
+             }
+         });
+         $("#applySubmit").click(function() {
+             var serviceType = [[${serviceType}]];
+             var url =  pageContext.contextPath +"/smsTemplateAppointment/apply/"+serviceType+"/submit";
+             if (appointmentFormValidate.form()) {
+                 jQuery.ajax({
+                     type : "POST",
+                     url:url,
+                     data : $("#appointmentForm").serialize(),
+                     success : function(data) {
+                         if(data.flag =="true"){
+                             GlobalPrompt.prompt("您的申请已提交，非常感谢您的支持。",function () {
+                                 $("#signature").val("");
+                                 $(".backstageApplyBox").hide();
+                                 $(".banner").show();
+                             });
+                         }else if(data.flag =="nologin"){
+                             GlobalPrompt.prompt(data.msg,function () {
+                                 location.href = pageContext.contextPath +"/login" ;
+                             });
+                         }else{
+                             GlobalPrompt.prompt(data.msg);
+                         }
+                     },
+                     error : function(e) {
+                         GlobalPrompt.prompt('抱歉，程序访问出现错误！请联系管理员.');
+                     }});
+             }
+         });
+
+
+        //申请API 功能样式切换
+        $(function(){
+                $('#applyForBtn').click(function(){
+                    var userId =[[${userId}]];
+                    jQuery.ajax({
+                        type : "POST",
+                        url: pageContext.contextPath +"/account/userSmsTemplateApply/checkNumber",
+                        data : {"userId":userId},
+                        success : function(data) {
+                            if(data){
+                                $('.banner').css('display','none');
+                                $('.backstageApplyBox').fadeIn();
+                            }else{
+                                $('#applyForBtn').removeAttr('onclick');
+                                $("#applyForBtn").attr("disabled", "disabled");
+                                $("#applyForBtn").css({
+                                    "background":"#ccc",
+                                    "box-shadow": "0 3px 1px #999"
+                                });
+                                GlobalPrompt.prompt("申请签名个数已达5个");
+                            }
+                        },
+                        error : function(e) {
+                            GlobalPrompt.prompt('抱歉，程序访问出现错误！请联系管理员.');
+                        }});
+                });
+                $('.bsApplyClose').click(function(){
+                    $(this).parent().parent().css('display','none');
+                    $('.banner').fadeIn();
+                });
+        });
+
+
+
+</script>
+</html>

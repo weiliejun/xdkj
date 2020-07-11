@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>人员信息</title>
+</head>
+
+
+<body class="layui-layout-body" style="overflow-y: auto">
+<div class="layui-layout layui-layout-admin">
+    <div style="padding: 15px;">
+        <h3 class="titNav">
+            <p>新增人员信息</p>
+        </h3>
+        <hr>
+        <div class="proCon">
+            <form id="searchForm" class="layui-form">
+                <div class="layui-row">
+                    <div class="layui-col-xs6">
+                        <div class="grid-demo grid-demo-bg1">
+                            <ul class="proInfo basicInfo">
+                                <li class="layui-clear">
+                                    <span><i style=" color: #ec1a0d;">* </i>姓名：</span>
+                                    <p th:text="${dlsInfo.name}"></p>
+                                    <input id="id" name="id" type="hidden" th:value="${dlsInfo.id}" class="layui-input"/>
+                                </li>
+                                <li class="layui-clear">
+                                    <span><i style=" color: #ec1a0d;">* </i>手机号码：</span>
+                                    <p th:text="${dlsInfo.phone}"></p>
+                                </li>
+                            </ul>
+                            <ul class="proInfo basicInfo">
+                                <li class="layui-clear">
+                                    <span><i style=" color: #ec1a0d;">* </i>公司邮箱：</span>
+                                    <p th:text="${dlsInfo.gsyx}"></p>
+                                </li>
+                                <li class="layui-clear">
+                                    <span>个人邮箱：</span>
+                                    <p th:text="${dlsInfo.gryx}"></p>
+                                </li>
+                            </ul>
+                            <ul class="proInfo basicInfo">
+                                <li class="layui-clear">
+                                    <span><i style=" color: #ec1a0d;">* </i>部门：</span>
+                                    <p th:text="${dlsInfo.dept}"></p>
+                                </li>
+                                <li class="layui-clear">
+                                    <span><i style=" color: #ec1a0d;">* </i>职级：</span>
+                                    <p th:text="${dlsInfo.rank}"></p>
+                                </li>
+                            </ul>
+                            <ul class="proInfo basicInfo">
+                                <li class="layui-clear">
+                                    <span><i style=" color: #ec1a0d;">* </i>在职状态：</span>
+                                    <p th:text="${dlsInfo.status}"></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="titH3" style="margin-top:30px;">参与的项目</h3>
+                <div id="view"></div>
+                <script id="detailView" type="text/html">
+                    <table class="layui-table" lay-skin="line">
+                        <colgroup>
+                            <col width="170">
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr class="layui-bg-gray">
+                            <th width="15%">产品名称</th>
+                            <th width="15%">业务类型</th>
+                            <th width="15%">产品规模</th>
+                            <th width="15%">产品期限</th>
+                            <th width="15%">预期收益</th>
+                            <th width="15%">当前状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{# layui.each(d, function(index, xmItem){ }}
+                        <tr>
+                            <td>{{ xmItem.cpmc }}</td>
+                            <td>{{ xmItem.ywlx }}</td>
+                            <td>{{ xmItem.cpgm }}</td>
+                            <td>{{ xmItem.cpqx }}</td>
+                            <td>{{ xmItem.yqsy }}</td>
+                            <td>{{ xmItem.xmjd }}</td>
+                        </tr>
+                        {{# }); }}
+                        {{# if(d.length === 0){ }}
+                        <tr>
+                            <td colspan="6" align="center">暂无相关数据</td>
+                        </tr>
+                        {{# } }}
+                        </tbody>
+                    </table>
+                </script>
+                <hr class="layui-bg-blue">
+                <a href="javascript:window.history.go(-1);" class="layui-btn">返回</a>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" th:src="@{/js/app/dlsInfo/view.js}"></script>
+</body>
+</html>

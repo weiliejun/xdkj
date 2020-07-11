@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="websiteCase">
+    <resultMap id="websiteCaseResultMap" type="websiteCase">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="CODE" property="code" jdbcType="VARCHAR"/>
+        <result column="TYPE" jdbcType="VARCHAR" property="type"/>
+        <result column="LINK" jdbcType="VARCHAR" property="link"/>
+        <result column="COVER_LOGO" jdbcType="VARCHAR" property="coverLogo"/>
+        <result column="CASE_IMG" jdbcType="VARCHAR" property="caseImg"/>
+        <result column="CONTENT" jdbcType="VARCHAR" property="content"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="IS_HOMEPAGE_SHOW" jdbcType="CHAR" property="isHomepageShow"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="websiteCaseColumn">
+        ID, NAME, CODE, TYPE, LINK, COVER_LOGO, CASE_IMG, CONTENT, STATUS, IS_HOMEPAGE_SHOW, DATA_STATUS,
+        CREATE_TIME, UPDATE_TIME
+    </sql>
+    <select id="getCaseById" parameterType="java.lang.Integer" resultMap="websiteCaseResultMap">
+        select
+        <include refid="websiteCaseColumn"/>
+        from WEBSITE_CASE
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 查询List  -->
+    <select id="listCasesByParams" resultMap="websiteCaseResultMap" parameterType="map">
+        select
+        <include refid="websiteCaseColumn"/>
+        from WEBSITE_CASE
+        where DATA_STATUS = '0' and STATUS = '0'
+
+        <if test="type != null">
+            AND TYPE = #{type, jdbcType=VARCHAR}
+        </if>
+        <if test="isHomePageShow != null">
+            AND IS_HOMEPAGE_SHOW = #{isHomePageShow, jdbcType=VARCHAR}
+        </if>
+
+        order by CREATE_TIME desc
+    </select>
+
+    <insert id="addCase" parameterType="websiteCase">
+        insert into WEBSITE_CASE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="code != null">
+                CODE,
+            </if>
+            <if test="type != null">
+                TYPE,
+            </if>
+            <if test="link != null">
+                LINK,
+            </if>
+            <if test="coverLogo != null">
+                COVER_LOGO,
+            </if>
+            <if test="caseImg != null">
+                CASE_IMG,
+            </if>
+            <if test="content != null">
+                CONTENT,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="isHomepageShow != null">
+                IS_HOMEPAGE_SHOW,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="link != null">
+                #{link,jdbcType=VARCHAR},
+            </if>
+            <if test="coverLogo != null">
+                #{coverLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="caseImg != null">
+                #{caseImg,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="isHomepageShow != null">
+                #{isHomepageShow,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateCase" parameterType="websiteCase">
+        update WEBSITE_CASE
+        <set>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                CODE = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                TYPE = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="link != null">
+                LINK = #{link,jdbcType=VARCHAR},
+            </if>
+            <if test="coverLogo != null">
+                COVER_LOGO = #{coverLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="caseImg != null">
+                CASE_IMG = #{caseImg,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                CONTENT = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="isHomepageShow != null">
+                IS_HOMEPAGE_SHOW = #{isHomepageShow,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

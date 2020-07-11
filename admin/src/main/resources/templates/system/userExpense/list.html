@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>消费记录列表</title>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header">
+            <form id="searchForm" class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">服务名称</label>
+                        <div class="layui-input-block">
+                            <input id="serviceName" type="text" name="serviceName" placeholder="请输入服务名称" autocomplete="off" class="layui-input" th:value="${servicenName}" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-block">
+                            <input id="userName" type="text" name="userName" placeholder="请输入用户名" autocomplete="off" class="layui-input" th:value="${userName}"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">手机号</label>
+                        <div class="layui-input-block">
+                            <input id="mobile" type="text" name="mobile" placeholder="请输入手机号" autocomplete="off" class="layui-input" th:value="${mobile}" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <a class="layui-btn" lay-submit data-type="search">
+                            <i class="layui-icon layui-icon-search"></i>
+                        </a>
+                        <a  class="layui-btn" data-type="searchFormClear">
+                            <i class="layui-icon layui-icon-delete"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+                <button class="layui-btn" data-type="add">添加</button>
+            </div>
+
+            <table id="userExpenseTables" lay-filter="userExpenseTables"></table>
+
+            <script id="EXPENSE_TYPE" type="text/html">
+                {{#  if(d.EXPENSE_TYPE === undefined){ }}
+                未知
+                {{#  } else { }}
+                {{#  if(d.EXPENSE_TYPE === 'api'){ }}
+                api
+                {{#  } else { }}
+                在线
+                {{#  } }}
+                {{#  } }}
+            </script>
+            <script id="userExpensebar" type="text/html">
+                <a class="layui-btn layui-btn-xs" lay-event="update"><i class="layui-icon">&#xe642;</i>修改</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete"><i class="layui-icon">&#xe640;</i>删除</a>
+            </script>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/system/userExpense/list.js}"></script>
+</body>
+</html>

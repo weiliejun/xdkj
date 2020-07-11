@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-账户中心-修改手机号</title>
+    <!--<link rel="stylesheet" type="text/css" href="/css/Account_center.css" />-->
+    <link rel="stylesheet" type="text/css" href="/css/accountManagement.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('modifyMobile')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png" alt=""><span>账号管理</span>/<span>修改手机号</span></h5>
+            </div>
+            <!-- 第一步  start -->
+            <div class="con1" id="stepOneDiv">
+                <div class="stepBigBox">
+                    <ul class="stepNumBox clearfix">
+                        <li class="numLi currNumLi">
+                            <span class="stepNum">1</span>
+                            <p class="stepTit">验证原手机号</p>
+                        </li>
+                        <li>
+                            <b class="stepBorder"></b>
+                        </li>
+                        <li class="numLi">
+                            <span class="stepNum">2</span>
+                            <p class="stepTit">验证新手机号</p>
+                        </li>
+                        <li>
+                            <b class="stepBorder"></b>
+                        </li>
+                        <li class="numLi">
+                            <span class="stepNum">3</span>
+                            <p class="stepTit">完成</p>
+                        </li>
+                    </ul>
+                    <form id="oldMobileForm">
+                        <div class="stepYzmBox clearfix">
+                            <span class="stepYzmTit"><i>* </i>短信验证码：</span>
+                            <input id="oldSmsCode" name="oldSmsCode" type="text" class="form-control stepYzmText"/>
+                            <a id="sendOldSmsCode" href="javascript:void(0);" class="stepYzmBtn"
+                               th:onclick="sendSmsCodeFun(this, 'mobileEdit')">获取短信验证码</a>
+                        </div>
+                        <div class="stepErrorBox"><label id="sendOldSmsCodeError" for="oldSmsCode"
+                                                         class="error"></label></div>
+                        <a href="javascript:;" class="stepNextBtn" id="stepOneBtn">下一步</a>
+                    </form>
+                    <p class="stepTip">温馨提示：如果您绑定的手机因停机、注销、丢失等特殊情况无法接受验证，请联系客服。</p>
+                </div>
+            </div>
+
+            <!-- 第二步  start -->
+            <div id="stepTwoDiv" class="con1" style="display: none;">
+                <div class="stepBigBox">
+                    <ul class="stepNumBox clearfix">
+                        <li class="numLi currNumLi">
+                            <span class="stepNum">1</span>
+                            <p class="stepTit">验证原手机号</p>
+                        </li>
+                        <li>
+                            <b class="stepBorder"></b>
+                        </li>
+                        <li class="numLi currNumLi">
+                            <span class="stepNum">2</span>
+                            <p class="stepTit">验证新手机号</p>
+                        </li>
+                        <li>
+                            <b class="stepBorder"></b>
+                        </li>
+                        <li class="numLi">
+                            <span class="stepNum">3</span>
+                            <p class="stepTit">完成</p>
+                        </li>
+                    </ul>
+                    <form id="newMobileForm">
+                        <div class="stepYzmBox clearfix">
+                            <span class="stepYzmTit"><i>* </i>新手机号码：</span>
+                            <input id="mobile" name="mobile" type="text" class="form-control stepYzmText newNumTextW"/>
+                        </div>
+                        <div class="stepErrorBox"><label id="newMobileError" for="mobile" class="error"></label></div>
+                        <div class="stepYzmBox clearfix">
+                            <span class="stepYzmTit"><i>* </i>新手机号验证码：</span>
+                            <input id="newSmsCode" name="newSmsCode" type="text" class="form-control stepYzmText"/>
+                            <a id="sendNewSmsCode" href="javascript:;" class="stepYzmBtn"
+                               th:onclick="sendSmsCodeFun(this, 'mobileBind')">获取短信验证码</a>
+                        </div>
+                        <div class="stepErrorBox"><label id="sendNewSmsCodeError" for="newSmsCode"
+                                                         class="error"></label></div>
+                        <a id="stepTwoBtn" href="javascript:;" class="stepNextBtn">下一步</a>
+                        <p class="stepTip">温馨提示：如果您新手机号码无法绑定，请联系客服。</p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 第三步  start -->
+            <div id="stepThreeDiv" class="con1" style="display: none;">
+                <div class="stepBigBox">
+                    <ul class="stepNumBox clearfix">
+                        <li class="numLi currNumLi">
+                            <span class="stepNum">1</span>
+                            <p class="stepTit">验证原手机号</p>
+                        </li>
+                        <li>
+                            <b class="stepBorder"></b>
+                        </li>
+                        <li class="numLi currNumLi">
+                            <span class="stepNum">2</span>
+                            <p class="stepTit">验证新手机号</p>
+                        </li>
+                        <li>
+                            <b class="stepBorder"></b>
+                        </li>
+                        <li class="numLi currNumLi">
+                            <span class="stepNum">3</span>
+                            <p class="stepTit">完成</p>
+                        </li>
+                    </ul>
+                    <div class="stepSuccTip">
+                        <img src="/images/personalCenter/rightIcon.png"/>
+                        <p>手机号修改成功！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
+
+</body>
+<script type="text/javascript" th:inline="javascript">
+    // 旧手机短信验证码表单校验
+    var oldMobileFormValidate = $("#oldMobileForm").validate({
+        onfocusout : false,
+        onkeyup : false,
+        focusCleanup : true,
+        rules : {
+            oldSmsCode : {
+                required : true,
+                minlength : 6,
+                maxlength : 6
+            }
+        },
+        messages : {
+            oldSmsCode : {
+                required : " 请输入短信验证码",
+                minlength : " 短信验证码错误",
+                maxlength : " 短信验证码错误"
+            }
+        }
+    });
+
+    // 新手机短信验证码表单校验
+    var newMobileFormValidate = $("#newMobileForm").validate({
+        onfocusout : false,
+        onkeyup : false,
+        focusCleanup : true,
+        rules : {
+            mobile : {
+                required: true,
+                isMobile: true
+            },
+            newSmsCode : {
+                required : true,
+                minlength : 6,
+                maxlength : 6
+            }
+        },
+        messages : {
+            mobile : {
+                required: "请输入手机号",
+                isMobile: "手机号码格式不正确"
+            },
+            newSmsCode : {
+                required : " 请输入短信验证码",
+                minlength : " 短信验证码错误",
+                maxlength : " 短信验证码错误"
+            }
+        }
+    });
+
+    // 第一步的“下一步”按钮
+    $("#stepOneBtn").click(function() {
+        if (oldMobileFormValidate.form()) {
+            AJAX.post(
+                "/accountManage/modifyMobile/checkOldMobile",
+                $("#oldMobileForm").serialize(),
+                function(data){
+                    // 跳转到第二步
+                    if (data.flag == "true") {
+                        $("#stepOneDiv").hide();
+                        $("#stepTwoDiv").show();
+                    } else {
+                        $('#sendOldSmsCode').removeClass("aDisabledBtn");
+                        $('#sendOldSmsCodeError').html(data.msg).show();
+                    }
+                }
+            )
+        }
+    });
+
+    // 第二步的“下一步”按钮
+    $("#stepTwoBtn").click(function() {
+        if (myFormValidate(newMobileFormValidate)) {
+            AJAX.post(
+                "/accountManage/modifyMobile/checkNewMobile",
+                $("#newMobileForm").serialize(),
+                function(data){
+                    // 跳转到第三步
+                    if (data.flag == "true") {
+                        $("#stepTwoDiv").hide();
+                        $("#stepThreeDiv").show();
+                    } else {
+                        $('#sendNewSmsCode').removeClass("aDisabledBtn");
+                        $('#sendNewSmsCodeError').html(data.msg).show();
+                    }
+                }
+            )
+        }
+    });
+
+    // 发送短信验证码
+    function sendSmsCodeFun(obj, busiType) {
+        var btnId = $(obj).attr("id");
+        var errorId = btnId + "Error";
+        var mobile = [[${oldMobile}]];
+        var userMp = mobile;
+        if (busiType == "mobileEdit" && (mobile == null || mobile == '' || !isMobile(mobile))) {
+            $(obj).removeClass("aDisabledBtn");
+            $('#' + errorId).html('请输入手机号后重试').show();
+            return;
+        }
+        if (busiType == "mobileBind") {
+            var newMobile = $("#mobile").val();
+            userMp = newMobile;
+            if (newMobile == null || newMobile == '') {
+                $(obj).removeClass("aDisabledBtn");
+                $('#newMobileError').html('请输入手机号后重试').show();
+                return;
+            } else if (!isMobile(newMobile)) {
+                $(obj).removeClass("aDisabledBtn");
+                $('#newMobileError').html('请输入正确的手机号码').show();
+                return;
+            } else if (mobile == newMobile) {
+                $(obj).removeClass("aDisabledBtn");
+                $('#newMobileError').html('您输入的新手机号与旧手机号一致').show();
+                return;
+            }
+        }
+        AJAX.post(
+            PageContext.contextPath+"/mobile/smscodeSend",
+            {
+                "nickName":null,
+                "validateCode":null,
+                "mobile": userMp,
+                "busiType": busiType
+            },
+            function(data) {
+                var result = data.flag;
+                if (result == 'true' ) {
+                    //调用公共的倒计时方法
+                    commonRemoteValidateCode("#" + btnId);
+                    $('#' + errorId).html(data.msg).show();
+                } else {
+                    $("#" + btnId).removeClass("aDisabledBtn");
+                    if (busiType == "mobileBind") {
+                        $('#newMobileError').html(data.msg).show();
+                    } else {
+                        $('#' + errorId).html(data.msg).show();
+                    }
+                }
+            }
+        )
+    }
+
+</script>
+</html>
+
+
+

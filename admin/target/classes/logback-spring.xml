@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- 需改成绝对路径 -->
+	<!--<substitutionProperty name="log.debug" value="G:\projects\X-bike\logs\debug" />-->
+	<substitutionProperty name="log.base" value="/data/logs/debug" />
+	<jmxConfigurator />
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date{yyyy-MM-dd HH:mm:ss} %-5level %logger{10} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<appender name="debugfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- <Encoding>UTF-8</Encoding> -->
+		<File>${log.debug}.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.debug}.%d{yyyy-MM-dd}.log.zip</FileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<logger name="debugLog" level="INFO" additivity="false">
+		<appender-ref ref="debugfile" />
+	</logger>
+
+	<!--<root>
+		<level value="INFO" />
+		<appender-ref ref="debugfile" />
+	</root>-->
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="stdout" />
+	</root>
+	
+	
+	<!--
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="logfile" />
+	</root> -->
+</configuration>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-账户中心-首页</title>
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('saasCenter')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png"
+                                  alt=""><span>IT服务网服务</span>/<span>云计算SaaS</span>/<span>驾考公开题库查询</span></h5>
+                <div class="banner">
+                    <div class="bg_01 bg_jk">
+                        <a href="javascript:;" class="applyForBtn">申请API</a>
+                        <div class="weatherText">
+                            <p>公安部驾照考试题库；</p>
+                            <p>考题种类齐全，分类明确；</p>
+                            <p>考题可按顺序或者随机页数两种方试获取。</p>
+                            <p>（接口流量限制情况：10次流控/分钟）</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 申请API 提交 start-->
+                <div th:replace="/userAccount/saasCenter/applyAPISubmit"></div>
+                <!-- 申请API提交  end-->
+
+                <div class="chaxun2">
+                    <form id="dataForm" autocomplete="off">
+                        <div class="input-group">
+                            <input id="pageNumber" name="pageNumber" type="hidden">
+                            <input id="pageNum" name="pageNum" type="text" class="form-control input1"
+                                   placeholder="请输入页数">
+                            <select id="questionSubject" name="questionSubject" class="form-control select1">
+                                <option value="" selected="selected">请选择科目类型</option>
+                                <option value="1">科目一</option>
+                                <!--<option value="2">科目二</option>
+                                <option value="3">科目三</option>-->
+                                <option value="4">科目四</option>
+                            </select>
+                            <select id="questionType" name="questionType" class="form-control select1">
+                                <option value="" selected="selected">请选择准驾类型</option>
+                                <option value="A1">A1</option>
+                                <option value="A2">A2</option>
+                                <option value="A3">A3</option>
+                                <option value="B1">B1</option>
+                                <option value="B2">B2</option>
+                                <option value="C1">C1</option>
+                                <option value="C2">C2</option>
+                                <option value="C3">C3</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                            </select>
+                            <a href="javascript:;" onclick="drivingQueSearch()"
+                               class="centerBtn2 btnEnabled enterEvent">
+                                免费查询
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <!-- 图形验证码弹框 start-->
+                <div style="position:absolute;right:608px;">
+                    <div th:replace="/userAccount/common/validateCode"></div>
+                </div>
+                <!-- 图形验证码弹框 end-->
+                <div class="tipText">
+                    <h3>温馨提示：</h3>
+                    <p>1、页数代表跳转某一页，每页显示5道题，为空时默认显示第一页内容</p>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="con1" id="content"></div>
+        </div>
+    </div>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
+</body>
+<script type="text/javascript" th:src="@{/plugins/template/jquery.tmpl.min.js}"></script>
+<script id="drivingQuestionsQueryTmpl" type="text/x-jquery-tmpl">
+    <h5>题库内容</h5>
+    <h6>科目类别：<span class="marginright40">{{= questionSubject}}</span>准驾类型：<span>{{= questionType}}</span></h6>
+    {{each list}}
+        <div class="kaoti">
+            <dl>
+                <dt class="dt11">试题问题{{= $index+1}}：</dt>
+                <dd class="dd11">
+                    <p>{{= $value.question}}</p>
+                    <p>{{= $value.option1}}</p>
+                    <p>{{= $value.option2}}</p>
+                    <p>{{= $value.option3}}</p>
+                    <p>{{= $value.option4}}</p>
+                </dd>
+                <div style="clear:both;"></div>
+            </dl>
+            <dl>
+                <dt class="dt11">问题答案：</dt>
+                <dd class="dd11">{{= $value.answer}}</dd>
+                <div style="clear:both;"></div>
+            </dl>
+            <dl>
+                <dt class="dt11">相关解释：</dt>
+                <dd class="dd11">{{= $value.explain}}</dd>
+                <div style="clear:both;"></div>
+            </dl>
+            <dl>
+                <dt class="dt11">对应章节：</dt>
+                <dd class="dd11">{{= $value.chapter}}</dd>
+                <div style="clear:both;"></div>
+            </dl>
+        </div>
+    {{/each}}
+    <div class="pager">
+        <a href="javascript:void(0);" onclick="drivingQueSearch('searchByPage','1')" class="btnEnabled">首页</a>
+        {{if pageNumber > 1}}
+            <a href="javascript:;" onclick="drivingQueSearch('searchByPage','${Number(pageNumber)-1}')" class="btnEnabled">上一页</a>
+        {{/if}}
+        <a href="javascript:;" class="current">{{= pageNumber}}</a>
+        <a href="javascript:;" onclick="drivingQueSearch('searchByPage','${Number(pageNumber)+1}')" class="btnEnabled">下一页</a>
+    </div>
+
+</script>
+<script type="text/javascript">
+    var dataFormValidate;
+    $(function(){
+        dataFormValidate = $("#dataForm").validate({
+            onclick:false,
+            onfocusout:false,
+            onkeyup:false,
+            focusCleanup:true,
+            rules : {
+                pageNum : {
+                    digits: true,
+                    max : 1000
+                },
+                questionSubject : {
+                    required : true
+                },
+                questionType : {
+                    required : true
+                },
+                validateCode : {
+                    required : true,
+                    minlength : 4,
+                    maxlength : 4
+                }
+            },
+            messages : {
+                pageNum : {
+                    digits: "请输入整数"
+                },
+                questionSubject : {
+                    required : "请选择科目类型"
+                },
+                questionType: {
+                    required: "请选择准驾类型"
+                },
+                validateCode: {
+                    required: " 请输入验证码",
+                    minlength: " 验证码错误",
+                    maxlength: " 验证码错误"
+                }
+            },
+            errorPlacement: function(error) {
+                GlobalPrompt.prompt(error.text());
+            }
+        });
+    });
+
+    function drivingQueSearch(type, pageNum) {
+        if(myFormValidate(dataFormValidate)) {
+            // 图形验证码弹框
+            ValidateCodePrompt.prompt(function () {
+                if (type == "searchByPage") {
+                    $('#pageNumber').val(pageNum);
+                } else {
+                    $('#pageNumber').val($("#pageNum").val());
+                }
+                var questionSubject = $("#questionSubject option:selected").text();
+                var questionType = $("#questionType").val();
+                var pageNumber = $("#pageNumber").val();
+                if (!pageNumber) {
+                    pageNumber = "1";
+                }
+                AJAX.post(PageContext.contextPath + "/xdkj/service/online/drivingQuestionsQuery",
+                    $.param({"validateCode" : $("#validateCodeForm #validateCode").val()}) +'&'+ $("#dataForm").serialize(),
+                    function (data) {
+                        ValidateCodePrompt.close("subBtn");
+                        //查询成功
+                        if (data.status == "0") {
+                            data["questionSubject"] = questionSubject;
+                            data["questionType"] = questionType;
+                            data["pageNumber"] = pageNumber;
+                            $('#content').empty();
+                            $('#drivingQuestionsQueryTmpl').tmpl(data).appendTo('#content');
+                        } else {
+                            GlobalPrompt.prompt(data.msg);
+                        }
+                    }
+                );
+            });
+        }
+    }
+
+</script>
+</html>
+
+
+

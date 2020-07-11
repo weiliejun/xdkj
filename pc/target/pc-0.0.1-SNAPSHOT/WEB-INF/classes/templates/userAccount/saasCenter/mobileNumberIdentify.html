@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-账户中心-手机号认证</title>
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('saasCenter')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div id="content" class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png"
+                                  alt=""><span>IT服务网服务</span>/<span>云计算SaaS</span>/<span>手机号码实名认证</span></h5>
+                <div class="banner">
+                    <div class="bg_01">
+                        <h3 class="queryTit">手机号码实名认证</h3>
+                        <a href="/appointment/mobileNumberIdentify/download" class="applyForBtn">下载API文档</a>
+                        <p class="applyText">根据手机号、姓名、身份证号码来校验三者是否一致，支持移动、联通、电信运营商。</p>
+                    </div>
+                </div>
+                <div class="chaxun5">
+                    <form id="dataForm" autocomplete="off">
+                        <div class="input-group">
+                            <input id="mobile" type="text" name="mobile" class="form-control input1"
+                                   placeholder="输入要查询的手机号码">
+                            <input id="name" type="text" name="name" class="form-control input2" placeholder="输入人员姓名">
+                            <input id="id" type="text" name="id" class="form-control input3" placeholder="输入身份证号码">
+                            <input id="validateCode" type="hidden" name="validateCode" value="1234"/>
+                            <a id="search" href="javascript:;" class="centerBtn2 changeBtn2W btnEnabled enterEvent">
+                                立刻查询
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="yu_e">
+                    <p>当前账户余额：<strong id="accountBalance"
+                                      th:text="${#numbers.formatDecimal(accountBalance,1,'COMMA',2,'POINT')}"></strong>
+                        元　单次查询费用：
+                        <strong id="singleCost"
+                                th:text="${#numbers.formatDecimal(singleCost,1,'COMMA',2,'POINT')}"></strong>元/次　免费查询次数剩余：
+                        <span id="remainderFreeCount" th:text="${remainderFreeCount}"></span>次</p>
+                </div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
+</body>
+<script type="text/javascript" th:src="@{/plugins/template/jquery.tmpl.min.js}"></script>
+<script id="mobileNumberIdentifyTmpl" type="text/x-jquery-tmpl">
+<div id="queryResult" class="con1">
+    <h5>实名认证结果</h5>
+    <dl>
+        <dt class="dt77">结果：</dt>
+        <dd class="dd77">身份证信息匹配</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <dl>
+        <dt class="dt77">手机号码：</dt>
+        <dd class="dd66">{{= mobile}}</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <dl>
+        <dt class="dt77">人员姓名：</dt>
+        <dd class="dd77">{{= name}}</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <dl>
+        <dt class="dt77">身份证号码：</dt>
+        <dd class="dd77">{{= id}}</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <div style="height:80px;"></div>
+</div>
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        //参数校验
+        var dataFormValidate = $("#dataForm").validate({
+            onfocusout:false,
+            onkeyup:false,
+            focusCleanup:true,
+            rules : {
+                mobile : {
+                    required : true,
+                    isMobile : true
+                },
+                name : {
+                    required : true
+                },
+                id : {
+                    required : true,
+                    isIdCard: true
+                },
+                validateCode : {
+                    required : true,
+                    minlength : 4,
+                    maxlength : 4
+                }
+            },
+            messages : {
+                mobile : {
+                    required : "请输入手机号",
+                    isMobile : "手机号码格式不正确"
+                },
+                name : {
+                    required : "请输入姓名"
+                },
+                id : {
+                    required : "请输入身份证号",
+                    isIdCard: "请输入正确身份证号码"
+                },
+                validateCode: {
+                    required: " 请输入验证码",
+                    minlength: " 验证码错误",
+                    maxlength: " 验证码错误"
+                }
+            },
+            errorPlacement: function(error, element) {
+                GlobalPrompt.prompt(error.text());
+            }
+        });
+
+        //查询
+        $("#search").click(function() {
+            if(myFormValidate(dataFormValidate)){
+                AJAX.post(PageContext.contextPath +"/xdkj/service/online/mobileNumberIdentify",
+                    $("#dataForm").serialize(),
+                    function(data) {
+                        //查询成功
+                        if(data.status == "0"){
+                            //清除原有查询结果框
+                            if($("#queryResult").length > 0){
+                                $("#queryResult").remove();
+                            }
+                            $('#mobileNumberIdentifyTmpl').tmpl(data).insertAfter('#content');
+                            //更新账户余额、免费次数等信息
+                            var mbigerData = data.mbigerData;
+                            if($("#accountBalance").length > 0){
+                                $("#accountBalance").text(mbigerData.accountBalance);
+                            }
+                            if($("#singleCost").length > 0){
+                                $("#singleCost").text(mbigerData.singleCost);
+                            }
+                            if($("#remainderFreeCount").length > 0){
+                                $("#remainderFreeCount").text(mbigerData.remainderFreeCount);
+                            }
+                        }else{
+                            GlobalPrompt.prompt(data.msg);
+                        }
+                    }
+                );
+            }
+        });
+    });
+
+</script>
+</html>
+
+
+

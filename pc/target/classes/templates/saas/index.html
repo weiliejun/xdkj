@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-SaaS服务</title>
+    <link rel="stylesheet" type="text/css" href="/css/cloudComputing.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="/common/header :: commonHeader('SAAS')"></div>
+<!-- 头部公共 end-->
+
+<div class="cloudBanner">
+    <img src="/images/banner_SaaS.jpg"/>
+</div>
+
+<div class="everyCloud">
+    <div class="cloudTit clearfix"><h3>云查询</h3><span>欢迎您反馈更多的查询需求给我们，服务将不断完善。</span></div>
+    <!--<div class="cloudDescribe">
+        <img src="/images/cloudquery.jpg" />
+    </div>-->
+    <div class="demandListBox">
+        <p>免费查询服务</p>
+        <div class="demandList clearfix">
+            <a href="/saas/weatherQuery" class="demandActive">全国天气预报查询</a>
+            <a href="/saas/mobileNumberPlaceQuery">手机号码归属地查询</a>
+            <a href="/saas/ipPlaceQuery">全球IP地址归属地查询</a>
+            <a href="/saas/drivingQuestionsQuery">驾考公开题库查询</a>
+        </div>
+    </div>
+    <div class="demandListBox">
+        <p>其它查询服务</p>
+        <div class="demandList clearfix">
+            <a href="/account/saasCenter/expressDeliveryQuery" class="demandActive">全球物流快递查询</a>
+            <!--<a href="/account/saasCenter/taxpayer">企业纳税人识别号查询</a>-->
+        </div>
+    </div>
+</div>
+
+<div class="everyCloud">
+    <div class="cloudTit clearfix"><h3>云短信</h3><span>受运营商监管机构政策影响，当前仅支持发送手机验证码短信。</span></div>
+    <!--<div class="cloudDescribe">
+        <p class="cloudTestTxt">云短信描述XXXXXXXXX</p>
+        <a href="javascript:;" class="cloudDetails">查看详情</a>
+    </div>-->
+    <div class="demandListBox">
+        <p></p>
+        <div class="demandList clearfix">
+            <a href="/account/saasCenter/smsCodeSend" class="demandActive">立刻发送验证码</a>
+        </div>
+    </div>
+</div>
+
+<div class="everyCloud">
+    <div class="cloudTit clearfix"><h3>云认证</h3><span>主要提供实名认证、实名校验等服务，服务不断完善中。</span></div>
+    <!--<div class="cloudDescribe">
+        <p class="cloudTestTxt">云认证描述XXXXXXXXX</p>
+    </div>-->
+    <div class="demandListBox">
+        <p></p>
+        <div class="demandList clearfix">
+            <a href="/account/saasCenter/identityCardIdentify" class="demandActive">身份证实名认证</a>
+            <a href="/account/saasCenter/bankCardIdentify">银行卡实名校验</a>
+            <a href="/account/saasCenter/mobileNumberIdentify">手机号码实名认证</a>
+        </div>
+    </div>
+</div>
+
+<div class="everyCloud">
+    <div class="cloudTit clearfix"><h3>人工智能</h3><span>人脸识别、人脸比对、图像识别等服务不断完善中。</span></div>
+    <!--<div class="cloudDescribe">
+        <p class="cloudTestTxt">人工智能描述XXXXXXXXX</p>
+        <a href="javascript:;" class="cloudDetails">查看详情</a>
+    </div>-->
+    <div class="demandListBox">
+        <p></p>
+        <div class="demandList clearfix">
+            <a href="/account/saasCenter/intelligentAssistantQA" class="demandActive">上知天文，下知地理</a>
+        </div>
+    </div>
+</div>
+
+<!-- 公共底部 start -->
+<div th:replace="/common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+
+<script type="text/javascript">
+        /*鼠标滑动查询服务时的效果*/
+        $('.demandList a').mouseover(function(){
+            $(this).addClass('demandActive').siblings().removeClass('demandActive');
+        });
+
+</script>
+</body>
+</html>
+
+
+

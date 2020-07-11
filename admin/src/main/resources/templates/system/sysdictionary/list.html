@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>字典管理</title>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header">
+            <form id="searchForm" class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">类型名称</label>
+                        <div class="layui-input-block">
+                            <input id="likeName" type="text" name="likeName" placeholder="请输入类型名称" autocomplete="off" class="layui-input" th:value="${likeName}" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">类型编号</label>
+                        <div class="layui-input-block">
+                            <input id="likeCode" type="text" name="likeCode" placeholder="请输入类型编号" autocomplete="off" class="layui-input" th:value="${likeCode}" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <a class="layui-btn " data-type="search" >
+                            <i class="layui-icon layui-icon-search"></i>
+                        </a>
+                        <a type="button" class="layui-btn" data-type="searchFormClear">
+                            <i class="layui-icon layui-icon-delete"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+                <button class="layui-btn layui-btn-normal addLink_btn" data-type="add"><i class="layui-icon"></i>添加数据字典</button>
+            </div>
+
+            <table id="dictionaryTables" lay-filter="dictionaryTables"></table>
+            <script id="status" type="text/html">
+                {{#  if(d.status === undefined){ }}
+                未知
+                {{#  } else { }}
+                {{#  if(d.status === '0'){ }}
+                启用
+                {{#  } else { }}
+                禁用
+                {{#  } }}
+                {{#  } }}
+            </script>
+            <script id="dictionaryBar" type="text/html">
+                <a class="layui-btn layui-btn-xs" lay-event="update"><i class="layui-icon">&#xe642;</i>修改</a>
+                {{#  if(d.status === '0'){ }}
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="disable"><i class="fa fa-ban"></i>&nbsp;禁用</a>
+                {{#  } else { }}
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="enable"><i class="fa fa-circle-o"></i>&nbsp;置为可用</a>
+                {{#  } }}
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete"><i class="layui-icon">&#xe640;</i>删除</a>
+            </script>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/system/sysdictionary/list.js}"></script>
+</body>
+</html>

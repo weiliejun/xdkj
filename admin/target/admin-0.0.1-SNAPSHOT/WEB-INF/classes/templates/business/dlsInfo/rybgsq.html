@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>人员信息</title>
+</head>
+
+
+<body class="layui-layout-body" style="overflow-y: auto">
+<div class="layui-layout layui-layout-admin">
+    <div style="padding: 15px;">
+        <h3 class="titNav">
+            <p>人员变更申请</p>
+        </h3>
+        <hr>
+        <div class="proCon">
+            <form id="searchForm" class="layui-form">
+                <div class="proCon basicInfo">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>申请内容：</label>
+                        <div class="layui-input-block">
+                            <input lay-verify="required" id="sqnr" name="sqnr" type="text"
+                                   th:value="${rybgsq.sqnr}" class="layui-input layui-col-xs10"/>
+                            <input id="id" name="id" type="hidden" th:value="${rybgsq.id}" class="layui-input"/>
+                            <input id="ryId" name="ryId" type="hidden" th:value="${rybgsq.ryId}" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>变更说明：</label>
+                        <div class="layui-input-block">
+                            <textarea id="bgsm" name="bgsm" placeholder="请输入变更说明,工作移交给谁" lay-verify="required"
+                                      class="layui-textarea" th:text="${rybgsq.bgsm}"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item" id="sprDiv">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>审批人：</label>
+                            <div class="layui-input-inline">
+                                <input id="sprName" name="sprName" type="text" th:value="${rybgsq.sprName}" readonly
+                                       class="layui-input" lay-verify="required"/>
+                                <input id="sprId" name="sprId" type="hidden" th:value="${rybgsq.sprId}"
+                                       class="layui-input"/>
+                                <input id="spr" name="spr" type="hidden" th:value="${rybgsq.spr}"
+                                       class="layui-input"/>
+                            </div>
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-green"
+                                        data-type="selectSpr"><i
+                                        class="layui-icon layui-icon-add-circle-fine"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" id="zhrDiv">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>知会人：</label>
+                            <div class="layui-input-inline">
+                                <input id="zhrName" name="zhrName" type="text" th:value="${rybgsq.zhrName}" readonly
+                                       class="layui-input" lay-verify="required"/>
+                                <input id="zhrId" name="zhrId" type="hidden" th:value="${rybgsq.zhrId}"
+                                       class="layui-input"/>
+                                <input id="zhr" name="zhr" type="hidden" th:value="${rybgsq.zhr}"
+                                       class="layui-input"/>
+                            </div>
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-warm"
+                                        data-type="selectZhr"><i
+                                        class="layui-icon layui-icon-add-circle-fine"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="titH3" style="margin-top:30px;">参与的项目</h3>
+                    <div id="view"></div>
+                    <script id="detailView" type="text/html">
+                        <table class="layui-table" lay-skin="line">
+                            <colgroup>
+                                <col width="170">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr class="layui-bg-gray">
+                                <th width="15%">产品名称</th>
+                                <th width="15%">业务类型</th>
+                                <th width="15%">产品规模</th>
+                                <th width="15%">产品期限</th>
+                                <th width="15%">预期收益</th>
+                                <th width="15%">当前状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{# layui.each(d, function(index, xmItem){ }}
+                            <tr>
+                                <td>{{ xmItem.cpmc }}</td>
+                                <td>{{ xmItem.ywlx }}</td>
+                                <td>{{ xmItem.cpgm }}</td>
+                                <td>{{ xmItem.cpqx }}</td>
+                                <td>{{ xmItem.yqsy }}</td>
+                                <td>{{ xmItem.xmjd }}</td>
+                            </tr>
+                            {{# }); }}
+                            {{# if(d.length === 0){ }}
+                            <tr>
+                                <td colspan="6" align="center">暂无相关数据</td>
+                            </tr>
+                            {{# } }}
+                            </tbody>
+                        </table>
+                    </script>
+                </div>
+                <div class="layui-form-item" style="margin:0 0 10px 0;">
+                    <hr class="layui-bg-blue">
+                    <div class="layui-input-block">
+                        <button id="saveButton" class="layui-btn" lay-submit lay-filter="save"><i
+                                class="layui-icon layui-icon-form"></i>提交
+                        </button>
+                        <a href="javascript:window.history.go(-1);" class="layui-btn">返回</a>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" th:src="@{/js/app/dlsInfo/rybgsq.js}"></script>
+</body>
+</html>

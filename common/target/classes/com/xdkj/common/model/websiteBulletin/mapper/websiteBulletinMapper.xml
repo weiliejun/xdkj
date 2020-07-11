@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="websiteBulletin">
+    <resultMap id="websiteBulletinBaseResultMap" type="websiteBulletin">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="TOPIC" property="topic" jdbcType="VARCHAR"/>
+        <result column="TYPE" property="type" jdbcType="VARCHAR"/>
+        <result column="CONTENT" property="content" jdbcType="VARCHAR"/>
+        <result column="PUBLISHER_ID" property="publisherId" jdbcType="INTEGER"/>
+        <result column="PUBLISHER_NAME" property="publisherName" jdbcType="VARCHAR"/>
+        <result column="PUBLISH_STATUS" property="publishStatus" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="CHAR"/>
+        <result column="TOP_MARK" property="topMark" jdbcType="CHAR"/>
+        <result column="CLICKS" property="clicks" jdbcType="INTEGER"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="websiteBulletinColumn">
+        ID, TOPIC, TYPE, CONTENT, PUBLISHER_ID, PUBLISHER_NAME, PUBLISH_STATUS, STATUS, TOP_MARK,
+        CLICKS, DATA_STATUS, CREATE_TIME, UPDATE_TIME
+    </sql>
+    <select id="getWebsiteBulletinById" resultMap="websiteBulletinBaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="websiteBulletinColumn"/>
+        from WEBSITE_BULLETIN
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="addWebsiteBulletin" parameterType="websiteBulletin">
+        insert into WEBSITE_BULLETIN
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="topic != null">
+                TOPIC,
+            </if>
+            <if test="type != null">
+                TYPE,
+            </if>
+            <if test="content != null">
+                CONTENT,
+            </if>
+            <if test="publisherId != null">
+                PUBLISHER_ID,
+            </if>
+            <if test="publisherName != null">
+                PUBLISHER_NAME,
+            </if>
+            <if test="publishStatus != null">
+                PUBLISH_STATUS,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="topMark != null">
+                TOP_MARK,
+            </if>
+            <if test="clicks != null">
+                CLICKS,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="topic != null">
+                #{topic,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="publisherId != null">
+                #{publisherId,jdbcType=INTEGER},
+            </if>
+            <if test="publisherName != null">
+                #{publisherName,jdbcType=VARCHAR},
+            </if>
+            <if test="publishStatus != null">
+                #{publishStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="topMark != null">
+                #{topMark,jdbcType=CHAR},
+            </if>
+            <if test="clicks != null">
+                #{clicks,jdbcType=INTEGER},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateWebsiteBulletin" parameterType="websiteBulletin">
+        update WEBSITE_BULLETIN
+        <set>
+            <if test="topic != null">
+                TOPIC = #{topic,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                TYPE = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                CONTENT = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="publisherId != null">
+                PUBLISHER_ID = #{publisherId,jdbcType=INTEGER},
+            </if>
+            <if test="publisherName != null">
+                PUBLISHER_NAME = #{publisherName,jdbcType=VARCHAR},
+            </if>
+            <if test="publishStatus != null">
+                PUBLISH_STATUS = #{publishStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="topMark != null">
+                TOP_MARK = #{topMark,jdbcType=CHAR},
+            </if>
+            <if test="clicks != null">
+                CLICKS = #{clicks,jdbcType=INTEGER},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+
+    <sql id="listWebsiteBulletin_fragment">
+        select
+        <include refid="websiteBulletinColumn"/>
+        from WEBSITE_BULLETIN
+        where DATA_STATUS = '0'
+        <if test="topic != null">
+            AND TOPIC like CONCAT('%',#{topic},'%')
+        </if>
+        <if test="type != null">
+            AND TYPE = #{type,jdbcType=VARCHAR}
+        </if>
+        <if test="publishStatus != null">
+            AND PUBLISH_STATUS = #{publishStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=CHAR}
+        </if>
+        <if test="topMark != null">
+            AND TOP_MARK = #{topMark,jdbcType=CHAR}
+        </if>
+    </sql>
+
+    <select id="listWebsiteBulletinsByParams" resultType="java.util.Map" parameterType="hashmap">
+        SELECT WB.ID AS "id",WB.TOPIC AS "topic",WB.CONTENT AS "content",WB.CREATE_TIME AS "createTime" FROM(<include
+            refid="listWebsiteBulletin_fragment"/>) WB
+    </select>
+
+    <select id="countWebsiteBulletinsByParams" resultType="java.lang.Integer" parameterType="hashmap">
+        select count(WB.ID) AS "numcount"
+        FROM (<include refid="listWebsiteBulletin_fragment"/>) WB
+
+    </select>
+
+    <select id="listWebsiteBulletinByParams" resultMap="websiteBulletinBaseResultMap" parameterType="hashmap">
+        <include refid="listWebsiteBulletin_fragment"/>
+    </select>
+
+</mapper>

@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+encoding//common/src/main/resources/config/db.properties=GBK
+encoding//common/src/main/resources/config/redis.properties=GBK

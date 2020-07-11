@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-登录</title>
+    <link rel="stylesheet" type="text/css" href="/css/loginRegister.css"/>
+</head>
+
+<body>
+<!--loginHead start-->
+<div class="loginHead clearfix">
+    <h1 class="logoImg"><a href="/"><img src="images/publicImg/bigerLogo.png"/></a></h1>
+    <p class="welcomeLogin">欢迎登录</p>
+</div>
+<!--loginHead end-->
+<div class="loginBox">
+    <form id="loginForm" name="loginForm" action="" method="post">
+        <div class="loginCon clearfix">
+            <img src="images/earthBg.png" class="earthBg"/>
+            <div class="loginInfo">
+                <h3 class="loginTit">用户登录</h3>
+                <div class="errorTip">
+                    <label class="error" id="validatecode_label"></label>
+                </div>
+                <ul class="userInfo">
+                    <li>
+                        <input type="text" id="userName" name="userName" class="form-control userName"
+                               placeholder="手机号/用户名"/>
+                    </li>
+                    <li>
+                        <input type="password" id="password" name="password" class="form-control userPass"
+                               placeholder="密码"/>
+                    </li>
+                    <li class="clearfix">
+                        <input type="text" id="validateCode" name="validateCode" class="form-control fl userYzm"
+                               placeholder="验证码">
+                        <span class="fl"><img class="verifyCodeImage" alt="" style="display: none;"></span>
+                    </li>
+                </ul>
+                <div class="clearfix loginText">
+                    <a href="/register/index" class="regNow">立即注册</a>
+                    <a href="/user/forgotPassword" class="forgetPass">忘记密码？</a>
+                </div>
+                <a href="javascript:;" class="loginBtn btnEnabled" id="loginBtn">登录</a>
+            </div>
+        </div>
+    </form>
+    <!-- 重定向路径 -->
+    <span id="returnUrl" th:text="${#httpServletRequest.getParameter('returnUrl')}" th:hidden="true"></span>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="/common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 遮罩 start-->
+<!-- <div th:replace="/common/mask"></div>-->
+<!-- 遮罩 end-->
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        //加载图形验证码
+        loadVerifyCodeImage();
+        // 加载验证码
+        var dataFormValidate = $("#loginForm").validate({
+            onfocusout:false,
+            onkeyup:false,
+            focusCleanup:true,
+            rules : {
+                userName : {
+                    required : true,
+                    maxlength : 50
+                },
+                passwordShow : {
+                    required : true,
+                    isPassWord: true
+                },
+                validateCode : {
+                    required : true,
+                    minlength : 4,
+                    maxlength : 4
+                }
+            },
+            messages : {
+                userName : {
+                    required : "请输入用户名",
+                    isMobile : "请输入正确的手机号或用户名",
+                    maxlength : "手机号或用户名不能为空",
+                },
+                passwordShow : {
+                    required : "请输入登录密码",
+                    isPassWord : "密码不能有空格"
+                },
+                validateCode : {
+                    required : "请输入验证码",
+                    minlength : "验证码错误",
+                    maxlength : "验证码错误",
+                    remote:"验证码错误"
+                }
+            },
+            errorContainer: "#validatecode_label",
+            errorLabelContainer: $("#validatecode_label"),
+            showErrors:function(errorMap,errorList) {
+                $('#validatecode_label').html('');
+                this.defaultShowErrors();
+                $('#validatecode_label label:hidden').remove()//删除所有隐藏的label
+                $('#validatecode_label label:eq(0)').nextAll().remove()//第一个label下所有跟随的同胞级label删除
+            }
+        });
+
+        //自定义表单校验顺序
+        function myFormValidate(){
+            var flag = false;
+            flag =  dataFormValidate.element($("#userName"));
+            if(!flag) return flag;
+            flag =  dataFormValidate.element($("#password"));
+            if(!flag) return flag;
+            flag =  dataFormValidate.element($("#validateCode"));
+            if(!flag) return flag;
+            return flag;
+        }
+
+        //登录
+        $("#loginBtn").click(function() {
+            if (myFormValidate()) {
+                AJAX.post(PageContext.contextPath +"/login",
+                    $("#loginForm").serialize(),
+                    function(data) {
+                        if (data.flag == "true") {
+                            var returnUrl = $("#returnUrl").text();
+                            if (returnUrl == undefined || returnUrl == "") {
+                                location.href = PageContext.contextPath + "/";
+                            } else {
+                                location.href = PageContext.contextPath + returnUrl;
+                            }
+                        } else if (data.flag == "false") {
+                            loadVerifyCodeImage();
+                            $('#validatecode_label').html(data.message).show();
+                            $("#password").val("");
+                            $("#passwordhid").val("");
+                        }
+                    }
+                );
+            }
+        });
+
+        // 回车等同于 登录按钮
+        document.onkeydown = function(e) {
+            var ev = document.all ? window.event : e;
+            if (ev.keyCode == 13) {
+                $("#loginBtn").trigger("click");
+            }
+        };
+    });
+
+    function loadVerifyCodeImage() {
+        $(".verifyCodeImage").attr("src",PageContext.contextPath +"/user/get/verifycodeImg?"+ Math.random());
+        $(".verifyCodeImage").show();
+    }
+    //更换验证码
+    $(".verifyCodeImage").click(function() {
+        loadVerifyCodeImage();
+    });
+
+</script>
+</html>
+
+
+

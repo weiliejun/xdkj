@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userWebsiteBulletinRead">
+    <resultMap id="userWebsiteBulletinReadResultMap" type="userWebsiteBulletinRead">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="USER_ID" property="userId" jdbcType="INTEGER"/>
+        <result column="BULLETIN_ID" property="bulletinId" jdbcType="INTEGER"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="baseColumnList">
+        ID, USER_ID, BULLETIN_ID, DATA_STATUS, CREATE_TIME
+    </sql>
+    <select id="selectUserWebsiteBulletinReadById" resultMap="userWebsiteBulletinReadResultMap"
+            parameterType="java.lang.Integer">
+        select
+        <include refid="baseColumnList"/>
+        from USER_WEBSITE_BULLETIN_READ
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectUserWebsiteBulletinReadByBulletinId" resultMap="userWebsiteBulletinReadResultMap"
+            parameterType="hashmap">
+        select
+        <include refid="baseColumnList"/>
+        from USER_WEBSITE_BULLETIN_READ
+        where DATA_STATUS = '0'
+        <if test="userId != null">
+            and USER_ID = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="bulletinId != null">
+            and BULLETIN_ID = #{bulletinId,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <insert id="insertUserWebsiteBulletinRead" parameterType="userWebsiteBulletinRead">
+        insert into USER_WEBSITE_BULLETIN_READ
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="bulletinId != null">
+                BULLETIN_ID,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="bulletinId != null">
+                #{bulletinId,jdbcType=INTEGER},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateUserWebsiteBulletinRead" parameterType="userWebsiteBulletinRead">
+        update USER_WEBSITE_BULLETIN_READ
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="bulletinId != null">
+                BULLETIN_ID = #{bulletinId,jdbcType=INTEGER},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="countUserWebsiteBulletinReadByParam" resultType="java.lang.Integer" parameterType="hashmap">
+        SELECT
+        count( UB.ID )
+        FROM
+        USER_WEBSITE_BULLETIN_READ UB INNER JOIN WEBSITE_BULLETIN WB on UB.BULLETIN_ID = WB.ID
+        WHERE
+        UB.DATA_STATUS = '0' AND WB.DATA_STATUS='0'
+        <if test="userId != null">
+            and UB.USER_ID = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="bulletinId != null">
+            and UB.BULLETIN_ID = #{bulletinId,jdbcType=INTEGER}
+        </if>
+        <if test="publishStatus != null">
+            and WB.PUBLISH_STATUS = #{publishStatus,jdbcType=INTEGER}
+        </if>
+    </select>
+</mapper>

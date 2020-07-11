@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>人员信息管理</title>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <fieldset class="layui-elem-field" style="margin:0 0 0 40px;padding:0 40px;">
+            <legend><i class="layui-icon layui-icon-search"></i></legend>
+            <div class="layui-field-box" style="padding-top:15px;">
+                <form class="layui-form" id="searchForm">
+                    <div class="layui-form-item" style="padding-top:0px;">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">姓名：</label>
+                            <div class="layui-input-block">
+                                <input id="name" type="text" name="name" placeholder="请输入姓名" class="layui-input"
+                                       th:value="${name}">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">手机号：</label>
+                            <div class="layui-input-block">
+                                <input id="phone" type="text" name="phone" placeholder="请输入手机号" class="layui-input"
+                                       th:value="${phone}">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">部门：</label>
+                            <div class="layui-input-block">
+                                <itech:code property="dept" parentCode="dept" type="select"
+                                            th:value="${dept}"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">职级：</label>
+                            <div class="layui-input-block">
+                                <itech:code property="rank" parentCode="rank" type="select"
+                                            th:value="${rank}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <button type="button" class="layui-btn" data-type="search"><i
+                                class="layui-icon layui-icon-search"></i>查询
+                        </button>
+                        <button type="button" class="layui-btn" data-type="add"><i
+                                class="layui-icon layui-icon-add-1"></i>新增
+                        </button>
+                        <button type="button" class="layui-btn" data-type="searchFormClear"><i
+                                class="layui-icon layui-icon-refresh"></i>清空
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+        <!--<div class="layui-row">-->
+        <div class="layui-row" style="padding:0 40px;width: 1561px;">
+            <table class="layui-table recordInfo" id="dlsInfoTables"
+                   lay-filter="dlsInfoTables">
+
+            </table>
+
+            <script id="status" type="text/html">
+                {{#  if(d.status === undefined){ }}
+                未知
+                {{#  } else { }}
+                {{#  if(d.status === '0'){ }}
+                草稿箱
+                {{#  } }}
+                {{#  if(d.status === '1'){ }}
+                上架
+                {{#  } }}
+                {{#  if(d.status === '2'){ }}
+                下架
+                {{#  } }}
+                {{#  } }}
+            </script>
+            <script id="dlsInfoBar" type="text/html">
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="view"><i
+                        class="layui-icon fa-ban">&#xe705;</i>查看</a>
+                <a class="layui-btn layui-btn-xs" lay-event="update"><i
+                        class="layui-icon">&#xe642;</i>修改</a>
+                <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="rybgsq"><i
+                        class="layui-icon">&#xe66f;</i>人员变更申请</a>
+            </script>
+
+        </div>
+        <!--分页-->
+        <!--<div id="myPage" class="layui-clear"></div>-->
+
+
+    </div>
+</div>
+<!--主体内容结束-->
+
+<!--<div class="layui-footer">
+  &lt;!&ndash; 底部固定区域 &ndash;&gt;
+  © layui.com - 底部固定区域
+</div>-->
+<!--</div>-->
+<!-- <script src="js/layui.js"></script> -->
+<!--<script type="text/javascript" src="js/laydate.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/layui.all.js"></script>-->
+<script type="text/javascript" th:src="@{/js/app/dlsInfo/list.js}"></script>
+<script type="javascript" th:inline="none">
+
+
+</script>
+</body>
+</html>

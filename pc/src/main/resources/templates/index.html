@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-首页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--首页样式 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bigerIndex.css}"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+<!--轮播图-->
+<!--默认轮播图，用于没有轮播图情况-->
+<div id="myDefCarousel" class="carousel slide customSlide" data-ride="carousel"
+     th:if="${#lists.isEmpty(advertiseList)}">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active item1">
+            <img src="/images/banner_01.jpg" alt="First slide">
+        </div>
+    </div>
+    <a class="carousel-control left" href="#myDefCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myDefCarousel" data-slide="next">&rsaquo;</a>
+</div>
+<!--实际轮播图-->
+<div id="myCarousel" class="carousel slide customSlide" data-ride="carousel"
+     th:if="${not #lists.isEmpty(advertiseList)}">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" th:each="advertise,advStat:${advertiseList}" th:data-slide-to="${advStat.index}"
+            th:class="${advStat.index eq 0} ? 'active':''"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item item1 " th:classappend="${advStat.index eq 0} ? 'active':''"
+             th:each="advertise,advStat:${advertiseList}">
+            <img th:src="${pictureServerAccessURL}+${advertise.advertisePicture}" alt="">
+            &lt;!&ndash;<img
+                src="http://192.168.1.34:82/upload/project/picture/18090617514189388528/18090714393178362414.jpg"
+                alt="tesssssst">&ndash;&gt;
+        </div>
+    </div>
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<!--main content-->
+<div class="indexConBox">
+    <!--part1-->
+    <div class="">
+        <div class="part1Service">
+            <div class="partTitle">
+                <h3>业务范围</h3>
+                <!--<itech:advertise></itech:advertise>-->
+                <div class="englishTitle clearfix"><b class="lineLeft"></b>
+                    <p>Business & Scope</p><b class="lineRight"></b></div>
+                <p class="bottomBorder"></p>
+            </div>
+            <p class="serviceText">从PC电脑到手机到微信运用，为您的企业量身定制网站、微信公众号、APP、全方位的服务，为您打造一个全新的互联网体系</p>
+            <ul class="serviceList clearfix">
+                <li class="haveBorder">
+                    <img src="/images/SaaS.png"/>
+                    <span class="serviceName">云计算SaaS</span>
+                    <p class="introducText">云查询、云短信、云认证等服务云查询、云短信、云认证等服务云查询、云认证等服务</p>
+                    <a href="/saas" class="serviceDetailsBtn">查看详情</a>
+                </li>
+                <li>
+                    <img src="/images/PaaS.png"/>
+                    <span class="serviceName">云计算PaaS</span>
+                    <p class="introducText">OA、CRM、企业级即时通信平台、财富管理等系统免费试用，提供系统使用指南</p>
+                    <a href="/paas" class="serviceDetailsBtn">查看详情</a>
+                </li>
+                <li>
+                    <img src="/images/IaaS.png"/>
+                    <span class="serviceName">云计算IaaS</span>
+                    <p class="introducText">云计算虚拟化管理平台搭建，桌面云办公，可限制员工上班时段在线观看视频等</p>
+                    <a href="/iaas" class="serviceDetailsBtn">查看详情</a>
+                </li>
+                <li>
+                    <img src="/images/serviceList04.png"/>
+                    <span class="serviceName">系统订制研发</span>
+                    <p class="introducText">网站建设、手机APP开发、各类B/S架构信息系统研发、人工智能AI等服务</p>
+                    <a href="/customization" class="serviceDetailsBtn">查看详情</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--part3-->
+    <div class="bgWhite">
+        <div class="part3Process">
+            <div class="partTitle">
+                <h3>项目流程</h3>
+                <div class="englishTitle clearfix"><b class="lineLeft"></b>
+                    <p>Project & Flow</p><b class="lineRight"></b></div>
+                <p class="bottomBorder"></p>
+                <div class="flowImgTop">
+                    <img src="/images/proFlow01.png"/>
+                </div>
+                <ul class="flowInfo clearfix">
+                    <li>
+                        <img src="/images/proFlow02.png"/>
+                        <span class="flowTit">商务代表</span>
+                        <p class="flowText">项目需求沟通了解，达成合作意向</p>
+                    </li>
+                    <li>
+                        <img src="/images/proFlow02.png"/>
+                        <span class="flowTit">商务代表</span>
+                        <p class="flowText">洽谈需求细节，开发周期预算，项目报价，合同签订。</p>
+                    </li>
+                    <li>
+                        <img src="/images/proFlow02.png"/>
+                        <span class="flowTit">产品经理</span>
+                        <p class="flowText">制作产品原型图并与客户确认</p>
+                    </li>
+                    <li>
+                        <img src="/images/proFlow02.png"/>
+                        <span class="flowTit">UI设计师</span>
+                        <p class="flowText">制作UI效果图并与客户确认</p>
+                    </li>
+                    <li>
+                        <img src="/images/proFlow02.png"/>
+                        <span class="flowTit">开发工程师</span>
+                        <p class="flowText">项目研发，接受测试工程师反馈后进行Bug调整</p>
+                    </li>
+                    <li>
+                        <img src="/images/proFlow02.png"/>
+                        <span class="flowTit">测试工程师</span>
+                        <p class="flowText">项目测试，发布测试报告并反馈给研发工程师</p>
+                    </li>
+                    <li>
+                        <img src="/images/proFlow02.png"/>
+                        <span class="flowTit">项目经理</span>
+                        <p class="flowText">项目开发完毕后与客户进行项目验收</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--part4-->
+    <div class="">
+        <div class="part4Case">
+            <div class="partTitle">
+                <h3>成功案例</h3>
+                <div class="englishTitle clearfix"><b class="lineLeft"></b>
+                    <p>Successful & Case</p><b class="lineRight"></b></div>
+                <p class="bottomBorder"></p>
+            </div>
+            <div class="successCase">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" th:each="case,caseStat:${caseList}">
+                            <a href="javascript:;" class="caseListA"
+                               th:caseName="${case.Name}"
+                               th:caseType="${case.type}"
+                               th:caseLink="${case.link}"
+                               th:caseContent="${case.content}"
+                               th:caseImg="'/images/case/'+${case.caseImg}"
+                               onclick="showCaseDetails(this);">
+                                <div class="caseListBox caseHaveBorder">
+                                    <img th:src="'/images/case/'+${case.coverLogo}"/>
+                                    <p class="caseText" th:text="${#strings.substring(case.content,0,35)}+'...'"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+    <!--  地图JS  暂时去掉 2019-2-26 10:07:34   -->
+    <!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.4"></script>-->
+    <!--part5-->
+    <!--<div class="">
+        <div class="part5Map">
+            <div id="map_box"></div>
+        </div>
+    </div>-->
+</div>
+
+<!-- 成功案例详情模态框 start-->
+<div th:replace="/common/caseDetails"></div>
+<!-- 成功案例详情模态框  end-->
+
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+
+<script type="text/javascript">
+        /*初始化轮播图*/
+        $(function(){
+            $('#myCarousel').carousel({
+                interval:3000
+            });
+        });
+
+        /*业务范围部分鼠标放上去显示边框*/
+        $(function(){
+            $('.serviceList li').mouseover(function(){
+                $(this).addClass('haveBorder').siblings().removeClass('haveBorder');
+            });
+        });
+
+        /*成功案例中swiper初始化及更改参数*/
+        $(function(){
+            var n=$('.swiper-wrapper .swiper-slide').length;
+            var loopVal=false;
+            if(n<=2){
+                loopVal=false;
+            }else{
+                loopVal=true;
+            }
+            var mySwiper = new Swiper('.successCase .swiper-container',{
+                speed:2000,
+                loop: loopVal,
+                slidesPerView:4,
+                autoplay:{
+                    delay:1000
+                },
+                pagination: {
+                  el: '.swiper-pagination',
+                },
+                navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
+                },
+            });
+            mySwiper.el.onmouseover = function(){ //鼠标放上暂停轮播
+                mySwiper.autoplay.stop();
+            }
+            mySwiper.el.onmouseleave = function(){
+                mySwiper.autoplay.start();
+            }
+        });
+        /*var mySwiper2 = new Swiper('.successCase .swiper-container',{
+            slidesPerView:4
+        });*/
+
+        /*鼠标滑过成功案例是出现边框*/
+        $(function(){
+            $('.successCase .swiper-slide').mouseover(function(){
+                $(this).find('.caseListBox').addClass('caseHaveBorder').parent().parent().siblings().find('.caseListBox').removeClass('caseHaveBorder');
+            });
+        });
+
+        /*初始化地图*/
+       /* $(function(){
+            // 百度地图API功能
+            var map = new BMap.Map('map_box');
+            var point = new BMap.Point(116.435212,39.913839);
+            map.centerAndZoom(point, 15);
+            //map.centerAndZoom(new BMap.Point(116.435212,39.913839), 15);
+            var marker = new BMap.Marker(point);  // 创建标注
+            map.addOverlay(marker);               //将标注添加到地图中
+            marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+            map.enableScrollWheelZoom(true);
+
+            //覆盖区域图层测试
+            map.addTileLayer(new BMap.PanoramaCoverageLayer());
+            var stCtrl = new BMap.PanoramaControl(); //构造全景控件
+            stCtrl.setOffset(new BMap.Size(20, 20));
+            map.addControl(stCtrl);//添加全景控件             //将标注添加到地图中
+        });*/
+
+
+</script>
+</body>
+</html>
+
+
+

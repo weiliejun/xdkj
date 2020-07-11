@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-账户中心-银行卡实名校验</title>
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('saasCenter')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div id="content" class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png"
+                                  alt=""><span>IT服务网服务</span>/<span>云计算SaaS</span>/<span>银行卡实名校验</span></h5>
+                <div class="banner">
+                    <div class="bg_01">
+                        <h3 class="queryTit">银行卡实名校验</h3>
+                        <a href="/appointment/bankCardIdentify/download" class="applyForBtn">下载API文档</a>
+                        <p class="diffText addW_diffText">
+                            支持对银行卡号、姓名、身份证号、预留手机号等元素的随机组合验证。返回:认证结果、银行卡名称、银行卡类型、对应银行联系电话、对应银行名称、对应银行网站地址。</p>
+                    </div>
+                </div>
+                <div class="chaxun3">
+                    <form id="dataForm" autocomplete="off">
+                        <div class="input-group">
+                            <input id="name" type="text" name="name" class="form-control input1" placeholder="输入持卡人姓名">
+                            <input id="id" type="text" name="id" class="form-control input2" placeholder="输入持卡人身份证号码">
+                            <input id="mobile" type="text" name="mobile" class="form-control input3"
+                                   placeholder="输入银行预留手机号">
+                            <input id="card" type="text" name="card" class="form-control input4" placeholder="输入银行卡卡号">
+                            <input id="validateCode" type="hidden" name="validateCode" value="1234"/>
+                            <a id="search" href="javascript:;" class="centerBtn changeBtnPos btnEnabled enterEvent">
+                                立刻查询
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="yu_e">
+                    <p>当前账户余额：<strong id="accountBalance"
+                                      th:text="${#numbers.formatDecimal(accountBalance,1,'COMMA',2,'POINT')}"></strong>
+                        元　单次查询费用：
+                        <strong id="singleCost"
+                                th:text="${#numbers.formatDecimal(singleCost,1,'COMMA',2,'POINT')}"></strong>元/次　免费查询次数剩余：
+                        <span id="remainderFreeCount" th:text="${remainderFreeCount}"></span>次</p>
+                </div>
+                <div class="tipText">
+                    <h3>银行卡认证分为以下几种形式（请按要求填写）：</h3>
+                    <p>1、持卡人姓名 + 银行卡卡号（二要素）</p>
+                    <p>2、持卡人姓名 + 持卡人身份证号 + 银行卡卡号（三要素）</p>
+                    <p>3、持卡人姓名 + 持卡人身份证号 + 银行预留手机号 + 银行卡卡号（四要素）</p>
+                </div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
+
+</body>
+<script type="text/javascript" th:src="@{/plugins/template/jquery.tmpl.min.js}"></script>
+<script id="bankCardIdentifyTmpl" type="text/x-jquery-tmpl">
+<div id="queryResult" class="con1">
+    <h5>银行卡实名校验结果</h5>
+    <dl>
+        <dt class="dt66">校验结果：</dt>
+        {{if status = '0'}}
+            <dd class="dd66">实名认证通过，信息一致</dd>
+        {{else status = '1'}}
+            <dd class="dd66">实名认证不通过，银行卡或手机号码错误</dd>
+        {{else status = '5'}}
+            <dd class="dd66">实名认证不通过，信息不一致</dd>
+        {{else}}
+            <dd class="dd66"></dd>
+        {{/if}}
+        <div style="clear:both;"></div>
+    </dl>
+    <dl>
+        <dt class="dt66">银行卡名称：</dt>
+        <dd class="dd66">{{= card_name}}</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <dl>
+        <dt class="dt66">银行卡类型：</dt>
+        <dd class="dd66">{{= card_type}}</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <dl>
+        <dt class="dt66">银行联系电话：</dt>
+        <dd class="dd66">{{= bank_phone}}</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <dl>
+        <dt class="dt66">银行名称：</dt>
+        <dd class="dd66">{{= bank_name}}</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <dl>
+        <dt class="dt66">银行网址：</dt>
+        <dd class="dd66">{{= bank_url}}</dd>
+        <div style="clear:both;"></div>
+    </dl>
+    <div style="height:80px;"></div>
+</div>
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        //参数校验
+        var dataFormValidate;
+        dataFormValidate = $("#dataForm").validate({
+            onfocusout: false,
+            onkeyup: false,
+            focusCleanup: true,
+            rules: {
+                name: {
+                    required: true
+                },
+                id: {
+                    required: {
+                        depends: function () { //三选一
+                            return ($('input[name=name]').val().length <= 0 || $('input[name=mobile]').val().length > 0);
+                        }
+                    },
+                    isIdCard: true
+                },
+                mobile: {
+                    required: {
+                        depends: function () { //三选一
+                            return ($('input[name=name]').val().length <= 0 && $('input[name=id]').val().length <= 0);
+                        }
+                    },
+                    isMobile: true
+                },
+                card: {
+                    required: true,
+                    bankCard: true
+                },
+                validateCode: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 4
+                }
+            },
+            messages: {
+                name: {
+                    required: "请输入姓名"
+                },
+                id: {
+                    required: "请输入身份证号",
+                    isIdCard: "请输入正确身份证号码"
+                },
+                mobile: {
+                    required: "请输入手机号",
+                    isMobile: "手机号码格式不正确"
+                },
+                card: {
+                    required: "请输入银行卡卡号",
+                    bankCard: "请输入正确的银行卡卡号"
+                },
+                validateCode: {
+                    required: " 请输入验证码",
+                    minlength: " 验证码错误",
+                    maxlength: " 验证码错误"
+                }
+            },
+            errorPlacement: function(error, element) {
+                GlobalPrompt.prompt(error.text());
+            }
+        });
+
+        //查询
+        $("#search").click(function() {
+            if(myFormValidate(dataFormValidate)){
+                AJAX.post(PageContext.contextPath +"/xdkj/service/online/bankCardIdentify",
+                    $("#dataForm").serialize(),
+                    function(data) {
+                        //查询成功
+                        if(data.status == "0"){
+                            //清除原有查询结果框
+                            if($("#queryResult").length > 0){
+                                $("#queryResult").remove();
+                            }
+                            $('#bankCardIdentifyTmpl').tmpl(data).insertAfter('#content');
+                            //更新账户余额、免费次数等信息
+                            var mbigerData = data.mbigerData;
+                            if($("#accountBalance").length > 0){
+                                $("#accountBalance").text(mbigerData.accountBalance);
+                            }
+                            if($("#singleCost").length > 0){
+                                $("#singleCost").text(mbigerData.singleCost);
+                            }
+                            if($("#remainderFreeCount").length > 0){
+                                $("#remainderFreeCount").text(mbigerData.remainderFreeCount);
+                            }
+                        }else{
+                            GlobalPrompt.prompt(data.msg);
+                        }
+                    }
+                );
+            }
+        });
+    });
+
+</script>
+</html>
+
+
+

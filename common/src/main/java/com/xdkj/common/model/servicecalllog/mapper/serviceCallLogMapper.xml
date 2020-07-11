@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="servicecalllog">
+    <resultMap id="serviceCallLogResultMap" type="serviceCallLog">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="USER_ID" jdbcType="INTEGER" property="userId"/>
+        <result column="APPKEY" jdbcType="VARCHAR" property="appkey"/>
+        <result column="ORD_ID" jdbcType="VARCHAR" property="ordId"/>
+        <result column="SERVICE_CODE" jdbcType="VARCHAR" property="serviceCode"/>
+        <result column="REQUEST_CONTENT" jdbcType="VARCHAR" property="requestContent"/>
+        <result column="REQUEST_TIME" jdbcType="TIMESTAMP" property="requestTime"/>
+        <result column="RESP_CONTENT" jdbcType="VARCHAR" property="respContent"/>
+        <result column="RESP_TIME" jdbcType="TIMESTAMP" property="respTime"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <sql id="serviceCallLogColumn">
+        ID, USER_ID, APPKEY, ORD_ID, SERVICE_CODE, REQUEST_CONTENT, REQUEST_TIME, RESP_CONTENT, RESP_TIME,
+        DATA_STATUS, CREATE_TIME
+    </sql>
+
+    <insert id="addServiceCallLog" parameterType="serviceCallLog">
+        insert into SERVICE_CALL_LOG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="appkey != null">
+                APPKEY,
+            </if>
+            <if test="ordId != null">
+                ORD_ID,
+            </if>
+            <if test="serviceCode != null">
+                SERVICE_CODE,
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT,
+            </if>
+            <if test="requestTime != null">
+                REQUEST_TIME,
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT,
+            </if>
+            <if test="respTime != null">
+                RESP_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="appkey != null">
+                #{appkey,jdbcType=VARCHAR},
+            </if>
+            <if test="ordId != null">
+                #{ordId,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceCode != null">
+                #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="requestContent != null">
+                #{requestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="requestTime != null">
+                #{requestTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="respContent != null">
+                #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respTime != null">
+                #{respTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateServiceCallLog" parameterType="serviceCallLog">
+        update SERVICE_CALL_LOG
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="appkey != null">
+                APPKEY = #{appkey,jdbcType=VARCHAR},
+            </if>
+            <if test="ordId != null">
+                ORD_ID = #{ordId,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceCode != null">
+                SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="requestContent != null">
+                REQUEST_CONTENT = #{requestContent,jdbcType=VARCHAR},
+            </if>
+            <if test="requestTime != null">
+                REQUEST_TIME = #{requestTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="respContent != null">
+                RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respTime != null">
+                RESP_TIME = #{respTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 根据ordId 保存接口返回内容 -->
+    <update id="updateServiceCallLogByOrdId" parameterType="java.util.Map">
+        update SERVICE_CALL_LOG
+        <set>
+            <if test="respContent != null">
+                RESP_CONTENT = #{respContent,jdbcType=VARCHAR},
+            </if>
+            <if test="respTime != null">
+                RESP_TIME = #{respTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ORD_ID = #{ordId,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 根据id 查询 ServiceCallLog -->
+    <select id="getServiceCallLogById" parameterType="java.lang.Integer" resultMap="serviceCallLogResultMap">
+        select
+        <include refid="serviceCallLogColumn"/>
+        from SERVICE_CALL_LOG
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 根据ordId 查询 ServiceCallLog -->
+    <select id="getServiceCallLogByOrdId" parameterType="java.lang.String" resultMap="serviceCallLogResultMap">
+        select
+        <include refid="serviceCallLogColumn"/>
+        from SERVICE_CALL_LOG
+        where ORD_ID = #{ordId,jdbcType=VARCHAR}
+    </select>
+</mapper>

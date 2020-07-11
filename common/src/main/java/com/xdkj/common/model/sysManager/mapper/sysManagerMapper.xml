@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sysManager">
+    <resultMap id="sysManagerResultMap" type="sysManager">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="CODE" jdbcType="VARCHAR" property="code"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+        <result column="DUTY" jdbcType="VARCHAR" property="duty"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CREATOR_ID" jdbcType="INTEGER" property="creatorId"/>
+        <result column="CREATOR_NAME" jdbcType="VARCHAR" property="creatorName"/>
+        <result column="EDIT_TIME" jdbcType="TIMESTAMP" property="editTime"/>
+        <result column="EDITOR_ID" jdbcType="INTEGER" property="editorId"/>
+        <result column="EDITOR_NAME" jdbcType="VARCHAR" property="editorName"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="EMAIL" jdbcType="VARCHAR" property="email"/>
+        <result column="MOBILE" jdbcType="VARCHAR" property="mobile"/>
+    </resultMap>
+    <sql id="sysManagerColumn">
+        ID, CODE, NAME, PASSWORD, DUTY, STATUS, REMARK, CREATE_TIME, CREATOR_ID, CREATOR_NAME,
+        EDIT_TIME, EDITOR_ID, EDITOR_NAME, DATA_STATUS, EMAIL, MOBILE
+    </sql>
+
+    <insert id="addSysManager" parameterType="sysManager">
+        insert into SYS_MANAGER
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="code != null">
+                CODE,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="password != null">
+                PASSWORD,
+            </if>
+            <if test="duty != null">
+                DUTY,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME,
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID,
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="email != null">
+                EMAIL,
+            </if>
+            <if test="mobile != null">
+                MOBILE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="duty != null">
+                #{duty,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null">
+                #{editTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="editorId != null">
+                #{editorId,jdbcType=INTEGER},
+            </if>
+            <if test="editorName != null">
+                #{editorName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSysManager" parameterType="sysManager">
+        update SYS_MANAGER
+        <set>
+            <if test="code != null">
+                CODE = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                PASSWORD = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="duty != null">
+                DUTY = #{duty,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME = #{editTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID = #{editorId,jdbcType=INTEGER},
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="email != null">
+                EMAIL = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteSysManagerById" parameterType="java.lang.Integer">
+        delete from SYS_MANAGER
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 根据id获取用户信息 -->
+    <select id="getSysManagerById" parameterType="java.lang.Integer" resultMap="sysManagerResultMap">
+        select
+        <include refid="sysManagerColumn"/>
+        from SYS_MANAGER
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 根据用户名获取用户信息-->
+    <select id="getSysManagerByCode" parameterType="java.lang.String" resultMap="sysManagerResultMap">
+        select
+        <include refid="sysManagerColumn"/>
+        from SYS_MANAGER
+        where CODE = #{code,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据id获取用户信息 -->
+    <select id="listSysManagersByParams" parameterType="java.util.Map" resultMap="sysManagerResultMap">
+        select
+        <include refid="sysManagerColumn"/>
+        from SYS_MANAGER
+        where DATA_STATUS = '0'
+        <if test="code != null">
+            AND CODE = #{code,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            AND NAME = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null">
+            AND PASSWORD = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="duty != null">
+            AND DUTY = #{duty,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=CHAR}
+        </if>
+        <if test="remark != null">
+            AND REMARK = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="creatorId != null">
+            AND CREATOR_ID = #{creatorId,jdbcType=INTEGER}
+        </if>
+        <if test="creatorName != null">
+            AND CREATOR_NAME = #{creatorName,jdbcType=VARCHAR}
+        </if>
+        <if test="editTime != null">
+            AND EDIT_TIME = #{editTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="editorId != null">
+            AND EDITOR_ID = #{editorId,jdbcType=INTEGER}
+        </if>
+        <if test="editorName != null">
+            AND EDITOR_NAME = #{editorName,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null">
+            AND EMAIL = #{email,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+            AND MOBILE = #{mobile,jdbcType=VARCHAR}
+        </if>
+    </select>
+</mapper>

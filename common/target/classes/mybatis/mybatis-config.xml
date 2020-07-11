@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--<settings>
+       <setting name="logImpl" value="LOG4J"/>
+    </settings>-->
+    <typeAliases>
+
+        <typeAlias alias="userinfo" type="com.xdkj.common.model.user.bean.UserInfo"/>
+        <typeAlias alias="sysMessage" type="com.xdkj.common.model.sysMessage.bean.SysMessage"/>
+        <typeAlias alias="sysMessageTmpl" type="com.xdkj.common.model.sysMessageTmpl.bean.SysMessageTmpl"/>
+        <typeAlias alias="websiteAdvertise" type="com.xdkj.common.model.websiteAdvertise.bean.WebsiteAdvertise"/>
+        <typeAlias alias="websiteBulletin" type="com.xdkj.common.model.websiteBulletin.bean.WebsiteBulletin"/>
+        <typeAlias alias="userTopup" type="com.xdkj.common.model.userTopup.bean.UserTopup"/>
+        <typeAlias alias="userExpense" type="com.xdkj.common.model.userExpense.bean.UserExpense"/>
+
+
+        <typeAlias alias="serviceInfo" type="com.xdkj.common.model.serviceinfo.bean.ServiceInfo"/>
+        <typeAlias alias="serviceCallLimit" type="com.xdkj.common.model.servicecalllimit.bean.ServiceCallLimit"/>
+        <typeAlias alias="serviceCallCost" type="com.xdkj.common.model.servicecallcost.bean.ServiceCallCost"/>
+        <typeAlias alias="serviceCallLog" type="com.xdkj.common.model.servicecalllog.bean.ServiceCallLog"/>
+        <typeAlias alias="sysDictionary" type="com.xdkj.common.model.sysdictionary.bean.SysDictionary"/>
+
+        <typeAlias alias="customerAppointment"
+                   type="com.xdkj.common.model.customerAppointment.bean.CustomerAppointment"/>
+        <typeAlias alias="userWebsiteBulletinRead"
+                   type="com.xdkj.common.model.userWebsiteBulletinRead.bean.UserWebsiteBulletinRead"/>
+
+        <typeAlias alias="sysManager" type="com.xdkj.common.model.sysManager.bean.SysManager"/>
+        <typeAlias alias="sysManagerRole" type="com.xdkj.common.model.sysManagerRole.bean.SysManagerRole"/>
+        <typeAlias alias="sysRole" type="com.xdkj.common.model.sysRole.bean.SysRole"/>
+        <typeAlias alias="sysFunction" type="com.xdkj.common.model.sysFunction.bean.SysFunction"/>
+        <typeAlias alias="sysRoleFunction" type="com.xdkj.common.model.sysRoleFunction.bean.SysRoleFunction"/>
+        <typeAlias alias="userSmsTemplateApplication"
+                   type="com.xdkj.common.model.userSmsTemplateApplication.bean.UserSmsTemplateApplication"/>
+        <typeAlias alias="websiteCase" type="com.xdkj.common.model.websiteCase.bean.WebsiteCase"/>
+
+    </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!-- 参数默认为false，设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 -->
+            <property name="offsetAsPageNum" value="true"/>
+            <!-- 参数默认为false，设置为true时，使用RowBounds分页会进行count查询 -->
+            <property name="rowBoundsWithCount" value="true"/>
+            <!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果 -->
+            <property name="pageSizeZero" value="true"/>
+            <!-- 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页 -->
+            <!-- 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据 -->
+            <property name="reasonable" value="true"/>
+            <!-- 增加了一个`params`参数来配置参数映射，用于从Map或ServletRequest中取值 -->
+            <!-- 可以配置pageNum,pageSize,count,pageSizeZero,reasonable,orderBy,不配置映射的用默认值 -->
+            <property name="params" value="pageNum=start;pageSize=limit;"/>
+            <!-- 支持通过Mapper接口参数来传递分页参数 -->
+            <property name="supportMethodsArguments" value="true"/>
+            <!-- always总是返回PageInfo类型,check检查返回类型是否为PageInfo,none返回Page -->
+            <property name="returnPageInfo" value="check"/>
+        </plugin>
+    </plugins>
+</configuration>

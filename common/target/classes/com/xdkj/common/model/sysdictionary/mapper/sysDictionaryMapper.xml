@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sysdictionary">
+    <resultMap id="sysDictionaryResultMap" type="sysDictionary">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="CODE" jdbcType="VARCHAR" property="code"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="HAS_CHILD" jdbcType="CHAR" property="hasChild"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="SORT" jdbcType="INTEGER" property="sort"/>
+        <result column="GRADE" jdbcType="INTEGER" property="grade"/>
+        <result column="PARENT_CODE" jdbcType="VARCHAR" property="parentCode"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+    </resultMap>
+    <sql id="sysDictionaryColumn">
+        ID, CODE, NAME, HAS_CHILD, STATUS, SORT, GRADE, PARENT_CODE, CREATE_TIME, UPDATE_TIME,
+        DATA_STATUS
+    </sql>
+
+    <insert id="addSysDictionary" parameterType="sysDictionary">
+        insert into SYS_DICTIONARY
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="code != null">
+                CODE,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="hasChild != null">
+                HAS_CHILD,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="sort != null">
+                SORT,
+            </if>
+            <if test="grade != null">
+                GRADE,
+            </if>
+            <if test="parentCode != null">
+                PARENT_CODE,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="hasChild != null">
+                #{hasChild,jdbcType=CHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="grade != null">
+                #{grade,jdbcType=INTEGER},
+            </if>
+            <if test="parentCode != null">
+                #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSysDictionary" parameterType="sysDictionary">
+        update SYS_DICTIONARY
+        <set>
+            <if test="code != null">
+                CODE = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="hasChild != null">
+                HAS_CHILD = #{hasChild,jdbcType=CHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="sort != null">
+                SORT = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="grade != null">
+                GRADE = #{grade,jdbcType=INTEGER},
+            </if>
+            <if test="parentCode != null">
+                PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <!-- 根据id查询SysDictionary -->
+    <select id="getSysDictionaryById" parameterType="java.lang.Integer" resultMap="sysDictionaryResultMap">
+        select
+        <include refid="sysDictionaryColumn"/>
+        from SYS_DICTIONARY
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <!-- 根据动态参数查询SysDictionary列表 -->
+    <select id="listSysDictionarysByParams" parameterType="java.util.Map" resultMap="sysDictionaryResultMap">
+        select
+        <include refid="sysDictionaryColumn"/>
+        from SYS_DICTIONARY
+        where DATA_STATUS = '0'
+        <if test="likeCode != null">/* 查询条件匹配 code */
+            AND CODE like CONCAT('%',#{likeCode},'%')
+        </if>
+        <if test="likeName != null">/* 查询条件匹配 name */
+            AND NAME like CONCAT('%',#{likeName},'%')
+        </if>
+        <if test="code != null">
+            AND CODE = #{code,jdbcType=CHAR}
+        </if>
+        <if test="name != null">
+            AND NAME = #{name,jdbcType=CHAR}
+        </if>
+        <if test="hasChild != null">
+            AND HAS_CHILD = #{hasChild,jdbcType=CHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=CHAR}
+        </if>
+        <if test="grade != null">
+            AND GRADE = #{grade,jdbcType=INTEGER}
+        </if>
+        <if test="parentCode != null">
+            AND PARENT_CODE = #{parentCode,jdbcType=VARCHAR}
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sysRole">
+    <resultMap id="sysRoleBaseResultMap" type="sysRole">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="DESCRIPTION" jdbcType="VARCHAR" property="description"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CREATOR_ID" jdbcType="INTEGER" property="creatorId"/>
+        <result column="CREATOR_NAME" jdbcType="VARCHAR" property="creatorName"/>
+        <result column="EDIT_TIME" jdbcType="TIMESTAMP" property="editTime"/>
+        <result column="EDITOR_ID" jdbcType="INTEGER" property="editorId"/>
+        <result column="EDITOR_NAME" jdbcType="VARCHAR" property="editorName"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+    </resultMap>
+    <sql id="sysRoleColumn">
+        ID, NAME, DESCRIPTION, STATUS, CREATE_TIME, CREATOR_ID, CREATOR_NAME, EDIT_TIME,
+        EDITOR_ID, EDITOR_NAME, DATA_STATUS
+    </sql>
+
+
+    <insert id="addSysRole" parameterType="sysRole">
+        insert into SYS_ROLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="description != null">
+                DESCRIPTION,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME,
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID,
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null">
+                #{editTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="editorId != null">
+                #{editorId,jdbcType=INTEGER},
+            </if>
+            <if test="editorName != null">
+                #{editorName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteSysRoleById" parameterType="java.lang.Integer">
+        delete from SYS_ROLE
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateSysRole" parameterType="sysRole">
+        update SYS_ROLE
+        <set>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                DESCRIPTION = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME = #{editTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID = #{editorId,jdbcType=INTEGER},
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--根据id获取角色信息  -->
+    <select id="getSysRoleById" resultMap="sysRoleBaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="sysRoleColumn"/>
+        from SYS_ROLE
+        where DATA_STATUS = '0'
+        AND ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!--根据动态条件获取角色信息  -->
+    <select id="listSysRolesByParams" resultMap="sysRoleBaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="sysRoleColumn"/>
+        from SYS_ROLE
+        where DATA_STATUS = '0'
+        <if test="name != null">
+            AND NAME = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="description != null">
+            AND DESCRIPTION = #{description,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <!--根据用户获取角色信息  -->
+    <select id="listRoleByManagerId" resultMap="sysRoleBaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="sysRoleColumn"/>
+        FROM
+        SYS_ROLE
+        WHERE
+        DATA_STATUS = '0'
+        AND ID IN (
+        SELECT
+        ROLE_ID
+        FROM
+        SYS_MANAGER_ROLE
+        WHERE
+        MANAGER_ID = #{managerId,jdbcType=INTEGER})
+    </select>
+</mapper>

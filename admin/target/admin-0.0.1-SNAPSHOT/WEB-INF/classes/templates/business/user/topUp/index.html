@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{::style})">
+    <title>充值</title>
+    <style>
+        .color_f00{color: #f00;}
+    </style>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header">
+            充值
+        </div>
+        <div class="layui-card-body">
+            <form class="layui-form" method="post" style="margin-left: 120px;">
+                <input type="hidden" id="userId" name="userId">
+                <input type="hidden" id="topupType" name="topupType" value="transfer">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="color_f00">* </i> 用户：</label>
+                    <div class="layui-input-inline" style="width: 350px;">
+                        <input type="text" id="nickName" name="nickName" lay-verify="required" autocomplete="off" placeholder="请选择用户" class="layui-input" readonly="readonly">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="color_f00">* </i>消费类型：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" lay-verify="required" autocomplete="off" value="线下转账" class="layui-input" readonly="readonly">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="color_f00">* </i>消费金额：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="topupAmount" name="topupAmount" lay-verify="required|isDecimal" data-params="{'isDecimal': [0, 99, 2]}" autocomplete="off" placeholder="请输入消费金额" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="add">提交充值</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/business/user/topUp/index.js}"></script>
+</body>
+</html>

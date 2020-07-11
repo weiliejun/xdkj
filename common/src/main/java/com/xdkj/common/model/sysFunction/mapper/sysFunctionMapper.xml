@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sysFunction">
+    <resultMap id="sysFunctionBaseResultMap" type="sysFunction">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="CODE" jdbcType="VARCHAR" property="code"/>
+        <result column="PARENT_CODE" jdbcType="VARCHAR" property="parentCode"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="URL" jdbcType="VARCHAR" property="url"/>
+        <result column="FUNCTION_TYPE" jdbcType="VARCHAR" property="functionType"/>
+        <result column="SEQNUM" jdbcType="INTEGER" property="seqnum"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+        <result column="ICON" jdbcType="VARCHAR" property="icon"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+    </resultMap>
+    <sql id="sysFunctionColumn">
+        ID, CODE, PARENT_CODE, NAME, URL, FUNCTION_TYPE, SEQNUM, STATUS, ICON, DATA_STATUS
+    </sql>
+
+
+    <insert id="addSysFunction" parameterType="sysFunction">
+        insert into SYS_FUNCTION
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="code != null">
+                CODE,
+            </if>
+            <if test="parentCode != null">
+                PARENT_CODE,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="url != null">
+                URL,
+            </if>
+            <if test="functionType != null">
+                FUNCTION_TYPE,
+            </if>
+            <if test="seqnum != null">
+                SEQNUM,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="icon != null">
+                ICON,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="parentCode != null">
+                #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="functionType != null">
+                #{functionType,jdbcType=VARCHAR},
+            </if>
+            <if test="seqnum != null">
+                #{seqnum,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateSysFunction" parameterType="sysFunction">
+        update SYS_FUNCTION
+        <set>
+            <if test="code != null">
+                CODE = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="parentCode != null">
+                PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                URL = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="functionType != null">
+                FUNCTION_TYPE = #{functionType,jdbcType=VARCHAR},
+            </if>
+            <if test="seqnum != null">
+                SEQNUM = #{seqnum,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                ICON = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteSysFunctionById" parameterType="java.lang.Integer">
+        delete from SYS_FUNCTION
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <delete id="deleteSysFunctionByCode" parameterType="java.lang.String">
+        delete from SYS_FUNCTION
+        where CODE = #{code,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteSysFunctionByParentCode" parameterType="java.lang.String">
+        delete from SYS_FUNCTION
+        where PARENT_CODE = #{parentCode,jdbcType=VARCHAR}
+    </delete>
+
+    <!-- 根据id获取权限 -->
+    <select id="getSysFunctionById" resultMap="sysFunctionBaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="sysFunctionColumn"/>
+        from SYS_FUNCTION
+        where DATA_STATUS = '0'
+        AND ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据动态参数获取权限 -->
+    <select id="listSysFunctionsByParams" resultMap="sysFunctionBaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="sysFunctionColumn"/>
+        from SYS_FUNCTION
+        where DATA_STATUS = '0'
+        <if test="code != null">
+            AND CODE = #{code,jdbcType=VARCHAR}
+        </if>
+        <if test="parentCode != null">
+            AND PARENT_CODE = #{parentCode,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            AND NAME = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="url != null">
+            AND URL = #{url,jdbcType=VARCHAR}
+        </if>
+        <if test="functionType != null">
+            AND FUNCTION_TYPE = #{functionType,jdbcType=VARCHAR}
+        </if>
+        <if test="seqnum != null">
+            AND SEQNUM = #{seqnum,jdbcType=INTEGER}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="icon != null">
+            AND ICON = #{icon,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        ORDER BY
+        SEQNUM ASC
+    </select>
+
+    <!-- 根据parentCode获取权限数量 -->
+    <select id="countSysFunctionsByParentCode" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select
+        count(id)
+        from SYS_FUNCTION
+        where DATA_STATUS = '0'
+        AND PARENT_CODE = #{parentCode,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据用户id获取权限 -->
+    <select id="listSysFunctionByManagerId" resultMap="sysFunctionBaseResultMap" parameterType="java.util.Map">
+        SELECT
+        <include refid="sysFunctionColumn"/>
+        FROM
+        SYS_FUNCTION
+        WHERE
+        DATA_STATUS = '0'
+        <if test="parentCode != null">
+            AND PARENT_CODE = #{parentCode,jdbcType=VARCHAR}
+        </if>
+        AND CODE IN ( SELECT FUNCTION_CODE FROM SYS_ROLE_FUNCTION WHERE role_id IN ( SELECT ROLE_ID FROM
+        SYS_MANAGER_ROLE WHERE MANAGER_ID = #{managerId,jdbcType=INTEGER} ) )
+        ORDER BY
+        SEQNUM ASC
+    </select>
+</mapper>

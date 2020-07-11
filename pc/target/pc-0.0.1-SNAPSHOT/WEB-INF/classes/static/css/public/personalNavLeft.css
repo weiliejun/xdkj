@@ -1,0 +1,50 @@
+p,h1,h2,h3,h4,h5,h6,ul{margin:0;}
+/*------去掉点击时的虚框-----start----*/
+a:active, a:focus { outline: none }
+/*------去掉点击时的虚框------end-----*/
+.personalBox{width:1200px;margin:50px auto 0;}
+.personalCon{width:1170px;margin:0 auto;}
+.perLeft{width:255px;float:left;}
+.perRight{width:865px;float:right;background:#fff;}
+.perTit{line-height:60px;font-size:20px;color:#333;text-align:center;background:#fff;}
+.perTit a{color:#666;}
+.perTit a:hover{color:#1ea0db;}
+.perTit a:active,.perTit a:focus,.perTit a:hover{text-decoration:none;}
+
+.perNavBox>li{background:#ffffff;text-align:center;line-height:48px;font-size:16px;color:#666;cursor:pointer;border-bottom:2px solid #f7f7f7;border-top:2px solid #f7f7f7;}
+.perNavBox>li>p{border-bottom:2px solid #f7f7f7;}
+.childList{border-bottom:1px solid #f7f7f7;background:#fafafa;width:255px;position: relative;}
+.childList:last-child{border-bottom:none;}
+.childList a{display:block;width:100%;color:#666;font-size:16px;}
+.childList a:hover{color:#1ea0db;text-decoration:none;}
+.childList a:focus,.childList a:active{text-decoration:none;}
+.cloudPos{position:relative;}
+.cloudSAASList{position:absolute;right:-240px;top:0;background:#fff;box-shadow:5px 5px 6px #f1f1f1;text-align:left;width:240px;display:none;padding:20px 0 20px 30px;z-index:20;}
+.cloudSAASList a{display:block;line-height:32px;color:#666;font-size:14px;text-decoration:none;position: relative;}
+.cloudSAASList a:hover{text-decoration:underline;}
+.childList a.currentList{color:#1ea0db;}
+.cloudSAASList a i{width:27px;height:18px;position:absolute;top:-3px;right:68px;background:url(../../images/freeIcon.png) no-repeat;width:27px;height:18px;}
+.cloudSAASList a .freeIcon2{right:53px;}
+.cloudSAASList a .freeIcon3{right:41px;}
+.cloudSAASList a .freeIcon4{right:68px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

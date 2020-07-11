@@ -1,0 +1,277 @@
+
+b
+java:S3027º"FPut single-quotes around '-' to use the faster "indexOf(char)" method.(•ÿëÅÿÿÿÿÿ
+a
+java:S3027Z"FPut single-quotes around '-' to use the faster "indexOf(char)" method.(•ÿëÅÿÿÿÿÿ
+d
+java:S3027à"HPut single-quotes around 'ç§’' to use the faster "indexOf(char)" method.(ú¦¨ÿÿÿÿÿ
+d
+java:S3027‡"HPut single-quotes around 'ç§’' to use the faster "indexOf(char)" method.(ú¦¨ÿÿÿÿÿ
+6
+java:S2129c"!Remove this "Integer" constructor(ßÙâp
+d
+java:S3027†"HPut single-quotes around 'ç§’' to use the faster "indexOf(char)" method.(Ï›Ñÿÿÿÿÿ
+=
+java:S2129‡"!Remove this "Integer" constructor(ú¦¨ÿÿÿÿÿ
+K
+java:S3740ä"/Provide the parametrized type for this generic.(–ì‘şÿÿÿÿ
+J
+java:S1874S"/Remove this use of "Integer"; it is deprecated.(­µşûÿÿÿÿ
+E
+java:S1874…"/Remove this use of "Integer"; it is deprecated.(¢“š:
+d
+java:S3027Û"HPut single-quotes around 'æ—¶' to use the faster "indexOf(char)" method.(¦«µıùÿÿÿÿ
+]
+java:S3027Á"FPut single-quotes around '/' to use the faster "indexOf(char)" method.(Æï«
+d
+java:S3027Ü"HPut single-quotes around 'æ—¶' to use the faster "indexOf(char)" method.(Èõœøÿÿÿÿ
+=
+java:S2129ë"!Remove this "Integer" constructor(Æ”½¿ùÿÿÿÿ
+K
+java:S1874ƒ"/Remove this use of "Integer"; it is deprecated.(Èõœøÿÿÿÿ
+d
+java:S3027Ù"HPut single-quotes around 'æ—¥' to use the faster "indexOf(char)" method.(ëÛäŠøÿÿÿÿ
+J
+java:S1874N"/Remove this use of "Integer"; it is deprecated.(´õñ¦ûÿÿÿÿ
+<
+java:S2129q"!Remove this "Integer" constructor(©ˆÑïûÿÿÿÿ
+=
+java:S2129"!Remove this "Integer" constructor(ø›¦ùÿÿÿÿ
+d
+java:S3027Ú"HPut single-quotes around 'æ—¥' to use the faster "indexOf(char)" method.(ø›¦ùÿÿÿÿ
+l
+java:S1149F"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(ğàĞ¨
+b
+java:S3027»"FPut single-quotes around '-' to use the faster "indexOf(char)" method.(¼¥ú§şÿÿÿÿ
+P
+java:S1118":Add a private constructor to hide the implicit public one.(‹Öƒ†
+K
+java:S1874"/Remove this use of "Integer"; it is deprecated.(ø›¦ùÿÿÿÿ
+d
+java:S3027‚"HPut single-quotes around 'æ—¶' to use the faster "indexOf(char)" method.(¦«µıùÿÿÿÿ
+\
+java:S3027w"FPut single-quotes around '.' to use the faster "indexOf(char)" method.(¦Ÿ¥
+^
+java:S3027|"HPut single-quotes around 'å¹´' to use the faster "indexOf(char)" method.(ïáæ
+d
+java:S3027€"HPut single-quotes around 'æ—¥' to use the faster "indexOf(char)" method.(ëÛäŠøÿÿÿÿ
+i
+java:S3776£"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(ÓÎÃå
+W	java:S125ğ"<This block of commented-out lines of code should be removed.(ÓÔ·¯ùÿÿÿÿ
+K
+java:S1874ë"/Remove this use of "Integer"; it is deprecated.(Æ”½¿ùÿÿÿÿ
+a
+java:S3027["FPut single-quotes around '-' to use the faster "indexOf(char)" method.(¼¥ú§şÿÿÿÿ
+_
+java:S3027Ö"HPut single-quotes around 'å¹´' to use the faster "indexOf(char)" method.(åşòß
+F
+java:S1874Ê"/Remove this use of "Integer"; it is deprecated.(¡ÙŸã
+]
+java:S3027Ï"FPut single-quotes around ':' to use the faster "indexOf(char)" method.(Íùôá
+7
+java:S2129Ã"!Remove this "Integer" constructor(ßÙâp
+K
+java:S1874Ñ"/Remove this use of "Integer"; it is deprecated.(©ˆÑïûÿÿÿÿ
+K
+java:S1874Ú"/Remove this use of "Integer"; it is deprecated.(ø›¦ùÿÿÿÿ
+\
+java:S3027a"FPut single-quotes around '/' to use the faster "indexOf(char)" method.(Æï«
+d
+java:S3027"HPut single-quotes around 'æ—¥' to use the faster "indexOf(char)" method.(ø›¦ùÿÿÿÿ
+]
+java:S3027É"FPut single-quotes around ' ' to use the faster "indexOf(char)" method.(¢Ô¹Ö
+m
+java:S1149¦"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(ğàĞ¨
+^
+java:S3027Ş"HPut single-quotes around 'åˆ†' to use the faster "indexOf(char)" method.(¢“š:
+<
+java:S2129L"!Remove this "Integer" constructor(ì©¥÷úÿÿÿÿ
+E
+java:S1874Ş"/Remove this use of "Integer"; it is deprecated.(¢“š:
+F
+java:S1874Ø"/Remove this use of "Integer"; it is deprecated.(óéÀ«
+F
+java:S1874ª"/Remove this use of "Integer"; it is deprecated.(’ÈÏ
+]
+java:S3027È"FPut single-quotes around ' ' to use the faster "indexOf(char)" method.(÷·é§
+E
+java:S1874j"/Remove this use of "Integer"; it is deprecated.(¡ÙŸã
+E
+java:S1874x"/Remove this use of "Integer"; it is deprecated.(ÜÅåÕ
+]
+java:S3027Ğ"FPut single-quotes around ':' to use the faster "indexOf(char)" method.(ÆôÜï
+l	java:S117‡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÖö¼ÿÿÿÿÿ
+J
+java:S1874U"/Remove this use of "Integer"; it is deprecated.(·®•øÿÿÿÿ
+7
+java:S2129}"!Remove this "Integer" constructor(åşòß
+<
+java:S2129Q"!Remove this "Integer" constructor(œÒúÿÿÿÿ
+\
+java:S3027h"FPut single-quotes around ' ' to use the faster "indexOf(char)" method.(÷·é§
+=
+java:S2129¬"!Remove this "Integer" constructor(ì©¥÷úÿÿÿÿ
+J
+java:S1874\"/Remove this use of "Integer"; it is deprecated.(«ÛŠšşÿÿÿÿ
+F
+java:S3740¦"/Provide the parametrized type for this generic.(ğàĞ¨
+h
+java:S3776C"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(Äè¸Ã
+<
+java:S2129N"!Remove this "Integer" constructor(´õñ¦ûÿÿÿÿ
+J
+java:S1874Q"/Remove this use of "Integer"; it is deprecated.(œÒúÿÿÿÿ
+=
+java:S2129±"!Remove this "Integer" constructor(œÒúÿÿÿÿ
+d
+java:S3027×"HPut single-quotes around 'æœˆ' to use the faster "indexOf(char)" method.(¸¨€‘üÿÿÿÿ
+E
+java:S1874}"/Remove this use of "Integer"; it is deprecated.(åşòß
+7
+java:S2129W"!Remove this "Integer" constructor(È»ü×
+=
+java:S2129¼"!Remove this "Integer" constructor(«ÛŠšşÿÿÿÿ
+E
+java:S1874"/Remove this use of "Integer"; it is deprecated.(óéÀ«
+7
+java:S2129J"!Remove this "Integer" constructor(’ÈÏ
+\
+java:S3027i"FPut single-quotes around ' ' to use the faster "indexOf(char)" method.(¢Ô¹Ö
+K
+java:S1874±"/Remove this use of "Integer"; it is deprecated.(œÒúÿÿÿÿ
+8
+java:S1643î"Use a StringBuilder instead.(Çÿª³ùÿÿÿÿ
+K
+java:S1874Ü"/Remove this use of "Integer"; it is deprecated.(Èõœøÿÿÿÿ
+<
+java:S2129U"!Remove this "Integer" constructor(·®•øÿÿÿÿ
+D
+java:S1874c"/Remove this use of "Integer"; it is deprecated.(ßÙâp
+K
+java:S3740‹"/Provide the parametrized type for this generic.(–ì‘şÿÿÿÿ
+\
+java:S3027o"FPut single-quotes around ':' to use the faster "indexOf(char)" method.(Íùôá
+F
+java:S1874“"/Remove this use of "Integer"; it is deprecated.(İ¥­ú
+d
+java:S3027ƒ"HPut single-quotes around 'æ—¶' to use the faster "indexOf(char)" method.(Èõœøÿÿÿÿ
+=
+java:S2129’"!Remove this "Integer" constructor(Æ”½¿ùÿÿÿÿ
+E
+java:S3740F"/Provide the parametrized type for this generic.(ğàĞ¨
+\
+java:S3027b"FPut single-quotes around '/' to use the faster "indexOf(char)" method.(Æ…Ü
+^
+java:S3027}"HPut single-quotes around 'å¹´' to use the faster "indexOf(char)" method.(åşòß
+8
+java:S2129“"!Remove this "Integer" constructor(İ¥­ú
+8
+java:S2129ª"!Remove this "Integer" constructor(’ÈÏ
+8
+java:S2129Ö"!Remove this "Integer" constructor(åşòß
+=
+java:S2129Ú"!Remove this "Integer" constructor(ø›¦ùÿÿÿÿ
+8
+java:S2129ì"!Remove this "Integer" constructor(İ¥­ú
+<
+java:S2129\"!Remove this "Integer" constructor(«ÛŠšşÿÿÿÿ
+\
+java:S3027p"FPut single-quotes around ':' to use the faster "indexOf(char)" method.(ÆôÜï
+^
+java:S3027"HPut single-quotes around 'æœˆ' to use the faster "indexOf(char)" method.(óéÀ«
+J
+java:S1874L"/Remove this use of "Integer"; it is deprecated.(ì©¥÷úÿÿÿÿ
+E
+java:S3740F"/Provide the parametrized type for this generic.(ğàĞ¨
+7
+java:S2129…"!Remove this "Integer" constructor(¢“š:
+_
+java:S3027„"HPut single-quotes around 'åˆ†' to use the faster "indexOf(char)" method.(úî
+^
+java:S3027…"HPut single-quotes around 'åˆ†' to use the faster "indexOf(char)" method.(¢“š:
+=
+java:S2129®"!Remove this "Integer" constructor(´õñ¦ûÿÿÿÿ
+K
+java:S1874‡"/Remove this use of "Integer"; it is deprecated.(ú¦¨ÿÿÿÿÿ
+\
+java:S3027v"FPut single-quotes around '.' to use the faster "indexOf(char)" method.(¯á¹º
+K
+java:S1874’"/Remove this use of "Integer"; it is deprecated.(Æ”½¿ùÿÿÿÿ
+E
+java:S1874W"/Remove this use of "Integer"; it is deprecated.(È»ü×
+=
+java:S2129Ü"!Remove this "Integer" constructor(Èõœøÿÿÿÿ
+E
+java:S1874J"/Remove this use of "Integer"; it is deprecated.(’ÈÏ
+=
+java:S2129ƒ"!Remove this "Integer" constructor(Èõœøÿÿÿÿ
+;
+java:S2129G" Remove this "String" constructor(ªüÎüÿÿÿÿ
+F
+java:S3740¦"/Provide the parametrized type for this generic.(ğàĞ¨
+K
+java:S1874¬"/Remove this use of "Integer"; it is deprecated.(ì©¥÷úÿÿÿÿ
+F
+java:S1874·"/Remove this use of "Integer"; it is deprecated.(È»ü×
+J
+java:S1874q"/Remove this use of "Integer"; it is deprecated.(©ˆÑïûÿÿÿÿ
+8
+java:S2129Ø"!Remove this "Integer" constructor(óéÀ«
+_
+java:S3027İ"HPut single-quotes around 'åˆ†' to use the faster "indexOf(char)" method.(úî
+E
+java:S1874Ã"/Remove this use of "Integer"; it is deprecated.(ßÙâp
+]
+java:S3027Â"FPut single-quotes around '/' to use the faster "indexOf(char)" method.(Æ…Ü
+F
+java:S1874ì"/Remove this use of "Integer"; it is deprecated.(İ¥­ú
+<
+java:S2129S"!Remove this "Integer" constructor(­µşûÿÿÿÿ
+<
+java:S2129§" Remove this "String" constructor(ªüÎüÿÿÿÿ
+K
+java:S1874³"/Remove this use of "Integer"; it is deprecated.(­µşûÿÿÿÿ
+?
+java:S1148¥"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+K
+java:S1874®"/Remove this use of "Integer"; it is deprecated.(´õñ¦ûÿÿÿÿ
+c
+java:S3027~"HPut single-quotes around 'æœˆ' to use the faster "indexOf(char)" method.(¸¨€‘üÿÿÿÿ
+8
+java:S2129·"!Remove this "Integer" constructor(È»ü×
+=
+java:S2129µ"!Remove this "Integer" constructor(·®•øÿÿÿÿ
+8
+java:S2129Ê"!Remove this "Integer" constructor(¡ÙŸã
+=
+java:S2129Ñ"!Remove this "Integer" constructor(©ˆÑïûÿÿÿÿ
+d
+java:S3027ß"HPut single-quotes around 'ç§’' to use the faster "indexOf(char)" method.(Ï›Ñÿÿÿÿÿ
+=
+java:S2129à"!Remove this "Integer" constructor(ú¦¨ÿÿÿÿÿ
+F
+java:S1874Ö"/Remove this use of "Integer"; it is deprecated.(åşòß
+K
+java:S1874à"/Remove this use of "Integer"; it is deprecated.(ú¦¨ÿÿÿÿÿ
+K
+java:S1874µ"/Remove this use of "Integer"; it is deprecated.(·®•øÿÿÿÿ
+?
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+K
+java:S1874¼"/Remove this use of "Integer"; it is deprecated.(«ÛŠšşÿÿÿÿ
+=
+java:S2129³"!Remove this "Integer" constructor(­µşûÿÿÿÿ
+_
+java:S3027Õ"HPut single-quotes around 'å¹´' to use the faster "indexOf(char)" method.(ïáæ
+_
+java:S3027Ø"HPut single-quotes around 'æœˆ' to use the faster "indexOf(char)" method.(óéÀ«
+7
+java:S2129Ş"!Remove this "Integer" constructor(¢“š:
+7
+java:S2129j"!Remove this "Integer" constructor(¡ÙŸã
+7
+java:S2129"!Remove this "Integer" constructor(óéÀ«
+7
+java:S2129x"!Remove this "Integer" constructor(ÜÅåÕ
+8
+java:S1643•"Use a StringBuilder instead.(Çÿª³ùÿÿÿÿ

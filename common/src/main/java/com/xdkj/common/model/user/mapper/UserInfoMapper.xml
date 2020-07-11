@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userinfo">
+    <resultMap id="userInfoResultMap" type="userinfo">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="USER_NAME" jdbcType="VARCHAR" property="userName"/>
+        <result column="NICK_NAME" jdbcType="VARCHAR" property="nickName"/>
+        <result column="MOBILE" jdbcType="VARCHAR" property="mobile"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+        <result column="PORTRAIT" jdbcType="VARCHAR" property="portrait"/>
+        <result column="AUTHENTICATION_STATUS" jdbcType="CHAR" property="authenticationStatus"/>
+        <result column="TERMINAL" jdbcType="VARCHAR" property="terminal"/>
+        <result column="APPKEY" jdbcType="VARCHAR" property="appkey"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="USER_ACCOUNT_BALANCE" jdbcType="DECIMAL" property="userAccountBalance"/>
+        <result column="APPSECRET" jdbcType="VARCHAR" property="appsecret"/>
+    </resultMap>
+    <!-- USER_INFO表字段  -->
+    <sql id="userInfoColumn">
+        ID, USER_NAME, NICK_NAME, MOBILE, PASSWORD, PORTRAIT, AUTHENTICATION_STATUS, TERMINAL,
+        APPKEY, DATA_STATUS, CREATE_TIME, UPDATE_TIME, REMARK, USER_ACCOUNT_BALANCE, APPSECRET
+    </sql>
+
+    <!-- 新增用户信息  -->
+    <insert id="addUserInfo" parameterType="userinfo">
+        insert into USER_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userName != null">
+                USER_NAME,
+            </if>
+            <if test="nickName != null">
+                NICK_NAME,
+            </if>
+            <if test="mobile != null">
+                MOBILE,
+            </if>
+            <if test="password != null">
+                PASSWORD,
+            </if>
+            <if test="portrait != null">
+                PORTRAIT,
+            </if>
+            <if test="authenticationStatus != null">
+                AUTHENTICATION_STATUS,
+            </if>
+            <if test="terminal != null">
+                TERMINAL,
+            </if>
+            <if test="appkey != null">
+                APPKEY,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="userAccountBalance != null">
+                USER_ACCOUNT_BALANCE,
+            </if>
+            <if test="appsecret != null">
+                APPSECRET,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null">
+                #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="portrait != null">
+                #{portrait,jdbcType=VARCHAR},
+            </if>
+            <if test="authenticationStatus != null">
+                #{authenticationStatus,jdbcType=CHAR},
+            </if>
+            <if test="terminal != null">
+                #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="appkey != null">
+                #{appkey,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="userAccountBalance != null">
+                #{userAccountBalance,jdbcType=DECIMAL},
+            </if>
+            <if test="appsecret != null">
+                #{appsecret,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <!-- 修改用户信息  -->
+    <update id="updateUserInfo" parameterType="userinfo">
+        update USER_INFO
+        <set>
+            <if test="userName != null">
+                USER_NAME = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null">
+                NICK_NAME = #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                PASSWORD = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="portrait != null">
+                PORTRAIT = #{portrait,jdbcType=VARCHAR},
+            </if>
+            <if test="authenticationStatus != null">
+                AUTHENTICATION_STATUS = #{authenticationStatus,jdbcType=CHAR},
+            </if>
+            <if test="terminal != null">
+                TERMINAL = #{terminal,jdbcType=VARCHAR},
+            </if>
+            <if test="appkey != null">
+                APPKEY = #{appkey,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="userAccountBalance != null">
+                USER_ACCOUNT_BALANCE = #{userAccountBalance,jdbcType=DECIMAL},
+            </if>
+            <if test="appsecret != null">
+                APPSECRET = #{appsecret,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 根据id获取用户信息 -->
+    <select id="getUserInfoById" parameterType="java.lang.Integer" resultMap="userInfoResultMap">
+        select
+        <include refid="userInfoColumn"/>
+        from USER_INFO
+        where ID = #{id,jdbcType=INTEGER}
+        AND DATA_STATUS = '0'
+    </select>
+
+    <!-- 根据动态参数查询用户列表 -->
+    <select id="listUserInfosByParams" parameterType="java.util.Map" resultMap="userInfoResultMap">
+        select
+        <include refid="userInfoColumn"/>
+        from USER_INFO
+        where
+        DATA_STATUS = '0'
+        <if test="userName != null">
+            AND USER_NAME = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="nickName != null">
+            AND NICK_NAME = #{nickName,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+            AND MOBILE = #{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null">
+            AND PASSWORD = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="portrait != null">
+            AND PORTRAIT = #{portrait,jdbcType=VARCHAR}
+        </if>
+        <if test="authenticationStatus != null">
+            AND AUTHENTICATION_STATUS = #{authenticationStatus,jdbcType=CHAR}
+        </if>
+        <if test="terminal != null">
+            AND TERMINAL = #{terminal,jdbcType=VARCHAR}
+        </if>
+        <if test="appkey != null">
+            AND APPKEY = #{appkey,jdbcType=VARCHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="updateTime != null">
+            AND UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="remark != null">
+            AND REMARK = #{remark,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+
+    <!-- 据用户名和密码获取用户信息 -->
+    <select id="getUserInfoByUserNameAndPassword" parameterType="java.util.Map" resultMap="userInfoResultMap">
+        select
+        <include refid="userInfoColumn"/>
+        from USER_INFO
+        where (NICK_NAME = #{userName,jdbcType=VARCHAR} OR MOBILE = #{userName,jdbcType=VARCHAR})
+        AND PASSWORD = #{password,jdbcType=VARCHAR}
+        AND DATA_STATUS = '0'
+    </select>
+
+    <!-- 据用户名和密码获取用户信息 -->
+    <select id="getUserInfoByNickNameOrMobile" parameterType="java.util.Map" resultMap="userInfoResultMap">
+        select
+        <include refid="userInfoColumn"/>
+        from USER_INFO
+        where (NICK_NAME = #{userName,jdbcType=VARCHAR} OR MOBILE = #{userName,jdbcType=VARCHAR})
+        AND DATA_STATUS = '0'
+    </select>
+
+</mapper>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userExpense">
+    <resultMap id="userExpenseResultMap" type="userExpense">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="USER_ID" property="userId" jdbcType="INTEGER"/>
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="SERVICE_CODE" property="serviceCode" jdbcType="VARCHAR"/>
+        <result column="SERVICE_NAME" property="serviceName" jdbcType="VARCHAR"/>
+        <result column="EXPENSE_AMOUNT" property="expenseAmount" jdbcType="DECIMAL"/>
+        <result column="EXPENSE_TYPE" property="expenseType" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="ORD_ID" property="ordId" jdbcType="VARCHAR"/>
+        <result column="APPKEY" property="appkey" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="userExpenseColumn">
+        ID, USER_ID, USER_NAME, SERVICE_CODE, SERVICE_NAME, EXPENSE_AMOUNT, EXPENSE_TYPE,
+        STATUS, REMARK, DATA_STATUS, CREATE_TIME, UPDATE_TIME, ORD_ID, APPKEY
+    </sql>
+
+    <insert id="addUserExpense" parameterType="userExpense">
+        insert into USER_EXPENSE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="userName != null">
+                USER_NAME,
+            </if>
+            <if test="serviceCode != null">
+                SERVICE_CODE,
+            </if>
+            <if test="serviceName != null">
+                SERVICE_NAME,
+            </if>
+            <if test="expenseAmount != null">
+                EXPENSE_AMOUNT,
+            </if>
+            <if test="expenseType != null">
+                EXPENSE_TYPE,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+            <if test="ordId != null">
+                ORD_ID,
+            </if>
+            <if test="appkey != null">
+                APPKEY,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceCode != null">
+                #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceName != null">
+                #{serviceName,jdbcType=VARCHAR},
+            </if>
+            <if test="expenseAmount != null">
+                #{expenseAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="expenseType != null">
+                #{expenseType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ordId != null">
+                #{ordId,jdbcType=VARCHAR},
+            </if>
+            <if test="appkey != null">
+                #{appkey,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateUserExpense" parameterType="userExpense">
+        update USER_EXPENSE
+        <set>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                USER_NAME = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceCode != null">
+                SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceName != null">
+                SERVICE_NAME = #{serviceName,jdbcType=VARCHAR},
+            </if>
+            <if test="expenseAmount != null">
+                EXPENSE_AMOUNT = #{expenseAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="expenseType != null">
+                EXPENSE_TYPE = #{expenseType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ordId != null">
+                ORD_ID = #{ordId,jdbcType=VARCHAR},
+            </if>
+            <if test="appkey != null">
+                APPKEY = #{appkey,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 通过appKey修改用户消费记录表状态 -->
+    <update id="updateUserExpenseStatusByAppKey" parameterType="userExpense">
+        update USER_EXPENSE SET STATUS = #{status,jdbcType=VARCHAR},
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+        where DATA_STATUS = '0'
+        AND APPKEY = #{appkey,jdbcType=VARCHAR}
+    </update>
+
+    <select id="getUserExpenseById" resultMap="userExpenseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="userExpenseColumn"/>
+        from USER_EXPENSE
+        where ID = #{id,jdbcType=INTEGER}
+        AND DATA_STATUS = '0'
+    </select>
+
+    <sql id="listUserExpenses_fragment">
+        select
+        <include refid="userExpenseColumn"/>
+        from USER_EXPENSE
+        where DATA_STATUS = '0'
+        <if test="userId != null">
+            AND USER_ID = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="userName != null">
+            AND USER_NAME = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="serviceCode != null">
+            AND SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR}
+        </if>
+        <if test="serviceName != null">
+            AND SERVICE_NAME = #{serviceName,jdbcType=VARCHAR}
+        </if>
+        <if test="expenseAmount != null">
+            AND EXPENSE_AMOUNT = #{expenseAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="expenseType != null &amp;&amp; expenseType != ''">
+            AND EXPENSE_TYPE = #{expenseType,jdbcType=VARCHAR}
+        </if>
+        <if test="createTimeStart != null &amp;&amp; createTimeStart != ''">
+            AND SUBSTRING(CREATE_TIME, 1, 10) <![CDATA[>=]]> #{createTimeStart,jdbcType=TIMESTAMP}
+        </if>
+        <if test="createTimeEnd != null &amp;&amp; createTimeStart != ''">
+            AND SUBSTRING(CREATE_TIME, 1, 10) <![CDATA[<=]]> #{createTimeEnd,jdbcType=TIMESTAMP}
+        </if>
+        <if test="ordId != null">
+            AND ORD_ID = #{ordId,jdbcType=VARCHAR}
+        </if>
+        <if test="appkey != null">
+            AND APPKEY = #{appkey,jdbcType=VARCHAR}
+        </if>
+        ORDER BY CREATE_TIME DESC
+    </sql>
+
+    <!-- 根据动态参数查询用户列表 -->
+    <select id="listUserExpensesByParams" parameterType="java.util.Map" resultMap="userExpenseResultMap">
+        <include refid="listUserExpenses_fragment"/>
+    </select>
+
+    <select id="countUserExpenses" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select COUNT(ue.ID)
+        FROM
+        (<include refid="listUserExpenses_fragment"/>) ue
+    </select>
+
+    <select id="listUserExpensesRecently" resultType="java.util.Map" parameterType="java.lang.Integer">
+        SELECT ue.SERVICE_CODE AS "serviceCode",
+        COUNT( * ) AS CNT ,
+        ms.SERVICE_MODULE AS "serviceModule",
+        MAX(ue.CREATE_TIME) AS "createTime"
+        FROM USER_EXPENSE ue, SERVICE_INFO ms
+        WHERE ue.DATA_STATUS = '0'
+        AND ue.STATUS = '0'
+        AND ms.DATA_STATUS = '0'
+        AND ms.STATUS = '0'
+        AND ue.SERVICE_CODE = ms.SERVICE_CODE
+        AND ue.USER_ID = #{userId,jdbcType=INTEGER}
+        GROUP BY ue.SERVICE_CODE, ms.SERVICE_MODULE
+        ORDER BY CNT DESC
+    </select>
+
+    <!-- 根据动态参数查询用户列表 ,返回map-->
+    <select id="listUserExpensesMapByParams" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        UE.*,UI.MOBILE
+        from USER_EXPENSE UE INNER JOIN USER_INFO UI
+        ON UE.USER_ID = UI.ID
+        where UE.DATA_STATUS = '0'
+        AND UI.DATA_STATUS ='0'
+        <if test="userName != null">
+            AND UE.USER_NAME like CONCAT('%',#{userName},'%')
+        </if>
+        <if test="serviceName != null">
+            AND UE.SERVICE_NAME like CONCAT('%',#{serviceName},'%')
+        </if>
+        <if test="mobile != null">
+            AND UI.MOBILE like CONCAT('%',#{mobile},'%')
+        </if>
+    </select>
+
+</mapper>

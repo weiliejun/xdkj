@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:fragment="bannerLeft(channel)">
+    <link rel="stylesheet" type="text/css" href="/css/public/personalNavLeft.css"/>
+    <div class="perLeft">
+        <div class="perTit"><a href="/account/index">个人中心</a></div>
+        <ul class="perNavBox">
+            <li>
+                <p style="cursor:default;">IT服务网服务</p>
+                <div class="childList cloudPos">
+                    <a href="javascript:;" class="cloudSAASBtn"
+                       th:classappend="${channel eq 'saasCenter'} ? 'currentList':''">云计算SaaS</a>
+                    <div class="cloudSAASList">
+                        <a href="/account/saasCenter/weatherQuery">全国天气预报查询<i class="freeIcon1"></i></a>
+                        <a href="/account/saasCenter/mobileNumberPlaceQuery">手机号码归属地查询<i class="freeIcon2"></i></a>
+                        <a href="/account/saasCenter/ipPlaceQuery">全球IP地址归属地查询<i class="freeIcon3"></i></a>
+                        <a href="/account/saasCenter/drivingQuestionsQuery">驾考公开题库查询<i class="freeIcon4"></i></a>
+                        <a href="/account/saasCenter/expressDeliveryQuery">全球物流快递查询</a>
+                        <!--<a href="/account/saasCenter/taxpayer">企业纳税人识别号查询</a>-->
+                        <a href="/account/saasCenter/smsCodeSend">云短信</a>
+                        <a href="/account/saasCenter/identityCardIdentify">身份证实名认证</a>
+                        <a href="/account/saasCenter/bankCardIdentify">银行卡实名校验</a>
+                        <a href="/account/saasCenter/mobileNumberIdentify">手机号码实名认证</a>
+                        <a href="/account/saasCenter/intelligentAssistantQA">智能助手</a>
+                    </div>
+                </div>
+                <div class="childList">
+                    <a id="paasCenterLable" href="javascript:;"
+                       th:class="${channel eq 'paasCenter'} ? 'currentList':''">云计算PaaS</a>
+
+                </div>
+                <div class="childList">
+                    <a id="iaasCenterLable" href="javascript:;"
+                       th:class="${channel eq 'iaasCenter'} ? 'currentList':''">云计算IaaS</a>
+                    <!--<div class="cloudSAASList">
+                        <a th:href="'/account/iaasCenter/'+${iaasService.serviceCode}" th:each="iaasService,iaasStat:${iaasServiceList}" th:text="${iaasService.serviceName}"></a>
+                    </div>-->
+                </div>
+                <div class="childList">
+                    <a id="customizationCenterLable" href="javascript:;"
+                       th:class="${channel eq 'customizationCenter'} ? 'currentList':''">定制研发</a>
+                    <!--<div class="cloudSAASList">
+                        <a href="/account/customizationCenter/websiteDesign">网站建设</a>
+                    </div>-->
+                </div>
+            </li>
+            <li>
+                <p style="cursor:default;">账户管理</p>
+                <div class="childList">
+                    <a href="/accountManage/modifyPassword"
+                       th:class="${channel eq 'modifyPassword'} ? 'currentList':''">密码修改</a>
+                </div>
+                <div class="childList">
+                    <a href="/accountManage/modifyMobile" th:class="${channel eq 'modifyMobile'} ? 'currentList':''">手机号修改</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- 应用template -->
+    <script type="text/javascript" th:src="@{/plugins/template/jquery.tmpl.min.js}"></script>
+    <!-- paas center 服务菜单 -->
+    <script id="paasCenterServiceTmpl" type="text/x-jquery-tmpl">
+        <div class="cloudSAASList">
+            {{each paasServiceList}}
+                <a href="/account/paasCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
+            {{/each}}
+        </div>
+
+    </script>
+    <!-- iaas center 服务菜单 -->
+    <script id="iaasCenterServiceTmpl" type="text/x-jquery-tmpl">
+        <div class="cloudSAASList">
+            {{each iaasServiceList}}
+                <a href="/account/iaasCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
+            {{/each}}
+        </div>
+
+    </script>
+    <!-- 定制服务 center 服务菜单 -->
+    <script id="customizationCenterTmpl" type="text/x-jquery-tmpl">
+        <div class="cloudSAASList">
+            {{each customizationServiceList}}
+                <a href="/account/customizationCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
+            {{/each}}
+        </div>
+
+    </script>
+
+    <script type="text/javascript">
+        $(function(){
+            $('.childList').on('mouseover',function(){
+                $('.childList .cloudSAASList').hide();
+                $(this).find('.cloudSAASList').show();
+            });
+
+            $('.perNavBox').on('mouseout',function(){
+                $('.childList .cloudSAASList').hide();
+            });
+
+            //默认查询iaas，paas，定制服务菜单
+            AJAX.get(PageContext.contextPath +"/account/serviceCenterData",
+                function(data) {
+                   /* console.info(data)*/
+                    $('#iaasCenterServiceTmpl').tmpl(data).insertAfter('#iaasCenterLable');
+                    $('#paasCenterServiceTmpl').tmpl(data).insertAfter('#paasCenterLable');
+                    $('#customizationCenterTmpl').tmpl(data).insertAfter('#customizationCenterLable');
+                }
+            );
+        });
+
+    </script>
+</div>
+</html>

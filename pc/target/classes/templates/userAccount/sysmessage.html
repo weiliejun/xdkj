@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-账户中心-系统消息</title>
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('index')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <form id="searchForm" action="/account/sysMessage/index" method="get">
+                <input type="hidden" name="pageNum" id="pageNum"/>
+                <div class="daohang">
+                    <h5 class=""><img src="/images/personalCenter/blue.png" alt=""><span>系统消息</span></h5>
+                </div>
+                <div class="con1">
+                    <div class="jiluchaxun3" id="sysMessageList" th:fragment="sysMessageList">
+                        <ul class="ul_nav">
+                            <li class="xianshi">个人消息</li>
+                            <a th:href="@{/account/websiteBulletin/list}">
+                                <li>平台公告</li>
+                            </a>
+                            <div style="clear:both;"></div>
+                        </ul>
+                        <th:block th:if="${not #lists.isEmpty(pageInfo.list)}">
+                            <table class="systemInfo">
+                                <thead>
+                                <tr>
+                                    <th class="list1">标题</th>
+                                    <th class="list2">内容</th>
+                                    <th class="list3">消息时间</th>
+                                </tr>
+                                </thead>
+                                <tbody th:each="sysMessage : ${pageInfo.list}">
+                                <tr>
+                                    <td th:text="${sysMessage.topic}"></td>
+                                    <td th:text="${sysMessage.content}"></td>
+                                    <td class="operList"
+                                        th:text="${#dates.format(sysMessage.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="pager">
+                                <a href="javascript:void(0);" onclick="searchByCondition(1);">首页</a>
+                                <a th:if="${pageInfo.hasPreviousPage} == true" href="javascript:void(0)"
+                                   th:onclick="'searchByCondition('+ ${pageInfo.prePage} +')'">上一页</a>
+                                <!--遍历条数-->
+                                <th:block th:each="i:${pageInfo.navigatepageNums}">
+                                    <a href="javascript:void(0);" th:onclick="'searchByCondition('+ ${i} +')'"
+                                       th:text="${i}" th:class="${i == pageInfo.pageNum} ? 'current' : ''"></a>
+                                </th:block>
+                                <a th:if="${pageInfo.hasNextPage} == true" href="javascript:void(0);"
+                                   th:onclick="'searchByCondition('+ ${pageInfo.nextPage} +')'">下一页</a>
+                                <a href="javascript:void(0);" th:onclick="'searchByCondition('+ ${pageInfo.pages} +')'">尾页</a>
+                            </div>
+                        </th:block>
+                        <!-- 暂无记录 -->
+                        <th:block th:if="${#lists.isEmpty(pageInfo.list)}">
+                            <p class="noneRecord">暂无记录</p>
+                        </th:block>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" th:inline="javascript">
+        function searchByCondition(pageNum) {
+            $("#pageNum").val(pageNum);
+            $('#searchForm').submit();
+        }
+
+</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sysRoleFunction">
+    <resultMap id="sysRoleFunctionBaseResultMap" type="sysRoleFunction">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="ROLE_ID" jdbcType="INTEGER" property="roleId"/>
+        <result column="FUNCTION_CODE" jdbcType="VARCHAR" property="functionCode"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CREATOR_ID" jdbcType="INTEGER" property="creatorId"/>
+        <result column="CREATOR_NAME" jdbcType="VARCHAR" property="creatorName"/>
+    </resultMap>
+    <sql id="sysRoleFunctionColumn">
+        ID, ROLE_ID, FUNCTION_CODE, CREATE_TIME, CREATOR_ID, CREATOR_NAME
+    </sql>
+
+    <insert id="addSysRoleFunction" parameterType="sysRoleFunction">
+        insert into SYS_ROLE_FUNCTION
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="roleId != null">
+                ROLE_ID,
+            </if>
+            <if test="functionCode != null">
+                FUNCTION_CODE,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="functionCode != null">
+                #{functionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateSysRoleFunction" parameterType="sysRoleFunction">
+        update SYS_ROLE_FUNCTION
+        <set>
+            <if test="roleId != null">
+                ROLE_ID = #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="functionCode != null">
+                FUNCTION_CODE = #{functionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteSysRoleFunctionByCode" parameterType="java.lang.String">
+        delete from SYS_ROLE_FUNCTION
+        where FUNCTION_CODE = #{functionCode,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteSysRoleFunctionByRoleId" parameterType="java.lang.Integer">
+        delete from SYS_ROLE_FUNCTION
+        where ROLE_ID = #{roleId,jdbcType=INTEGER}
+    </delete>
+
+    <select id="getSysRoleFunctionById" resultMap="sysRoleFunctionBaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="sysRoleFunctionColumn"/>
+        from SYS_ROLE_FUNCTION
+        where ROLE_ID = #{roleId,jdbcType=INTEGER}
+    </select>
+
+    <select id="listFunctionCodeByRoleId" resultType="java.lang.String" parameterType="java.lang.Integer">
+        select
+        FUNCTION_CODE
+        from SYS_ROLE_FUNCTION
+        where ROLE_ID = #{roleId,jdbcType=INTEGER}
+    </select>
+</mapper>

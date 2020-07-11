@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sysLoginLog">
+    <resultMap id="sysLoginLogBaseResultMap" type="com.xdkj.common.model.sysLoginLog.bean.SysLoginLog">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="MANAGER_ID" jdbcType="VARCHAR" property="managerId"/>
+        <result column="MANAGER_CODE" jdbcType="VARCHAR" property="managerCode"/>
+        <result column="MANAGER_NAME" jdbcType="VARCHAR" property="managerName"/>
+        <result column="IP" jdbcType="VARCHAR" property="ip"/>
+        <result column="LOGIN_TIME" jdbcType="TIMESTAMP" property="loginTime"/>
+        <result column="LOGOFF_TIME" jdbcType="TIMESTAMP" property="logoffTime"/>
+        <result column="SESSION_ID" jdbcType="VARCHAR" property="sessionId"/>
+        <result column="ROLE_TYPE" jdbcType="VARCHAR" property="roleType"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID, MANAGER_ID, MANAGER_CODE, MANAGER_NAME, IP, LOGIN_TIME, LOGOFF_TIME, SESSION_ID,
+        ROLE_TYPE, CREATE_TIME
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="sysLoginLogBaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from SYS_LOGIN_LOG
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from SYS_LOGIN_LOG
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.xdkj.common.model.sysLoginLog.bean.SysLoginLog">
+        insert into SYS_LOGIN_LOG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="managerId != null">
+                MANAGER_ID,
+            </if>
+            <if test="managerCode != null">
+                MANAGER_CODE,
+            </if>
+            <if test="managerName != null">
+                MANAGER_NAME,
+            </if>
+            <if test="ip != null">
+                IP,
+            </if>
+            <if test="loginTime != null">
+                LOGIN_TIME,
+            </if>
+            <if test="logoffTime != null">
+                LOGOFF_TIME,
+            </if>
+            <if test="sessionId != null">
+                SESSION_ID,
+            </if>
+            <if test="roleType != null">
+                ROLE_TYPE,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="managerId != null">
+                #{managerId,jdbcType=VARCHAR},
+            </if>
+            <if test="managerCode != null">
+                #{managerCode,jdbcType=VARCHAR},
+            </if>
+            <if test="managerName != null">
+                #{managerName,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="loginTime != null">
+                #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="logoffTime != null">
+                #{logoffTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sessionId != null">
+                #{sessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleType != null">
+                #{roleType,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xdkj.common.model.sysLoginLog.bean.SysLoginLog">
+        update SYS_LOGIN_LOG
+        <set>
+            <if test="managerId != null">
+                MANAGER_ID = #{managerId,jdbcType=VARCHAR},
+            </if>
+            <if test="managerCode != null">
+                MANAGER_CODE = #{managerCode,jdbcType=VARCHAR},
+            </if>
+            <if test="managerName != null">
+                MANAGER_NAME = #{managerName,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                IP = #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="loginTime != null">
+                LOGIN_TIME = #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="logoffTime != null">
+                LOGOFF_TIME = #{logoffTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sessionId != null">
+                SESSION_ID = #{sessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleType != null">
+                ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+
+</mapper>

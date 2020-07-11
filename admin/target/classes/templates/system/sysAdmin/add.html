@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>新增用户</title>
+</head>
+<style type="text/css" media="screen">
+    .one-tj {
+        margin-left: 10px;
+        margin-right: 25px;
+    }
+
+    .one-btn-btn {
+        width: 230px;
+        padding-top: 10px;
+        margin: 0 auto;
+    }
+
+    .layui-form .layui-form-label {
+        padding-left: 15px;
+        color: #666666;
+    }
+
+    .layui-form .layui-input-block {
+        width: 300px;
+    }
+
+    .layui-form .layui-input-block input, .layui-form .layui-input-block textarea {
+        color: #aaaaaa;
+    }
+</style>
+<body>
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title site-title">
+    </fieldset>
+    <form class="layui-form">
+        <input id="token" type="hidden" name="token" th:value="${session.token}">
+        <input id="id" type="hidden" name="id"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input id="code" type="text" name="code" value="" class="layui-input" lay-verify="required" placeholder="请输入用户名">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">真实姓名</label>
+            <div class="layui-input-block">
+                <input id="name" type="text" name="name" value="" class="layui-input" lay-verify="required" placeholder="请输入真实姓名">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input id="email" type="text" name="email" value="" class="layui-input masterEmail" lay-verify="email" placeholder="请输入邮箱">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-block">
+                <input id="mobile" type="tel" name="mobile" value="" class="layui-input" lay-verify="required|phone" placeholder="请输入手机号码">
+            </div>
+        </div>
+
+        <div id="initPasswordTip" class="layui-form-item" style="text-align:center;color:red;">
+            温馨提示：初始密码为 123456
+        </div>
+
+        <div class="layui-form-item one-btn-btn">
+            <button class="layui-btn one-tj" lay-submit lay-filter="add">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" th:src="@{/js/system/sysManager/add.js}"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dlsInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xdkj.common.model.dlsInfo.bean.DlsInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="DLSMC" property="dlsmc" jdbcType="VARCHAR" />
+    <result column="DLSJC" property="dlsjc" jdbcType="VARCHAR" />
+    <result column="DLZS" property="dlzs" jdbcType="VARCHAR" />
+    <result column="QTZZ" property="qtzz" jdbcType="VARCHAR" />
+    <result column="TXDZ" property="txdz" jdbcType="VARCHAR" />
+    <result column="LXDH" property="lxdh" jdbcType="VARCHAR" />
+    <result column="LXR" property="lxr" jdbcType="VARCHAR" />
+    <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="CHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="CHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, DLSMC, DLSJC, DLZS, QTZZ, TXDZ, LXDH, LXR, DATA_STATUS, CREATE_TIME, UPDATE_TIME, 
+    REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from dls_info
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from dls_info
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xdkj.common.model.dlsInfo.bean.DlsInfo" >
+    insert into dls_info (ID, DLSMC, DLSJC, 
+      DLZS, QTZZ, TXDZ, LXDH, 
+      LXR, DATA_STATUS, CREATE_TIME, 
+      UPDATE_TIME, REMARK)
+    values (#{id,jdbcType=VARCHAR}, #{dlsmc,jdbcType=VARCHAR}, #{dlsjc,jdbcType=VARCHAR}, 
+      #{dlzs,jdbcType=VARCHAR}, #{qtzz,jdbcType=VARCHAR}, #{txdz,jdbcType=VARCHAR}, #{lxdh,jdbcType=VARCHAR}, 
+      #{lxr,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, #{createTime,jdbcType=CHAR}, 
+      #{updateTime,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xdkj.common.model.dlsInfo.bean.DlsInfo" >
+    insert into dls_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="dlsmc != null" >
+        DLSMC,
+      </if>
+      <if test="dlsjc != null" >
+        DLSJC,
+      </if>
+      <if test="dlzs != null" >
+        DLZS,
+      </if>
+      <if test="qtzz != null" >
+        QTZZ,
+      </if>
+      <if test="txdz != null" >
+        TXDZ,
+      </if>
+      <if test="lxdh != null" >
+        LXDH,
+      </if>
+      <if test="lxr != null" >
+        LXR,
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="dlsmc != null" >
+        #{dlsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="dlsjc != null" >
+        #{dlsjc,jdbcType=VARCHAR},
+      </if>
+      <if test="dlzs != null" >
+        #{dlzs,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzz != null" >
+        #{qtzz,jdbcType=VARCHAR},
+      </if>
+      <if test="txdz != null" >
+        #{txdz,jdbcType=VARCHAR},
+      </if>
+      <if test="lxdh != null" >
+        #{lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="lxr != null" >
+        #{lxr,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xdkj.common.model.dlsInfo.bean.DlsInfo" >
+    update dls_info
+    <set >
+      <if test="dlsmc != null" >
+        DLSMC = #{dlsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="dlsjc != null" >
+        DLSJC = #{dlsjc,jdbcType=VARCHAR},
+      </if>
+      <if test="dlzs != null" >
+        DLZS = #{dlzs,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzz != null" >
+        QTZZ = #{qtzz,jdbcType=VARCHAR},
+      </if>
+      <if test="txdz != null" >
+        TXDZ = #{txdz,jdbcType=VARCHAR},
+      </if>
+      <if test="lxdh != null" >
+        LXDH = #{lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="lxr != null" >
+        LXR = #{lxr,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xdkj.common.model.dlsInfo.bean.DlsInfo" >
+    update dls_info
+    set DLSMC = #{dlsmc,jdbcType=VARCHAR},
+      DLSJC = #{dlsjc,jdbcType=VARCHAR},
+      DLZS = #{dlzs,jdbcType=VARCHAR},
+      QTZZ = #{qtzz,jdbcType=VARCHAR},
+      TXDZ = #{txdz,jdbcType=VARCHAR},
+      LXDH = #{lxdh,jdbcType=VARCHAR},
+      LXR = #{lxr,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

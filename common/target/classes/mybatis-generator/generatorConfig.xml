@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!-- 引入配置文件 -->
+    <properties resource="application.properties"/>
+    <!--mysql驱动-->
+    <classPathEntry location="E:\software\meaven\repository\mysql\mysql-connector-java\8.0.16\mysql-connector-java-8.0.16.jar"/>
+
+    <context id="context" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <!-- 生成的pojo，将implements Serializable -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+        <commentGenerator> <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/xdkj?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;useTimezone=true&amp;serverTimezone=GMT%2B8&amp;useUnicode=true&amp;characterEncoding=gbk
+&amp;autoReconnect=true&amp;failOverReadOnly=false"
+                        userId="mbiger"
+                        password="mbiger">
+        </jdbcConnection>
+
+        <!-- 默认情况下数据库中的 decimal，bigInt 在 Java 对应是 sql 下的 BigDecimal 类 -->
+        <!-- 不是 double 和 long 类型 --> <!-- 使用常用的基本类型代替 sql 包下的引用类型 -->
+        <!-- 如果精度>0或者长度>18，就会使用java.math.BigDecimal
+         如果精度=0并且10<=长度<=18，就会使用java.lang.Long
+         如果精度=0并且5<=长度<=9，就会使用java.lang.Integer
+         如果精度=0并且长度<5，就会使用java.lang.Short
+         如果设置为true，那么一定会使用java.math.BigDecimal-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+
+        <javaModelGenerator targetPackage="com.xdkj.common.model.dlsInfo.bean"
+                            targetProject="E:\Workspaces\xdkj\common\src\main\java">
+            <!-- //针对 oracle 数据库的一个配置，是否把 schema 作为字包名-->
+            <property name="enableSubPackages" value="true"/>
+            <!--//是否清理从数据库中查询出的字符串左右两边的空白字符-->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+
+        <!-- targetPackage 和 targetProject：生成的 mapper.xml文件的包和位置 -->
+        <sqlMapGenerator targetPackage="com.xdkj.common.model.dlsInfo.mapper"
+                         targetProject="E:\Workspaces\xdkj\common\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- targetPackage 和 targetProject：生成的 dao 文件的包和位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xdkj.common.model.dlsInfo.dao"
+                             targetProject="E:\Workspaces\xdkj\common\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="DLS_INFO"
+               domainObjectName="dlsInfo"
+               enableInsert="true"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        />
+
+    </context>
+</generatorConfiguration>

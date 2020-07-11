@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="monitor">
+    <resultMap id="BaseResultMap" type="com.xdkj.common.model.sysBusinessLog.bean.SysBusinessLog">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="MANAGER_ID" property="managerId" jdbcType="INTEGER"/>
+        <result column="MANAGER_CODE" property="managerCode" jdbcType="VARCHAR"/>
+        <result column="MANAGER_NAME" property="managerName" jdbcType="VARCHAR"/>
+        <result column="SESSION_ID" property="sessionId" jdbcType="VARCHAR"/>
+        <result column="OPERATION_TIME" property="operationTime" jdbcType="TIMESTAMP"/>
+        <result column="FUNCTION_MODULE" property="functionModule" jdbcType="VARCHAR"/>
+        <result column="FUNCTION_DESCRIPTION" property="functionDescription" jdbcType="VARCHAR"/>
+        <result column="OPERATION_DATA" property="operationData" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="IP" property="ip" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, MANAGER_ID, MANAGER_CODE, MANAGER_NAME, SESSION_ID, OPERATION_TIME, FUNCTION_MODULE, 
+    FUNCTION_DESCRIPTION, OPERATION_DATA, REMARK, IP
+  </sql>
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from SYS_BUSINESS_LOG
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from SYS_BUSINESS_LOG
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.xdkj.common.model.sysBusinessLog.bean.SysBusinessLog">
+    insert into SYS_BUSINESS_LOG (ID, MANAGER_ID, MANAGER_CODE, 
+      MANAGER_NAME, SESSION_ID, OPERATION_TIME, 
+      FUNCTION_MODULE, FUNCTION_DESCRIPTION, OPERATION_DATA, 
+      REMARK, IP)
+    values (#{id,jdbcType=INTEGER}, #{managerId,jdbcType=INTEGER}, #{managerCode,jdbcType=VARCHAR}, 
+      #{managerName,jdbcType=VARCHAR}, #{sessionId,jdbcType=VARCHAR}, #{operationTime,jdbcType=TIMESTAMP}, 
+      #{functionModule,jdbcType=VARCHAR}, #{functionDescription,jdbcType=VARCHAR}, #{operationData,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertBusinessLog" parameterType="com.xdkj.common.model.sysBusinessLog.bean.SysBusinessLog">
+        insert into SYS_BUSINESS_LOG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="managerId != null">
+                MANAGER_ID,
+            </if>
+            <if test="managerCode != null">
+                MANAGER_CODE,
+            </if>
+            <if test="managerName != null">
+                MANAGER_NAME,
+            </if>
+            <if test="sessionId != null">
+                SESSION_ID,
+            </if>
+            <if test="operationTime != null">
+                OPERATION_TIME,
+            </if>
+            <if test="functionModule != null">
+                FUNCTION_MODULE,
+            </if>
+            <if test="functionDescription != null">
+                FUNCTION_DESCRIPTION,
+            </if>
+            <if test="operationData != null">
+                OPERATION_DATA,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="ip != null">
+                IP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="managerId != null">
+                #{managerId,jdbcType=INTEGER},
+            </if>
+            <if test="managerCode != null">
+                #{managerCode,jdbcType=VARCHAR},
+            </if>
+            <if test="managerName != null">
+                #{managerName,jdbcType=VARCHAR},
+            </if>
+            <if test="sessionId != null">
+                #{sessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="operationTime != null">
+                #{operationTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="functionModule != null">
+                #{functionModule,jdbcType=VARCHAR},
+            </if>
+            <if test="functionDescription != null">
+                #{functionDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="operationData != null">
+                #{operationData,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByIdSelective" parameterType="com.xdkj.common.model.sysBusinessLog.bean.SysBusinessLog">
+        update SYS_BUSINESS_LOG
+        <set>
+            <if test="managerId != null">
+                MANAGER_ID = #{managerId,jdbcType=INTEGER},
+            </if>
+            <if test="managerCode != null">
+                MANAGER_CODE = #{managerCode,jdbcType=VARCHAR},
+            </if>
+            <if test="managerName != null">
+                MANAGER_NAME = #{managerName,jdbcType=VARCHAR},
+            </if>
+            <if test="sessionId != null">
+                SESSION_ID = #{sessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="operationTime != null">
+                OPERATION_TIME = #{operationTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="functionModule != null">
+                FUNCTION_MODULE = #{functionModule,jdbcType=VARCHAR},
+            </if>
+            <if test="functionDescription != null">
+                FUNCTION_DESCRIPTION = #{functionDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="operationData != null">
+                OPERATION_DATA = #{operationData,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                IP = #{ip,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xdkj.common.model.sysBusinessLog.bean.SysBusinessLog">
+    update SYS_BUSINESS_LOG
+    set MANAGER_ID = #{managerId,jdbcType=INTEGER},
+      MANAGER_CODE = #{managerCode,jdbcType=VARCHAR},
+      MANAGER_NAME = #{managerName,jdbcType=VARCHAR},
+      SESSION_ID = #{sessionId,jdbcType=VARCHAR},
+      OPERATION_TIME = #{operationTime,jdbcType=TIMESTAMP},
+      FUNCTION_MODULE = #{functionModule,jdbcType=VARCHAR},
+      FUNCTION_DESCRIPTION = #{functionDescription,jdbcType=VARCHAR},
+      OPERATION_DATA = #{operationData,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

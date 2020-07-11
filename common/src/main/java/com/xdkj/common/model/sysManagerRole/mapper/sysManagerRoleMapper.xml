@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sysManagerRole">
+    <resultMap id="sysManagerRoleResultMap" type="sysManagerRole">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="MANAGER_ID" jdbcType="INTEGER" property="managerId"/>
+        <result column="ROLE_ID" jdbcType="INTEGER" property="roleId"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CREATOR_ID" jdbcType="INTEGER" property="creatorId"/>
+        <result column="CREATOR_NAME" jdbcType="VARCHAR" property="creatorName"/>
+    </resultMap>
+    <sql id="sysManagerRoleColumn">
+        ID, MANAGER_ID, ROLE_ID, CREATE_TIME, CREATOR_ID, CREATOR_NAME
+    </sql>
+
+    <insert id="addSysManagerRole" parameterType="sysManagerRole">
+        insert into SYS_MANAGER_ROLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="managerId != null">
+                MANAGER_ID,
+            </if>
+            <if test="roleId != null">
+                ROLE_ID,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="managerId != null">
+                #{managerId,jdbcType=INTEGER},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSysManagerRole" parameterType="sysManagerRole">
+        update SYS_MANAGER_ROLE
+        <set>
+            <if test="managerId != null">
+                MANAGER_ID = #{managerId,jdbcType=INTEGER},
+            </if>
+            <if test="roleId != null">
+                ROLE_ID = #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--根据managerId删除用户角色关系 -->
+    <delete id="deleteSysManagerRoleByManagerId" parameterType="java.lang.Integer">
+        delete from SYS_MANAGER_ROLE
+        where MANAGER_ID = #{managerId,jdbcType=INTEGER}
+    </delete>
+
+    <!--根据roleId删除用户角色关系 -->
+    <delete id="deleteSysManagerRoleByRoleId" parameterType="java.lang.Integer">
+        delete from SYS_MANAGER_ROLE
+        where ROLE_ID = #{roleId,jdbcType=INTEGER}
+    </delete>
+
+    <select id="getSysManagerRoleById" parameterType="java.lang.Integer" resultMap="sysManagerRoleResultMap">
+        select
+        <include refid="sysManagerRoleColumn"/>
+        from SYS_MANAGER_ROLE
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <!--根据managerId查询用户角色关系 -->
+    <select id="listSysManagerRoleByManagerId" parameterType="java.lang.Integer" resultMap="sysManagerRoleResultMap">
+        select
+        <include refid="sysManagerRoleColumn"/>
+        from SYS_MANAGER_ROLE
+        where MANAGER_ID = #{managerId,jdbcType=INTEGER}
+    </select>
+</mapper>

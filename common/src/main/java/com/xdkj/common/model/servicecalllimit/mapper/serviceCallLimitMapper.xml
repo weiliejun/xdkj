@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="servicecalllimit">
+    <resultMap id="serviceCallLimitResultMap" type="serviceCallLimit">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="SERVICE_CODE" jdbcType="VARCHAR" property="serviceCode"/>
+        <result column="MENU_TYPE" jdbcType="VARCHAR" property="menuType"/>
+        <result column="DAY_LIMIT" jdbcType="INTEGER" property="dayLimit"/>
+        <result column="FREE_LIMIT" jdbcType="INTEGER" property="freeLimit"/>
+        <result column="ALL_LIMIT" jdbcType="INTEGER" property="allLimit"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="DATA_STATUS" jdbcType="CHAR" property="dataStatus"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="serviceCallLimitColumn">
+        ID, SERVICE_CODE, MENU_TYPE, DAY_LIMIT, FREE_LIMIT, ALL_LIMIT, STATUS, DATA_STATUS,
+        CREATE_TIME, UPDATE_TIME
+    </sql>
+
+    <insert id="addServiceCallLimit" parameterType="serviceCallLimit">
+        insert into SERVICE_CALL_LIMIT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="serviceCode != null">
+                SERVICE_CODE,
+            </if>
+            <if test="menuType != null">
+                MENU_TYPE,
+            </if>
+            <if test="dayLimit != null">
+                DAY_LIMIT,
+            </if>
+            <if test="freeLimit != null">
+                FREE_LIMIT,
+            </if>
+            <if test="allLimit != null">
+                ALL_LIMIT,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="serviceCode != null">
+                #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="menuType != null">
+                #{menuType,jdbcType=VARCHAR},
+            </if>
+            <if test="dayLimit != null">
+                #{dayLimit,jdbcType=INTEGER},
+            </if>
+            <if test="freeLimit != null">
+                #{freeLimit,jdbcType=INTEGER},
+            </if>
+            <if test="allLimit != null">
+                #{allLimit,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateServiceCallLimit" parameterType="serviceCallLimit">
+        update SERVICE_CALL_LIMIT
+        <set>
+            <if test="serviceCode != null">
+                SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="menuType != null">
+                MENU_TYPE = #{menuType,jdbcType=VARCHAR},
+            </if>
+            <if test="dayLimit != null">
+                DAY_LIMIT = #{dayLimit,jdbcType=INTEGER},
+            </if>
+            <if test="freeLimit != null">
+                FREE_LIMIT = #{freeLimit,jdbcType=INTEGER},
+            </if>
+            <if test="allLimit != null">
+                ALL_LIMIT = #{allLimit,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <!-- 根据id查询ServiceCallLimit-->
+    <select id="getServiceCallLimitById" parameterType="java.lang.Integer" resultMap="serviceCallLimitResultMap">
+        select
+        <include refid="serviceCallLimitColumn"/>
+        from SERVICE_CALL_LIMIT
+        where DATA_STATUS = '0'
+        AND ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 根据动态参数查询ServiceCallLimit-->
+    <select id="listServiceCallLimitsByParams" parameterType="java.util.Map" resultMap="serviceCallLimitResultMap">
+        select
+        <include refid="serviceCallLimitColumn"/>
+        from SERVICE_CALL_LIMIT
+        where DATA_STATUS = '0'
+        <if test="serviceCode != null">
+            AND SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR}
+        </if>
+        <if test="menuType != null">
+            AND MENU_TYPE = #{menuType,jdbcType=VARCHAR}
+        </if>
+        <if test="dayLimit != null">
+            AND DAY_LIMIT = #{dayLimit,jdbcType=INTEGER}
+        </if>
+        <if test="freeLimit != null">
+            AND FREE_LIMIT = #{freeLimit,jdbcType=INTEGER}
+        </if>
+        <if test="allLimit != null">
+            AND ALL_LIMIT = #{allLimit,jdbcType=INTEGER}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status,jdbcType=CHAR}
+        </if>
+        <if test="dataStatus != null">
+            AND DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null">
+            CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+    </select>
+</mapper>

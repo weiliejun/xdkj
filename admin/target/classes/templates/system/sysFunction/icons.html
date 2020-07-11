@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+	<title>图标管理</title>
+</head>
+<body class="childrenBody">
+<blockquote class="layui-elem-quote">
+	layuiCMS 2.0当前共引入<span class="layui-red iconsLength"></span>个外部图标。<span class="layui-word-aux">【点击可复制】</span>
+</blockquote>
+<textarea id="copyText"></textarea>
+<ul class="icons layui-row"></ul>
+
+
+<blockquote class="layui-elem-quote">
+	layuiCMS 2.0当前共引入119个内置图标。
+</blockquote>
+<script language="javascript" type="text/javascript">
+	function dyniframesize(down) {//iframe自适应高度的多种方法方法小结 http://www.jb51.net/article/15780.htm
+		var pTar = null;
+		if (document.getElementById){
+			pTar = document.getElementById(down);
+		}
+		else{
+			eval('pTar = ' + down + ';');
+		}
+		if (pTar && !window.opera){
+			//begin resizing iframe
+			pTar.style.display="block"
+			if (pTar.contentDocument && pTar.contentDocument.body.offsetHeight){
+				//ns6 syntax
+				pTar.height = pTar.contentDocument.body.offsetHeight +20;
+				pTar.width = pTar.contentDocument.body.scrollWidth+20;
+			}
+			else if (pTar.Document && pTar.Document.body.scrollHeight){
+				//ie5+ syntax
+				pTar.height = pTar.Document.body.scrollHeight;
+				pTar.width = pTar.Document.body.scrollWidth;
+			}
+		}
+	}
+
+	function getChoseId(){
+		var copyText = document.getElementById("copyText");
+		return copyText.innerText;
+	}
+</script>
+<iframe align="middle" onload="javascript:dyniframesize(this.id);"  th:src="@{/sysfunction/list/icons}" id="iframe" scrolling="no" style="width:100%" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+
+<script type="text/javascript" th:src="@{/js/system/sysFunction/icons.js}"></script>
+</body>
+</html>

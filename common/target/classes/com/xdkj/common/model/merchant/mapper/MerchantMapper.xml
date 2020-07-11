@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="merchant">
+    <resultMap id="merchantBaseResultMap" type="com.xdkj.common.model.merchant.bean.Merchant">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="OWNER_NAME" property="ownerName" jdbcType="VARCHAR"/>
+        <result column="PHONE" property="phone" jdbcType="VARCHAR"/>
+        <result column="FAX" property="fax" jdbcType="VARCHAR"/>
+        <result column="POST" property="post" jdbcType="VARCHAR"/>
+        <result column="ADDRESS" property="address" jdbcType="VARCHAR"/>
+        <result column="SUMMARY" property="summary" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="MERCHANT_NUMBER" property="merchantNumber" jdbcType="VARCHAR"/>
+        <result column="MERCHANT_BALANCE" property="merchantBalance" jdbcType="DECIMAL"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID, NAME, OWNER_NAME, PHONE, FAX, POST, ADDRESS, SUMMARY, REMARK, DATA_STATUS, CREATE_TIME,
+        MERCHANT_NUMBER, MERCHANT_BALANCE
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="merchantBaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from MERCHANT
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from MERCHANT
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.xdkj.common.model.merchant.bean.Merchant">
+        insert into MERCHANT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="ownerName != null">
+                OWNER_NAME,
+            </if>
+            <if test="phone != null">
+                PHONE,
+            </if>
+            <if test="fax != null">
+                FAX,
+            </if>
+            <if test="post != null">
+                POST,
+            </if>
+            <if test="address != null">
+                ADDRESS,
+            </if>
+            <if test="summary != null">
+                SUMMARY,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="merchantNumber != null">
+                MERCHANT_NUMBER,
+            </if>
+            <if test="merchantBalance != null">
+                MERCHANT_BALANCE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="ownerName != null">
+                #{ownerName,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="fax != null">
+                #{fax,jdbcType=VARCHAR},
+            </if>
+            <if test="post != null">
+                #{post,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="summary != null">
+                #{summary,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="merchantNumber != null">
+                #{merchantNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="merchantBalance != null">
+                #{merchantBalance,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xdkj.common.model.merchant.bean.Merchant">
+        update MERCHANT
+        <set>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="ownerName != null">
+                OWNER_NAME = #{ownerName,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                PHONE = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="fax != null">
+                FAX = #{fax,jdbcType=VARCHAR},
+            </if>
+            <if test="post != null">
+                POST = #{post,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                ADDRESS = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="summary != null">
+                SUMMARY = #{summary,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="merchantNumber != null">
+                MERCHANT_NUMBER = #{merchantNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="merchantBalance != null">
+                MERCHANT_BALANCE = #{merchantBalance,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+
+</mapper>
