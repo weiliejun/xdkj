@@ -28,13 +28,13 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             field: 'lxr',
             title: '联系人',
             align: 'center',
-            width: '15%',
+            width: '5%',
             sort: true
         }, {
             field: 'lxdh',
             title: '联系电话',
             align: 'center',
-            width: '15%',
+            width: '5%',
             sort: true
         }, {
             field: 'txdz',

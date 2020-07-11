@@ -15,60 +15,68 @@
                 <form id="searchForm" class="layui-form">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>姓名：</label>
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>代理商名称：</label>
                             <div class="layui-input-inline">
-                                <input lay-verify="required" id="name" name="name" type="text"
-                                       th:value="${dlsInfo.name}" class="layui-input"/>
+                                <input lay-verify="required" id="dlsmc" name="dlsmc" type="text"
+                                       th:value="${dlsInfo.dlsmc}" class="layui-input"/>
                                 <input id="id" name="id" type="hidden" th:value="${dlsInfo.id}" class="layui-input"/>
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>手机号码：</label>
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>代理商简称：</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="phone" name="phone" lay-verify="required|phone"
-                                       th:value="${dlsInfo.phone}" class="layui-input">
+                                <input type="text" id="dlsjc" name="dlsjc" lay-verify="required"
+                                       th:value="${dlsInfo.dlsjc}" class="layui-input">
                             </div>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>公司邮箱：</label>
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>代理证书：</label>
                             <div class="layui-input-inline">
-                                <input lay-verify="required|email" id="gsyx" name="gsyx" type="text"
-                                       th:value="${dlsInfo.gsyx}" class="layui-input"/>
+                                <input lay-verify="required" id="dlzs" name="dlzs" type="text"
+                                       th:value="${dlsInfo.dlzs}" class="layui-input"/>
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">个人邮箱：</label>
+                            <label class="layui-form-label">其他资质：</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="gryx" name="gryx" th:value="${dlsInfo.gryx}"
+                                <input type="text" id="qtzz" name="qtzz" th:value="${dlsInfo.qtzz}"
                                        class="layui-input">
                             </div>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>部门：</label>
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>通讯地址：</label>
+                            <div class="layui-input-block">
+                                <input lay-verify="required" id="txdz" name="txdz" type="text"
+                                       th:value="${dlsInfo.txdz}" class="layui-input"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>联系人：</label>
                             <div class="layui-input-inline">
-                                <itech:code property="dept" parentCode="dept" type="select"
-                                            th:value="${dlsInfo.dept}"/>
+                                <input lay-verify="required" id="lxr" name="lxr" type="text"
+                                       th:value="${dlsInfo.lxr}" class="layui-input"/>
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>职级：</label>
+                            <label class="layui-form-label">联系电话：</label>
                             <div class="layui-input-inline">
-                                <itech:code property="rank" parentCode="rank" type="select"
-                                            th:value="${dlsInfo.rank}"/>
+                                <input type="text" id="lxdh" name="lxdh" th:value="${dlsInfo.lxdh}"
+                                       class="layui-input">
                             </div>
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>在职状态：</label>
-                            <div class="layui-input-inline">
-                                <itech:code property="status" parentCode="ryzt" type="select"
-                                            th:value="${dlsInfo.status}"/>
-                            </div>
+                        <label class="layui-form-label">备注：</label>
+                        <div class="layui-input-block">
+                            <textarea id="remark" name="remark" placeholder="请输入备注"
+                                      class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item" style="margin:0 0 10px 0;">
