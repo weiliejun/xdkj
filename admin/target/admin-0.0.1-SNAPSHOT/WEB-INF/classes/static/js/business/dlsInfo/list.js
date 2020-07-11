@@ -13,40 +13,40 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
 
     var cols = [[
         {
-            field: 'name',
-            title: '姓名',
+            field: 'dlsmc',
+            title: '代理商名称',
             align: 'center',
             width: '10%',
             sort: true
         }, {
-            field: 'phone',
-            title: '手机号码',
+            field: 'dlsjc',
+            title: '代理商简称',
             align: 'center',
             width: '10%',
             sort: true
         }, {
-            field: 'gsyx',
-            title: '公司邮箱',
+            field: 'lxr',
+            title: '联系人',
             align: 'center',
             width: '15%',
             sort: true
         }, {
-            field: 'gryx',
-            title: '个人邮箱',
+            field: 'lxdh',
+            title: '联系电话',
             align: 'center',
             width: '15%',
             sort: true
         }, {
-            field: 'dept',
-            title: '部门',
+            field: 'txdz',
+            title: '通讯地址',
             align: 'center',
-            width: '5%',
+            width: '15%',
             sort: true
         }, {
-            field: 'rank',
-            title: '职级',
+            field: 'dlzs',
+            title: '代理证书',
             align: 'center',
-            width: '5%',
+            width: '15%',
             sort: true
         }, {
             field: 'createTime',
@@ -95,7 +95,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             Common.searchTableClear('searchForm');
         },
         add: function () {
-            //Common.openFrame("/app/dlsInfo/add", "新增人员", '1200px', '1000px');
+            //Common.openFrame("/business/dlsInfo/add", "新增人员", '1200px', '1000px');
             window.location.href = "/dlsInfo/toAdd";
         }
     };

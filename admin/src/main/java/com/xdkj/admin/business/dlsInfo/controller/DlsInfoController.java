@@ -70,7 +70,7 @@ public class DlsInfoController extends AbstractBaseController {
     }
 
     /**
-     * 新增人员信息页面
+     * 新增代理商信息页面
      *
      * @return
      * @Author 魏列军
@@ -86,11 +86,11 @@ public class DlsInfoController extends AbstractBaseController {
         } else {
             model.addAttribute("dlsInfo", new DlsInfo());
         }
-        return "/app/dlsInfo/add";
+        return "/business/dlsInfo/add";
     }
 
     /**
-     * 修改人员信息页面
+     * 修改代理商信息页面
      *
      * @return
      * @Author 魏列军
@@ -104,11 +104,11 @@ public class DlsInfoController extends AbstractBaseController {
         model.addAttribute("dlsInfo", DlsInfo);
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
         if (StringHelper.isNotBlank(type) && type.equalsIgnoreCase("view")) {
-            return "/app/dlsInfo/view";
+            return "/business/dlsInfo/view";
         } else if (StringHelper.isNotBlank(type) && type.equalsIgnoreCase("rybgsq")) {
-            return "/app/dlsInfo/rybgsq";
+            return "/business/dlsInfo/rybgsq";
         }
-        return "/app/dlsInfo/add";
+        return "/business/dlsInfo/add";
     }
 
     /**
@@ -140,7 +140,7 @@ public class DlsInfoController extends AbstractBaseController {
     }
 
     /**
-     * 人员信息加载页面
+     * 代理商信息加载页面
      *
      * @return
      * @Author 魏列军
@@ -151,11 +151,11 @@ public class DlsInfoController extends AbstractBaseController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getDlsInfo(HttpServletRequest request, Model model) {
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
-        return "/app/dlsInfo/list";
+        return "/business/dlsInfo/list";
     }
 
     /**
-     * 人员信息列表
+     * 代理商信息列表
      *
      * @return
      * @Author 魏列军
@@ -180,13 +180,13 @@ public class DlsInfoController extends AbstractBaseController {
         resultMap.put("data", results.getResult());
 
         // 记录查看日志
-        saveBusinessLog("人员信息管理", "人员信息列表", "第" + results.getPageNum() + "页list");
+        saveBusinessLog("代理商信息管理", "代理商信息列表", "第" + results.getPageNum() + "页list");
 
         return resultMap;
     }
 
     /**
-     * 人员信息查询负责人页面
+     * 代理商信息查询负责人页面
      *
      * @return
      * @Author 魏列军
@@ -250,11 +250,11 @@ public class DlsInfoController extends AbstractBaseController {
             model.addAttribute("ryid", ryid);
             return "app/DlsInfo/selectList";
         }
-        return "/app/dlsInfo/selectList";
+        return "/business/dlsInfo/selectList";
     }
 
     /**
-     * 人员信息查询负责人页面
+     * 代理商信息查询负责人页面
      *
      * @return
      * @Author 魏列军
@@ -300,7 +300,7 @@ public class DlsInfoController extends AbstractBaseController {
     }*/
 
     /**
-     * 新增或修改人员信息
+     * 新增或修改代理商信息
      *
      * @return
      * @Author 魏列军
@@ -321,18 +321,18 @@ public class DlsInfoController extends AbstractBaseController {
             DlsInfo.setCreateTime(DateHelper.getYMDHMSFormatDate(new Date()));
             DlsInfo = dlsInfoService.addDlsInfo(DlsInfo);
             resultMap.put("flag", "true");
-            resultMap.put("msg", "人员信息新增成功");
+            resultMap.put("msg", "代理商信息新增成功");
 
             // 记录查看日志
-            saveBusinessLog("人员信息管理", "新增人员信息", DlsInfo);
+            saveBusinessLog("代理商信息管理", "新增代理商信息", DlsInfo);
             return resultMap;
         } else {//编辑
             dlsInfoService.updateDlsInfo(DlsInfo);
             resultMap.put("flag", "true");
-            resultMap.put("msg", "人员信息修改成功");
+            resultMap.put("msg", "代理商信息修改成功");
 
             // 记录查看日志
-            saveBusinessLog("人员信息管理", "修改人员信息", DlsInfo);
+            saveBusinessLog("代理商信息管理", "修改代理商信息", DlsInfo);
             return resultMap;
         }
 

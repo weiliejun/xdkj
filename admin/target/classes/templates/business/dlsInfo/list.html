@@ -16,31 +16,24 @@
                 <form class="layui-form" id="searchForm">
                     <div class="layui-form-item" style="padding-top:0px;">
                         <div class="layui-inline">
-                            <label class="layui-form-label">姓名：</label>
+                            <label class="layui-form-label">代理商名称：</label>
                             <div class="layui-input-block">
-                                <input id="name" type="text" name="name" placeholder="请输入姓名" class="layui-input"
-                                       th:value="${name}">
+                                <input id="dlsmc" type="text" name="dlsmc" placeholder="请输入代理商名称" class="layui-input"
+                                       th:value="${dlsmc}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">手机号：</label>
+                            <label class="layui-form-label">联系人：</label>
                             <div class="layui-input-block">
-                                <input id="phone" type="text" name="phone" placeholder="请输入手机号" class="layui-input"
-                                       th:value="${phone}">
+                                <input id="lxr" type="text" name="lxr" placeholder="请输入联系人" class="layui-input"
+                                       th:value="${lxr}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">部门：</label>
+                            <label class="layui-form-label">联系电话：</label>
                             <div class="layui-input-block">
-                                <itech:code property="dept" parentCode="dept" type="select"
-                                            th:value="${dept}"/>
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">职级：</label>
-                            <div class="layui-input-block">
-                                <itech:code property="rank" parentCode="rank" type="select"
-                                            th:value="${rank}"/>
+                                <input id="lxdh" type="text" name="lxdh" placeholder="请输入联系电话" class="layui-input"
+                                       th:value="${lxdh}">
                             </div>
                         </div>
                     </div>
@@ -108,7 +101,7 @@
 <!--<script type="text/javascript" src="js/laydate.js"></script>-->
 <!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
 <!--<script type="text/javascript" src="js/layui.all.js"></script>-->
-<script type="text/javascript" th:src="@{/js/app/dlsInfo/list.js}"></script>
+<script type="text/javascript" th:src="@{/js/business/dlsInfo/list.js}"></script>
 <script type="javascript" th:inline="none">
 
 

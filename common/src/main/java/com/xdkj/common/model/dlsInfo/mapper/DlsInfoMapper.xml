@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dlsInfoMapper" >
+<mapper namespace="DlsInfoMapper" >
   <resultMap id="BaseResultMap" type="com.xdkj.common.model.dlsInfo.bean.DlsInfo" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
     <result column="DLSMC" property="dlsmc" jdbcType="VARCHAR" />
@@ -172,4 +172,41 @@
       REMARK = #{remark,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectDlsInfoList" parameterType="com.xdkj.common.model.dlsInfo.bean.DlsInfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from dls_info
+    <where>
+      DATA_STATUS='0'
+      <if test="dlsmc != null">
+        and DLSMC like CONCAT('%',#{dlsmc},'%')
+      </if>
+      <if test="lxr != null">
+        and LXR like CONCAT('%',#{lxr},'%')
+      </if>
+      <if test="lxdh != null">
+        and LXDH like CONCAT('%',#{lxdh},'%')
+      </if>
+    </where>
+    ORDER BY CREATE_TIME DESC
+  </select>
+  <select id="listDlsInfoByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from dls_info
+    <where>
+      DATA_STATUS='0'
+      <if test="dlsmc != null">
+        and DLSMC like CONCAT('%',#{dlsmc},'%')
+      </if>
+      <if test="lxr != null">
+        and LXR like CONCAT('%',#{lxr},'%')
+      </if>
+      <if test="lxdh != null">
+        and LXDH like CONCAT('%',#{lxdh},'%')
+      </if>
+    </where>
+    ORDER BY CREATE_TIME DESC
+  </select>
 </mapper>
