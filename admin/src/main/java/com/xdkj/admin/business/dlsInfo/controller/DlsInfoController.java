@@ -81,8 +81,8 @@ public class DlsInfoController extends AbstractBaseController {
     @RequestMapping(value = {"/toAdd"}, method = RequestMethod.GET)
     public String toAdd(Model model, @RequestParam(value = "id", required = false) String id, HttpServletRequest request) {
         if (id != null) {
-            DlsInfo DlsInfo = dlsInfoService.getDlsInfoById(id);
-            model.addAttribute("dlsInfo", DlsInfo);
+            DlsInfo dlsInfo = dlsInfoService.getDlsInfoById(id);
+            model.addAttribute("dlsInfo", dlsInfo);
         } else {
             model.addAttribute("dlsInfo", new DlsInfo());
         }
@@ -100,8 +100,8 @@ public class DlsInfoController extends AbstractBaseController {
      **/
     @RequestMapping(value = {"/get/{type}/{id}"}, method = RequestMethod.GET)
     public String findDlsInfoById(HttpServletRequest request, @PathVariable("type") String type, @PathVariable("id") String id, Model model) {
-        DlsInfo DlsInfo = dlsInfoService.getDlsInfoById(id);
-        model.addAttribute("dlsInfo", DlsInfo);
+        DlsInfo dlsInfo = dlsInfoService.getDlsInfoById(id);
+        model.addAttribute("dlsInfo", dlsInfo);
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
         if (StringHelper.isNotBlank(type) && type.equalsIgnoreCase("view")) {
             return "/business/dlsInfo/view";
@@ -310,29 +310,29 @@ public class DlsInfoController extends AbstractBaseController {
      **/
     @PostMapping(value = "/addOrUpdate")
     @ResponseBody
-    public Map<String, Object> addOrUpdateDlsInfo(@RequestBody DlsInfo DlsInfo) {
+    public Map<String, Object> addOrUpdateDlsInfo(@RequestBody DlsInfo dlsInfo) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         SysManager currentManager = getSessionSysManager();
         //新增
-        if (StringHelper.isBlank(DlsInfo.getId())) {
+        if (StringHelper.isBlank(dlsInfo.getId())) {
             //设置初始化值
             // 数据有效
-            DlsInfo.setDataStatus(GlobalConstant.DATA_VALID);
-            DlsInfo.setCreateTime(DateHelper.getYMDHMSFormatDate(new Date()));
-            DlsInfo = dlsInfoService.addDlsInfo(DlsInfo);
+            dlsInfo.setDataStatus(GlobalConstant.DATA_VALID);
+            dlsInfo.setCreateTime(DateHelper.getYMDHMSFormatDate(new Date()));
+            dlsInfo = dlsInfoService.addDlsInfo(dlsInfo);
             resultMap.put("flag", "true");
             resultMap.put("msg", "代理商信息新增成功");
 
             // 记录查看日志
-            saveBusinessLog("代理商信息管理", "新增代理商信息", DlsInfo);
+            saveBusinessLog("代理商信息管理", "新增代理商信息", dlsInfo);
             return resultMap;
         } else {//编辑
-            dlsInfoService.updateDlsInfo(DlsInfo);
+            dlsInfoService.updateDlsInfo(dlsInfo);
             resultMap.put("flag", "true");
             resultMap.put("msg", "代理商信息修改成功");
 
             // 记录查看日志
-            saveBusinessLog("代理商信息管理", "修改代理商信息", DlsInfo);
+            saveBusinessLog("代理商信息管理", "修改代理商信息", dlsInfo);
             return resultMap;
         }
 

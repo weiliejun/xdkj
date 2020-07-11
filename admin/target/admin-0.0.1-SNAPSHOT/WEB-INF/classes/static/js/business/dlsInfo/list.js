@@ -16,7 +16,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             field: 'dlsmc',
             title: '代理商名称',
             align: 'center',
-            width: '10%',
+            width: '15%',
             sort: true
         }, {
             field: 'dlsjc',
@@ -28,13 +28,13 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             field: 'lxr',
             title: '联系人',
             align: 'center',
-            width: '15%',
+            width: '5%',
             sort: true
         }, {
             field: 'lxdh',
             title: '联系电话',
             align: 'center',
-            width: '15%',
+            width: '5%',
             sort: true
         }, {
             field: 'txdz',
@@ -59,7 +59,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             align: 'center',
             fixed: "right",
             toolbar: '#dlsInfoBar',
-            width: '25%',
+            width: '20%',
             sort: true
         }
     ]];
