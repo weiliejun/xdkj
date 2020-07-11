@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech" lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
     <title>人员信息管理</title>
 </head>
 <body>
@@ -18,34 +18,34 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">代理商名称：</label>
                             <div class="layui-input-block">
-                                <input id="dlsmc" type="text" name="dlsmc" placeholder="请输入代理商名称" class="layui-input"
-                                       th:value="${dlsmc}">
+                                <input class="layui-input" id="dlsmc" name="dlsmc" placeholder="请输入代理商名称" th:value="${dlsmc}"
+                                       type="text">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">联系人：</label>
                             <div class="layui-input-block">
-                                <input id="lxr" type="text" name="lxr" placeholder="请输入联系人" class="layui-input"
-                                       th:value="${lxr}">
+                                <input class="layui-input" id="lxr" name="lxr" placeholder="请输入联系人" th:value="${lxr}"
+                                       type="text">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">联系电话：</label>
                             <div class="layui-input-block">
-                                <input id="lxdh" type="text" name="lxdh" placeholder="请输入联系电话" class="layui-input"
-                                       th:value="${lxdh}">
+                                <input class="layui-input" id="lxdh" name="lxdh" placeholder="请输入联系电话" th:value="${lxdh}"
+                                       type="text">
                             </div>
                         </div>
                     </div>
 
                     <div class="layui-inline">
-                        <button type="button" class="layui-btn" data-type="search"><i
+                        <button class="layui-btn" data-type="search" type="button"><i
                                 class="layui-icon layui-icon-search"></i>查询
                         </button>
-                        <button type="button" class="layui-btn" data-type="add"><i
+                        <button class="layui-btn" data-type="add" type="button"><i
                                 class="layui-icon layui-icon-add-1"></i>新增
                         </button>
-                        <button type="button" class="layui-btn" data-type="searchFormClear"><i
+                        <button class="layui-btn" data-type="searchFormClear" type="button"><i
                                 class="layui-icon layui-icon-refresh"></i>清空
                         </button>
                     </div>
@@ -80,7 +80,7 @@
                 <a class="layui-btn layui-btn-xs" lay-event="update"><i
                         class="layui-icon">&#xe642;</i>修改</a>
                 <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="rybgsq"><i
-                        class="layui-icon">&#xe66f;</i>人员变更申请</a>
+                        class="layui-icon">&#xe66f;</i>录入库存设备</a>
             </script>
 
         </div>
@@ -101,8 +101,8 @@
 <!--<script type="text/javascript" src="js/laydate.js"></script>-->
 <!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
 <!--<script type="text/javascript" src="js/layui.all.js"></script>-->
-<script type="text/javascript" th:src="@{/js/business/dlsInfo/list.js}"></script>
-<script type="javascript" th:inline="none">
+<script th:src="@{/js/business/dlsInfo/list.js}" type="text/javascript"></script>
+<script th:inline="none" type="javascript">
 
 
 </script>

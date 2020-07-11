@@ -6,7 +6,7 @@ layui.use(['form', 'upload', 'layer', 'laytpl', 'jquery'], function () {
         laytpl = layui.laytpl,
         layer = layui.layer;
 
-    $(function () {
+    /*$(function () {
         $.ajax({
             url: PageContext.getUrl("/dlsInfo/detail/" + $("#id").val()),
             type: 'post',
@@ -25,7 +25,7 @@ layui.use(['form', 'upload', 'layer', 'laytpl', 'jquery'], function () {
 
             }
         });
-    });
+    });*/
 
     form.on('submit(save)', function (data) {
         console.log(data.field);

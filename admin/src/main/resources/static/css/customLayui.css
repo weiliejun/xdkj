@@ -1,0 +1,857 @@
+/*去除默认样式*/
+.layui-table thead tr, .layui-table-header, .layui-table-tool, .layui-table-total, .layui-table-total tr, .layui-table-patch, .layui-table-mend, .layui-table[lay-even] tr:nth-child(even), .layui-table tbody tr:hover, .layui-table-hover, .layui-table-click {
+    background: none;
+}
+
+/*账户管理*/
+.myCustom {
+}
+
+.myCustom .grid-demo {
+    margin: 0 20px;
+    border: 1px solid #eaeaea;
+    padding: 10px 20px;
+}
+
+.messageCon {
+    padding-top: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.messageCon li {
+    margin-bottom: 20px;
+}
+
+.messageCon li span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.messageCon li p {
+    float: left;
+    width: 45%;
+}
+
+.messageCon li a {
+    float: left;
+    width: 30%;
+    color: #0074FF;
+}
+
+.cusBottom {
+    padding-top: 20px;
+}
+
+.cusBottom li {
+    margin-bottom: 20px;
+}
+
+.cusBottom li b {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 20px;
+    font-weight: normal;
+}
+
+.cusBottom .wholeCon {
+    float: left;
+    width: 70%;
+}
+
+.cusBottom li p {
+    margin-bottom: 12px;
+}
+
+.cusBottom li p a {
+    color: #0074FF;
+    text-decoration: underline;
+    margin-right: 12px;
+}
+
+.cusCheck {
+    padding-top: 9px;
+    padding-left: 10px;
+}
+
+.recordInfo {
+}
+
+.recordInfo thead {
+    background: #eee;
+}
+
+.recordInfo th, .recordInfo td {
+    text-align: center;
+}
+
+.recordInfo a {
+    color: #0074FF;
+}
+
+.flowDetails {
+    position: relative;
+}
+
+.flowCon {
+    position: absolute;
+    top: -66px;
+    right: -80px;
+    background: #fff;
+    z-index: 30;
+    padding: 12px 20px 0;
+    border-radius: 8px;
+    display: none;
+    border: 1px solid #ccc;
+}
+
+.flowCon li {
+    margin-bottom: 12px;
+    min-width: 300px;
+}
+
+.flowCon li span {
+    float: left;
+}
+
+.flowCon li p {
+    float: left;
+    margin-left: 10px;
+}
+
+#myPage {
+    text-align: center;
+}
+
+#myPage .layui-laypage { /* margin-top:16px;float:right;margin-right:40px; */
+    margin: 30px auto 0;
+}
+
+/*白名单审核*/
+.noAudit {
+    text-align: right;
+    padding: 10px 40px 20px 0;
+    color: #666;
+}
+
+/*白名单审核详情*/
+.verifyUser {
+    margin: 20px 0;
+}
+
+.verifyUser li {
+    float: left;
+    width: 20%;
+}
+
+.verifyUser li span {
+    float: left;
+}
+
+.verifyUser li p {
+    float: left;
+    margin-left: 10px;
+}
+
+.workImgList {
+    padding: 30px 0;
+}
+
+.workImgList li {
+    float: left;
+    width: 36%;
+    text-align: center;
+}
+
+.workImgList li img {
+    width: 400px;
+    height: 270px;
+}
+
+.workImgList li p {
+    padding-top: 20px;
+}
+
+/*产品管理*/
+.titNav {
+    padding: 10px 0 10px 50px;
+}
+
+.operateBtn a {
+    color: #fff;
+}
+
+/*新建产品*/
+.proNav {
+    padding: 30px 40px 30px;
+}
+
+.proNav a {
+    float: left;
+}
+
+.proCon {
+    padding: 0 40px 80px;
+}
+
+.proInfo {
+}
+
+.proInfo li {
+    margin-bottom: 26px;
+}
+
+.proInfo i {
+    color: red;
+}
+
+.proInfo span {
+    float: left;
+    width: 25%;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 36px;
+}
+
+.proInfo input {
+    float: left;
+    width: 50%;
+}
+
+.timeLi {
+    position: relative;
+}
+
+.timeLi b {
+    position: absolute;
+    top: 10px;
+    right: 25%;
+}
+
+.areaPart {
+}
+
+.areaPart li {
+    margin-bottom: 26px;
+}
+
+.areaPart li span {
+    float: left;
+    width: 12%;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.areaPart li textarea {
+    float: left;
+    width: 50%;
+    min-height: 160px;
+    padding: 20px 50px 0 20px;
+    line-height: 22px;
+}
+
+.cusBtn {
+    margin-left: 30%;
+}
+
+.cusSelectBox {
+    width: 50%;
+    float: left;
+}
+
+.cusSelectBox .cusSelect {
+}
+
+.cusSelectBox input {
+    width: 100%;
+}
+
+.cusSelectBox .layui-form-select .layui-edge {
+    margin-top: 13px;
+}
+
+/*附件页面*/
+.upTip {
+    padding-bottom: 26px;
+}
+
+.upTip i {
+    color: red;
+}
+
+.pdfList a {
+    float: left;
+    padding: 26px 40px 26px 26px;
+    background: #eee;
+    border-radius: 6px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.pdfList a i {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.uploadBox {
+}
+
+.uploadBox a {
+    width: 100px;
+    height: 38px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+}
+
+.uploadBox a input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 38px;
+    opacity: 0;
+}
+
+.btnBox {
+    padding-top: 30px;
+}
+
+/*审核*/
+.titH2 {
+    font-size: 18px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.titH3 {
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 16px;
+    margin-bottom: 30px;
+}
+
+.basicInfo {
+}
+
+.basicInfo p {
+    float: left;
+    line-height: 36px;
+}
+
+.areaPartInfo {
+    float: left;
+    width: 60%;
+}
+
+.areaPartInfo p {
+    margin-bottom: 10px;
+}
+
+.receiveInfo {
+}
+
+.receiveInfo li {
+    float: left;
+}
+
+.receiveInfo li span {
+    float: left;
+}
+
+.receiveInfo li p {
+    float: left;
+}
+
+.addPaddingPdf {
+    padding-left: 6%;
+}
+
+/*交易记录*/
+.orderFormInfo {
+}
+
+.orderFormInfo li {
+    width: 30%;
+    float: left;
+    margin-bottom: 18px;
+}
+
+.orderFormInfo li span {
+    width: 20%;
+    float: left;
+    text-align: right;
+    padding-right: 6px;
+    line-height: 32px;
+}
+
+.orderFormInfo li i {
+    float: left;
+    font-size: 20px;
+    color: #999;
+    margin: 5px 10px 0;
+}
+
+.orderFormInfo li input {
+    float: left;
+    width: 70%;
+}
+
+.diffFormInfo li {
+    width: 25%;
+}
+
+.diffFormInfo li span {
+    width: 22%;
+}
+
+.diffFormInfo li input {
+    width: 60%;
+}
+
+.diffFormInfo li p {
+    float: left;
+    line-height: 32px;
+}
+
+.diffFormInfo2 li {
+    width: 20%;
+}
+
+.diffFormInfo2 li span {
+    width: 35%;
+}
+
+.diffFormInfo2 li input {
+    width: 55%;
+}
+
+.diffFormInfo2 li p {
+    float: left;
+    line-height: 32px;
+}
+
+/*用户管理*/
+.recordInfo .colorA a {
+    color: #fff;
+}
+
+/*新建投资观点*/
+.newInvestInfo {
+    padding-top: 30px;
+}
+
+.newInvestInfo li {
+    margin-bottom: 26px;
+}
+
+.newInvestInfo li span {
+    width: 100px;
+    float: left;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 38px;
+}
+
+.newInvestInfo li input {
+    float: left;
+    width: 30%;
+}
+
+.newInvestInfo li textarea {
+    float: left;
+    width: 40%;
+}
+
+.editorBox {
+    float: left;
+    width: 60%;
+    padding-top: 8px;
+}
+
+.articleState {
+    float: left;
+    width: 30%;
+}
+
+.articleState input {
+    width: 100% !important;
+}
+
+.articleState option {
+    width: 100%;
+}
+
+.articleState .layui-form-select .layui-edge {
+    margin-top: 15px;
+}
+
+.articleState .layui-form-selected .layui-edge {
+    margin-top: 10px;
+}
+
+.uploadLogo {
+    float: Left;
+}
+
+.backImg {
+    float: left;
+    border: 1px dashed #ddd;
+    padding: 5px;
+    margin-left: 20px;
+    position: relative;
+}
+
+.backImg img {
+    width: 100px;
+    height: 100px;
+}
+
+.closeImgBox {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.closeImgBox b {
+    width: 100%;
+    height: 30px;
+    background: #000;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.closeImgBox a {
+    color: #fff;
+    font-size: 24px;
+    position: absolute;
+    right: 10px;
+    padding-top: 2px;
+}
+
+/*应用升级配置*/
+.titNavSet {
+    padding: 0 30px;
+}
+
+.titNavSet a {
+    color: #333;
+}
+
+.titNavSet a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.deployBtn {
+    padding: 20px 40px 20px;
+}
+
+.deviceUpInfo {
+}
+
+.deviceUpInfo li {
+    margin-bottom: 20px;
+}
+
+.deviceUpInfo li span {
+    float: left;
+    width: 120px;
+    text-align: right;
+    padding-right: 6px;
+    line-height: 34px;
+}
+
+.deviceType {
+    float: left;
+    padding-top: 10px;
+}
+
+.deviceType label {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.allSBox {
+    float: left;
+    margin-top: 10px;
+}
+
+.allSBox label {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.deviceUpInfo li input[type="text"] {
+    width: 300px;
+    height: 34px;
+}
+
+.deviceUpInfo li span.addLineH {
+    line-height: 34px;
+}
+
+.deviceUpInfo li textarea {
+    float: left;
+    width: 300px;
+    padding: 16px;
+}
+
+/*.layui-layer-content{height:auto !important;padding:30px;}*/
+/*.layui-layer-page{height:auto !important;}*/
+
+/*用户概览*/
+.overViewList {
+}
+
+.overViewList li {
+    float: left;
+    width: 146px;
+    background: #eee;
+    height: 90px;
+    padding-left: 20px;
+    padding-top: 18px;
+    margin: 20px;
+}
+
+.viewName {
+    padding-bottom: 10px;
+}
+
+.overViewList li b {
+    font-weight: normal;
+    display: block;
+    margin-top: 10px;
+}
+
+.bureauxProcess {
+    padding-top: 20px;
+}
+
+.bureauxProcess li {
+    margin-bottom: 8px;
+}
+
+.bureauxNum {
+    float: left;
+    width: 50px;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 28px;
+    line-height: 45px;
+}
+
+.processInfo {
+    float: left;
+    width: 30%;
+}
+
+.processInfo p {
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.userNum {
+    float: left;
+    font-weight: normal;
+    margin-left: 30px;
+    line-height: 75px;
+}
+
+.developTit {
+    padding-left: 30px;
+}
+
+.userAttrBox {
+}
+
+.attrL {
+    width: 38%;
+    float: left;
+    border: 1px solid #ccc;
+    height: 380px;
+}
+
+.attrR {
+    width: 38%;
+    float: left;
+    height: 380px;
+    margin-left: 50px;
+    border: 1px solid #ccc;
+}
+
+.userList {
+}
+
+.aboutUserBox {
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+.userStatis {
+    width: 60%;
+    height: 400px;
+    border: 1px solid #ccc;
+    margin: 20px 0 60px;
+    padding-top: 20px;
+}
+
+.userTypeLine {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.userTypeLine span {
+    color: #0077bb;
+}
+
+/*资产概览*/
+.assetsViewBox {
+    padding: 20px;
+}
+
+.assetsViewList {
+    float: left;
+}
+
+.assetsViewList h3 {
+    font-size: 18px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.assetsViewList h3 span {
+    font-size: 14px;
+    color: #666;
+}
+
+.assViewInfo {
+    width: 560px;
+    background: #eee;
+    border-radius: 6px;
+    margin-right: 20px;
+    padding: 20px;
+}
+
+.proNumList {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.proNumList li {
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+.proNumList li p {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.proNumList li span {
+    color: #666;
+}
+
+.assetsView1 {
+    width: 100%;
+    height: 300px;
+}
+
+.diffProList {
+    padding: 13px;
+}
+
+.diffProList li {
+    width: 33.3%;
+    text-align: left;
+}
+
+/*上架/下架产品弹框*/
+.upperTipCon {
+}
+
+.upperTipCon p {
+    color: #666;
+    padding-bottom: 20px;
+}
+
+.upperBtn {
+    text-align: center;
+}
+
+/*App首页配置*/
+.deviceUpInfo li span i {
+    color: #ce1010;
+}
+
+.deviceUpInfo li select {
+    width: 310px;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.deviceUpInfo li input {
+    padding-left: 10px;
+}
+
+.selectImg {
+}
+
+.selectImg {
+    float: left;
+    width: 100px;
+    height: 38px;
+    overflow: hidden;
+    position: relative;
+}
+
+.selectImg input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 38px;
+    opacity: 0;
+}
+
+.saveBox {
+    text-align: center;
+}
+
+/*保险预约详情*/
+.coverageLi {
+}
+
+.coverageLi span {
+    width: auto;
+    line-height: 30px;
+}
+
+.coverageLi i {
+    color: #fff;
+}
+
+.coverageLi .layui-form-checked i, .coverageLi .layui-form-checked:hover i {
+    color: #5FB878;
+}
+
+.coverageLi .layui-form-checkbox {
+    margin-bottom: 20px;
+}
+
+#con .layui-form-radio {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+}
+
+
+
+

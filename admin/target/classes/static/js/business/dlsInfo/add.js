@@ -27,7 +27,7 @@ layui.use(['form', 'upload', 'layer', 'laytpl', 'jquery'], function () {
         });
     });*/
 
-    form.on('submit(save)', function (data) {alert("333");
+    form.on('submit(save)', function (data) {
         console.log(data.field);
         var ajaxReturnData;
         $.ajax({
