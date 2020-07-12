@@ -190,13 +190,13 @@
         where
         DATA_STATUS = '0'
         <if test="userName != null">
-            AND USER_NAME = #{userName,jdbcType=VARCHAR}
+            and USER_NAME like CONCAT('%',#{userName},'%')
         </if>
         <if test="nickName != null">
-            AND NICK_NAME = #{nickName,jdbcType=VARCHAR}
+            and NICK_NAME like CONCAT('%',#{nickName},'%')
         </if>
         <if test="mobile != null">
-            AND MOBILE = #{mobile,jdbcType=VARCHAR}
+            and MOBILE like CONCAT('%',#{mobile},'%')
         </if>
         <if test="password != null">
             AND PASSWORD = #{password,jdbcType=VARCHAR}
@@ -223,7 +223,7 @@
             AND UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
         </if>
         <if test="remark != null">
-            AND REMARK = #{remark,jdbcType=VARCHAR}
+            and REMARK like CONCAT('%',#{remark},'%')
         </if>
 
     </select>
