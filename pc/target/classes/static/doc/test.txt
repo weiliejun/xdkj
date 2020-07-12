@@ -1,3 +1,0 @@
-Look at the windows, please !
-This is a test text .
-static/doc/....

@@ -24,6 +24,7 @@ com\xdkj\common\model\sysMessage\bean\SysMessage.class
 com\xdkj\common\util\MD5Util.class
 com\xdkj\common\util\IDCardUtil.class
 com\xdkj\common\components\exception\MessageBusiTypeTmplInexistenceException.class
+com\xdkj\common\model\deviceInfo\dao\DeviceInfoMapper.class
 com\xdkj\common\util\JsonValidator.class
 com\xdkj\common\util\Base64Utils.class
 com\xdkj\common\util\ParameterRequestWrapper.class
@@ -230,6 +231,7 @@ com\xdkj\common\model\userInfoExt\bean\UserInfoExt.class
 com\xdkj\common\model\sysdictionary\bean\SysDictionary.class
 com\xdkj\common\model\sysBusinessLog\bean\SysBusinessLog.class
 com\xdkj\common\components\verifycode\VerifyCodeImageGenarator.class
+com\xdkj\common\model\deviceInfo\bean\DeviceInfo.class
 com\xdkj\common\model\sysdictionary\dao\SysDictionaryDao.class
 com\xdkj\common\util\CommonUtil$1.class
 com\xdkj\common\db\DynamicDataSource.class

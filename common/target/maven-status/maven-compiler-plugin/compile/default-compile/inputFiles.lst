@@ -80,6 +80,7 @@ E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\ClobHelper.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\sysdictionary\dao\SysDictionaryDao.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\ThreeDes.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\db\DataSourceAspect.java
+E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\deviceInfo\dao\DeviceInfoMapper.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\FtpUtil.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\redis\util\RedisUtil.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\Amount2RMB.java
@@ -100,6 +101,7 @@ E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\components\filesync\acti
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\redis\JedisConfigProperties.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\EmailValidator.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\components\exception\MessageTypeTmplInexistenceException.java
+E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\deviceInfo\bean\DeviceInfo.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\VerifyUtil.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\components\exception\IORuntimeException.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\CommonUtil.java

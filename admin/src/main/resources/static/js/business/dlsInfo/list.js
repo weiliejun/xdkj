@@ -28,33 +28,33 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             field: 'lxr',
             title: '联系人',
             align: 'center',
-            width: '5%',
+            width: '10%',
             sort: true
         }, {
             field: 'lxdh',
             title: '联系电话',
             align: 'center',
-            width: '5%',
+            width: '10%',
             sort: true
         }, {
             field: 'txdz',
             title: '通讯地址',
             align: 'center',
-            width: '15%',
+            width: '20%',
             sort: true
         }, {
             field: 'dlzs',
             title: '代理证书',
             align: 'center',
-            width: '15%',
+            width: '10%',
             sort: true
-        }, {
+        }/*, {
             field: 'createTime',
             title: '创建时间',
             align: 'center',
-            width: '15%',
+            width: '10%',
             sort: true
-        }, {
+        }*/, {
             title: '常用操作',
             align: 'center',
             fixed: "right",

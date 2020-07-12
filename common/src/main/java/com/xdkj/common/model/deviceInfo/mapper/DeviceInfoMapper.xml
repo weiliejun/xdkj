@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="DeviceInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xdkj.common.model.deviceInfo.bean.DeviceInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="DLS_ID" property="dlsId" jdbcType="VARCHAR" />
+    <result column="SBLB" property="sblb" jdbcType="VARCHAR" />
+    <result column="CPDM" property="cpdm" jdbcType="VARCHAR" />
+    <result column="CSMS" property="csms" jdbcType="VARCHAR" />
+    <result column="DW" property="dw" jdbcType="VARCHAR" />
+    <result column="SL" property="sl" jdbcType="VARCHAR" />
+    <result column="ZNJG" property="znjg" jdbcType="VARCHAR" />
+    <result column="WBJG" property="wbjg" jdbcType="VARCHAR" />
+    <result column="PP" property="pp" jdbcType="VARCHAR" />
+    <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="CHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="CHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, DLS_ID, SBLB, CPDM, CSMS, DW, SL, ZNJG, WBJG, PP, DATA_STATUS, CREATE_TIME, UPDATE_TIME, 
+    REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from device_info
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from device_info
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xdkj.common.model.deviceInfo.bean.DeviceInfo" >
+    insert into device_info (ID, DLS_ID, SBLB, 
+      CPDM, CSMS, DW, SL, 
+      ZNJG, WBJG, PP, DATA_STATUS, 
+      CREATE_TIME, UPDATE_TIME, REMARK
+      )
+    values (#{id,jdbcType=VARCHAR}, #{dlsId,jdbcType=VARCHAR}, #{sblb,jdbcType=VARCHAR}, 
+      #{cpdm,jdbcType=VARCHAR}, #{csms,jdbcType=VARCHAR}, #{dw,jdbcType=VARCHAR}, #{sl,jdbcType=VARCHAR}, 
+      #{znjg,jdbcType=VARCHAR}, #{wbjg,jdbcType=VARCHAR}, #{pp,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, 
+      #{createTime,jdbcType=CHAR}, #{updateTime,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xdkj.common.model.deviceInfo.bean.DeviceInfo" >
+    insert into device_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="dlsId != null" >
+        DLS_ID,
+      </if>
+      <if test="sblb != null" >
+        SBLB,
+      </if>
+      <if test="cpdm != null" >
+        CPDM,
+      </if>
+      <if test="csms != null" >
+        CSMS,
+      </if>
+      <if test="dw != null" >
+        DW,
+      </if>
+      <if test="sl != null" >
+        SL,
+      </if>
+      <if test="znjg != null" >
+        ZNJG,
+      </if>
+      <if test="wbjg != null" >
+        WBJG,
+      </if>
+      <if test="pp != null" >
+        PP,
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="dlsId != null" >
+        #{dlsId,jdbcType=VARCHAR},
+      </if>
+      <if test="sblb != null" >
+        #{sblb,jdbcType=VARCHAR},
+      </if>
+      <if test="cpdm != null" >
+        #{cpdm,jdbcType=VARCHAR},
+      </if>
+      <if test="csms != null" >
+        #{csms,jdbcType=VARCHAR},
+      </if>
+      <if test="dw != null" >
+        #{dw,jdbcType=VARCHAR},
+      </if>
+      <if test="sl != null" >
+        #{sl,jdbcType=VARCHAR},
+      </if>
+      <if test="znjg != null" >
+        #{znjg,jdbcType=VARCHAR},
+      </if>
+      <if test="wbjg != null" >
+        #{wbjg,jdbcType=VARCHAR},
+      </if>
+      <if test="pp != null" >
+        #{pp,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xdkj.common.model.deviceInfo.bean.DeviceInfo" >
+    update device_info
+    <set >
+      <if test="dlsId != null" >
+        DLS_ID = #{dlsId,jdbcType=VARCHAR},
+      </if>
+      <if test="sblb != null" >
+        SBLB = #{sblb,jdbcType=VARCHAR},
+      </if>
+      <if test="cpdm != null" >
+        CPDM = #{cpdm,jdbcType=VARCHAR},
+      </if>
+      <if test="csms != null" >
+        CSMS = #{csms,jdbcType=VARCHAR},
+      </if>
+      <if test="dw != null" >
+        DW = #{dw,jdbcType=VARCHAR},
+      </if>
+      <if test="sl != null" >
+        SL = #{sl,jdbcType=VARCHAR},
+      </if>
+      <if test="znjg != null" >
+        ZNJG = #{znjg,jdbcType=VARCHAR},
+      </if>
+      <if test="wbjg != null" >
+        WBJG = #{wbjg,jdbcType=VARCHAR},
+      </if>
+      <if test="pp != null" >
+        PP = #{pp,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xdkj.common.model.deviceInfo.bean.DeviceInfo" >
+    update device_info
+    set DLS_ID = #{dlsId,jdbcType=VARCHAR},
+      SBLB = #{sblb,jdbcType=VARCHAR},
+      CPDM = #{cpdm,jdbcType=VARCHAR},
+      CSMS = #{csms,jdbcType=VARCHAR},
+      DW = #{dw,jdbcType=VARCHAR},
+      SL = #{sl,jdbcType=VARCHAR},
+      ZNJG = #{znjg,jdbcType=VARCHAR},
+      WBJG = #{wbjg,jdbcType=VARCHAR},
+      PP = #{pp,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectDeviceInfoList" parameterType="com.xdkj.common.model.deviceInfo.bean.DeviceInfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from device_info
+    <where>
+      DATA_STATUS='0'
+      <if test="pp != null">
+        and PP like CONCAT('%',#{pp},'%')
+      </if>
+      <if test="dlsId != null">
+        AND DLS_ID = #{dlsId,jdbcType=VARCHAR}
+      </if>
+      <if test="sblb != null">
+        and SBLB like CONCAT('%',#{sblb},'%')
+      </if>
+      <if test="cpdm != null">
+        and CPDM like CONCAT('%',#{cpdm},'%')
+      </if>
+      <if test="csms != null">
+        and CSMS like CONCAT('%',#{csms},'%')
+      </if>
+    </where>
+    ORDER BY CREATE_TIME DESC
+  </select>
+  <select id="listDeviceInfoByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from device_info
+    <where>
+      DATA_STATUS='0'
+      <if test="pp != null">
+        and PP like CONCAT('%',#{pp},'%')
+      </if>
+      <if test="dlsId != null">
+        AND DLS_ID = #{dlsId,jdbcType=VARCHAR}
+      </if>
+      <if test="sblb != null">
+        and SBLB like CONCAT('%',#{sblb},'%')
+      </if>
+      <if test="cpdm != null">
+        and CPDM like CONCAT('%',#{cpdm},'%')
+      </if>
+      <if test="csms != null">
+        and CSMS like CONCAT('%',#{csms},'%')
+      </if>
+    </where>
+    ORDER BY CREATE_TIME DESC
+  </select>
+</mapper>
