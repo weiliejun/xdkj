@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
-    <title>代理商信息录入</title>
+    <title>设备信息录入</title>
 </head>
 <body class="layui-layout-body">
 <fieldset class="layui-elem-field layui-field-title" style="margin:20px 0 0 0;">
-    <legend>新增代理商信息录入</legend>
+    <legend>新增设备信息录入</legend>
 </fieldset>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-body">
@@ -15,57 +15,69 @@
                 <form class="layui-form" id="searchForm">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>代理商名称：</label>
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>品牌：</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" id="dlsmc" lay-verify="required" name="dlsmc"
-                                       th:value="${deviceInfo.dlsmc}" type="text"/>
-                                <input class="layui-input" id="id" name="id" th:value="${deviceInfo.id}" type="hidden"/>
+                                <itech:code property="pp" parentCode="pp" type="select"
+                                            th:value="${deviceInfo.pp}"/>
                             </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>代理商简称：</label>
-                            <div class="layui-input-inline">
-                                <input class="layui-input" id="dlsjc" lay-verify="required" name="dlsjc"
-                                       th:value="${deviceInfo.dlsjc}" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>代理证书：</label>
-                            <div class="layui-input-inline">
-                                <input class="layui-input" id="dlzs" lay-verify="required" name="dlzs"
-                                       th:value="${deviceInfo.dlzs}" type="text"/>
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">其他资质：</label>
-                            <div class="layui-input-inline">
-                                <input class="layui-input" id="qtzz" name="qtzz" th:value="${deviceInfo.qtzz}"
-                                       type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>通讯地址：</label>
-                        <div class="layui-input-block">
-                            <input class="layui-input" id="txdz" lay-verify="required" name="txdz"
-                                   th:value="${deviceInfo.txdz}" type="text"/>
                         </div>
 
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>联系人：</label>
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>设备类别：</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" id="lxr" lay-verify="required" name="lxr"
-                                       th:value="${deviceInfo.lxr}" type="text"/>
+                                <input class="layui-input" id="sblb" lay-verify="required" name="sblb"
+                                       th:value="${deviceInfo.sblb}" type="text"/>
+                                <input class="layui-input" id="id" name="id" th:value="${deviceInfo.id}" type="hidden"/>
+                                <input class="layui-input" id="dlsId" name="dlsId" th:value="${deviceInfo.dlsId}" type="hidden"/>
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">联系电话：</label>
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>产品代码：</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" id="lxdh" name="lxdh" th:value="${deviceInfo.lxdh}"
+                                <input class="layui-input" id="cpdm" lay-verify="required" name="cpdm"
+                                       th:value="${deviceInfo.cpdm}" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>参数描述：</label>
+                        <div class="layui-input-block">
+                            <input class="layui-input" id="csms" lay-verify="required" name="csms"
+                                   th:value="${deviceInfo.csms}" type="text"/>
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">单位：</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" id="dw" name="dw"
+                                       th:value="${deviceInfo.dw}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">数量：</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" id="sl" name="sl" th:value="${deviceInfo.sl}"
+                                       type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>租赁价格：</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" id="znjg" lay-verify="required" name="znjg"
+                                       th:value="${deviceInfo.znjg}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><i style=" color: #ec1a0d;">* </i>维保价格：</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" id="wbjg" name="wbjg" lay-verify="required" th:value="${deviceInfo.wbjg}"
                                        type="text">
                             </div>
                         </div>
@@ -73,7 +85,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">备注：</label>
                         <div class="layui-input-block">
-                            <textarea class="layui-textarea" id="remark" name="remark"
+                            <textarea class="layui-textarea" id="remark" name="remark" th:text="${deviceInfo.remark}"
                                       placeholder="请输入备注"></textarea>
                         </div>
                     </div>

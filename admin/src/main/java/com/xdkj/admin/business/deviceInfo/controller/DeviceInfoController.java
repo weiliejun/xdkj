@@ -70,7 +70,7 @@ public class DeviceInfoController extends AbstractBaseController {
     }
 
     /**
-     * 新增代理商信息页面
+     * 新增设备信息页面
      *
      * @return
      * @Author 魏列军
@@ -90,7 +90,7 @@ public class DeviceInfoController extends AbstractBaseController {
     }
 
     /**
-     * 修改代理商信息页面
+     * 修改设备信息页面
      *
      * @return
      * @Author 魏列军
@@ -140,7 +140,7 @@ public class DeviceInfoController extends AbstractBaseController {
     }
 
     /**
-     * 代理商信息加载页面
+     * 设备信息加载页面
      *
      * @return
      * @Author 魏列军
@@ -155,7 +155,7 @@ public class DeviceInfoController extends AbstractBaseController {
     }
 
     /**
-     * 代理商信息列表
+     * 设备信息列表
      *
      * @return
      * @Author 魏列军
@@ -180,14 +180,14 @@ public class DeviceInfoController extends AbstractBaseController {
         resultMap.put("data", results.getResult());
 
         // 记录查看日志
-        saveBusinessLog("代理商信息管理", "代理商信息列表", "第" + results.getPageNum() + "页list");
+        saveBusinessLog("设备信息管理", "设备信息列表", "第" + results.getPageNum() + "页list");
 
         return resultMap;
     }
 
 
     /**
-     * 新增或修改代理商信息
+     * 新增或修改设备信息
      *
      * @return
      * @Author 魏列军
@@ -208,18 +208,18 @@ public class DeviceInfoController extends AbstractBaseController {
             deviceInfo.setCreateTime(DateHelper.getYMDHMSFormatDate(new Date()));
             deviceInfo = deviceInfoService.addDeviceInfo(deviceInfo);
             resultMap.put("flag", "true");
-            resultMap.put("msg", "代理商信息新增成功");
+            resultMap.put("msg", "设备信息新增成功");
 
             // 记录查看日志
-            saveBusinessLog("代理商信息管理", "新增代理商信息", deviceInfo);
+            saveBusinessLog("设备信息管理", "新增设备信息", deviceInfo);
             return resultMap;
         } else {//编辑
             deviceInfoService.updateDeviceInfo(deviceInfo);
             resultMap.put("flag", "true");
-            resultMap.put("msg", "代理商信息修改成功");
+            resultMap.put("msg", "设备信息修改成功");
 
             // 记录查看日志
-            saveBusinessLog("代理商信息管理", "修改代理商信息", deviceInfo);
+            saveBusinessLog("设备信息管理", "修改设备信息", deviceInfo);
             return resultMap;
         }
 

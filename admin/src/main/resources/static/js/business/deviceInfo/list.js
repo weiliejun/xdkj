@@ -102,7 +102,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
         },
         add: function () {
             //Common.openFrame("/business/deviceInfo/add", "新增人员", '1200px', '1000px');
-            window.location.href = "/deviceInfo/toAdd";
+            window.location.href = PageContext.getUrl("/deviceInfo/toAdd");
         }
     };
 
