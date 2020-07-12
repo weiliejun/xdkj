@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
@@ -16,6 +16,13 @@
                 <form class="layui-form" id="searchForm">
                     <div class="layui-form-item" style="padding-top:0px;">
                         <div class="layui-inline">
+                            <label class="layui-form-label">品牌：</label>
+                            <div class="layui-input-block">
+                                <itech:code property="pp" parentCode="pp" type="select"
+                                            th:value="${pp}"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
                             <label class="layui-form-label">设备类别：</label>
                             <div class="layui-input-block">
                                 <input class="layui-input" id="sblb" name="sblb" placeholder="请输入设备类别" th:value="${sblb}"
@@ -29,13 +36,7 @@
                                        type="text">
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">品牌：</label>
-                            <div class="layui-input-block">
-                                <input class="layui-input" id="pp" name="pp" placeholder="请输入品牌" th:value="${pp}"
-                                       type="text">
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="layui-inline">
