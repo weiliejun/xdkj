@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech" lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>人员信息管理</title>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <fieldset class="layui-elem-field" style="margin:0 0 0 40px;padding:0 40px;">
+            <legend><i class="layui-icon layui-icon-search"></i></legend>
+            <div class="layui-field-box" style="padding-top:15px;">
+                <form class="layui-form" id="searchForm">
+                    <div class="layui-form-item" style="padding-top:0px;">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">姓名：</label>
+                            <div class="layui-input-block">
+                                <input id="name" type="text" name="name" placeholder="请输入姓名" class="layui-input"
+                                       th:value="${name}">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">手机号：</label>
+                            <div class="layui-input-block">
+                                <input id="phone" type="text" name="phone" placeholder="请输入手机号" class="layui-input"
+                                       th:value="${phone}">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">部门：</label>
+                            <div class="layui-input-block">
+                                <itech:code property="dept" parentCode="dept" type="select"
+                                            th:value="${dept}"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">职级：</label>
+                            <div class="layui-input-block">
+                                <itech:code property="rank" parentCode="rank" type="select"
+                                            th:value="${rank}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <input id="type" name="type" type="hidden" th:value="${type}" class="layui-input"/>
+                    <input id="cxmk" name="cxmk" type="hidden" th:value="${cxmk}" class="layui-input"/>
+                    <input id="ryid" name="ryid" type="hidden" th:value="${ryid}" class="layui-input"/>
+
+                    <div class="layui-inline">
+                        <button type="button" class="layui-btn" data-type="search"><i
+                                class="layui-icon layui-icon-search"></i>查询
+                        </button>
+                        <button type="button" class="layui-btn" data-type="searchFormClear"><i
+                                class="layui-icon layui-icon-refresh"></i>清空
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+        <!--<div class="layui-row">-->
+        <div class="layui-row" style="padding:0 40px;">
+            <table class="layui-table recordInfo" id="deviceInfoTables"
+                   lay-filter="deviceInfoTables">
+
+            </table>
+
+            <script id="deviceInfoBar" type="text/html">
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="view"><i
+                        class="layui-icon fa-ban">&#xe705;</i>查看</a>
+            </script>
+            <script type="text/html" id="toolbarDemo">
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+                    <button class="layui-btn layui-btn-sm layui-btn-primary" lay-event="cancel">关闭</button>
+                </div>
+            </script>
+        </div>
+        <!--分页-->
+        <!--<div id="myPage" class="layui-clear"></div>-->
+
+
+    </div>
+</div>
+<!--主体内容结束-->
+
+<script type="text/javascript" th:src="@{/js/business/deviceInfo/selectList.js}"></script>
+<script type="javascript" th:inline="none">
+
+
+</script>
+</body>
+</html>
