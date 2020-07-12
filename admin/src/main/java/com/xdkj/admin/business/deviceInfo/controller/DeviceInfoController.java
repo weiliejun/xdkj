@@ -52,21 +52,17 @@ public class DeviceInfoController extends AbstractBaseController {
     @Value("${resourceServer.AccessURL}")
     private String resourceServerURL;
 
-    private static boolean deleteDir(File dir) {
-        if (dir.isFile()) {
-            if (dir.isDirectory()) {
-                // 递归删除目录中的子目录下
-                String[] children = dir.list();
-                for (int i = 0; i < children.length; i++) {
-                    boolean success = deleteDir(new File(dir, children[i]));
-                    if (!success) {
-                        return false;
-                    }
-                }
-            }
+    @RequestMapping(value = {"/delete/{id}"}, method = {RequestMethod.POST, RequestMethod.GET})
+    public String deleteById(@PathVariable("id") String id) {
+        DeviceInfo deviceInfo = new DeviceInfo();
+        deviceInfo.setId(id);
+        deviceInfo.setDataStatus(GlobalConstant.DATA_INVALID);
+        try {
+            deviceInfoService.updateDeviceInfo(deviceInfo);
+        } catch (Exception e) {
+            logger.error("/delete! id:" + id, e);
         }
-        // 目录此时为空，可以删除
-        return dir.delete();
+        return "forward:/deviceInfo/list";
     }
 
     /**

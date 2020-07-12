@@ -81,8 +81,11 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             window.location.href = PageContext.getUrl("/deviceInfo/get/update/" + data.id);
         } else if (obj.event === 'view') {
             window.location.href = PageContext.getUrl("/deviceInfo/get/view/" + data.id);
-        } else if (obj.event === 'rybgsq') {
-            window.location.href = PageContext.getUrl("/rybgsq/toAdd?ryId=" + data.id);
+        } else if (obj.event === 'delete') {
+            layer.confirm('真的要删除吗？', function (index) {
+            window.location.href = PageContext.getUrl("/deviceInfo/delete/" + data.id);
+                layer.close(index);
+            });
         }
     });
 
