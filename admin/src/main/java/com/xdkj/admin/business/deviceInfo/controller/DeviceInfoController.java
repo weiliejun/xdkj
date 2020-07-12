@@ -78,6 +78,7 @@ public class DeviceInfoController extends AbstractBaseController {
         } else {
             model.addAttribute("deviceInfo", new DeviceInfo());
         }
+
         return "/business/deviceInfo/add";
     }
 
@@ -201,6 +202,7 @@ public class DeviceInfoController extends AbstractBaseController {
             deviceInfo.setDataStatus(GlobalConstant.DATA_VALID);
             deviceInfo.setCreateTime(DateHelper.getYMDHMSFormatDate(new Date()));
             deviceInfo = deviceInfoService.addDeviceInfo(deviceInfo);
+            resultMap.put("dlsId", deviceInfo.getDlsId());
             resultMap.put("flag", "true");
             resultMap.put("msg", "设备信息新增成功");
 
@@ -209,6 +211,7 @@ public class DeviceInfoController extends AbstractBaseController {
             return resultMap;
         } else {//编辑
             deviceInfoService.updateDeviceInfo(deviceInfo);
+            resultMap.put("dlsId", deviceInfo.getDlsId());
             resultMap.put("flag", "true");
             resultMap.put("msg", "设备信息修改成功");
 

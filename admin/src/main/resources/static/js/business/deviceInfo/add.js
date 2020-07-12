@@ -29,6 +29,7 @@ layui.use(['form', 'upload', 'layer', 'laytpl', 'jquery'], function () {
 
     form.on('submit(save)', function (data) {
         console.log(data.field);
+        // alert(JSON.stringify(data.field));
         var ajaxReturnData;
         $.ajax({
             url: PageContext.getUrl('/deviceInfo/addOrUpdate'),
@@ -46,7 +47,11 @@ layui.use(['form', 'upload', 'layer', 'laytpl', 'jquery'], function () {
             // 保存成功后禁用掉保存按钮
             $('#saveButton').addClass('layui-btn-disabled').attr('disabled', "true");
             console.log(PageContext.getUrl("/deviceInfo/list"));
-            window.location.href = PageContext.getUrl("/deviceInfo/list");
+            if(ajaxReturnData.dlsId==null||ajaxReturnData.dlsId==''||ajaxReturnData.dlsId=='undefined') {
+                window.location.href = PageContext.getUrl("/deviceInfo/list");
+            }else{
+                window.location.href = PageContext.getUrl("/dlsInfo/list");
+            }
             //先得到当前iframe层的索引
             //var index = parent.layer.getFrameIndex(window.name);
             //parent.layer.close(index); //再执行关闭

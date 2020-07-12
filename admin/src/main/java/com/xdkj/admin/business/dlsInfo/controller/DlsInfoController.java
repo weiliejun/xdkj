@@ -6,6 +6,7 @@ import com.xdkj.admin.business.dlsInfo.service.DlsInfoService;
 import com.xdkj.admin.web.base.AbstractBaseController;
 import com.xdkj.common.components.filesync.FileSynchronizer;
 import com.xdkj.common.constant.GlobalConstant;
+import com.xdkj.common.model.deviceInfo.bean.DeviceInfo;
 import com.xdkj.common.model.dlsInfo.bean.DlsInfo;
 import com.xdkj.common.model.sysManager.bean.SysManager;
 import com.xdkj.common.util.DateHelper;
@@ -87,6 +88,15 @@ public class DlsInfoController extends AbstractBaseController {
             model.addAttribute("dlsInfo", new DlsInfo());
         }
         return "/business/dlsInfo/add";
+    }
+
+    @RequestMapping(value = {"/lrkcsb/toAdd"}, method = RequestMethod.GET)
+    public String lrkcsb(Model model, @RequestParam(value = "dlsId", required = false) String dlsId, HttpServletRequest request) {
+        DeviceInfo deviceInfo=new DeviceInfo();
+        deviceInfo.setDlsId(dlsId);
+        model.addAttribute("deviceInfo", deviceInfo);
+
+        return "/business/deviceInfo/add";
     }
 
     /**

@@ -75,8 +75,8 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             window.location.href = PageContext.getUrl("/dlsInfo/get/update/" + data.id);
         } else if (obj.event === 'view') {
             window.location.href = PageContext.getUrl("/dlsInfo/get/view/" + data.id);
-        } else if (obj.event === 'rybgsq') {
-            window.location.href = PageContext.getUrl("/rybgsq/toAdd?ryId=" + data.id);
+        } else if (obj.event === 'lrkcsb') {
+            window.location.href = PageContext.getUrl("/dlsInfo/lrkcsb/toAdd?dlsId=" + data.id);
         }
     });
 
