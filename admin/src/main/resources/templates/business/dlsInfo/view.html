@@ -74,23 +74,27 @@
                         </colgroup>
                         <thead>
                         <tr class="layui-bg-gray">
-                            <th width="15%">产品名称</th>
-                            <th width="15%">业务类型</th>
-                            <th width="15%">产品规模</th>
-                            <th width="15%">产品期限</th>
-                            <th width="15%">预期收益</th>
-                            <th width="15%">当前状态</th>
+                            <th width="12%">品牌</th>
+                            <th width="12%">设备类别</th>
+                            <th width="12%">产品代码</th>
+                            <th width="12%">参数描述</th>
+                            <th width="12%">单位</th>
+                            <th width="12%">数量</th>
+                            <th width="12%">租赁价格</th>
+                            <th width="12%">维保价格</th>
                         </tr>
                         </thead>
                         <tbody>
                         {{# layui.each(d, function(index, xmItem){ }}
                         <tr>
-                            <td>{{ xmItem.cpmc }}</td>
-                            <td>{{ xmItem.ywlx }}</td>
-                            <td>{{ xmItem.cpgm }}</td>
-                            <td>{{ xmItem.cpqx }}</td>
-                            <td>{{ xmItem.yqsy }}</td>
-                            <td>{{ xmItem.xmjd }}</td>
+                            <td>{{ xmItem.pp }}</td>
+                            <td>{{ xmItem.sblb }}</td>
+                            <td>{{ xmItem.cpdm }}</td>
+                            <td>{{ xmItem.csms }}</td>
+                            <td>{{ xmItem.dw }}</td>
+                            <td>{{ xmItem.sl }}</td>
+                            <td>{{ xmItem.znjg }}</td>
+                            <td>{{ xmItem.wbjg }}</td>
                         </tr>
                         {{# }); }}
                         {{# if(d.length === 0){ }}

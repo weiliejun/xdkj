@@ -7,7 +7,7 @@ layui.use(['form', 'upload', 'layer', 'laytpl', 'jquery'], function () {
         layer = layui.layer;
     $(function () {
         $.ajax({
-            url: PageContext.getUrl("/dlsInfo/detail/" + $("#id").val()),
+            url: PageContext.getUrl("/deviceInfo/detail/" + $("#id").val()),
             type: 'post',
             async: false,
             success: function (data) {

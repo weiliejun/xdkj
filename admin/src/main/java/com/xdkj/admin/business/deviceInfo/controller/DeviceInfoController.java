@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName DeviceInfoController
@@ -122,7 +119,9 @@ public class DeviceInfoController extends AbstractBaseController {
         String flag = "true", msg = "获取成功";
         try {
             Map<String, Object> params = new HashMap<String, Object>();
-            params.put("ryid", id);
+            params.put("dlsId", id);
+            List<DeviceInfo> xmInfo = deviceInfoService.listDeviceInfoByParams(params);
+            resultMap.put("data", xmInfo);
         } catch (Exception e) {
             logger.error("异常");
             flag = "false";
