@@ -8,7 +8,6 @@ import com.xdkj.common.components.filesync.FileSynchronizer;
 import com.xdkj.common.constant.GlobalConstant;
 import com.xdkj.common.model.sysManager.bean.SysManager;
 import com.xdkj.common.model.user.bean.UserInfo;
-import com.xdkj.common.util.DateHelper;
 import com.xdkj.common.util.StringHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -195,7 +194,7 @@ public class UserInfoController extends AbstractBaseController {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         SysManager currentManager = getSessionSysManager();
         //新增
-        if (userInfo.getId()==null) {
+        if (userInfo.getId() == null) {
             //设置初始化值
             // 数据有效
             userInfo.setDataStatus(GlobalConstant.DATA_VALID);
