@@ -122,39 +122,39 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
                 parent.layer.close(index);
 
         }
-        ;
+
     });
 
     //点击table行选中复选框  开始////
-    $(document).on("click",".layui-table-body table.layui-table tbody tr",function(){
+    $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
         var obj = event ? event.target : event.srcElement;
         var tag = obj.tagName;
         var checkbox = $(this).find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
-        if(checkbox.length!=0){
-            if(tag == 'DIV') {
+        if (checkbox.length != 0) {
+            if (tag == 'DIV') {
                 checkbox.click();
             }
         }
 
     });
 
-    $(document).on("click","td div.laytable-cell-checkbox div.layui-form-checkbox",function(e){
+    $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
         e.stopPropagation();
     });
 
-    $(document).on("click",".layui-table-body table.layui-table tbody tr",function(){
+    $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
         var obj = event ? event.target : event.srcElement;
         var tag = obj.tagName;
         var radio = $(this).find("td div.laytable-cell-radio div.layui-form-radio I");
-        if(radio.length!=0){
-            if(tag == 'DIV') {
+        if (radio.length != 0) {
+            if (tag == 'DIV') {
                 radio.click();
             }
         }
 
     });
 
-    $(document).on("click","td div.laytable-cell-radio div.layui-form-radio",function(e){
+    $(document).on("click", "td div.laytable-cell-radio div.layui-form-radio", function (e) {
         e.stopPropagation();
     });
     //点击table行选中复选框 结束////

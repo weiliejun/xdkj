@@ -83,7 +83,7 @@ layui.use(['layer', 'laydate', 'form', 'table'], function () {
             window.location.href = PageContext.getUrl("/deviceInfo/get/view/" + data.id);
         } else if (obj.event === 'delete') {
             layer.confirm('真的要删除吗？', function (index) {
-            window.location.href = PageContext.getUrl("/deviceInfo/delete/" + data.id);
+                window.location.href = PageContext.getUrl("/deviceInfo/delete/" + data.id);
                 layer.close(index);
             });
         }
