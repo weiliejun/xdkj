@@ -15,5 +15,6 @@ public interface ApplicationSessionKeys {
     public static final String SYS_MESSAGE_NUMS_COUNT = "SYS_MESSAGE_NUMS_COUNT_PC";
     //session存储的用户信息
     public static final String CURRENT_USER = "currentUser";
+    public static final String IS_LOGIN = "IS_LOGIN";
 
 }

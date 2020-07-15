@@ -45,7 +45,7 @@
     <script type="text/javascript" th:inline="javascript">
         // 判断是否登陆
         /*<![CDATA[*/
-        var isLogin = [[${session.isLogin}]];
+        var isLogin = [[${session.IS_LOGIN}]] ;
         /*系统消息总数*/
         var sysMessageCounts = [[${session.SYS_MESSAGE_NUMS_COUNT_PC}]];
         if (isLogin == "true") {

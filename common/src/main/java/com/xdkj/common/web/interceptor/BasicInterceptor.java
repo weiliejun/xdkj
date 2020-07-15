@@ -33,12 +33,12 @@ public class BasicInterceptor extends HandlerInterceptorAdapter {
         logger.info("basePath ：" + basePath);
 
         //添加登录标识
-        SessionUser sessionUser = null;
+        /*SessionUser sessionUser = null;
         if (sessionUser != null) {
             request.getSession().setAttribute("isLogin", "true");
         } else {
             request.getSession().setAttribute("isLogin", "false");
-        }
+        }*/
         return true;
     }
 

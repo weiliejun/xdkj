@@ -51,7 +51,11 @@ public class LoginController extends AbstractBaseController {
         String ip = IpHelper.getClientIpAddress(request);
         // 登录
         Map<String, String> result = userInfoService.login(userName, password, ip, sid, exitVerifyCode, validateCode);
-
+        if (result.get("flag") != null && result.get("flag").equalsIgnoreCase("true")) {
+            request.getSession().setAttribute(ApplicationSessionKeys.IS_LOGIN, "true");
+        }else{
+            request.getSession().setAttribute(ApplicationSessionKeys.IS_LOGIN, "false");
+        }
         /**
          * session系统消息总数
          */

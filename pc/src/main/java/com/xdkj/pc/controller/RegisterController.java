@@ -50,8 +50,8 @@ public class RegisterController extends AbstractBaseController {
     public Map<String, ?> register(HttpServletRequest request, @RequestParam(value = "mobile", required = true) String mobile,
                                    @RequestParam(value = "password", required = true) String password,
                                    @RequestParam(value = "nickName", required = true) String nickName,
-                                   @RequestParam(value = "validateCode", required = true) String validateCode,
-                                   @RequestParam(value = "remoteValidateCode", required = true) String remoteValidateCode) {
+                                   @RequestParam(value = "validateCode", required = true) String validateCode/*,
+                                   @RequestParam(value = "remoteValidateCode", required = true) String remoteValidateCode*/) {
         // 获取session中存放短信验证码、图形验证码
         String exitSmsCodeSession = (String) request.getSession().getAttribute(ApplicationSessionKeys.SMS_VERIFY_CODE);
         String exitValidateCode = (String) request.getSession().getAttribute(ApplicationSessionKeys.LOGIN_VERIFYCODE);
@@ -67,13 +67,13 @@ public class RegisterController extends AbstractBaseController {
             return resultMap;
         }
         // 校验4：短信验证码是否正确
-        if (StringHelper.isEmpty(exitSmsCodeSession) || !exitSmsCodeSession.equals(remoteValidateCode)) {
+        /*if (StringHelper.isEmpty(exitSmsCodeSession) || !exitSmsCodeSession.equals(remoteValidateCode)) {
             resultMap.put("flag", ResultCode.SMS_CODE_ERROR.code());
             resultMap.put("msg", ResultCode.SMS_CODE_ERROR.message());
             return resultMap;
-        }
+        }*/
         //校验：短信验证码是否过期
-        Map<String, String> param = new HashMap<String, String>();
+        /*Map<String, String> param = new HashMap<String, String>();
         param.put("mobile", mobile);
         param.put("busiType", "register");
         param.put("type", "sms");
@@ -82,7 +82,7 @@ public class RegisterController extends AbstractBaseController {
             resultMap.put("flag", ResultCode.SMS_CODE_TIMEOUT.code());
             resultMap.put("msg", ResultCode.SMS_CODE_TIMEOUT.message());
             return resultMap;
-        }
+        }*/
         // ============ 业务区2：提交注册信息 ===============
         resultMap = userInfoService.userRegisterSubmit(mobile, password, nickName);
 

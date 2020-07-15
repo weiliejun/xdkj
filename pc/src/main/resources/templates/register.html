@@ -42,14 +42,14 @@
                     <span><img class="verifyCodeImage" alt="" style="display: none;"></span>
                     <label id="verifyCodeError" for="validateCode" class="error" style="display: none;"></label>
                 </li>
-                <li class="clearfix">
+                <!--<li class="clearfix">
                     <span class="regiTit">短信验证码</span>
                     <input type="text" class="form-control yzmInput" id="remoteValidateCode" name="remoteValidateCode"
                            placeholder="短信验证码" value=""/>
                     <a id="sendremotecodebutton" href="javascript:;" class="getReYzm btnEnabled">获取短信验证码</a>
                     <label id="remoteValidateCodeError" for="remoteValidateCode" class="error"
                            style="display: none;"></label>
-                </li>
+                </li>-->
             </ul>
             <div class="readTip">
                 <input type="checkbox" name="protocol" id="protocol" class="" style="margin-right: 5px;">我已阅读并同意
@@ -118,11 +118,11 @@
                     minlength : 4,
                     maxlength : 4
                 },
-                remoteValidateCode : {
+                /*remoteValidateCode : {
                     required : true,
                     minlength : 6,
                     maxlength : 6
-                },
+                },*/
                 protocol : {
                     required : true
                 }
@@ -150,11 +150,11 @@
                     minlength: '<img src="/images/loginNO.png" alt="">' + " 验证码错误",
                     maxlength: '<img src="/images/loginNO.png" alt="">' + " 验证码错误"
                 },
-                remoteValidateCode: {
+                /*remoteValidateCode: {
                     required: '<img src="/images/loginNO.png" alt="">' + " 请输入短信验证码",
                     minlength: '<img src="/images/loginNO.png" alt="">' + " 短信验证码错误",
                     maxlength: '<img src="/images/loginNO.png" alt="">' + " 短信验证码错误"
-                },
+                },*/
                 protocol : {
                     required : '<img src="/images/loginNO.png" alt="">'+" 请仔细阅读网站协议"
                 },
@@ -187,9 +187,9 @@
                         if (flag == '10003') {
                             $('#verifyCodeError').html('<img src="/images/loginNO.png">'+' '+message).show();
                         }
-                        if (flag == '10004' || flag == '10005' ) {
+                        /*if (flag == '10004' || flag == '10005' ) {
                             $('#remoteValidateCodeError').html('<img src="/images/loginNO.png">'+' '+message).show();
-                        }
+                        }*/
                         return true;
                     }
                 },

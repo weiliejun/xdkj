@@ -1,4 +1,4 @@
-layui.use(['layer', 'form', 'table'], function() {
+layui.use(['layer', 'form', 'table','jquery'], function() {
     var $ = layui.$,
         layer = layui.layer,
         table = layui.table,

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>IT服务网-关于我们</title>
-    <link rel="stylesheet" type="text/css" href="css/bigerIndex.css"/>
+    <link href="css/bigerIndex.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <!-- 头部公共 start -->
@@ -31,7 +31,25 @@
             <div class="aboutBigEvery">
                 <img src="/images/companyProfile.jpg"/>
             </div>
+            <div class="paasContent iaasTop">
+                <div class="paasLeft">
+                    <h3>公司定位</h3>
+                    <div class="detailsIntroduce">
+                        <p>通过线上线下相结合的方式解决IT行业里中小企业面临的痛点</p>
+                    </div>
+                </div>
+            </div>
+            <div class="paasContent iaasTop">
+                <div class="paasLeft">
+                    <h3>项目介绍</h3>
+                    <div class="detailsIntroduce">
+                        <p>
+                            从事IT行业的中小企业目前存在资金短缺、季度底压货、库存周转周期长、死库占压资金且很难出售，库存及运输成本越来越高、缺少专业的法务人员控制经营风险、非公司主营IT产品配置报价不熟悉、缺少适合的ERP管理软件，我们为了解决以上问题提供一站式企业服务</p>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 
     <!--part2-->
@@ -45,6 +63,26 @@
             </div>
             <div class="aboutBigEvery">
                 <img src="/images/serviceConcept.jpg"/>
+            </div>
+            <div class="paasContent iaasTop">
+                <div class="paasLeft">
+                    <h3>市场</h3>
+                    <div class="detailsIntroduce">
+                        <p>市场容量有多大，饼画起来是不是足够诱人?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="paasContent iaasTop">
+                <div class="paasLeft">
+                    <h3>客户</h3>
+                    <div class="detailsIntroduce">
+                        <p>
+                            目前已知全国华为渠道数量、华三渠道数量…所有软硬件IT厂家的渠道全部是我服务的对象，企业数量不低于xx家
+                            其实所有从事IT行业的渠道全部是我的客户
+                            同时所有IT厂家销售也是我的潜在客户
+                            最终客户同样也是我的潜在客户</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -61,6 +99,24 @@
             <div class="aboutBigEvery">
                 <img src="/images/proTeam.jpg"/>
             </div>
+            <div class="paasContent iaasTop">
+                <div class="paasLeft">
+                    <h3>团队</h3>
+                    <div class="detailsIntroduce">
+                        <p>谁来做？为什么是你？</p>
+                    </div>
+                </div>
+            </div>
+            <div class="paasContent iaasTop">
+                <div class="paasLeft">
+                    <h3>公司创始人李伟</h3>
+                    <div class="detailsIntroduce">
+                        <p>
+                            IT从业经历15年，05年-13年就职于和光、佳杰和佳都三家总代级大型IT分销公司，主要负责IT分销、产品运营、项目管理及渠道沟通等；13年-16年就职于华三公司负责行业销售工作、17年-19年就职于东软集团负责IT集成业务，三段经历覆盖了厂家、总代、集成商三个业务环节并熟悉分销渠道的商业操作模式。
+                            三段经历也使得我更了解IT生意的每个环节以及每个环节代理商所存在的痛点，针对这些痛点也就应运而生目前的创业公司。</p>
+                    </div>
+                </div>
+            </div>
             <!--<ul class="teamList clearfix">
                 <li><img src="/images/teamImg1.jpg" /></li>
                 <li><img src="/images/teamImg2.jpg" /></li>
@@ -75,18 +131,18 @@
 <div th:replace="common/footer :: commonFooter"></div>
 <!-- 公共底部 end -->
 <script type="text/javascript">
-        /*初始化地图*/
-        $(function(){
-            // 百度地图API功能
-            var map = new BMap.Map('map_box');
-            var point = new BMap.Point(116.435212,39.913839);
-            map.centerAndZoom(point, 15);
-            //map.centerAndZoom(new BMap.Point(116.435212,39.913839), 15);
-            var marker = new BMap.Marker(point);  // 创建标注
-            map.addOverlay(marker);               //将标注添加到地图中
-            marker.setAnimation(BMAP_ANIMATION_BOUNCE);
-            map.enableScrollWheelZoom(true);
-        });
+    /*初始化地图*/
+    $(function () {
+        // 百度地图API功能
+        var map = new BMap.Map('map_box');
+        var point = new BMap.Point(116.435212, 39.913839);
+        map.centerAndZoom(point, 15);
+        //map.centerAndZoom(new BMap.Point(116.435212,39.913839), 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker);               //将标注添加到地图中
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+        map.enableScrollWheelZoom(true);
+    });
 
 
 </script>
