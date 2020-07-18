@@ -150,6 +150,8 @@ public class AppointmentController extends AbstractBaseController {
             appointment.setStatus("1"); //（联系-0，未联系-1）
             appointment.setCreateTime(new Date());
             appointment.setDataStatus("0");
+            appointment.setCustomerName(userInfo.getNickName());
+            appointment.setCustomerPhone(userInfo.getMobile());
             customerAppointmentService.addCustomerAppointment(appointment);
 
         } catch (Exception e) {

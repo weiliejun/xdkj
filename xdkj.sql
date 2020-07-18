@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80016
 File Encoding         : 65001
 
-Date: 2020-07-12 08:27:36
+Date: 2020-07-18 11:22:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -117,7 +117,7 @@ CREATE TABLE `customer_appointment` (
   `CREATE_TIME` datetime NOT NULL COMMENT '创建时间 yyyy-mm-dd hh24:mi:ss',
   `UPDATE_TIME` datetime DEFAULT NULL COMMENT '修改时间 yyyy-mm-dd hh24:mi:ss',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='CUSTOMER_APPOINTMENT 客户预约表* ';
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='CUSTOMER_APPOINTMENT 客户预约表* ';
 
 -- ----------------------------
 -- Records of customer_appointment
@@ -164,6 +164,74 @@ INSERT INTO `customer_appointment` VALUES ('67', '8', 'xx0001', '15736880002', '
 INSERT INTO `customer_appointment` VALUES ('68', '8', 'xx0001', '15736880001', 'weatherQuery', null, '1', '0', '2019-03-13 14:29:40', null);
 INSERT INTO `customer_appointment` VALUES ('69', '8', 'xx0001', '15736880002', 'weatherQuery', null, '1', '0', '2019-03-13 16:29:47', null);
 INSERT INTO `customer_appointment` VALUES ('70', '2', '五五开', '15039087799', 'mobileNumberPlaceQuery', null, '1', '0', '2019-05-14 17:16:59', null);
+INSERT INTO `customer_appointment` VALUES ('71', '30', null, null, 'consulting', '我要语音', '1', '0', '2020-07-18 08:54:36', null);
+
+-- ----------------------------
+-- Table structure for device_info
+-- ----------------------------
+DROP TABLE IF EXISTS `device_info`;
+CREATE TABLE `device_info` (
+  `ID` varchar(50) NOT NULL COMMENT '客户唯一表示符',
+  `DLS_ID` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户真实姓名',
+  `SBLB` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '昵称',
+  `CPDM` varchar(50) DEFAULT NULL,
+  `CSMS` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '手机号码',
+  `DW` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '实名认证状态 （0-实名，1-未实名） ',
+  `SL` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '终端类型（0-pc,  1-android, 2- ios）',
+  `ZNJG` varchar(50) DEFAULT NULL,
+  `WBJG` varchar(50) DEFAULT NULL,
+  `PP` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `DATA_STATUS` char(1) NOT NULL COMMENT '数据有效性（0-有效，1-无效）',
+  `CREATE_TIME` char(19) NOT NULL COMMENT '创建时间yyyy-mm-dd hh:mm:ss',
+  `UPDATE_TIME` char(19) DEFAULT NULL COMMENT '更新时间',
+  `REMARK` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '备注信息',
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='USER_INFO 用户信息表*\r\n日期：2019-01-09\r\n系统表：否\r\n主要使用功';
+
+-- ----------------------------
+-- Records of device_info
+-- ----------------------------
+INSERT INTO `device_info` VALUES ('1', '29', '123', 'ww', '18500000010', 'ee', 'rr', 'fd', 'df', 'fd', '0', '2017-06-17 10:18:14', '2019-05-20 16:26:04', null);
+INSERT INTO `device_info` VALUES ('10', '29', '185000000_11', 'err', '18500000011', '1', 'pc', 'dfg', 'gdfg', 'fdf', '0', '2019-01-22 02:54:27', null, null);
+INSERT INTO `device_info` VALUES ('12', '29', '185_0001', 'ewrewr', '18500000001', '1', 'pc', 'dfg', 'dfg', 'dfg', '0', '2019-01-25 15:35:00', null, null);
+INSERT INTO `device_info` VALUES ('2', null, '2019test', null, '15039087799', '1', '0', null, null, null, '0', '2019-01-16 00:05:13', '2019-05-17 16:07:53', null);
+INSERT INTO `device_info` VALUES ('20', null, 'zhongdatest', null, '13683380876', '1', 'pc', null, null, null, '0', '2019-02-28 15:55:38', null, null);
+INSERT INTO `device_info` VALUES ('20071217035952022557', '', 'www', 'www', 'wwww', 'www', 'www', 'www', 'www', 'H3C', '0', '2020-07-12 17:03:59', null, 'www');
+INSERT INTO `device_info` VALUES ('20071222164864641575', '', '34', '435', '345', '345', '345', '345', '345', 'H3C', '0', '2020-07-12 22:16:48', null, '34554');
+INSERT INTO `device_info` VALUES ('20071222205945877064', '29', 'er4', '345', '345', '435', '345', '345', '53', 'H3C', '0', '2020-07-12 22:20:59', null, '345');
+INSERT INTO `device_info` VALUES ('20071222244508377799', '29', '354', '345', '345', '345', '345', '435', '345', 'HW', '0', '2020-07-12 22:24:45', null, '345');
+INSERT INTO `device_info` VALUES ('20071222253412624035', '29', 'rew', 'ewr', 'ewr', 'rew', 'rew', 'ewr', 'wer', 'H3C', '0', '2020-07-12 22:25:34', null, 'ewr');
+INSERT INTO `device_info` VALUES ('20071222272224486124', '29', '34', '234', '324', '234', '234', '2343', '234', 'HW', '0', '2020-07-12 22:27:22', null, '32');
+INSERT INTO `device_info` VALUES ('20071222282331499331', '29', 'ew', 'ewr', 'ewr', 'ewr', 'ewrew', 'ewr', 'rew', '浪潮', '0', '2020-07-12 22:28:23', null, 'ewrrew');
+INSERT INTO `device_info` VALUES ('20071222295439674042', '29', 'ewr', 'wer', 'ewr', 'ewr', 'ewr', 'ewr', 'ewr', 'HW', '0', '2020-07-12 22:29:54', null, 'ewr');
+INSERT INTO `device_info` VALUES ('20071222313039959074', '29', '345', '54', '345', '35', '345', '5', '54', '浪潮', '0', '2020-07-12 22:31:30', null, '5');
+INSERT INTO `device_info` VALUES ('20071222322212790612', '29', '34', '4', '4', '4', '4', '4', '4', 'CISCO', '0', '2020-07-12 22:32:22', null, '4');
+INSERT INTO `device_info` VALUES ('20071222343953717759', '29', 'ewr', 'ewr', 'ewr', 'erw', 'erw', 'rew', 'rew', '曙光', '0', '2020-07-12 22:34:39', null, 'rew');
+INSERT INTO `device_info` VALUES ('20071222355778640330', '29', '54', '546', '546', '546', '54', '546', '546', '曙光', '0', '2020-07-12 22:35:57', null, '56');
+INSERT INTO `device_info` VALUES ('20071222373561936662', '29', '34', '54', '345', '5', '345', '54', '5', '浪潮', '0', '2020-07-12 22:37:35', null, '34');
+INSERT INTO `device_info` VALUES ('20071222383363842452', '29', '43', '345', '345', '345', '345', '34', '345', 'CISCO', '0', '2020-07-12 22:38:33', null, '34');
+INSERT INTO `device_info` VALUES ('20071222411234027909', '29', 'ew', '345', '345', '345', '435', '345', '5', 'H3C', '0', '2020-07-12 22:41:12', null, '54');
+INSERT INTO `device_info` VALUES ('20071222421086285292', '29', '34', '345', '345', '45', '345', '35', '3', 'HW', '0', '2020-07-12 22:42:10', null, '35');
+INSERT INTO `device_info` VALUES ('20071222430486339724', '29', '4', '4', '4', '4', '4', '4', '4', 'HW', '0', '2020-07-12 22:43:04', null, '4');
+INSERT INTO `device_info` VALUES ('20071222433284282470', '', '4', '4', '4', '4', '4', '4', '4', 'HW', '0', '2020-07-12 22:43:32', null, '4');
+INSERT INTO `device_info` VALUES ('20071222450016885400', '', '34', '345', '345', '345', '345', '345', '345', 'HW', '0', '2020-07-12 22:45:00', null, '345');
+INSERT INTO `device_info` VALUES ('20071222451887846092', '29', '345', '345', '345', '345', '345', '345', '345', 'CISCO', '0', '2020-07-12 22:45:18', null, '345');
+INSERT INTO `device_info` VALUES ('20071222454625081400', '29', '345', '345', '345', '345', '345', '345', '345', 'HW', '0', '2020-07-12 22:45:46', null, '345');
+INSERT INTO `device_info` VALUES ('21', null, 'Coopertest001', null, '18810267986', '1', 'pc', null, null, null, '0', '2019-03-05 15:42:09', null, null);
+INSERT INTO `device_info` VALUES ('22', null, 'xiaoxu0001', null, '15736880001', '1', 'pc', null, null, null, '0', '2019-03-14 09:35:12', null, null);
+INSERT INTO `device_info` VALUES ('23', null, 'xiaoxu0003', null, '15736880003', '1', 'pc', null, null, null, '0', '2019-03-14 10:20:36', '2019-03-14 10:23:18', null);
+INSERT INTO `device_info` VALUES ('24', null, 'test18519', null, '18500000019', '1', 'pc', null, null, null, '1', '2019-03-27 16:30:44', null, null);
+INSERT INTO `device_info` VALUES ('25', null, 'lv111n123', null, '45521111112', '1', 'pc', null, null, null, '0', '2019-05-21 09:01:19', '2019-05-21 09:08:28', null);
+INSERT INTO `device_info` VALUES ('26', null, 'lvjian111', null, '13593262111', '1', 'mobile', null, null, null, '0', '2019-05-21 09:09:54', '2019-05-23 10:54:04', null);
+INSERT INTO `device_info` VALUES ('27', null, 'lj741852963', null, '', '1', 'pc', null, null, null, '1', '2019-05-23 17:00:50', '2019-05-24 15:23:22', null);
+INSERT INTO `device_info` VALUES ('28', null, 'l111111110', null, '13593262311', '1', 'mobile', null, null, null, '1', '2019-05-23 17:32:24', '2019-05-24 13:38:08', null);
+INSERT INTO `device_info` VALUES ('29', '543', 'lvjian191', 'ert', '13593262370', 'ee', 'ee', 'e', 'e', '锐捷', '0', '2019-05-23 17:42:25', '2019-05-24 15:33:09', 'sdfsdf的感受得到广泛');
+INSERT INTO `device_info` VALUES ('3', null, 'test0002', null, '15039087758', '1', '0', null, null, null, '0', '2019-01-16 00:19:32', null, null);
+INSERT INTO `device_info` VALUES ('4', null, 'test000008', null, '15555555555', '1', '0', null, null, null, '0', '2019-01-16 04:08:15', null, null);
+INSERT INTO `device_info` VALUES ('6', null, 'test0001', null, '18800000002', '1', 'pc', null, null, null, '1', '2019-01-18 02:12:08', null, null);
+INSERT INTO `device_info` VALUES ('7', null, 'test0003', null, '18800000003', '1', 'pc', null, null, null, '0', '2019-01-18 02:22:26', '2019-02-14 17:55:01', null);
+INSERT INTO `device_info` VALUES ('8', 'xx0001', 'xiaoxu0002', null, '15736880002', '1', 'pc', null, null, null, '0', '2019-01-21 02:09:25', '2019-03-13 09:46:48', null);
+INSERT INTO `device_info` VALUES ('9', null, 'kelezhang', null, '17700000243', '1', 'pc', null, null, null, '0', '2019-01-21 20:52:52', '2019-02-18 10:30:36', null);
 
 -- ----------------------------
 -- Table structure for dls_info
@@ -201,7 +269,7 @@ INSERT INTO `dls_info` VALUES ('25', null, 'lv111n123', '45521111112', '5B1D3ABB
 INSERT INTO `dls_info` VALUES ('26', null, 'lvjian111', '13593262111', '85BF5831E593431E882887E077400B7F', null, '1', 'mobile', '0', '2019-05-21 09:09:54', '2019-05-23 10:54:04', null);
 INSERT INTO `dls_info` VALUES ('27', null, 'lj741852963', '', '9BFF531B7A7688E082AC4FFFF1963BD3', null, '1', 'pc', '0', '2019-05-23 17:00:50', '2019-05-24 15:23:22', null);
 INSERT INTO `dls_info` VALUES ('28', null, 'l111111110', '13593262311', '0F57D528CE79781B80711ABD332D850E', null, '1', 'mobile', '0', '2019-05-23 17:32:24', '2019-05-24 13:38:08', null);
-INSERT INTO `dls_info` VALUES ('29', '543', 'lvjian191', '13593262370', '85BF5831E593431E882887E077400B7F', '345345都是的方式地方', '1365022588796', 'mobile', '0', '2019-05-23 17:42:25', '2019-05-24 15:33:09', '');
+INSERT INTO `dls_info` VALUES ('29', '543', 'lvjian191', '13593262370', '85BF5831E593431E882887E077400B7F', '345345都是的方式地方都是的方式地方都是的方式地方', '1365022588796', 'mobile', '0', '2019-05-23 17:42:25', '2019-05-24 15:33:09', 'sdf');
 INSERT INTO `dls_info` VALUES ('3', null, 'test0002', '15039087758', '85BF5831E593431E882887E077400B7F', null, '1', '0', '0', '2019-01-16 00:19:32', null, null);
 INSERT INTO `dls_info` VALUES ('4', null, 'test000008', '15555555555', '85BF5831E593431E882887E077400B7F', null, '1', '0', '0', '2019-01-16 04:08:15', null, null);
 INSERT INTO `dls_info` VALUES ('6', null, 'test0001', '18800000002', '85BF5831E593431E882887E077400B7F', null, '1', 'pc', '1', '2019-01-18 02:12:08', null, null);
@@ -831,7 +899,7 @@ CREATE TABLE `service_info` (
   `UPDATE_TIME` datetime DEFAULT NULL COMMENT '修改时间 yyyy-mm-dd hh24:mi:ss',
   `SERVICE_LOGO` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='MBIGER_SERVICE  众大服务表*';
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='MBIGER_SERVICE  众大服务表*';
 
 -- ----------------------------
 -- Records of service_info
@@ -865,9 +933,13 @@ INSERT INTO `service_info` VALUES ('27', 'TrustWebsiteSeal', '网站可信认证
 INSERT INTO `service_info` VALUES ('28', 'SoftwareCopyrightApply', '软件著作权申请', 'CUSTOMIZATION', '0', '软件著作权申请', '软件著作权申请', 'test.txt', '0', '2019-01-24 13:27:08', '2019-02-20 14:41:51', null);
 INSERT INTO `service_info` VALUES ('29', 'tradeMarkRegistration', '公司/商标注册', 'CUSTOMIZATION', '0', '公司/商标注册', '公司/商标注册', 'test.txt', '0', '2019-01-24 13:27:08', '2019-02-20 14:41:51', null);
 INSERT INTO `service_info` VALUES ('30', 'outsourcingService', '开发短期外包服务', 'CUSTOMIZATION', '0', '公司人员开发外派短期外包服务', '公司人员外派短期外包服务', 'test.txt', '0', '2019-01-24 13:27:08', '2019-02-20 14:41:51', null);
-INSERT INTO `service_info` VALUES ('31', 'ttttt0', 'ttttt0', 'SAAS', '0', 'ttttt0ttttt0ttttt0', 'ttttt0ttttt0ttttt0ttttt0', 'ttttt0ttttt0ttttt0ttttt0', '1', '2019-03-13 18:01:21', null, null);
 INSERT INTO `service_info` VALUES ('32', 'api', 'api调用', 'SAAS', '0', 'ceshi     ceshi', 'ceshi           ceshi', 'ceshi         ceshi', '0', '2019-03-14 11:40:54', null, null);
-INSERT INTO `service_info` VALUES ('33', 'api', 'api调用', 'CUSTOMIZATION', '0', 'cddddddd', 'dddddddddddddd', 'dddddddddd', '1', '2019-03-14 13:35:25', null, null);
+INSERT INTO `service_info` VALUES ('33', 'wyrz', '我要融资', 'ZJPT', '0', '我要融资', '为客户提供融资服务', null, '0', '2020-07-18 09:04:35', null, null);
+INSERT INTO `service_info` VALUES ('34', 'gxkf', '我要租库房', 'GXKF', '0', '共享库房', '共享库房', '', '0', '2020-07-18 09:04:35', '2020-07-18 09:53:18', '');
+INSERT INTO `service_info` VALUES ('35', 'gxfwpt', '我要法务服务', 'GXFWPT', '0', '共享法务平台', '共享法务平台', '', '0', '2020-07-18 09:04:35', '2020-07-18 09:53:18', '');
+INSERT INTO `service_info` VALUES ('36', 'sbxx', '我要设备选型', 'SBXX', '0', '设备选型', '设备选型', '', '0', '2020-07-18 09:04:35', '2020-07-18 09:53:18', '');
+INSERT INTO `service_info` VALUES ('37', 'sbzn', '我要租赁设备', 'SBZN', '0', '设备租赁', '设备租赁', '', '0', '2020-07-18 09:04:35', '2020-07-18 09:53:18', '');
+INSERT INTO `service_info` VALUES ('38', 'sbwb', '我要维保\r', 'SBWB', '0', '设备维保\r', '设备维保\r', '', '0', '2020-07-18 09:04:35', '2020-07-18 09:53:18', '');
 
 -- ----------------------------
 -- Table structure for sys_business_log
@@ -886,7 +958,7 @@ CREATE TABLE `sys_business_log` (
   `REMARK` varchar(4000) DEFAULT NULL,
   `IP` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='业务日志表（充值、查询）';
+) ENGINE=InnoDB AUTO_INCREMENT=365 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='业务日志表（充值、查询）';
 
 -- ----------------------------
 -- Records of sys_business_log
@@ -967,6 +1039,294 @@ INSERT INTO `sys_business_log` VALUES ('73', '1', 'sysadmin', '系统管理员',
 INSERT INTO `sys_business_log` VALUES ('74', '1', 'sysadmin', '系统管理员', 'b963f1d0-d217-444d-9a87-f2ce10dce6e3', '2020-07-11 20:08:45', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
 INSERT INTO `sys_business_log` VALUES ('75', '1', 'sysadmin', '系统管理员', 'b963f1d0-d217-444d-9a87-f2ce10dce6e3', '2020-07-11 20:09:20', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
 INSERT INTO `sys_business_log` VALUES ('76', '1', 'sysadmin', '系统管理员', 'b963f1d0-d217-444d-9a87-f2ce10dce6e3', '2020-07-11 20:09:24', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('77', '1', 'sysadmin', '系统管理员', '7286bf7e-52be-4532-a25a-e099b5993b96', '2020-07-12 08:31:25', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('78', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:34:52', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('79', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:34:53', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('80', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:35:32', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('81', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:35:35', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('82', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:35:36', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('83', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:35:36', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('84', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:35:36', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('85', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:35:37', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('86', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:35:37', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('87', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:35:42', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('88', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:36:21', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('89', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:36:22', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('90', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:36:26', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('91', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:36:32', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('92', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:36:33', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('93', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:37:14', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('94', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:37:15', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('95', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:37:15', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('96', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:37:15', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('97', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:37:15', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('98', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:37:16', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('99', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:37:18', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('100', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:37:19', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('101', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:37:22', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('102', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:38:07', '代理商信息管理', '修改代理商信息', '{\"dlsjc\":\"lvjian191\",\"dlsmc\":\"543\",\"dlzs\":\"13593262370\",\"id\":\"29\",\"lxdh\":\"1365022588796\",\"lxr\":\"mobile\",\"qtzz\":\"85BF5831E593431E882887E077400B7F\",\"remark\":\"\",\"txdz\":\"345345都是的方式地方都是的方式地方都是的方式地方\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('103', '1', 'sysadmin', '系统管理员', '9b6b32b3-4dbc-49aa-b7c1-f4f6e86ae2f8', '2020-07-12 09:38:07', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('104', '1', 'sysadmin', '系统管理员', 'dd4e313b-130f-44b5-9ee2-c0a1868cc42e', '2020-07-12 10:55:56', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('105', '1', 'sysadmin', '系统管理员', 'dd4e313b-130f-44b5-9ee2-c0a1868cc42e', '2020-07-12 10:57:08', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('106', '1', 'sysadmin', '系统管理员', 'dd4e313b-130f-44b5-9ee2-c0a1868cc42e', '2020-07-12 11:04:10', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('107', '1', 'sysadmin', '系统管理员', '96506ff3-fb60-4cc0-9248-a1ec3ca160b6', '2020-07-12 15:25:11', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('108', '1', 'sysadmin', '系统管理员', '96506ff3-fb60-4cc0-9248-a1ec3ca160b6', '2020-07-12 15:37:50', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('109', '1', 'sysadmin', '系统管理员', '96506ff3-fb60-4cc0-9248-a1ec3ca160b6', '2020-07-12 15:39:14', '代理商信息管理', '修改代理商信息', '{\"cpdm\":\"ert\",\"csms\":\"13593262370\",\"dlsId\":\"543\",\"dw\":\"ee\",\"id\":\"29\",\"pp\":\"ret\",\"remark\":\"ee\",\"sblb\":\"lvjian191\",\"sl\":\"ee\",\"wbjg\":\"e\",\"znjg\":\"e\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('110', '1', 'sysadmin', '系统管理员', '96506ff3-fb60-4cc0-9248-a1ec3ca160b6', '2020-07-12 15:39:15', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('111', '1', 'sysadmin', '系统管理员', '96506ff3-fb60-4cc0-9248-a1ec3ca160b6', '2020-07-12 15:58:27', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('112', '1', 'sysadmin', '系统管理员', '96506ff3-fb60-4cc0-9248-a1ec3ca160b6', '2020-07-12 15:58:51', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('113', '1', 'sysadmin', '系统管理员', '96506ff3-fb60-4cc0-9248-a1ec3ca160b6', '2020-07-12 15:58:58', '代理商信息管理', '修改代理商信息', '{\"cpdm\":\"ert\",\"csms\":\"13593262370\",\"dlsId\":\"543\",\"dw\":\"ee\",\"id\":\"29\",\"pp\":\"锐捷\",\"remark\":\"\",\"sblb\":\"lvjian191\",\"sl\":\"ee\",\"wbjg\":\"e\",\"znjg\":\"e\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('114', '1', 'sysadmin', '系统管理员', '96506ff3-fb60-4cc0-9248-a1ec3ca160b6', '2020-07-12 15:58:58', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('115', '1', 'sysadmin', '系统管理员', '96506ff3-fb60-4cc0-9248-a1ec3ca160b6', '2020-07-12 15:59:43', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('116', '1', 'sysadmin', '系统管理员', '5eb6e6e5-19fe-419f-9844-dd05ed7396cb', '2020-07-12 16:09:46', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('117', '1', 'sysadmin', '系统管理员', '5eb6e6e5-19fe-419f-9844-dd05ed7396cb', '2020-07-12 16:10:09', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('118', '1', 'sysadmin', '系统管理员', '5eb6e6e5-19fe-419f-9844-dd05ed7396cb', '2020-07-12 16:10:14', '代理商信息管理', '修改代理商信息', '{\"cpdm\":\"ert\",\"csms\":\"13593262370\",\"dlsId\":\"543\",\"dw\":\"ee\",\"id\":\"29\",\"pp\":\"锐捷\",\"remark\":\"sdfsdf\",\"sblb\":\"lvjian191\",\"sl\":\"ee\",\"wbjg\":\"e\",\"znjg\":\"e\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('119', '1', 'sysadmin', '系统管理员', '5eb6e6e5-19fe-419f-9844-dd05ed7396cb', '2020-07-12 16:10:14', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('120', '1', 'sysadmin', '系统管理员', '5eb6e6e5-19fe-419f-9844-dd05ed7396cb', '2020-07-12 16:10:19', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('121', '1', 'sysadmin', '系统管理员', '5eb6e6e5-19fe-419f-9844-dd05ed7396cb', '2020-07-12 16:12:17', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('122', '1', 'sysadmin', '系统管理员', '5eb6e6e5-19fe-419f-9844-dd05ed7396cb', '2020-07-12 16:13:34', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('123', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:13:59', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('124', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:14:07', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('125', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:14:10', '代理商信息管理', '修改代理商信息', '{\"cpdm\":\"ert\",\"csms\":\"13593262370\",\"dlsId\":\"543\",\"dw\":\"ee\",\"id\":\"29\",\"pp\":\"锐捷\",\"remark\":\"\",\"sblb\":\"lvjian191\",\"sl\":\"ee\",\"wbjg\":\"e\",\"znjg\":\"e\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('126', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:14:10', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('127', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:14:15', '代理商信息管理', '修改代理商信息', '{\"cpdm\":\"ert\",\"csms\":\"13593262370\",\"dlsId\":\"543\",\"dw\":\"ee\",\"id\":\"29\",\"pp\":\"锐捷\",\"remark\":\"sdfsd\",\"sblb\":\"lvjian191\",\"sl\":\"ee\",\"wbjg\":\"e\",\"znjg\":\"e\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('128', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:14:15', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('129', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:15:09', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('130', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:15:13', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('131', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:15:23', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('132', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:15:33', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('133', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:15:42', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('134', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:15:53', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('135', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:16:00', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('136', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:16:40', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('137', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:16:43', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('138', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:16:45', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('139', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:16:51', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('140', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:17:24', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('141', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:17:30', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('142', '1', 'sysadmin', '系统管理员', '472e56bc-62be-4b48-98dd-569f2ce199ac', '2020-07-12 16:17:36', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('143', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:24:07', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('144', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:24:57', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('145', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:25:02', '代理商信息管理', '修改代理商信息', '{\"cpdm\":\"ert\",\"csms\":\"13593262370\",\"dlsId\":\"543\",\"dw\":\"ee\",\"id\":\"29\",\"pp\":\"锐捷\",\"remark\":\"sdfsdf\",\"sblb\":\"lvjian191\",\"sl\":\"ee\",\"wbjg\":\"e\",\"znjg\":\"e\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('146', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:25:03', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('147', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:25:07', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('148', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:26:15', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('149', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:26:40', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('150', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:28:00', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('151', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:28:20', '设备信息管理', '修改设备信息', '{\"cpdm\":\"ert\",\"csms\":\"13593262370\",\"dlsId\":\"543\",\"dw\":\"ee\",\"id\":\"29\",\"pp\":\"锐捷\",\"remark\":\"sdfsdf的感受得到广泛\",\"sblb\":\"lvjian191\",\"sl\":\"ee\",\"wbjg\":\"e\",\"znjg\":\"e\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('152', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:28:20', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('153', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:28:25', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('154', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:31:41', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('155', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:31:42', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('156', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:31:42', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('157', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:31:43', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('158', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:31:43', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('159', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:31:45', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('160', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:32:16', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('161', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:32:17', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('162', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:32:17', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('163', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:32:18', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('164', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:32:18', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('165', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:32:18', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('166', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:32:18', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('167', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:32:20', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('168', '1', 'sysadmin', '系统管理员', '8c2a4368-0058-4625-a28f-deb7dd15a8fa', '2020-07-12 16:33:46', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('169', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:48:49', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('170', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:48:53', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('171', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:51:14', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('172', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:51:16', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('173', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:51:24', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('174', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:56:10', '设备信息管理', '设备信息列表', '\"第0页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('175', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:56:15', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('176', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:57:25', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('177', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:57:27', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('178', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:57:28', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('179', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:57:29', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('180', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:57:29', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('181', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:57:29', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('182', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:57:48', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('183', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:57:51', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('184', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:57:55', '设备信息管理', '设备信息列表', '\"第0页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('185', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:58:00', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('186', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:58:20', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('187', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:58:26', '设备信息管理', '设备信息列表', '\"第0页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('188', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:58:30', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('189', '1', 'sysadmin', '系统管理员', 'bb6d6285-86a7-40ac-8c34-765a9f42aa95', '2020-07-12 16:58:38', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('190', '1', 'sysadmin', '系统管理员', '09c1222a-85eb-4082-8038-8b9bcbd283be', '2020-07-12 17:01:42', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('191', '1', 'sysadmin', '系统管理员', '86477c0c-ddf6-4aba-adb5-255df25a38dd', '2020-07-12 17:03:35', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('192', '1', 'sysadmin', '系统管理员', '86477c0c-ddf6-4aba-adb5-255df25a38dd', '2020-07-12 17:03:41', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('193', '1', 'sysadmin', '系统管理员', '86477c0c-ddf6-4aba-adb5-255df25a38dd', '2020-07-12 17:04:00', '设备信息管理', '新增设备信息', '{\"cpdm\":\"www\",\"createTime\":\"2020-07-12 17:03:59\",\"csms\":\"wwww\",\"dataStatus\":\"0\",\"dlsId\":\"\",\"dw\":\"www\",\"id\":\"20071217035952022557\",\"pp\":\"H3C\",\"remark\":\"www\",\"sblb\":\"www\",\"sl\":\"www\",\"wbjg\":\"www\",\"znjg\":\"www\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('194', '1', 'sysadmin', '系统管理员', '86477c0c-ddf6-4aba-adb5-255df25a38dd', '2020-07-12 17:04:00', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('195', '1', 'sysadmin', '系统管理员', '86477c0c-ddf6-4aba-adb5-255df25a38dd', '2020-07-12 17:04:08', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('196', '1', 'sysadmin', '系统管理员', '86477c0c-ddf6-4aba-adb5-255df25a38dd', '2020-07-12 17:04:12', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('197', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:37:56', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('198', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:38:14', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('199', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:40:08', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('200', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:40:18', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('201', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:41:25', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('202', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:41:29', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('203', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:41:37', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('204', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:41:40', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('205', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:44:10', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('206', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:44:14', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('207', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:45:31', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('208', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:46:02', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('209', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:48:56', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('210', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:50:24', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('211', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:50:49', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('212', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:55:25', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('213', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 18:58:48', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('214', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 19:00:11', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('215', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 19:01:10', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('216', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 19:01:35', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('217', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 19:01:40', '代理商信息管理', '修改代理商信息', '{\"dlsjc\":\"lvjian191\",\"dlsmc\":\"543\",\"dlzs\":\"13593262370\",\"id\":\"29\",\"lxdh\":\"1365022588796\",\"lxr\":\"mobile\",\"qtzz\":\"85BF5831E593431E882887E077400B7F\",\"remark\":\"sdf\",\"txdz\":\"345345都是的方式地方都是的方式地方都是的方式地方\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('218', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 19:01:40', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('219', '1', 'sysadmin', '系统管理员', '5fd26f23-e081-4df1-9521-db19f07c86c3', '2020-07-12 19:01:47', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('220', '1', 'sysadmin', '系统管理员', '3f6b59a9-8a19-42cb-a8dc-39dd2ff23be2', '2020-07-12 19:11:34', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('221', '1', 'sysadmin', '系统管理员', '3f6b59a9-8a19-42cb-a8dc-39dd2ff23be2', '2020-07-12 19:11:38', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('222', '1', 'sysadmin', '系统管理员', '3f6b59a9-8a19-42cb-a8dc-39dd2ff23be2', '2020-07-12 19:11:41', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('223', '1', 'sysadmin', '系统管理员', '3f6b59a9-8a19-42cb-a8dc-39dd2ff23be2', '2020-07-12 19:11:54', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('224', '1', 'sysadmin', '系统管理员', 'efbba76d-bf87-4d38-9d98-a87d36914a8b', '2020-07-12 19:16:59', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('225', '1', 'sysadmin', '系统管理员', 'efbba76d-bf87-4d38-9d98-a87d36914a8b', '2020-07-12 19:17:02', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('226', '1', 'sysadmin', '系统管理员', 'b55d4cc8-1d2b-4cc3-a7f5-f5b14719179d', '2020-07-12 20:05:44', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('227', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:32:08', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('228', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:33:08', '用户信息管理', '用户信息列表', '\"第2页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('229', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:34:33', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('230', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:34:34', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('231', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:34:35', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('232', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:34:35', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('233', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:34:35', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('234', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:34:57', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('235', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:18', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('236', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:33', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('237', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:36', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('238', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:36', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('239', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:37', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('240', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:37', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('241', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:40', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('242', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:41', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('243', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:41', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('244', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:35:41', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('245', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:43', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('246', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:44', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('247', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:45', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('248', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:45', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('249', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:45', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('250', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:47', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('251', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:55', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('252', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:56', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('253', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:56', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('254', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:56', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('255', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:56', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('256', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:57', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('257', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:57', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('258', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:57', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('259', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:36:57', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('260', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:37:17', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('261', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:37:18', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('262', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:37:19', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('263', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:37:21', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('264', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:37:42', '用户信息管理', '用户信息列表', '\"第0页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('265', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:37:45', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('266', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:39:10', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('267', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:39:15', '用户信息管理', '用户信息列表', '\"第0页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('268', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:39:18', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('269', '1', 'sysadmin', '系统管理员', 'fca4e193-dd51-4eba-8c4b-cad28c7d1ea6', '2020-07-12 21:40:04', '用户信息管理', '用户信息列表', '\"第0页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('270', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 21:46:11', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('271', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 21:46:20', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('272', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 21:46:30', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('273', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 21:46:37', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('274', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 21:46:40', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('275', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 21:46:44', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('276', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 21:46:46', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('277', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 22:02:57', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('278', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 22:03:04', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('279', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 22:03:17', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('280', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 22:03:27', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('281', '1', 'sysadmin', '系统管理员', 'eed336a2-005b-4c74-8da7-04990e902c4d', '2020-07-12 22:03:39', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('282', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:14:00', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('283', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:16:25', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('284', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:16:49', '设备信息管理', '新增设备信息', '{\"cpdm\":\"435\",\"createTime\":\"2020-07-12 22:16:48\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"\",\"dw\":\"345\",\"id\":\"20071222164864641575\",\"pp\":\"H3C\",\"remark\":\"34554\",\"sblb\":\"34\",\"sl\":\"345\",\"wbjg\":\"345\",\"znjg\":\"345\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('285', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:16:49', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('286', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:17:00', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('287', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:17:06', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('288', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:17:09', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('289', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:17:21', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('290', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:20:44', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('291', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:21:00', '设备信息管理', '新增设备信息', '{\"cpdm\":\"345\",\"createTime\":\"2020-07-12 22:20:59\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"435\",\"id\":\"20071222205945877064\",\"pp\":\"H3C\",\"remark\":\"345\",\"sblb\":\"er4\",\"sl\":\"345\",\"wbjg\":\"53\",\"znjg\":\"345\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('292', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:21:00', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('293', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:21:10', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('294', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:21:18', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('295', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:24:31', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('296', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:24:45', '设备信息管理', '新增设备信息', '{\"cpdm\":\"345\",\"createTime\":\"2020-07-12 22:24:45\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"345\",\"id\":\"20071222244508377799\",\"pp\":\"HW\",\"remark\":\"345\",\"sblb\":\"354\",\"sl\":\"345\",\"wbjg\":\"345\",\"znjg\":\"435\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('297', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:24:46', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('298', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:25:21', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('299', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:25:34', '设备信息管理', '新增设备信息', '{\"cpdm\":\"ewr\",\"createTime\":\"2020-07-12 22:25:34\",\"csms\":\"ewr\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"rew\",\"id\":\"20071222253412624035\",\"pp\":\"H3C\",\"remark\":\"ewr\",\"sblb\":\"rew\",\"sl\":\"rew\",\"wbjg\":\"wer\",\"znjg\":\"ewr\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('300', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:25:55', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('301', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:26:47', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('302', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:27:22', '设备信息管理', '新增设备信息', '{\"cpdm\":\"234\",\"createTime\":\"2020-07-12 22:27:22\",\"csms\":\"324\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"234\",\"id\":\"20071222272224486124\",\"pp\":\"HW\",\"remark\":\"32\",\"sblb\":\"34\",\"sl\":\"234\",\"wbjg\":\"234\",\"znjg\":\"2343\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('303', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:27:25', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('304', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:28:09', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('305', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:28:23', '设备信息管理', '新增设备信息', '{\"cpdm\":\"ewr\",\"createTime\":\"2020-07-12 22:28:23\",\"csms\":\"ewr\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"ewr\",\"id\":\"20071222282331499331\",\"pp\":\"浪潮\",\"remark\":\"ewrrew\",\"sblb\":\"ew\",\"sl\":\"ewrew\",\"wbjg\":\"rew\",\"znjg\":\"ewr\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('306', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:29:29', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('307', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:29:54', '设备信息管理', '新增设备信息', '{\"cpdm\":\"wer\",\"createTime\":\"2020-07-12 22:29:54\",\"csms\":\"ewr\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"ewr\",\"id\":\"20071222295439674042\",\"pp\":\"HW\",\"remark\":\"ewr\",\"sblb\":\"ewr\",\"sl\":\"ewr\",\"wbjg\":\"ewr\",\"znjg\":\"ewr\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('308', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:31:16', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('309', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:31:30', '设备信息管理', '新增设备信息', '{\"cpdm\":\"54\",\"createTime\":\"2020-07-12 22:31:30\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"35\",\"id\":\"20071222313039959074\",\"pp\":\"浪潮\",\"remark\":\"5\",\"sblb\":\"345\",\"sl\":\"345\",\"wbjg\":\"54\",\"znjg\":\"5\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('310', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:32:07', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('311', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:32:22', '设备信息管理', '新增设备信息', '{\"cpdm\":\"4\",\"createTime\":\"2020-07-12 22:32:22\",\"csms\":\"4\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"4\",\"id\":\"20071222322212790612\",\"pp\":\"CISCO\",\"remark\":\"4\",\"sblb\":\"34\",\"sl\":\"4\",\"wbjg\":\"4\",\"znjg\":\"4\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('312', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:34:29', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('313', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:34:40', '设备信息管理', '新增设备信息', '{\"cpdm\":\"ewr\",\"createTime\":\"2020-07-12 22:34:39\",\"csms\":\"ewr\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"erw\",\"id\":\"20071222343953717759\",\"pp\":\"曙光\",\"remark\":\"rew\",\"sblb\":\"ewr\",\"sl\":\"erw\",\"wbjg\":\"rew\",\"znjg\":\"rew\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('314', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:34:47', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('315', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:35:45', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('316', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:35:58', '设备信息管理', '新增设备信息', '{\"cpdm\":\"546\",\"createTime\":\"2020-07-12 22:35:57\",\"csms\":\"546\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"546\",\"id\":\"20071222355778640330\",\"pp\":\"曙光\",\"remark\":\"56\",\"sblb\":\"54\",\"sl\":\"54\",\"wbjg\":\"546\",\"znjg\":\"546\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('317', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:36:04', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('318', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:37:23', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('319', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:37:36', '设备信息管理', '新增设备信息', '{\"cpdm\":\"54\",\"createTime\":\"2020-07-12 22:37:35\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"5\",\"id\":\"20071222373561936662\",\"pp\":\"浪潮\",\"remark\":\"34\",\"sblb\":\"34\",\"sl\":\"345\",\"wbjg\":\"5\",\"znjg\":\"54\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('320', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:37:40', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('321', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:38:21', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('322', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:38:34', '设备信息管理', '新增设备信息', '{\"cpdm\":\"345\",\"createTime\":\"2020-07-12 22:38:33\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"345\",\"id\":\"20071222383363842452\",\"pp\":\"CISCO\",\"remark\":\"34\",\"sblb\":\"43\",\"sl\":\"345\",\"wbjg\":\"345\",\"znjg\":\"34\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('323', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:38:43', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('324', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:41:00', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('325', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:41:12', '设备信息管理', '新增设备信息', '{\"cpdm\":\"345\",\"createTime\":\"2020-07-12 22:41:12\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"345\",\"id\":\"20071222411234027909\",\"pp\":\"H3C\",\"remark\":\"54\",\"sblb\":\"ew\",\"sl\":\"435\",\"wbjg\":\"5\",\"znjg\":\"345\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('326', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:41:16', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('327', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:41:56', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('328', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:42:11', '设备信息管理', '新增设备信息', '{\"cpdm\":\"345\",\"createTime\":\"2020-07-12 22:42:10\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"45\",\"id\":\"20071222421086285292\",\"pp\":\"HW\",\"remark\":\"35\",\"sblb\":\"34\",\"sl\":\"345\",\"wbjg\":\"3\",\"znjg\":\"35\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('329', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:42:18', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('330', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:42:53', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('331', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:42:55', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('332', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:43:05', '设备信息管理', '新增设备信息', '{\"cpdm\":\"4\",\"createTime\":\"2020-07-12 22:43:04\",\"csms\":\"4\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"4\",\"id\":\"20071222430486339724\",\"pp\":\"HW\",\"remark\":\"4\",\"sblb\":\"4\",\"sl\":\"4\",\"wbjg\":\"4\",\"znjg\":\"4\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('333', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:43:07', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('334', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:43:16', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('335', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:43:20', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('336', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:43:33', '设备信息管理', '新增设备信息', '{\"cpdm\":\"4\",\"createTime\":\"2020-07-12 22:43:32\",\"csms\":\"4\",\"dataStatus\":\"0\",\"dlsId\":\"\",\"dw\":\"4\",\"id\":\"20071222433284282470\",\"pp\":\"HW\",\"remark\":\"4\",\"sblb\":\"4\",\"sl\":\"4\",\"wbjg\":\"4\",\"znjg\":\"4\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('337', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:43:37', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('338', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:44:41', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('339', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:44:44', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('340', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:45:00', '设备信息管理', '新增设备信息', '{\"cpdm\":\"345\",\"createTime\":\"2020-07-12 22:45:00\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"\",\"dw\":\"345\",\"id\":\"20071222450016885400\",\"pp\":\"HW\",\"remark\":\"345\",\"sblb\":\"34\",\"sl\":\"345\",\"wbjg\":\"345\",\"znjg\":\"345\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('341', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:45:03', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('342', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:45:09', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('343', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:45:19', '设备信息管理', '新增设备信息', '{\"cpdm\":\"345\",\"createTime\":\"2020-07-12 22:45:18\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"345\",\"id\":\"20071222451887846092\",\"pp\":\"CISCO\",\"remark\":\"345\",\"sblb\":\"345\",\"sl\":\"345\",\"wbjg\":\"345\",\"znjg\":\"345\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('344', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:45:21', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('345', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:45:46', '设备信息管理', '新增设备信息', '{\"cpdm\":\"345\",\"createTime\":\"2020-07-12 22:45:46\",\"csms\":\"345\",\"dataStatus\":\"0\",\"dlsId\":\"29\",\"dw\":\"345\",\"id\":\"20071222454625081400\",\"pp\":\"HW\",\"remark\":\"345\",\"sblb\":\"345\",\"sl\":\"345\",\"wbjg\":\"345\",\"znjg\":\"345\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('346', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:45:47', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('347', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:46:34', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('348', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:46:38', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('349', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:46:40', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('350', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:46:51', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('351', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:47:59', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('352', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:48:00', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('353', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:48:01', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('354', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:48:09', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('355', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:48:13', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('356', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:48:30', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('357', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:48:32', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('358', '1', 'sysadmin', '系统管理员', '14ffad2c-4618-4077-a624-b05028485c39', '2020-07-12 22:48:33', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('359', '1', 'sysadmin', '系统管理员', 'ddc6b892-d1b3-4efb-9c19-5a269f6d4709', '2020-07-13 20:37:51', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('360', '1', 'sysadmin', '系统管理员', 'ddc6b892-d1b3-4efb-9c19-5a269f6d4709', '2020-07-13 20:38:00', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('361', '1', 'sysadmin', '系统管理员', 'ddc6b892-d1b3-4efb-9c19-5a269f6d4709', '2020-07-13 20:38:14', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('362', '1', 'sysadmin', '系统管理员', '07bf8298-feb7-4ab8-bd05-5f65ba21a238', '2020-07-13 21:09:45', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('363', '1', 'sysadmin', '系统管理员', 'cc944cf0-fbf7-4315-bf05-3a39ac7e5f54', '2020-07-14 21:02:57', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('364', '1', 'sysadmin', '系统管理员', 'cc944cf0-fbf7-4315-bf05-3a39ac7e5f54', '2020-07-14 21:03:07', '用户信息管理', '用户信息列表', '\"第2页list\"', null, '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for sys_dictionary
@@ -981,11 +1341,11 @@ CREATE TABLE `sys_dictionary` (
   `SORT` int(11) DEFAULT NULL COMMENT '序号',
   `GRADE` int(11) DEFAULT NULL COMMENT '节点级别（顶级是1，子一级是2, 目前直到2级）',
   `PARENT_CODE` varchar(50) DEFAULT NULL COMMENT '父级编号',
-  `CREATE_TIME` datetime NOT NULL COMMENT '创建时间 yyyy-mm-dd hh24:mi:ss',
+  `CREATE_TIME` datetime DEFAULT NULL COMMENT '创建时间 yyyy-mm-dd hh24:mi:ss',
   `UPDATE_TIME` datetime DEFAULT NULL COMMENT '修改时间 yyyy-mm-dd hh24:mi:ss',
   `DATA_STATUS` char(1) NOT NULL COMMENT '数据有效性（0-有效，1-无效）',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='SYS_DICTIONARY  字典表*';
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='SYS_DICTIONARY  字典表*';
 
 -- ----------------------------
 -- Records of sys_dictionary
@@ -1033,6 +1393,13 @@ INSERT INTO `sys_dictionary` VALUES ('42', 'resetAppSecret', 'AppSecrect重置',
 INSERT INTO `sys_dictionary` VALUES ('43', 't6', 't6', '0', '0', '11', '1', null, '2019-03-13 11:32:55', null, '0');
 INSERT INTO `sys_dictionary` VALUES ('44', 't0003', '老三', '1', '0', '3', '2', 'test001', '2019-03-13 17:18:48', null, '1');
 INSERT INTO `sys_dictionary` VALUES ('45', 'websiteDesign', '网站建设', '0', '0', '11', '2', 'mbigerService', '2019-03-14 13:44:30', null, '0');
+INSERT INTO `sys_dictionary` VALUES ('46', 'pp', '品牌', '0', '0', '1', '1', null, null, null, '0');
+INSERT INTO `sys_dictionary` VALUES ('47', 'H3C', 'H3C', '1', '0', '1', '2', 'pp', null, null, '0');
+INSERT INTO `sys_dictionary` VALUES ('48', 'HW', 'HW', '1', '0', '2', '2', 'pp', null, null, '0');
+INSERT INTO `sys_dictionary` VALUES ('49', '浪潮', '浪潮', '1', '0', '3', '2', 'pp', null, null, '0');
+INSERT INTO `sys_dictionary` VALUES ('50', 'CISCO', 'CISCO', '1', '0', '4', '2', 'pp', null, null, '0');
+INSERT INTO `sys_dictionary` VALUES ('51', '曙光', '曙光', '1', '0', '5', '2', 'pp', null, null, '0');
+INSERT INTO `sys_dictionary` VALUES ('52', '锐捷', '锐捷', '1', '0', '6', '2', 'pp', null, null, '0');
 
 -- ----------------------------
 -- Table structure for sys_function
@@ -1050,7 +1417,7 @@ CREATE TABLE `sys_function` (
   `ICON` varchar(50) DEFAULT NULL,
   `DATA_STATUS` char(1) NOT NULL COMMENT '数据有效性（0-有效，1-无效）',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=200033 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台菜单功能表';
+) ENGINE=InnoDB AUTO_INCREMENT=200073 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台菜单功能表';
 
 -- ----------------------------
 -- Records of sys_function
@@ -1064,26 +1431,19 @@ INSERT INTO `sys_function` VALUES ('8', 'user', 'securityManager', '用户管理
 INSERT INTO `sys_function` VALUES ('9', 'sqlmonitor', 'system', 'sql监控', 'druid/index.html', 'subModule', '5', '0', '&#xe631;', '0');
 INSERT INTO `sys_function` VALUES ('13', 'dictionary', 'system', '字典管理', 'sysdictionary/list', 'subModule', '4', '0', '&#xe631;', '0');
 INSERT INTO `sys_function` VALUES ('16', 'userExpense', 'business', '代理商管理', '', 'module', '9', '0', '&#xe60e;', '0');
-INSERT INTO `sys_function` VALUES ('17', 'userSmsSignature', 'business', '短信签名', 'userSmsSignature/list', 'subModule', '10', '0', '&#xe63a;', '0');
-INSERT INTO `sys_function` VALUES ('200005', 'rechargeManage', 'business', '充值管理', '', 'module', '11', '0', '', '0');
-INSERT INTO `sys_function` VALUES ('200006', 'userTopUp', 'rechargeManage', '充值', 'userTopUp', 'subModule', '11', '0', '&#xe63a;', '0');
-INSERT INTO `sys_function` VALUES ('200007', 'userTopUpList', 'rechargeManage', '充值列表', 'userTopUp/list', 'subModule', '12', '0', '&#xe63a;', '0');
-INSERT INTO `sys_function` VALUES ('200009', 'serviceApply', 'business', '服务申请管理', '', 'module', '14', '0', '&#xe631;', '0');
-INSERT INTO `sys_function` VALUES ('200010', 'saasApply', 'serviceApply', '免费服务API申请', 'serviceApply/saas/list', 'subModule', '1', '0', '&#xe631;', '0');
-INSERT INTO `sys_function` VALUES ('200011', 'paasApply', 'serviceApply', '云计算PAAS申请试用', 'serviceApply/paas/list', 'subModule', '2', '0', '&#xe631;', '0');
-INSERT INTO `sys_function` VALUES ('200012', 'iaasApply', 'serviceApply', '云计算IAAS预约咨询', 'serviceApply/iaas/list', 'subModule', '3', '0', '&#xe631;', '0');
-INSERT INTO `sys_function` VALUES ('200013', 'customizationApply', 'serviceApply', '订制开发预约咨询', 'serviceApply/customization/list', 'subModule', '4', '0', '&#xe631;', '0');
+INSERT INTO `sys_function` VALUES ('200005', 'rechargeManage', 'business', '设备信息管理', '', 'module', '11', '0', '&#xe631;', '0');
+INSERT INTO `sys_function` VALUES ('200006', 'userTopUp', 'rechargeManage', '设备信息录入', 'deviceInfo/list', 'subModule', '11', '0', '&#xe63a;', '0');
 INSERT INTO `sys_function` VALUES ('200015', '111', 'tesetMenu', '111', 'www.baidu.com', 'subModule', '1', '0', '', '0');
 INSERT INTO `sys_function` VALUES ('200018', 'userExpenseList', 'userExpense', '代理商列表', 'dlsInfo/list', 'subModule', '1', '0', '&#xe60e;', '0');
 INSERT INTO `sys_function` VALUES ('200019', 'sysMesage', 'system', '系统消息管理', '', 'module', '2', '0', '&#xe667;', '0');
 INSERT INTO `sys_function` VALUES ('200020', 'sysMessageList', 'sysMesage', '用户消息记录', 'sysMessage/list', 'subModule', '1', '0', '&#xe667;', '0');
 INSERT INTO `sys_function` VALUES ('200021', 'websiteBulletinList', 'sysMesage', '公告管理', 'websiteBulletin/list', 'subModule', '2', '0', '&#xe611;', '0');
 INSERT INTO `sys_function` VALUES ('200023', 'sysMessageTmpl', 'system', '消息模板管理', 'sysMessageTmpl/list', 'subModule', '3', '0', '&#xe631;', '0');
-INSERT INTO `sys_function` VALUES ('200024', 'sysService', 'business', '服务管理', 'serviceInfo/list', 'module', '14', '0', '&#xe631;', '0');
 INSERT INTO `sys_function` VALUES ('200029', 'securityManager', 'system', '管理员权限管理', '', 'module', '1', '0', '&#xe620;', '0');
 INSERT INTO `sys_function` VALUES ('200030', 'userList', 'business', '用户管理', '', 'module', '2', '0', 'icon-icon10', '0');
-INSERT INTO `sys_function` VALUES ('200031', 'userPortal', 'userList', '用户列表', 'userList', 'subModule', '21', '0', 'icon-ziliao', '0');
-INSERT INTO `sys_function` VALUES ('200032', 'userTranList', 'rechargeManage', '转账记录', 'tran/list', 'subModule', '13', '0', '&#xe63a;', '0');
+INSERT INTO `sys_function` VALUES ('200031', 'userPortal', 'userList', '用户列表', 'userInfo/list', 'subModule', '21', '0', 'icon-ziliao', '0');
+INSERT INTO `sys_function` VALUES ('200071', 'appSetting', 'system', 'App配置管理', '', 'module', '5', '0', '&#xe614;', '0');
+INSERT INTO `sys_function` VALUES ('200072', 'websiteAdvertiseList', 'appSetting', '轮播图配置管理', 'websiteAdvertise/list', 'subModule', '51', '0', '&#xe648;', '0');
 
 -- ----------------------------
 -- Table structure for sys_login_log
@@ -1191,7 +1551,7 @@ CREATE TABLE `sys_message` (
   `MOBILE` varchar(50) DEFAULT NULL,
   `CODE` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统消息表（站内信/短信）';
+) ENGINE=InnoDB AUTO_INCREMENT=173 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统消息表（站内信/短信）';
 
 -- ----------------------------
 -- Records of sys_message
@@ -1362,6 +1722,7 @@ INSERT INTO `sys_message` VALUES ('168', '29', '修改手机号', '恭喜你修�
 INSERT INTO `sys_message` VALUES ('169', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:46:47', null, '0', '13593262370', '107928');
 INSERT INTO `sys_message` VALUES ('170', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:48:56', null, '0', '13593262370', '174180');
 INSERT INTO `sys_message` VALUES ('171', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:59:25', null, '0', '13593262370', '560076');
+INSERT INTO `sys_message` VALUES ('172', '30', '注册', '注册成功', 'website', 'register', '0', '2020-07-13 21:25:02', null, '0', null, null);
 
 -- ----------------------------
 -- Table structure for sys_message_tmpl
@@ -1440,7 +1801,6 @@ INSERT INTO `sys_role_function` VALUES ('543', '11', 'root', '2019-03-11 13:41:4
 INSERT INTO `sys_role_function` VALUES ('544', '11', 'content', '2019-03-11 13:41:45', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('546', '11', 'rechargeManage', '2019-03-11 13:41:45', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('547', '11', 'userTopUp', '2019-03-11 13:41:45', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('548', '11', 'userTopUpList', '2019-03-11 13:41:45', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('549', '11', 'system', '2019-03-11 13:41:45', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('550', '11', 'menu', '2019-03-11 13:41:45', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('551', '11', 'role', '2019-03-11 13:41:45', '1', '系统管理员');
@@ -1449,12 +1809,6 @@ INSERT INTO `sys_role_function` VALUES ('553', '11', 'sqlmonitor', '2019-03-11 1
 INSERT INTO `sys_role_function` VALUES ('556', '11', 'dictionary', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('557', '11', 'userExpense', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('558', '11', 'userExpenseList', '2019-03-11 13:41:46', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('559', '11', 'userSmsSignature', '2019-03-11 13:41:46', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('560', '11', 'serviceApply', '2019-03-11 13:41:46', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('561', '11', 'saasApply', '2019-03-11 13:41:46', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('562', '11', 'paasApply', '2019-03-11 13:41:46', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('563', '11', 'iaasApply', '2019-03-11 13:41:46', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('564', '11', 'customizationApply', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('565', '11', 'sysMesage', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('566', '11', 'sysMessageList', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('567', '11', 'websiteBulletinList', '2019-03-11 13:41:46', '1', '系统管理员');
@@ -1473,15 +1827,8 @@ INSERT INTO `sys_role_function` VALUES ('875', '4', 'sqlmonitor', '2019-03-15 17
 INSERT INTO `sys_role_function` VALUES ('876', '4', 'business', '2019-03-15 17:56:29', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('877', '4', 'userExpense', '2019-03-15 17:56:29', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('878', '4', 'userExpenseList', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('879', '4', 'userSmsSignature', '2019-03-15 17:56:29', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('880', '4', 'rechargeManage', '2019-03-15 17:56:29', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('881', '4', 'userTopUp', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('882', '4', 'userTopUpList', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('883', '4', 'serviceApply', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('884', '4', 'saasApply', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('885', '4', 'paasApply', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('886', '4', 'iaasApply', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('887', '4', 'customizationApply', '2019-03-15 17:56:29', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('888', '4', 'sysService', '2019-03-15 17:56:29', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('911', '2', 'root', '2019-03-15 17:56:42', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('912', '2', 'system', '2019-03-15 17:56:42', '1', '系统管理员');
@@ -1496,15 +1843,8 @@ INSERT INTO `sys_role_function` VALUES ('920', '2', 'dictionary', '2019-03-15 17
 INSERT INTO `sys_role_function` VALUES ('921', '2', 'sqlmonitor', '2019-03-15 17:56:42', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('922', '2', 'userExpense', '2019-03-15 17:56:42', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('923', '2', 'userExpenseList', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('924', '2', 'userSmsSignature', '2019-03-15 17:56:42', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('925', '2', 'rechargeManage', '2019-03-15 17:56:42', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('926', '2', 'userTopUp', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('927', '2', 'userTopUpList', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('928', '2', 'serviceApply', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('929', '2', 'saasApply', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('930', '2', 'paasApply', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('931', '2', 'iaasApply', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('932', '2', 'customizationApply', '2019-03-15 17:56:42', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('936', '1', 'root', '2019-06-06 08:54:51', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('937', '1', 'system', '2019-06-06 08:54:51', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('938', '1', 'securityManager', '2019-06-06 08:54:51', '1', '系统管理员');
@@ -1522,16 +1862,8 @@ INSERT INTO `sys_role_function` VALUES ('949', '1', 'userList', '2019-06-06 08:5
 INSERT INTO `sys_role_function` VALUES ('950', '1', 'userPortal', '2019-06-06 08:54:51', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('951', '1', 'userExpense', '2019-06-06 08:54:51', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('952', '1', 'userExpenseList', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('953', '1', 'userSmsSignature', '2019-06-06 08:54:51', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('954', '1', 'rechargeManage', '2019-06-06 08:54:51', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('955', '1', 'userTopUp', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('956', '1', 'userTopUpList', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('957', '1', 'userTranList', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('958', '1', 'serviceApply', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('959', '1', 'saasApply', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('960', '1', 'paasApply', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('961', '1', 'iaasApply', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('962', '1', 'customizationApply', '2019-06-06 08:54:51', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('963', '1', 'sysService', '2019-06-06 08:54:51', '1', '系统管理员');
 
 -- ----------------------------
@@ -1879,7 +2211,7 @@ CREATE TABLE `user_info` (
   `USER_ACCOUNT_BALANCE` decimal(15,2) DEFAULT '0.00',
   `APPSECRET` varchar(50) DEFAULT NULL COMMENT '唯一标识-对应appkey',
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='USER_INFO 用户信息表*\r\n日期：2019-01-09\r\n系统表：否\r\n主要使用功';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='USER_INFO 用户信息表*\r\n日期：2019-01-09\r\n系统表：否\r\n主要使用功';
 
 -- ----------------------------
 -- Records of user_info
@@ -1904,6 +2236,7 @@ INSERT INTO `user_info` VALUES ('26', null, 'lvjian111', '13593262111', '85BF583
 INSERT INTO `user_info` VALUES ('27', null, 'lj741852963', '', '9BFF531B7A7688E082AC4FFFF1963BD3', null, '1', 'pc', 'd5bbd337132c4f61a523b2a42e4439fb', '0', '2019-05-23 17:00:50', '2019-05-24 15:23:22', null, '0.00', 'dfc8b9c1606f46faabc44e0bf0682653');
 INSERT INTO `user_info` VALUES ('28', null, 'l111111110', '13593262311', '0F57D528CE79781B80711ABD332D850E', null, '1', 'mobile', 'ddb7f3f6c0394b088a212af3dc5a8a61', '0', '2019-05-23 17:32:24', '2019-05-24 13:38:08', null, '0.00', '1e9911054c0a48c2a4f7752385d6cd4b');
 INSERT INTO `user_info` VALUES ('29', null, 'lvjian191', '13593262370', '85BF5831E593431E882887E077400B7F', null, '1', 'mobile', 'a91b7289d387407a91c7db638421928f', '0', '2019-05-23 17:42:25', '2019-05-24 15:33:09', null, '0.00', 'ed5d34a85a9b40f49a1cb0cf22e4f584');
+INSERT INTO `user_info` VALUES ('30', null, 'weiliejun', '13910778736', '5bce31a231e88495d5ba9aa54b8a5d08', null, '1', 'pc', 'a8afcde02f1143d09a7ee3827048e973', '0', '2020-07-13 21:25:02', null, null, '0.00', 'a03b2501102846629dd7594c09e06135');
 
 -- ----------------------------
 -- Table structure for user_info_ext
