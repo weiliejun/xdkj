@@ -3,6 +3,21 @@
 <head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>IT服务网-账户中心-首页</title>
     <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+
+    <style type="text/css">
+        table td:hover{
+            overflow: visible;
+            white-space: normal;
+        }
+        table td {
+            max-width:200px;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #2fa4e7;
+        }
+    </style>
 </head>
 <body>
 <!-- 头部公共 start -->
@@ -17,7 +32,7 @@
         <div class="perRight">
             <div class="shang">
                 <h5 class="">欢迎您，<span th:text="${userInfo.nickName}"></span></h5>
-                <ul>
+                <!--<ul>
                     <li class="li1">
                         <p><img src="/images/personalCenter/blue.png" alt="">账户余额（元）</p>
                         <p class="p2"
@@ -43,10 +58,10 @@
                         </div>
                     </li>
                     <div style="clear:both;"></div>
-                </ul>
+                </ul>-->
             </div>
             <div id="recServiceDiv">
-                <div class="xia" th:fragment="recServiceList">
+                <!--<div class="xia" th:fragment="recServiceList">
                     <h5>常用的服务</h5>
                     <div id="recServiceDiv1" th:if="${not #lists.isEmpty(pageInfo.list)}">
                         <table class="recordCon centerRecordCon">
@@ -75,7 +90,7 @@
                                                                              th:onclick="'showMore('+ ${pageNum + 1} +')'">显示更多<img
                                 src="/images/personalCenter/sanjiao.png" alt=""></a></p>
                     </div>
-                    <!--<div id="recServiceDiv1" th:if="${not #lists.isEmpty(pageInfo.list)}">
+                    &lt;!&ndash;<div id="recServiceDiv1" th:if="${not #lists.isEmpty(pageInfo.list)}">
                         <ul class="ul1">
                             <li class="li1">服务名称</li>
                             <li class="li2">服务类型</li>
@@ -93,7 +108,36 @@
                             <div style="clear:both;"></div>
                         </ul>
                         <p class="more_p" th:if="${pageInfo.hasNextPage}"><a href="javascript:void(0)" th:onclick="'showMore('+ ${pageNum + 1} +')'">显示更多<img src="/images/personalCenter/sanjiao.png" alt=""></a></p>
-                    </div>-->
+                    </div>&ndash;&gt;
+                    <p class="noneRecord" th:if="${#lists.isEmpty(pageInfo.list)}">暂无记录</p>
+                </div>-->
+
+                <div class="xia" th:fragment="recServiceList">
+                    <h5>我提交的需求</h5>
+                    <div id="recServiceDiv1" th:if="${not #lists.isEmpty(pageInfo.list)}">
+                        <table class="recordCon centerRecordCon">
+                            <thead>
+                            <tr class="headRecord">
+                                <th>服务名称</th>
+                                <th>需求内容</th>
+                                <th>提交时间</th>
+                            </tr>
+                            </thead>
+                            <tbody class="recordInfo">
+                            <tr th:each="userExpense : ${pageInfo.list}">
+                                <td>
+                                    <itech:code parentCode="xdkjService" type="text"
+                                                th:value="${userExpense.SERVICE_CODE}"/>
+                                </td>
+                                <td th:text="${userExpense.CONSULT_DESC}"></td>
+                                <td th:text="${#dates.format(userExpense.CREATE_TIME, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p class="more_p" th:if="${pageInfo.hasNextPage}"><a href="javascript:void(0)"
+                                                                             th:onclick="'showMore('+ ${pageNum + 1} +')'">显示更多<img
+                                src="/images/personalCenter/sanjiao.png" alt=""></a></p>
+                    </div>
                     <p class="noneRecord" th:if="${#lists.isEmpty(pageInfo.list)}">暂无记录</p>
                 </div>
             </div>

@@ -51,6 +51,9 @@
         WHERE
         a.DATA_STATUS = '0'
 
+        <if test="userId != null">
+            AND a.USER_ID = #{userId,jdbcType=INTEGER}
+        </if>
         <if test="customerName != null">
             AND a.CUSTOMER_NAME like CONCAT('%',#{customerName},'%')
         </if>

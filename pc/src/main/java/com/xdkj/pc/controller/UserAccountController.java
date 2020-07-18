@@ -9,6 +9,7 @@ import com.xdkj.common.model.user.bean.UserInfo;
 import com.xdkj.common.web.SessionUser;
 import com.xdkj.pc.service.mbigerServiceManage.MbigerService;
 import com.xdkj.pc.service.sysMessageManage.SysMessageService;
+import com.xdkj.pc.service.userManage.CustomerAppointmentService;
 import com.xdkj.pc.service.userManage.UserExpenseService;
 import com.xdkj.pc.service.userManage.UserInfoService;
 import com.xdkj.pc.web.base.AbstractBaseController;
@@ -42,6 +43,8 @@ public class UserAccountController extends AbstractBaseController {
     private SysMessageService sysMessageService;
     @Autowired
     private MbigerService mbigerService;
+    @Autowired
+    private CustomerAppointmentService customerAppointmentService;
 
     @RequestMapping("/index")
     /**
@@ -55,7 +58,10 @@ public class UserAccountController extends AbstractBaseController {
         //引入分页查询，使用PageHelper分页功能在查询之前传入当前页，然后多少记录
         PageHelper.startPage(1, pageSize * pageNum);
         //startPage后紧跟的这个查询就是分页查询
-        List<Map<String, Object>> userExpenseList = userExpenseService.listUserExpensesRecently(userInfo.getId());
+//        List<Map<String, Object>> userExpenseList = userExpenseService.listUserExpensesRecently(userInfo.getId());
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("userId", userInfo.getId());
+        List<Map<String, Object>> userExpenseList = customerAppointmentService.listCustomerAppointmentByParams(param);
         //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
         PageInfo pageInfo = new PageInfo<Map<String, Object>>(userExpenseList);
 

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80016
 File Encoding         : 65001
 
-Date: 2020-07-18 11:22:32
+Date: 2020-07-18 18:12:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -117,7 +117,7 @@ CREATE TABLE `customer_appointment` (
   `CREATE_TIME` datetime NOT NULL COMMENT '创建时间 yyyy-mm-dd hh24:mi:ss',
   `UPDATE_TIME` datetime DEFAULT NULL COMMENT '修改时间 yyyy-mm-dd hh24:mi:ss',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='CUSTOMER_APPOINTMENT 客户预约表* ';
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='CUSTOMER_APPOINTMENT 客户预约表* ';
 
 -- ----------------------------
 -- Records of customer_appointment
@@ -164,7 +164,17 @@ INSERT INTO `customer_appointment` VALUES ('67', '8', 'xx0001', '15736880002', '
 INSERT INTO `customer_appointment` VALUES ('68', '8', 'xx0001', '15736880001', 'weatherQuery', null, '1', '0', '2019-03-13 14:29:40', null);
 INSERT INTO `customer_appointment` VALUES ('69', '8', 'xx0001', '15736880002', 'weatherQuery', null, '1', '0', '2019-03-13 16:29:47', null);
 INSERT INTO `customer_appointment` VALUES ('70', '2', '五五开', '15039087799', 'mobileNumberPlaceQuery', null, '1', '0', '2019-05-14 17:16:59', null);
-INSERT INTO `customer_appointment` VALUES ('71', '30', null, null, 'consulting', '我要语音', '1', '0', '2020-07-18 08:54:36', null);
+INSERT INTO `customer_appointment` VALUES ('71', '30', null, null, 'zjpt', '我要语音', '1', '0', '2020-07-18 08:54:36', null);
+INSERT INTO `customer_appointment` VALUES ('72', '30', null, null, 'zjpt', '的融资需求我的融资需求我的融资需的融资需求我的融资需求我的融资需融资需求我的融资需求我的融资需的融资需求我的融资需求我的融资需求我的融资需求我的融资需求我的融资需的融资需求我的融资需求我的融资需求我的融资需求我的融资需求我的融资需的融资需求我的融资需求我的融资需求我的融资需求我的融资需求我的融资需的融资需求我的融资需求我的融资需求我的融资需求我的融资需求我的融资需的融资需求我的融资需求我的融资需求我的求我的融', '1', '0', '2020-07-18 11:40:55', null);
+INSERT INTO `customer_appointment` VALUES ('73', '30', null, null, 'zjpt', 'dfsfsd', '1', '0', '2020-07-18 11:44:37', null);
+INSERT INTO `customer_appointment` VALUES ('74', '30', null, null, 'zjpt', 'edddd', '1', '0', '2020-07-18 11:45:22', null);
+INSERT INTO `customer_appointment` VALUES ('75', '30', 'weiliejun', '13910778736', 'zjpt', 'ewrew', '1', '0', '2020-07-18 11:46:33', null);
+INSERT INTO `customer_appointment` VALUES ('76', '30', 'weiliejun', '13910778736', 'sbzn', 'rterter', '1', '0', '2020-07-18 12:12:49', null);
+INSERT INTO `customer_appointment` VALUES ('77', '30', 'weiliejun', '13910778736', 'gxfwpt', 'tttt', '1', '0', '2020-07-18 12:13:20', null);
+INSERT INTO `customer_appointment` VALUES ('78', '30', 'weiliejun', '13910778736', 'sbxx', 'uuu', '1', '0', '2020-07-18 12:13:27', null);
+INSERT INTO `customer_appointment` VALUES ('79', '30', 'weiliejun', '13910778736', 'sbzn', 'uuy', '1', '0', '2020-07-18 12:13:32', null);
+INSERT INTO `customer_appointment` VALUES ('80', '30', 'weiliejun', '13910778736', 'sbwb', '777', '1', '0', '2020-07-18 12:13:37', null);
+INSERT INTO `customer_appointment` VALUES ('81', '30', 'weiliejun', '13910778736', 'wyrz', '啊啊啊', '1', '0', '2020-07-18 17:11:56', null);
 
 -- ----------------------------
 -- Table structure for device_info
@@ -934,7 +944,7 @@ INSERT INTO `service_info` VALUES ('28', 'SoftwareCopyrightApply', '软件著作
 INSERT INTO `service_info` VALUES ('29', 'tradeMarkRegistration', '公司/商标注册', 'CUSTOMIZATION', '0', '公司/商标注册', '公司/商标注册', 'test.txt', '0', '2019-01-24 13:27:08', '2019-02-20 14:41:51', null);
 INSERT INTO `service_info` VALUES ('30', 'outsourcingService', '开发短期外包服务', 'CUSTOMIZATION', '0', '公司人员开发外派短期外包服务', '公司人员外派短期外包服务', 'test.txt', '0', '2019-01-24 13:27:08', '2019-02-20 14:41:51', null);
 INSERT INTO `service_info` VALUES ('32', 'api', 'api调用', 'SAAS', '0', 'ceshi     ceshi', 'ceshi           ceshi', 'ceshi         ceshi', '0', '2019-03-14 11:40:54', null, null);
-INSERT INTO `service_info` VALUES ('33', 'wyrz', '我要融资', 'ZJPT', '0', '我要融资', '为客户提供融资服务', null, '0', '2020-07-18 09:04:35', null, null);
+INSERT INTO `service_info` VALUES ('33', 'zjpt', '我要融资', 'ZJPT', '0', '我要融资', '为客户提供融资服务', null, '0', '2020-07-18 09:04:35', null, null);
 INSERT INTO `service_info` VALUES ('34', 'gxkf', '我要租库房', 'GXKF', '0', '共享库房', '共享库房', '', '0', '2020-07-18 09:04:35', '2020-07-18 09:53:18', '');
 INSERT INTO `service_info` VALUES ('35', 'gxfwpt', '我要法务服务', 'GXFWPT', '0', '共享法务平台', '共享法务平台', '', '0', '2020-07-18 09:04:35', '2020-07-18 09:53:18', '');
 INSERT INTO `service_info` VALUES ('36', 'sbxx', '我要设备选型', 'SBXX', '0', '设备选型', '设备选型', '', '0', '2020-07-18 09:04:35', '2020-07-18 09:53:18', '');
@@ -1345,7 +1355,7 @@ CREATE TABLE `sys_dictionary` (
   `UPDATE_TIME` datetime DEFAULT NULL COMMENT '修改时间 yyyy-mm-dd hh24:mi:ss',
   `DATA_STATUS` char(1) NOT NULL COMMENT '数据有效性（0-有效，1-无效）',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='SYS_DICTIONARY  字典表*';
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='SYS_DICTIONARY  字典表*';
 
 -- ----------------------------
 -- Records of sys_dictionary
@@ -1400,6 +1410,13 @@ INSERT INTO `sys_dictionary` VALUES ('49', '浪潮', '浪潮', '1', '0', '3', '2
 INSERT INTO `sys_dictionary` VALUES ('50', 'CISCO', 'CISCO', '1', '0', '4', '2', 'pp', null, null, '0');
 INSERT INTO `sys_dictionary` VALUES ('51', '曙光', '曙光', '1', '0', '5', '2', 'pp', null, null, '0');
 INSERT INTO `sys_dictionary` VALUES ('52', '锐捷', '锐捷', '1', '0', '6', '2', 'pp', null, null, '0');
+INSERT INTO `sys_dictionary` VALUES ('53', 'xdkjService', 'IT服务', '0', '0', '2', '1', null, '2020-07-18 14:13:59', null, '0');
+INSERT INTO `sys_dictionary` VALUES ('54', 'zjpt', '资金平台', '0', '0', '1', '2', 'xdkjService', '2020-07-18 14:13:59', null, '0');
+INSERT INTO `sys_dictionary` VALUES ('55', 'gxkf', '共享库房', '0', '0', '2', '2', 'xdkjService', '2020-07-18 14:13:59', null, '0');
+INSERT INTO `sys_dictionary` VALUES ('56', 'gxfwpt', '共享法务平台', '0', '0', '3', '2', 'xdkjService', '2020-07-18 14:13:59', null, '0');
+INSERT INTO `sys_dictionary` VALUES ('57', 'sbxx', '设备选型', '0', '0', '4', '2', 'xdkjService', '2020-07-18 14:13:59', null, '0');
+INSERT INTO `sys_dictionary` VALUES ('58', 'sbzn', '设备租赁', '0', '0', '5', '2', 'xdkjService', '2020-07-18 14:13:59', null, '0');
+INSERT INTO `sys_dictionary` VALUES ('59', 'sbwb', '设备维保', '0', '0', '6', '2', 'xdkjService', '2020-07-18 14:13:59', null, '0');
 
 -- ----------------------------
 -- Table structure for sys_function
@@ -1891,7 +1908,7 @@ CREATE TABLE `user_expense` (
 -- ----------------------------
 -- Records of user_expense
 -- ----------------------------
-INSERT INTO `user_expense` VALUES ('1', '8', '185', 'weatherQuery', '全国天气预报查询', '0.00', 'online', '0', null, '0', '2019-01-18 14:02:55', '2019-01-18 14:03:03', null, null);
+INSERT INTO `user_expense` VALUES ('1', '30', '185', 'weatherQuery', '全国天气预报查询', '0.00', 'online', '0', null, '0', '2019-01-18 14:02:55', '2019-01-18 14:03:03', null, null);
 INSERT INTO `user_expense` VALUES ('2', '8', '185', 'weatherQuery', '全国天气预报查询', '0.00', 'online', '0', null, '0', '2019-01-18 14:02:55', '2019-01-18 14:03:03', null, null);
 INSERT INTO `user_expense` VALUES ('3', '8', '185', 'expressDeliveryQuery', '全球物流快递查询', '0.00', 'online', '0', null, '0', '2019-01-18 14:02:55', '2019-01-18 14:03:03', null, null);
 INSERT INTO `user_expense` VALUES ('4', '8', '185', 'weatherQuery', '全国天气预报查询', '0.00', 'online', '0', null, '0', '2019-01-18 14:02:55', '2019-01-18 14:03:03', null, null);

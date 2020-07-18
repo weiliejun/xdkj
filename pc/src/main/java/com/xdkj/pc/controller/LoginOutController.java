@@ -1,5 +1,6 @@
 package com.xdkj.pc.controller;
 
+import com.xdkj.common.constant.ApplicationSessionKeys;
 import com.xdkj.common.web.SessionUser;
 import com.xdkj.pc.service.userManage.UserInfoService;
 import com.xdkj.pc.web.base.AbstractBaseController;
@@ -28,6 +29,7 @@ public class LoginOutController extends AbstractBaseController {
         if (sessionUser != null) {
             userInfoService.loginOut(sessionUser.getUserInfo().getId());
         }
+        request.getSession().setAttribute(ApplicationSessionKeys.IS_LOGIN, "false");
 
         return "redirect:/";
     }

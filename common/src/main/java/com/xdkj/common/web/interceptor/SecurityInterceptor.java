@@ -9,6 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.URLEncoder;
 import java.util.Enumeration;
 
 /**
@@ -20,7 +21,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         SessionUser sessionUser = null;
-		/*if (sessionUser == null) {
+		if (sessionUser == null) {
 			String returnUrl = null;
 			if(isAjaxRequest(request)){
 				returnUrl = getReferer(request);
@@ -36,7 +37,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 			}
 			response.sendRedirect(redirectUrl.toString());
 			return false;
-		}*/
+		}
         return true;
     }
 

@@ -5,6 +5,7 @@ import com.xdkj.common.model.customerAppointment.dao.CustomerAppointmentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service("customerAppointmentService")
@@ -26,5 +27,9 @@ public class CustomerAppointmentServiceImpl implements CustomerAppointmentServic
 
     public int countCustomerAppointmentsByParams(Map<String, Object> params) {
         return customerAppointmentDao.countCustomerAppointmentsByParams(params);
+    }
+
+    public List<Map<String, Object>> listCustomerAppointmentByParams(Map<String, Object> params){
+        return customerAppointmentDao.listCustomerAppointmentByParams(params);
     }
 }
