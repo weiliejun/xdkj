@@ -6,8 +6,8 @@
         <div class="perTit"><a href="/account/index">个人中心</a></div>
         <ul class="perNavBox">
             <li>
-                <p style="cursor:default;">IT服务网服务</p>
-                <div class="childList cloudPos">
+                <p style="cursor:default;color: #4D90FE">IT服务网服务</p>
+                <!--<div class="childList cloudPos">
                     <a href="javascript:;" class="cloudSAASBtn"
                        th:classappend="${channel eq 'saasCenter'} ? 'currentList':''">云计算SaaS</a>
                     <div class="cloudSAASList">
@@ -16,7 +16,7 @@
                         <a href="/account/saasCenter/ipPlaceQuery">全球IP地址归属地查询<i class="freeIcon3"></i></a>
                         <a href="/account/saasCenter/drivingQuestionsQuery">驾考公开题库查询<i class="freeIcon4"></i></a>
                         <a href="/account/saasCenter/expressDeliveryQuery">全球物流快递查询</a>
-                        <!--<a href="/account/saasCenter/taxpayer">企业纳税人识别号查询</a>-->
+                        &lt;!&ndash;<a href="/account/saasCenter/taxpayer">企业纳税人识别号查询</a>&ndash;&gt;
                         <a href="/account/saasCenter/smsCodeSend">云短信</a>
                         <a href="/account/saasCenter/identityCardIdentify">身份证实名认证</a>
                         <a href="/account/saasCenter/bankCardIdentify">银行卡实名校验</a>
@@ -32,17 +32,17 @@
                 <div class="childList">
                     <a id="iaasCenterLable" href="javascript:;"
                        th:class="${channel eq 'iaasCenter'} ? 'currentList':''">云计算IaaS</a>
-                    <!--<div class="cloudSAASList">
+                    &lt;!&ndash;<div class="cloudSAASList">
                         <a th:href="'/account/iaasCenter/'+${iaasService.serviceCode}" th:each="iaasService,iaasStat:${iaasServiceList}" th:text="${iaasService.serviceName}"></a>
-                    </div>-->
+                    </div>&ndash;&gt;
                 </div>
                 <div class="childList">
                     <a id="customizationCenterLable" href="javascript:;"
                        th:class="${channel eq 'customizationCenter'} ? 'currentList':''">定制研发</a>
-                    <!--<div class="cloudSAASList">
+                    &lt;!&ndash;<div class="cloudSAASList">
                         <a href="/account/customizationCenter/websiteDesign">网站建设</a>
-                    </div>-->
-                </div>
+                    </div>&ndash;&gt;
+                </div>-->
 
                 <div class="childList">
                     <a id="zjptCenterLable" href="javascript:;"
@@ -88,7 +88,7 @@
                 </div>
             </li>
             <li>
-                <p style="cursor:default;">账户管理</p>
+                <p style="cursor:default;color: #4D90FE">账户管理</p>
                 <div class="childList">
                     <a href="/accountManage/modifyPassword"
                        th:class="${channel eq 'modifyPassword'} ? 'currentList':''">密码修改</a>

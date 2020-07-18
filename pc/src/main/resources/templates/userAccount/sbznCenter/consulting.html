@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-账户中心-我要融资</title>
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('iaasCenter')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png"
+                                  alt=""><span>IT服务网服务</span>/<span>我要融资</span>/<span
+                        th:text="${serviceInfo.serviceName}"><!--虚拟主机管理--></span></h5>
+            </div>
+            <div class="con1">
+                <div class="nrk2">
+                    <h2 th:text="${serviceInfo.serviceName}"></h2>
+                    <dl>
+                        <dt class="ddt1">
+                            <!--<p class="p1">优势特点：</p>
+                            <div class="p2" th:text="${serviceInfo.serviceBrif}"> </div>-->
+<!--                            <p class="p1">适用场景：</p>-->
+                            <p class="p2" th:text="${serviceInfo.serviceDesc}"></p>
+                        </dt>
+                        <!--<dd class="ddd1">
+                            <img th:src="'/images/serviceImg/'+${serviceInfo.serviceLogo}"
+                                 style="height: 108px; width: 108px;" alt="">
+                            <p><a th:href="'/appointment/'+${serviceInfo.serviceCode}+'/downloadlocal'" target="_blank">下载使用指南</a>
+                            </p>
+                        </dd>-->
+                        <div style="clear:both;"></div>
+                    </dl>
+                </div>
+                <h4>我的租赁需求：</h4>
+                <form id="appointmentForm" name="appointmentForm" action="" method="post">
+                    <input type="hidden" class="form-control" id="serviceType" name="serviceType"
+                           th:value="${serviceType}"/>
+                    <div class="nrk3 myLabelError">
+                        <textarea id="consultDesc" name="consultDesc" class="quesText"
+                                  placeholder="输入您想咨询的问题，提交后我们会尽快联系您！"></textarea>
+                    </div>
+                    <a href="javascript:;" id="butSubmit" class="anniu2 btnEnabled">提交</a>
+                </form>
+                <div style="height:80px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
+</body>
+<!-- 预约提交  -->
+<script type="text/javascript" th:src="@{/js/serviceInfo/serviceAppointment.js}"></script>
+
+</html>
+
+
+
