@@ -43,6 +43,49 @@
                         <a href="/account/customizationCenter/websiteDesign">网站建设</a>
                     </div>-->
                 </div>
+
+                <div class="childList">
+                    <a id="zjptCenterLable" href="javascript:;"
+                       th:class="${channel eq 'zjptCenter'} ? 'currentList':''">资金平台</a>
+                    <!--<div class="cloudSAASList">
+                        <a th:href="'/account/iaasCenter/'+${iaasService.serviceCode}" th:each="iaasService,iaasStat:${iaasServiceList}" th:text="${iaasService.serviceName}"></a>
+                    </div>-->
+                </div>
+                <div class="childList">
+                    <a id="gxkfCenterLable" href="javascript:;"
+                       th:class="${channel eq 'gxkfCenter'} ? 'currentList':''">共享库房</a>
+                    <!--<div class="cloudSAASList">
+                        <a th:href="'/account/iaasCenter/'+${iaasService.serviceCode}" th:each="iaasService,iaasStat:${iaasServiceList}" th:text="${iaasService.serviceName}"></a>
+                    </div>-->
+                </div>
+                <div class="childList">
+                    <a id="gxfwptCenterLable" href="javascript:;"
+                       th:class="${channel eq 'gxfwptCenter'} ? 'currentList':''">共享法务平台</a>
+                    <!--<div class="cloudSAASList">
+                        <a th:href="'/account/iaasCenter/'+${iaasService.serviceCode}" th:each="iaasService,iaasStat:${iaasServiceList}" th:text="${iaasService.serviceName}"></a>
+                    </div>-->
+                </div>
+                <div class="childList">
+                    <a id="sbxxCenterLable" href="javascript:;"
+                       th:class="${channel eq 'sbxxCenter'} ? 'currentList':''">设备选型</a>
+                    <!--<div class="cloudSAASList">
+                        <a th:href="'/account/iaasCenter/'+${iaasService.serviceCode}" th:each="iaasService,iaasStat:${iaasServiceList}" th:text="${iaasService.serviceName}"></a>
+                    </div>-->
+                </div>
+                <div class="childList">
+                    <a id="sbznCenterLable" href="javascript:;"
+                       th:class="${channel eq 'sbznCenter'} ? 'currentList':''">设备租赁</a>
+                    <!--<div class="cloudSAASList">
+                        <a th:href="'/account/iaasCenter/'+${iaasService.serviceCode}" th:each="iaasService,iaasStat:${iaasServiceList}" th:text="${iaasService.serviceName}"></a>
+                    </div>-->
+                </div>
+                <div class="childList">
+                    <a id="sbwbCenterLable" href="javascript:;"
+                       th:class="${channel eq 'sbwbCenter'} ? 'currentList':''">设备维保</a>
+                    <!--<div class="cloudSAASList">
+                        <a th:href="'/account/iaasCenter/'+${iaasService.serviceCode}" th:each="iaasService,iaasStat:${iaasServiceList}" th:text="${iaasService.serviceName}"></a>
+                    </div>-->
+                </div>
             </li>
             <li>
                 <p style="cursor:default;">账户管理</p>
@@ -50,9 +93,9 @@
                     <a href="/accountManage/modifyPassword"
                        th:class="${channel eq 'modifyPassword'} ? 'currentList':''">密码修改</a>
                 </div>
-                <div class="childList">
+                <!--<div class="childList">
                     <a href="/accountManage/modifyMobile" th:class="${channel eq 'modifyMobile'} ? 'currentList':''">手机号修改</a>
-                </div>
+                </div>-->
             </li>
         </ul>
     </div>
@@ -72,6 +115,60 @@
         <div class="cloudSAASList">
             {{each iaasServiceList}}
                 <a href="/account/iaasCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
+            {{/each}}
+        </div>
+
+    </script>
+    <!-- zjpt center 服务菜单 -->
+    <script id="zjptCenterServiceTmpl" type="text/x-jquery-tmpl">
+        <div class="cloudSAASList">
+            {{each zjptServiceList}}
+                <a href="/account/zjptCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
+            {{/each}}
+        </div>
+
+    </script>
+    <!-- gxkf center 服务菜单 -->
+    <script id="gxkfCenterServiceTmpl" type="text/x-jquery-tmpl">
+        <div class="cloudSAASList">
+            {{each gxkfServiceList}}
+                <a href="/account/gxkfCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
+            {{/each}}
+        </div>
+
+    </script>
+    <!-- gxfwpt center 服务菜单 -->
+    <script id="gxfwptCenterServiceTmpl" type="text/x-jquery-tmpl">
+        <div class="cloudSAASList">
+            {{each gxfwptServiceList}}
+                <a href="/account/gxfwptCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
+            {{/each}}
+        </div>
+
+    </script>
+    <!-- sbxx center 服务菜单 -->
+    <script id="sbxxCenterServiceTmpl" type="text/x-jquery-tmpl">
+        <div class="cloudSAASList">
+            {{each sbxxServiceList}}
+                <a href="/account/sbxxCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
+            {{/each}}
+        </div>
+
+    </script>
+    <!-- sbzn center 服务菜单 -->
+    <script id="sbznCenterServiceTmpl" type="text/x-jquery-tmpl">
+        <div class="cloudSAASList">
+            {{each sbznServiceList}}
+                <a href="/account/sbznCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
+            {{/each}}
+        </div>
+
+    </script>
+    <!-- sbwb center 服务菜单 -->
+    <script id="sbwbCenterServiceTmpl" type="text/x-jquery-tmpl">
+        <div class="cloudSAASList">
+            {{each sbwbServiceList}}
+                <a href="/account/sbwbCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
             {{/each}}
         </div>
 
@@ -104,6 +201,13 @@
                     $('#iaasCenterServiceTmpl').tmpl(data).insertAfter('#iaasCenterLable');
                     $('#paasCenterServiceTmpl').tmpl(data).insertAfter('#paasCenterLable');
                     $('#customizationCenterTmpl').tmpl(data).insertAfter('#customizationCenterLable');
+                    $('#zjptCenterServiceTmpl').tmpl(data).insertAfter('#zjptCenterLable');
+
+                    $('#gxkfCenterServiceTmpl').tmpl(data).insertAfter('#gxkfCenterLable');
+                    $('#gxfwptCenterServiceTmpl').tmpl(data).insertAfter('#gxfwptCenterLable');
+                    $('#sbxxCenterTmpl').tmpl(data).insertAfter('#sbxxCenterLable');
+                    $('#sbznCenterServiceTmpl').tmpl(data).insertAfter('#sbznCenterLable');
+                    $('#sbwbCenterServiceTmpl').tmpl(data).insertAfter('#sbwbCenterLable');
                 }
             );
         });

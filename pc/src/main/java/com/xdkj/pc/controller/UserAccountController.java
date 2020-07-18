@@ -90,6 +90,24 @@ public class UserAccountController extends AbstractBaseController {
         //账户中心左边导航栏 - 定制服务
         List<ServiceInfo> customizationServiceList = mbigerService.listServiceInfosByServiceModule("CUSTOMIZATION");
         result.put("customizationServiceList", customizationServiceList);
+        //账户中心左边导航栏 - zjpt 服务
+        List<ServiceInfo> zjptServiceList = mbigerService.listServiceInfosByServiceModule("ZJPT");
+        result.put("zjptServiceList", zjptServiceList);
+        //账户中心左边导航栏 - gxkf 服务
+        List<ServiceInfo> gxkfServiceList = mbigerService.listServiceInfosByServiceModule("GXKF");
+        result.put("gxkfServiceList", gxkfServiceList);
+        //账户中心左边导航栏 - gxfwpt 服务
+        List<ServiceInfo> gxfwptServiceList = mbigerService.listServiceInfosByServiceModule("GXFWPT");
+        result.put("gxfwptServiceList", gxfwptServiceList);
+        //账户中心左边导航栏 - sbxx 服务
+        List<ServiceInfo> sbxxServiceList = mbigerService.listServiceInfosByServiceModule("SBXX");
+        result.put("sbxxServiceList", sbxxServiceList);
+        //账户中心左边导航栏 - sbzn 服务
+        List<ServiceInfo> sbznServiceList = mbigerService.listServiceInfosByServiceModule("SBZN");
+        result.put("sbznServiceList", sbznServiceList);
+        //账户中心左边导航栏 - sbwb 服务
+        List<ServiceInfo> sbwbServiceList = mbigerService.listServiceInfosByServiceModule("SBWB");
+        result.put("sbwbServiceList", sbwbServiceList);
 
         return result;
     }
