@@ -1,9 +1,13 @@
 package com.xdkj.common.web.interceptor;
 
 
+import com.xdkj.common.redis.service.CacheService;
+import com.xdkj.common.redis.util.RedisEnum;
+import com.xdkj.common.redis.util.RedisUtil;
 import com.xdkj.common.web.SessionUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -19,8 +23,12 @@ import java.util.Enumeration;
 public class SecurityInterceptor extends HandlerInterceptorAdapter {
     private static final Log logger = LogFactory.getLog(SecurityInterceptor.class);
 
+    @Autowired
+    private CacheService cacheService;
+
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        SessionUser sessionUser = null;
+        String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{request.getSession().getId()});
+        SessionUser sessionUser = (SessionUser) cacheService.getObject(key);
 		if (sessionUser == null) {
 			String returnUrl = null;
 			if(isAjaxRequest(request)){
