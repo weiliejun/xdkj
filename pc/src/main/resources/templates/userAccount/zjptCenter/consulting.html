@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
-    <title>IT服务网-账户中心-IAAS-预约咨询</title>
+    <title>IT服务网-账户中心-我要融资</title>
     <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
 </head>
 <body>
@@ -17,7 +17,7 @@
         <div class="perRight">
             <div class="daohang">
                 <h5 class=""><img src="/images/personalCenter/blue.png"
-                                  alt=""><span>IT服务网服务</span>/<span>云计算IaaS</span>/<span
+                                  alt=""><span>IT服务网服务</span>/<span>我要融资</span>/<span
                         th:text="${serviceInfo.serviceName}"><!--虚拟主机管理--></span></h5>
             </div>
             <div class="con1">
@@ -27,19 +27,19 @@
                         <dt class="ddt1">
                             <!--<p class="p1">优势特点：</p>
                             <div class="p2" th:text="${serviceInfo.serviceBrif}"> </div>-->
-                            <p class="p1">适用场景：</p>
+<!--                            <p class="p1">适用场景：</p>-->
                             <p class="p2" th:text="${serviceInfo.serviceDesc}"></p>
                         </dt>
-                        <dd class="ddd1">
+                        <!--<dd class="ddd1">
                             <img th:src="'/images/serviceImg/'+${serviceInfo.serviceLogo}"
                                  style="height: 108px; width: 108px;" alt="">
                             <p><a th:href="'/appointment/'+${serviceInfo.serviceCode}+'/downloadlocal'" target="_blank">下载使用指南</a>
                             </p>
-                        </dd>
+                        </dd>-->
                         <div style="clear:both;"></div>
                     </dl>
                 </div>
-                <h4>预约咨询：</h4>
+                <h4>我的融资需求：</h4>
                 <form id="appointmentForm" name="appointmentForm" action="" method="post">
                     <input type="hidden" class="form-control" id="serviceType" name="serviceType"
                            th:value="${serviceType}"/>
