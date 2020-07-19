@@ -1,5 +1,10 @@
 package com.xdkj.common.constant;
 
+import com.xdkj.common.util.DateHelper;
+
+import java.io.File;
+import java.util.Date;
+
 /**
  * 系统全局常量
  */
@@ -37,4 +42,10 @@ public class GlobalConstant {
         // 站内信
         public static final String WEBSITE = "website";
     }
+
+    // 用户上传本地路径
+    public static final String APP_QIYEBAO_TEMP_USER_PHOTO_PATH = File.separator + "upload" + File.separator + DateHelper.getNoSeparatorYMDFormatDate(new Date());
+
+    // 用户数据库上传路径
+    public static final String APP_QIYEBAO_USER_PHOTO_PATH = File.separator + "upload" + File.separator + DateHelper.getNoSeparatorYMDFormatDate(new Date());
 }

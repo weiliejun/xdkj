@@ -78,9 +78,11 @@ E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\sysMessageTmpl\dao
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\sysRoleFunction\bean\SysRoleFunction.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\ClobHelper.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\sysdictionary\dao\SysDictionaryDao.java
+E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\productOtherAttachFile\dao\ProductOtherAttachFileMapper.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\ThreeDes.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\db\DataSourceAspect.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\deviceInfo\dao\DeviceInfoMapper.java
+E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\productOtherAttachFile\bean\ProductOtherAttachFile.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\FtpUtil.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\redis\util\RedisUtil.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\Amount2RMB.java
@@ -119,6 +121,7 @@ E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\web\interceptor\BasicInt
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\sysFunction\dao\SysFunctionDao.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\components\exception\ParameterNullPointerException.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\servicecalllimit\bean\ServiceCallLimit.java
+E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\productOtherAttachFile\bean\AttachFileHref.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\model\userInfoExt\bean\UserInfoExt.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\redis\RedisProxyImpl.java
 E:\Workspaces\xdkj\common\src\main\java\com\xdkj\common\util\GetMacAddress.java

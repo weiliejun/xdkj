@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
+    <title>文档模板</title>
+</head>
+<!--<script type="text/javascript" src="/js/jquery-1.11.2.js"></script>-->
+<!--<script type="text/javascript" src="/js/number/format-number.js"></script>-->
+
+<body class="layui-layout-body">
+<fieldset class="layui-elem-field layui-field-title" style="margin:20px 0 0 0;">
+    <legend><h3 class="titNav">
+        <a href="javascript:;"> 文档预览</a>
+    </h3></legend>
+</fieldset>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-body">
+        <form id="searchForm" class="layui-form">
+            <input type="hidden" id="id" name="id" th:value="${productOtherAttachFile.id}">
+            <input type="hidden" id="productId" name="productId" th:value="99999">
+            <div id="dataTwo" class="proCon">
+                <p class="upTip"><i>*</i>请上传文件(jpg、jpeg、gif、png、doc、docx、pdf、xls、xlsx、ppt、pptx)，附件大小20M以下</p>
+                <div class="pdfList layui-clear" id="demo2">
+                    <div th:each="att : ${AttachFileList}">
+                        <a th:href="${att.fileUrl}" target="_blank">
+                            <!--<i class="layui-icon layui-icon-close"></i>--><span
+                                th:text="${att.fileName}"></span></a>
+                    </div>
+                </div>
+                <br/>
+                <div class="layui-upload">
+                    <!--<button type="button" class="layui-btn layui-btn-warm" id="test2">文件上传</button>-->
+                    <input type="hidden" id="attachFile" name="attachFile" required
+                           th:value="${productOtherAttachFile.attachFile}">
+                </div>
+
+                <div class="btnBox">
+                    <!--<button id="saveButton2" class="layui-btn" lay-submit lay-filter="save"><i
+                            class="layui-icon layui-icon-form"></i>保存</button>-->
+                    <a href="javascript:window.history.go(-1);" class="layui-btn">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--主题内容结束-->
+
+<!--<div class="layui-footer">-->
+<!--&lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+<!--勘设底部区域-->
+<!--</div>-->
+</div>
+<script>
+    var n1 = new FormatNumber();
+    n1.init({trigger: $('[data-type="int"]'), decimal: 0});
+    // $('#amount').FormatNumber({decimal:0});
+</script>
+<script type="text/javascript" th:src="@{/js/business/wdmb/add.js}"></script>
+</body>
+</html>

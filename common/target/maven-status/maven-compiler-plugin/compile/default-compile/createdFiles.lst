@@ -74,11 +74,13 @@ com\xdkj\common\model\sysBusiness\dao\SysBusinessDao.class
 com\xdkj\common\util\DES3.class
 com\xdkj\common\util\SpringContextUtil.class
 com\xdkj\common\model\merchant\dao\MerchantDao.class
+com\xdkj\common\model\productOtherAttachFile\bean\AttachFileHref.class
 com\xdkj\common\util\HttpClientManager$1.class
 com\xdkj\common\model\customerAppointment\dao\CustomerAppointmentDao.class
 com\xdkj\common\util\ImageHelper.class
 com\xdkj\common\web\taglibs\code\CodeDialect.class
 com\xdkj\common\util\HttpConnectionManager.class
+com\xdkj\common\model\productOtherAttachFile\dao\ProductOtherAttachFileMapper.class
 com\xdkj\common\model\user\bean\UserInfo.class
 com\xdkj\common\model\serviceinfo\bean\ServiceInfo.class
 com\xdkj\common\db\CustomerContextHolder.class
@@ -237,3 +239,4 @@ com\xdkj\common\util\CommonUtil$1.class
 com\xdkj\common\db\DynamicDataSource.class
 com\xdkj\common\model\sysLoginLog\bean\SysLoginLog.class
 com\xdkj\common\util\ArrayHelper.class
+com\xdkj\common\model\productOtherAttachFile\bean\ProductOtherAttachFile.class

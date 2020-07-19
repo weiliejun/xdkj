@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ProductOtherAttachFileMapper">
+    <resultMap id="BaseResultMap" type="com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR"/>
+        <result column="TYPE" property="type" jdbcType="VARCHAR"/>
+        <result column="ATTACH_FILE" property="attachFile" jdbcType="VARCHAR"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="CHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
+        <result column="CREATOR_ID" property="creatorId" jdbcType="VARCHAR"/>
+        <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR"/>
+        <result column="EDIT_TIME" property="editTime" jdbcType="VARCHAR"/>
+        <result column="EDITOR_ID" property="editorId" jdbcType="VARCHAR"/>
+        <result column="EDITOR_NAME" property="editorName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, PRODUCT_ID, TYPE, ATTACH_FILE, REMARK, DATA_STATUS, CREATE_TIME, CREATOR_ID, 
+    CREATOR_NAME, EDIT_TIME, EDITOR_ID, EDITOR_NAME
+  </sql>
+    <select id="selectProductOtherAttachFileById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from PRODUCT_OTHER_ATTACH_FILE
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectProductOtherAttachFileByProductId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from PRODUCT_OTHER_ATTACH_FILE
+        where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectProductOtherAttachFileList" resultMap="BaseResultMap"
+            parameterType="com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile">
+        select
+        <include refid="Base_Column_List"/>
+        from PRODUCT_OTHER_ATTACH_FILE
+        <where>
+            <if test="productId != null">
+                and PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+            </if>
+            <if test="type != null">
+                and TYPE = #{type,jdbcType=VARCHAR}
+            </if>
+            <if test="attachFile != null">
+                and ATTACH_FILE = #{attachFile,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                and REMARK = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="dataStatus != null">
+                and DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="creatorId != null">
+                and CREATOR_ID = #{creatorId,jdbcType=VARCHAR}
+            </if>
+            <if test="creatorName != null">
+                and CREATOR_NAME = #{creatorName,jdbcType=VARCHAR}
+            </if>
+            <if test="editTime != null">
+                and EDIT_TIME = #{editTime,jdbcType=VARCHAR}
+            </if>
+            <if test="editorId != null">
+                and EDITOR_ID = #{editorId,jdbcType=VARCHAR}
+            </if>
+            <if test="editorName != null">
+                and EDITOR_NAME = #{editorName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PRODUCT_OTHER_ATTACH_FILE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile">
+    insert into PRODUCT_OTHER_ATTACH_FILE (ID, PRODUCT_ID, TYPE, 
+      ATTACH_FILE, REMARK, DATA_STATUS, 
+      CREATE_TIME, CREATOR_ID, CREATOR_NAME, 
+      EDIT_TIME, EDITOR_ID, EDITOR_NAME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{attachFile,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{dataStatus,jdbcType=CHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, #{creatorName,jdbcType=VARCHAR}, 
+      #{editTime,jdbcType=VARCHAR}, #{editorId,jdbcType=VARCHAR}, #{editorName,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="addProductOtherAttachFile"
+            parameterType="com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile">
+        insert into PRODUCT_OTHER_ATTACH_FILE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="productId != null">
+                PRODUCT_ID,
+            </if>
+            <if test="type != null">
+                TYPE,
+            </if>
+            <if test="attachFile != null">
+                ATTACH_FILE,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID,
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME,
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME,
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID,
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="attachFile != null">
+                #{attachFile,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null">
+                #{editTime,jdbcType=VARCHAR},
+            </if>
+            <if test="editorId != null">
+                #{editorId,jdbcType=VARCHAR},
+            </if>
+            <if test="editorName != null">
+                #{editorName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateProductOtherAttachFileById"
+            parameterType="com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile">
+        update PRODUCT_OTHER_ATTACH_FILE
+        <set>
+            <if test="productId != null">
+                PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                TYPE = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="attachFile != null">
+                ATTACH_FILE = #{attachFile,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="dataStatus != null">
+                DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorId != null">
+                CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+            </if>
+            <if test="editorId != null">
+                EDITOR_ID = #{editorId,jdbcType=VARCHAR},
+            </if>
+            <if test="editorName != null">
+                EDITOR_NAME = #{editorName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey"
+            parameterType="com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile">
+    update PRODUCT_OTHER_ATTACH_FILE
+    set PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      ATTACH_FILE = #{attachFile,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=VARCHAR},
+      CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      EDITOR_ID = #{editorId,jdbcType=VARCHAR},
+      EDITOR_NAME = #{editorName,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="updateDataStatusById"
+            parameterType="com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile">
+    update PRODUCT_OTHER_ATTACH_FILE
+    set DATA_STATUS = #{dataStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <select id="listWdmbByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from PRODUCT_OTHER_ATTACH_FILE
+        <where>
+            DATA_STATUS='0' and TYPE = 'wdmbAttachFile'
+            <if test="fileName != null">
+                and ATTACH_FILE like CONCAT('%',#{fileName},'%')
+            </if>
+            <if test="startTime != null">
+                AND CREATE_TIME <![CDATA[>=]]> #{startTime,jdbcType=VARCHAR}
+            </if>
+            <if test="endTime != null">
+                AND CREATE_TIME <![CDATA[<=]]> #{endTime,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+    </select>
+</mapper>
