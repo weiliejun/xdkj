@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80016
 File Encoding         : 65001
 
-Date: 2020-07-18 18:12:17
+Date: 2020-07-19 22:38:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -117,7 +117,7 @@ CREATE TABLE `customer_appointment` (
   `CREATE_TIME` datetime NOT NULL COMMENT '创建时间 yyyy-mm-dd hh24:mi:ss',
   `UPDATE_TIME` datetime DEFAULT NULL COMMENT '修改时间 yyyy-mm-dd hh24:mi:ss',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='CUSTOMER_APPOINTMENT 客户预约表* ';
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='CUSTOMER_APPOINTMENT 客户预约表* ';
 
 -- ----------------------------
 -- Records of customer_appointment
@@ -174,7 +174,9 @@ INSERT INTO `customer_appointment` VALUES ('77', '30', 'weiliejun', '13910778736
 INSERT INTO `customer_appointment` VALUES ('78', '30', 'weiliejun', '13910778736', 'sbxx', 'uuu', '1', '0', '2020-07-18 12:13:27', null);
 INSERT INTO `customer_appointment` VALUES ('79', '30', 'weiliejun', '13910778736', 'sbzn', 'uuy', '1', '0', '2020-07-18 12:13:32', null);
 INSERT INTO `customer_appointment` VALUES ('80', '30', 'weiliejun', '13910778736', 'sbwb', '777', '1', '0', '2020-07-18 12:13:37', null);
-INSERT INTO `customer_appointment` VALUES ('81', '30', 'weiliejun', '13910778736', 'wyrz', '啊啊啊', '1', '0', '2020-07-18 17:11:56', null);
+INSERT INTO `customer_appointment` VALUES ('81', '30', 'weiliejun', '13910778736', 'gxfwpt', '啊啊啊', '1', '0', '2020-07-18 17:11:56', null);
+INSERT INTO `customer_appointment` VALUES ('82', '30', 'weiliejun', '13910778736', 'sbzn', '我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求我的租赁需求', '1', '0', '2020-07-18 19:39:32', null);
+INSERT INTO `customer_appointment` VALUES ('83', '30', 'weiliejun', '13910778736', 'zjpt', 'sssss', '1', '0', '2020-07-19 16:06:35', null);
 
 -- ----------------------------
 -- Table structure for device_info
@@ -312,6 +314,30 @@ CREATE TABLE `merchant` (
 -- Records of merchant
 -- ----------------------------
 INSERT INTO `merchant` VALUES ('1', '北京众大技术科技公司', '众大', null, null, null, '东城区', null, null, '0', '2019-01-22 14:13:37', '6214864173704417', '1234567.00');
+
+-- ----------------------------
+-- Table structure for product_other_attach_file
+-- ----------------------------
+DROP TABLE IF EXISTS `product_other_attach_file`;
+CREATE TABLE `product_other_attach_file` (
+  `ID` varchar(50) NOT NULL,
+  `PRODUCT_ID` varchar(50) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `ATTACH_FILE` varchar(4000) DEFAULT NULL,
+  `REMARK` varchar(500) DEFAULT NULL,
+  `DATA_STATUS` char(1) NOT NULL,
+  `CREATE_TIME` varchar(19) NOT NULL,
+  `CREATOR_ID` varchar(50) NOT NULL,
+  `CREATOR_NAME` varchar(50) NOT NULL,
+  `EDIT_TIME` varchar(19) DEFAULT NULL,
+  `EDITOR_ID` varchar(50) DEFAULT NULL,
+  `EDITOR_NAME` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of product_other_attach_file
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for service_call_cost
@@ -968,7 +994,7 @@ CREATE TABLE `sys_business_log` (
   `REMARK` varchar(4000) DEFAULT NULL,
   `IP` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=365 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='业务日志表（充值、查询）';
+) ENGINE=InnoDB AUTO_INCREMENT=376 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='业务日志表（充值、查询）';
 
 -- ----------------------------
 -- Records of sys_business_log
@@ -1337,6 +1363,17 @@ INSERT INTO `sys_business_log` VALUES ('361', '1', 'sysadmin', '系统管理员'
 INSERT INTO `sys_business_log` VALUES ('362', '1', 'sysadmin', '系统管理员', '07bf8298-feb7-4ab8-bd05-5f65ba21a238', '2020-07-13 21:09:45', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
 INSERT INTO `sys_business_log` VALUES ('363', '1', 'sysadmin', '系统管理员', 'cc944cf0-fbf7-4315-bf05-3a39ac7e5f54', '2020-07-14 21:02:57', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
 INSERT INTO `sys_business_log` VALUES ('364', '1', 'sysadmin', '系统管理员', 'cc944cf0-fbf7-4315-bf05-3a39ac7e5f54', '2020-07-14 21:03:07', '用户信息管理', '用户信息列表', '\"第2页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('365', '1', 'sysadmin', '系统管理员', 'd8908a3f-02ae-4907-9a84-eff31cd84955', '2020-07-18 18:46:42', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('366', '1', 'sysadmin', '系统管理员', 'd8908a3f-02ae-4907-9a84-eff31cd84955', '2020-07-18 18:46:47', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('367', '1', 'sysadmin', '系统管理员', 'd8908a3f-02ae-4907-9a84-eff31cd84955', '2020-07-18 18:46:51', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('368', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:24:00', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('369', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:24:17', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('370', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:25:50', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('371', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:25:53', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('372', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:27:03', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('373', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:30:06', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('374', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:30:43', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('375', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:32:57', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for sys_dictionary
@@ -1459,6 +1496,8 @@ INSERT INTO `sys_function` VALUES ('200023', 'sysMessageTmpl', 'system', '消息
 INSERT INTO `sys_function` VALUES ('200029', 'securityManager', 'system', '管理员权限管理', '', 'module', '1', '0', '&#xe620;', '0');
 INSERT INTO `sys_function` VALUES ('200030', 'userList', 'business', '用户管理', '', 'module', '2', '0', 'icon-icon10', '0');
 INSERT INTO `sys_function` VALUES ('200031', 'userPortal', 'userList', '用户列表', 'userInfo/list', 'subModule', '21', '0', 'icon-ziliao', '0');
+INSERT INTO `sys_function` VALUES ('200069', 'insuranceOrderManage', 'business', '工具软件', '', 'module', '4', '0', 'icon-icon10', '0');
+INSERT INTO `sys_function` VALUES ('200070', 'insuranceOrderList', 'insuranceOrderManage', '软件下载', 'wdmb/list', 'subModule', '1', '0', '&#xe62d;', '0');
 INSERT INTO `sys_function` VALUES ('200071', 'appSetting', 'system', 'App配置管理', '', 'module', '5', '0', '&#xe614;', '0');
 INSERT INTO `sys_function` VALUES ('200072', 'websiteAdvertiseList', 'appSetting', '轮播图配置管理', 'websiteAdvertise/list', 'subModule', '51', '0', '&#xe648;', '0');
 
@@ -1809,7 +1848,7 @@ CREATE TABLE `sys_role_function` (
   `CREATOR_ID` int(11) NOT NULL,
   `CREATOR_NAME` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=964 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of sys_role_function
@@ -1829,59 +1868,66 @@ INSERT INTO `sys_role_function` VALUES ('558', '11', 'userExpenseList', '2019-03
 INSERT INTO `sys_role_function` VALUES ('565', '11', 'sysMesage', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('566', '11', 'sysMessageList', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('567', '11', 'websiteBulletinList', '2019-03-11 13:41:46', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('864', '4', 'root', '2019-03-15 17:56:28', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('865', '4', 'system', '2019-03-15 17:56:28', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('866', '4', 'securityManager', '2019-03-15 17:56:28', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('867', '4', 'menu', '2019-03-15 17:56:28', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('868', '4', 'role', '2019-03-15 17:56:28', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('869', '4', 'user', '2019-03-15 17:56:28', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('870', '4', 'sysMesage', '2019-03-15 17:56:28', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('871', '4', 'sysMessageList', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('872', '4', 'websiteBulletinList', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('873', '4', 'sysMessageTmpl', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('874', '4', 'dictionary', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('875', '4', 'sqlmonitor', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('876', '4', 'business', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('877', '4', 'userExpense', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('878', '4', 'userExpenseList', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('880', '4', 'rechargeManage', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('881', '4', 'userTopUp', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('888', '4', 'sysService', '2019-03-15 17:56:29', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('911', '2', 'root', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('912', '2', 'system', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('913', '2', 'menu', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('914', '2', 'role', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('915', '2', 'user', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('916', '2', 'sysMesage', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('917', '2', 'sysMessageList', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('918', '2', 'websiteBulletinList', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('919', '2', 'sysMessageTmpl', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('920', '2', 'dictionary', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('921', '2', 'sqlmonitor', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('922', '2', 'userExpense', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('923', '2', 'userExpenseList', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('925', '2', 'rechargeManage', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('926', '2', 'userTopUp', '2019-03-15 17:56:42', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('936', '1', 'root', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('937', '1', 'system', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('938', '1', 'securityManager', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('939', '1', 'menu', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('940', '1', 'role', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('941', '1', 'user', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('942', '1', 'sysMesage', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('943', '1', 'sysMessageList', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('944', '1', 'websiteBulletinList', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('945', '1', 'sysMessageTmpl', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('946', '1', 'dictionary', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('947', '1', 'sqlmonitor', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('948', '1', 'business', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('949', '1', 'userList', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('950', '1', 'userPortal', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('951', '1', 'userExpense', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('952', '1', 'userExpenseList', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('954', '1', 'rechargeManage', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('955', '1', 'userTopUp', '2019-06-06 08:54:51', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('963', '1', 'sysService', '2019-06-06 08:54:51', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('964', '1', 'root', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('965', '1', 'business', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('966', '1', 'userList', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('967', '1', 'userPortal', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('968', '1', 'insuranceOrderManage', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('969', '1', 'insuranceOrderList', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('970', '1', 'userExpense', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('971', '1', 'userExpenseList', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('972', '1', 'rechargeManage', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('973', '1', 'userTopUp', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('974', '1', 'system', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('975', '1', 'securityManager', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('976', '1', 'menu', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('977', '1', 'role', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('978', '1', 'user', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('979', '1', 'sysMesage', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('980', '1', 'sysMessageList', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('981', '1', 'websiteBulletinList', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('982', '1', 'sysMessageTmpl', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('983', '1', 'dictionary', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('984', '1', 'sqlmonitor', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('985', '1', 'appSetting', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('986', '1', 'websiteAdvertiseList', '2020-07-19 22:19:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('987', '4', 'root', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('988', '4', 'business', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('989', '4', 'insuranceOrderManage', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('990', '4', 'insuranceOrderList', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('991', '4', 'userExpense', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('992', '4', 'userExpenseList', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('993', '4', 'rechargeManage', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('994', '4', 'userTopUp', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('995', '4', 'system', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('996', '4', 'securityManager', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('997', '4', 'menu', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('998', '4', 'role', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('999', '4', 'user', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1000', '4', 'sysMesage', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1001', '4', 'sysMessageList', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1002', '4', 'websiteBulletinList', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1003', '4', 'sysMessageTmpl', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1004', '4', 'dictionary', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1005', '4', 'sqlmonitor', '2020-07-19 22:20:27', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1006', '2', 'root', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1007', '2', 'business', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1008', '2', 'insuranceOrderManage', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1009', '2', 'insuranceOrderList', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1010', '2', 'userExpense', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1011', '2', 'userExpenseList', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1012', '2', 'rechargeManage', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1013', '2', 'userTopUp', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1014', '2', 'system', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1015', '2', 'menu', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1016', '2', 'role', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1017', '2', 'user', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1018', '2', 'sysMesage', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1019', '2', 'sysMessageList', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1020', '2', 'websiteBulletinList', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1021', '2', 'sysMessageTmpl', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1022', '2', 'dictionary', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1023', '2', 'sqlmonitor', '2020-07-19 22:21:12', '1', '系统管理员');
 
 -- ----------------------------
 -- Table structure for user_expense

@@ -11,7 +11,16 @@ spring:
     encoding: UTF-8
     cache: false
 
-
+  servlet:
+    multipart:
+      enabled: false
+      max-file-size: 20MB
+      max-request-size: 100MB
+    http:
+      encoding:
+        charset: UTF-8
+        enabled: true
+        force: true
 
 
 

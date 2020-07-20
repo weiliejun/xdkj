@@ -218,10 +218,10 @@
                 <redis.password>junde</redis.password>
 
                 <!-- 资源服务器配置 -->
-                <isUploadToResourceServer>1</isUploadToResourceServer>
-                <resourceServer.ReceiveFileURL>http://127.0.0.1:85/portal/file/receive
+                <isUploadToResourceServer>0</isUploadToResourceServer>
+                <resourceServer.ReceiveFileURL>http://127.0.0.1:82/portal/file/receive
                 </resourceServer.ReceiveFileURL>
-                <resourceServer.AccessURL>http://127.0.0.1:85</resourceServer.AccessURL>
+                <resourceServer.AccessURL>http://127.0.0.1:82</resourceServer.AccessURL>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -244,10 +244,10 @@
                 <redis.password>junde</redis.password>
 
                 <!-- 资源服务器配置 -->
-                <isUploadToResourceServer>1</isUploadToResourceServer>
-                <resourceServer.ReceiveFileURL>http://127.0.0.1:85/portal/file/receive
+                <isUploadToResourceServer>0</isUploadToResourceServer>
+                <resourceServer.ReceiveFileURL>http://127.0.0.1:82/portal/file/receive
                 </resourceServer.ReceiveFileURL>
-                <resourceServer.AccessURL>http://127.0.0.1:85</resourceServer.AccessURL>
+                <resourceServer.AccessURL>http://127.0.0.1:82</resourceServer.AccessURL>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -269,10 +269,10 @@
                 <redis.port>6379</redis.port>
                 <redis.password>junde</redis.password>
                 <!-- 资源服务器配置 -->
-                <isUploadToResourceServer>1</isUploadToResourceServer>
-                <resourceServer.ReceiveFileURL>http://127.0.0.1:85/portal/file/receive
+                <isUploadToResourceServer>0</isUploadToResourceServer>
+                <resourceServer.ReceiveFileURL>http://127.0.0.1:82/portal/file/receive
                 </resourceServer.ReceiveFileURL>
-                <resourceServer.AccessURL>http://127.0.0.1:85</resourceServer.AccessURL>
+                <resourceServer.AccessURL>http://127.0.0.1:82</resourceServer.AccessURL>
 
             </properties>
             <activation>
