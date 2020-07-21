@@ -125,7 +125,7 @@ public class Admin extends SpringBootServletInitializer {
      * 记住我需要一个cookie session管理 也需要自己的cookie
      * @return
      */
-    /*@Bean("sessionIdCookie")
+    @Bean("sessionIdCookie")
     public SimpleCookie sessionIdCookie(){
         //这个参数是cookie的名称
         SimpleCookie simpleCookie = new SimpleCookie("JSESSION_ID");
@@ -140,5 +140,5 @@ public class Admin extends SpringBootServletInitializer {
         //maxAge=-1表示浏览器关闭时失效此Cookie
         simpleCookie.setMaxAge(-1);
         return simpleCookie;
-    }*/
+    }
 }
