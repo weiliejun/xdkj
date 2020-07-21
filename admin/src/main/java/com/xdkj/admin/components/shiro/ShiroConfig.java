@@ -38,6 +38,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/get/imgcode", "anon");
         filterChainDefinitionMap.put("/portal/login", "kickout,anon");
         filterChainDefinitionMap.put("/portal/logout", "logout");
+
+        filterChainDefinitionMap.put("/upload/**", "anon");
         //配置记住我或认证通过可以访问的地址
         filterChainDefinitionMap.put("/**", "kickout,user");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

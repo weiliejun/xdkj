@@ -1,7 +1,7 @@
 server:
                   port: 82
                   servlet:
-                    context-path: /console
+                    context-path: /
 resources:
     static-locations: classpath:/resources/, classpath:/static/ ,classpath:/templates/
 

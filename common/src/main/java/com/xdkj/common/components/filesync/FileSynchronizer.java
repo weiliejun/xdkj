@@ -143,10 +143,12 @@ public class FileSynchronizer {
         // 资源服务器路径
         if (isUploadToResourceServer.toString().equalsIgnoreCase("1")) {
             picResourceUrl = ReceiveFileURL;
+            result = syncFile(picResourceUrl, file, filePath, fileName);
         } else {
             picResourceUrl = receiverUrl;
+            result = true;
         }
-        result = syncFile(picResourceUrl, file, filePath, fileName);
+//        result = syncFile(picResourceUrl, file, filePath, fileName);
         return result;
     }
 
