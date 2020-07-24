@@ -102,7 +102,7 @@ public class Admin extends SpringBootServletInitializer {
         factory.setMaxRequestSize(DataSize.ofMegabytes(120));
         return factory.createMultipartConfig();
     }*/
-    @Bean
+    /*@Bean
     public WebServerFactoryCustomizer<TomcatServletWebServerFactory>
     containerCustomizer() {
         return new EmbeddedTomcatCustomizer();
@@ -117,28 +117,6 @@ public class Admin extends SpringBootServletInitializer {
                 connector.setAttribute("relaxedQueryChars", "<>[\\]^`{|}");
             });
         }
-    }
+    }*/
 
-    /**
-     * 配置保存sessionId的cookie
-     * 注意：这里的cookie 不是上面的记住我 cookie
-     * 记住我需要一个cookie session管理 也需要自己的cookie
-     * @return
-     */
-    @Bean("sessionIdCookie")
-    public SimpleCookie sessionIdCookie(){
-        //这个参数是cookie的名称
-        SimpleCookie simpleCookie = new SimpleCookie("JSESSION_ID");
-        //setcookie的httponly属性如果设为true的话，会增加对xss防护的安全系数。
-        //它有以下特点：
-        //setcookie()的第七个参数
-        //设为true后，只能通过http访问，javascript无法访问
-        //防止xss读取cookie
-        simpleCookie.setHttpOnly(true);
-        simpleCookie.setSecure(true);
-        simpleCookie.setPath("/");
-        //maxAge=-1表示浏览器关闭时失效此Cookie
-        simpleCookie.setMaxAge(-1);
-        return simpleCookie;
-    }
 }
