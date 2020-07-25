@@ -1,21 +1,21 @@
-layui.use(['layer', 'form', 'table'], function() {
+layui.use(['layer', 'form', 'table'], function () {
     var $ = layui.$,
         layer = layui.layer,
         form = layui.form,
         table = layui.table;
 
-    var cols =  [[
+    var cols = [[
         {
             checkbox: true,
             width: 60,
             fixed: true
-        },{
+        }, {
             field: 'serviceCode',
             width: 190,
             title: '类型编号',
             align: 'center',
             sort: true
-        },{
+        }, {
             field: 'serviceName',
             width: 190,
             title: '类型名称',
@@ -25,13 +25,13 @@ layui.use(['layer', 'form', 'table'], function() {
             width: 120,
             title: '模块',
             align: 'center'
-        },{
+        }, {
             field: 'status',
             width: 100,
             title: '状态',
             align: 'center',
-            templet:'#status'
-        },{
+            templet: '#status'
+        }, {
             field: 'serviceBrif',
             width: 200,
             title: '简介',
@@ -42,18 +42,18 @@ layui.use(['layer', 'form', 'table'], function() {
             title: '服务logo',
             align: 'center'
         }, {
-        field: 'docLink',
+            field: 'docLink',
             width: 200,
             title: '文档链接',
-        align: 'center'
-       },{
+            align: 'center'
+        }, {
             field: 'createTime',
             width: 150,
             title: '创建时间',
             align: 'center',
-            templet:'#createTime'
+            templet: '#createTime'
         }
-        ,{
+        , {
             title: '常用操作',
             align: 'center',
             fixed: "right",
@@ -62,23 +62,23 @@ layui.use(['layer', 'form', 'table'], function() {
     ]];
 
     // 表格渲染
-    var initTable = Common.initTable('#serviceInfoTables', '/serviceInfo/list',cols,table);
+    var initTable = Common.initTable('#serviceInfoTables', '/serviceInfo/list', cols, table);
 
     //监听工具条
-    table.on('tool(serviceInfoTables)', function(obj) {
+    table.on('tool(serviceInfoTables)', function (obj) {
         var data = obj.data;
         //修改
         if (obj.event === 'update') {
             var index = layui.layer.open({
                 title: "编辑",
                 type: 2,
-                skin:'',
+                skin: '',
                 offset: ['85px', '530px'],
                 area: ['540px', '520px'],
-                content : PageContext.getUrl("/serviceInfo/toadd"),
-                success : function(layero, index){
+                content: PageContext.getUrl("/serviceInfo/toadd"),
+                success: function (layero, index) {
                     var body = layui.layer.getChildFrame('body', index);
-                    if(data){
+                    if (data) {
                         body.find("#id").val(data.id);
                         body.find("#serviceCode").val(data.serviceCode);
                         body.find("#serviceName").val(data.serviceName);
@@ -87,9 +87,9 @@ layui.use(['layer', 'form', 'table'], function() {
                         body.find("#serviceDesc").val(data.serviceDesc);
                         body.find("#docLink").val(data.docLink);
                         //使用状态赋值
-                        body.find("input[name=status]").each(function(i,item){
-                            if($(item).val() == data.status){
-                                $(item).prop('checked',true);
+                        body.find("input[name=status]").each(function (i, item) {
+                            if ($(item).val() == data.status) {
+                                $(item).prop('checked', true);
                             }
                         });
 
@@ -97,14 +97,14 @@ layui.use(['layer', 'form', 'table'], function() {
                     }
                 }
             });
-        }else if (obj.event === 'disable') {//禁用
-            layer.confirm('确定要禁用此类型吗？', function(index) {
+        } else if (obj.event === 'disable') {//禁用
+            layer.confirm('确定要禁用此类型吗？', function (index) {
                 var ajaxReturnData;
                 $.ajax({
-                    url:   PageContext.getUrl('/serviceInfo/disable'),
+                    url: PageContext.getUrl('/serviceInfo/disable'),
                     type: 'post',
                     async: false,
-                    data: {id:data.id},
+                    data: {id: data.id},
                     success: function (data) {
                         ajaxReturnData = data;
                     }
@@ -117,14 +117,14 @@ layui.use(['layer', 'form', 'table'], function() {
                 }
                 layer.close(index);
             });
-        }else if (obj.event === 'enable') {//启用
-            layer.confirm('真的将该用户置为可用么？', function(index) {
+        } else if (obj.event === 'enable') {//启用
+            layer.confirm('真的将该用户置为可用么？', function (index) {
                 var ajaxReturnData;
                 $.ajax({
-                    url:  PageContext.getUrl('/serviceInfo/enable'),
+                    url: PageContext.getUrl('/serviceInfo/enable'),
                     type: 'post',
                     async: false,
-                    data: {id:data.id},
+                    data: {id: data.id},
                     success: function (data) {
                         ajaxReturnData = data;
                     }
@@ -137,14 +137,14 @@ layui.use(['layer', 'form', 'table'], function() {
                 }
                 layer.close(index);
             });
-        }else if (obj.event === 'delete') {
-            layer.confirm('确定要删除该类型么？', function(index) {
+        } else if (obj.event === 'delete') {
+            layer.confirm('确定要删除该类型么？', function (index) {
                 var ajaxReturnData;
                 $.ajax({
-                    url:  PageContext.getUrl('/serviceInfo/delete'),
+                    url: PageContext.getUrl('/serviceInfo/delete'),
                     type: 'post',
                     async: false,
-                    data: {id:data.id},
+                    data: {id: data.id},
                     success: function (data) {
                         ajaxReturnData = data;
                     }
@@ -162,20 +162,20 @@ layui.use(['layer', 'form', 'table'], function() {
     });
 
     //按钮事件监听
-    $('.layui-btn').on('click',function(){
+    $('.layui-btn').on('click', function () {
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
 
     //按钮事件定义
     var active = {
-        search:function(){
+        search: function () {
             Common.searchTable('searchForm', initTable);
         },
-        searchFormClear:function(){
+        searchFormClear: function () {
             Common.searchTableClear('searchForm');
         },
-        add:function(){
+        add: function () {
             Common.openFrame("/serviceInfo/toadd", "新增", '718px', '520px');
         }
     };

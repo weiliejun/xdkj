@@ -7,13 +7,13 @@ import com.github.pagehelper.PageHelper;
 import com.xdkj.admin.components.shiro.PasswordHelper;
 import com.xdkj.admin.components.shiro.RetryLimitHashedCredentialsMatcher;
 import com.xdkj.admin.system.service.SecurityService;
+import com.xdkj.admin.system.service.SysManagerService;
 import com.xdkj.admin.web.base.AbstractBaseController;
 import com.xdkj.common.constant.GlobalConstant;
 import com.xdkj.common.model.sysManager.bean.SysManager;
 import com.xdkj.common.model.sysManagerRole.bean.SysManagerRole;
 import com.xdkj.common.model.sysRole.bean.SysRole;
 import com.xdkj.common.util.StringHelper;
-import com.xdkj.admin.system.service.SysManagerService;
 import com.xdkj.common.web.annotations.AvoidDuplicateSubmission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -181,7 +181,7 @@ public class SysManagerController extends AbstractBaseController {
             }
             //设置初始密码
             sysManager.setPassword(PasswordHelper.encryptPassword(sysManager.getCode(), GlobalConstant.CONSOLE_PASSWORD_INIT));
-            sysManager.setStatus("0");
+            sysManager.setStatus(GlobalConstant.STATUS_VALID);
             sysManager.setDataStatus(GlobalConstant.DATA_VALID);
             sysManager.setCreatorId(currentManager.getId());
             sysManager.setCreatorName(currentManager.getName());
@@ -244,7 +244,7 @@ public class SysManagerController extends AbstractBaseController {
         }
         //启用
         if ("enable".equals(operateType)) {
-            sysManageTemp.setStatus("0");
+            sysManageTemp.setStatus(GlobalConstant.STATUS_VALID);
             sysManagerService.updateSysManager(sysManageTemp);
             resultMap.put("flag", "true");
             resultMap.put("msg", "启用成功");
@@ -252,7 +252,7 @@ public class SysManagerController extends AbstractBaseController {
         }
         //禁用
         if ("disable".equals(operateType)) {
-            sysManageTemp.setStatus("1");
+            sysManageTemp.setStatus(GlobalConstant.STATUS_INVALID);
             sysManagerService.updateSysManager(sysManageTemp);
             resultMap.put("flag", "true");
             resultMap.put("msg", "禁用成功");

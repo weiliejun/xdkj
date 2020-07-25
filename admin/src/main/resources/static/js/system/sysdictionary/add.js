@@ -1,16 +1,16 @@
-layui.use(['form', 'layer', 'jquery','tableSelect'], function () {
+layui.use(['form', 'layer', 'jquery', 'tableSelect'], function () {
     var $ = layui.$,
         form = layui.form,
         layer = layui.layer,
         tableSelect = layui.tableSelect;
 
     // (选择父级1时，隐藏类型下拉框/去掉必填 )
-    form.on('select(grade)', function(data){
-        var selectVal = data.value ;
-        if(selectVal == '1'){
-            $("#parentCodeDiv").removeAttr("lay-verify","required");
+    form.on('select(grade)', function (data) {
+        var selectVal = data.value;
+        if (selectVal == '1') {
+            $("#parentCodeDiv").removeAttr("lay-verify", "required");
             $('#parentCodeDiv').addClass("layui-hide");
-        }else if(selectVal == '2'){
+        } else if (selectVal == '2') {
             $("#parentCodeDiv").attr("lay-verify");
             $('#parentCodeDiv').removeClass('layui-hide');
         }
@@ -49,11 +49,11 @@ layui.use(['form', 'layer', 'jquery','tableSelect'], function () {
         checkedKey: 'id',
         searchKey: 'name',
         table: {
-            method:'POST',
+            method: 'POST',
             url: PageContext.getUrl('/sysdictionary/tableSelect/list'),
             request: {
-                selectRange:'parentScope',
-                pageName: 'currentPage' ,
+                selectRange: 'parentScope',
+                pageName: 'currentPage',
                 limitName: 'pageSize'
             },
             response: { //定义后端 json 格式
@@ -64,9 +64,9 @@ layui.use(['form', 'layer', 'jquery','tableSelect'], function () {
                 dataName: 'data' //数据字段
             },
             cols: [[
-                { type: 'radio' },
-                { field: 'name', title: '类型名称',align: 'center' },
-                { field: 'code', title: '类型编号',align: 'center' }
+                {type: 'radio'},
+                {field: 'name', title: '类型名称', align: 'center'},
+                {field: 'code', title: '类型编号', align: 'center'}
             ]]
         },
         done: function (elem, data) {

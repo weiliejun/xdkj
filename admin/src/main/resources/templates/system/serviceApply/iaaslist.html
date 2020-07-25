@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>云计算IAAS预约咨询</title>
 </head>
@@ -12,19 +12,22 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-block">
-                            <input id="customerName" type="text" name="customerName" placeholder="请输入用户名" autocomplete="off" class="layui-input" th:value="${name}" />
+                            <input id="customerName" type="text" name="customerName" placeholder="请输入用户名"
+                                   class="layui-input" th:value="${name}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">手机号码</label>
                         <div class="layui-input-block">
-                            <input id="customerPhone" type="text" name="customerPhone" placeholder="请输入手机号码" autocomplete="off" class="layui-input" th:value="${customerPhone}" />
+                            <input id="customerPhone" type="text" name="customerPhone" placeholder="请输入手机号码"
+                                   class="layui-input" th:value="${customerPhone}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">服务名称</label>
                         <div class="layui-input-block">
-                            <input id="serviceName" type="text" name="serviceName" placeholder="请输入服务名称" autocomplete="off" class="layui-input" th:value="${serviceName}" />
+                            <input id="serviceName" type="text" name="serviceName" placeholder="请输入服务名称"
+                                   class="layui-input" th:value="${serviceName}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -46,7 +49,7 @@
                 {{#  if(d.STATUS === undefined){ }}
                 未知
                 {{#  } else { }}
-                {{#  if(d.STATUS === '0'){ }}
+                {{#  if(d.STATUS === '1'){ }}
                 已联系
                 {{#  } else { }}
                 未联系
@@ -54,7 +57,7 @@
                 {{#  } }}
             </script>
             <script id="iaasApplyBar" type="text/html">
-                {{#  if(d.STATUS === '0'){ }}
+                {{#  if(d.STATUS === '1'){ }}
                 <a class="" lay-event="do"><i class="fa fa-ban"></i>&nbsp;已联系</a>
                 {{#  } else { }}
                 <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="undo"><i class="fa fa-circle-o"></i>&nbsp;置为已联系</a>

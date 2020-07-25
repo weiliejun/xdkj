@@ -9,8 +9,6 @@ layui.use(['layer', 'form', 'table'], function () {
     pageInit();
 
 
-
-
 });
 
 
@@ -24,7 +22,7 @@ function pageInit() {
         },
         edit: {
             enable: true,//允许编辑
-            renameTitle:"修改",
+            renameTitle: "修改",
             showRenameBtn: true,
             editNameSelectAll: true,
             removeTitle: "删除",
@@ -60,9 +58,9 @@ function pageInit() {
                     offset: ['85px', '530px'],
                     area: ['540px', '620px'],
                     content: PageContext.getUrl("/sysfunction/toadd"),
-                    success : function(layero, index){
+                    success: function (layero, index) {
                         var body = layui.layer.getChildFrame('body', index);
-                        if(pId){
+                        if (pId) {
                             body.find("#parentCodeLabel").text(pId);
                             layui.form.render();
                         }
@@ -102,7 +100,7 @@ function pageInit() {
                         offset: ['85px', '530px'],
                         area: ['540px', '620px'],
                         content: PageContext.getUrl("/sysfunction/toadd"),
-                        success : function(layero, index){
+                        success: function (layero, index) {
                             var body = layui.layer.getChildFrame('body', index);
                             body.find("#parentCodeLabel").text(sysFunction.parentCode);
                             body.find("#idLabel").text(sysFunction.id);
@@ -111,9 +109,9 @@ function pageInit() {
                             body.find("#name").val(sysFunction.name);
                             body.find("#url").val(sysFunction.url);
                             //有效性赋值
-                            body.find("input[name=status]").each(function(i,item){
-                                if($(item).val() == data.status){
-                                    $(item).prop('checked',true);
+                            body.find("input[name=status]").each(function (i, item) {
+                                if ($(item).val() == data.status) {
+                                    $(item).prop('checked', true);
                                 }
                             });
                             //节点类型
@@ -122,8 +120,8 @@ function pageInit() {
                         }
                     });
                     return false;
-                }else{
-                    layer.msg(data.msg,{icon: 5});
+                } else {
+                    layer.msg(data.msg, {icon: 5});
                     return false;
                 }
             }
@@ -144,8 +142,8 @@ function pageInit() {
         var zTree = $.fn.zTree.getZTreeObj("sysFunctionTree");
         zTree.selectNode(treeNode);
         layer.confirm('确认删除 节点 -- ' + treeNode.name + '及其关联数据 吗？', {
-            btn : [ '确定', '取消' ]
-        }, function() {
+            btn: ['确定', '取消']
+        }, function () {
             $.ajax({
                 type: "POST",
                 url: PageContext.getUrl("/sysfunction//delete"),
@@ -156,22 +154,19 @@ function pageInit() {
                 },
                 success: function (data) {
                     if (data.flag == 'true') {
-                        layer.msg(data.msg, {icon: 1, time: 1000},function(){
+                        layer.msg(data.msg, {icon: 1, time: 1000}, function () {
                             window.location.reload();
                         });
-                    }else{
-                        layer.msg(data.msg,{icon: 5});
+                    } else {
+                        layer.msg(data.msg, {icon: 5});
                         return false;
                     }
                 }
             });
-           return false;
+            return false;
         });
         return false;
     }
-
-
-
 
 
     //初始化系统功能树

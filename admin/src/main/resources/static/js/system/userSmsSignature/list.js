@@ -1,10 +1,10 @@
-layui.use(['layer', 'form', 'table'], function() {
+layui.use(['layer', 'form', 'table'], function () {
     var $ = layui.$,
         layer = layui.layer,
         form = layui.form,
         table = layui.table;
 
-    var cols =  [[
+    var cols = [[
         {
             field: 'signature',
             width: 220,
@@ -16,19 +16,19 @@ layui.use(['layer', 'form', 'table'], function() {
             width: 255,
             title: '手机号',
             align: 'center'
-        },{
+        }, {
             field: 'reviewStatus',
             width: 255,
             title: '状态',
             align: 'center',
-            templet:'#reviewStatus'
-        },{
+            templet: '#reviewStatus'
+        }, {
             field: 'createTime',
             width: 350,
             title: '创建时间',
             align: 'center',
-            templet:'#createTime'
-        },{
+            templet: '#createTime'
+        }, {
             title: '常用操作',
             align: 'center',
             fixed: "right",
@@ -37,44 +37,44 @@ layui.use(['layer', 'form', 'table'], function() {
     ]];
 
     // 表格渲染
-    var initTable = Common.initTable('#userSmsSignatureTables', '/userSmsSignature/list',cols,table);
+    var initTable = Common.initTable('#userSmsSignatureTables', '/userSmsSignature/list', cols, table);
 
     //监听工具条
-    table.on('tool(userSmsSignatureTables)', function(obj) {
+    table.on('tool(userSmsSignatureTables)', function (obj) {
         var data = obj.data;
         //修改
         if (obj.event === 'update') {
             var index = layui.layer.open({
                 title: "审核签名",
                 type: 2,
-                skin:'',
+                skin: '',
                 offset: ['85px', '530px'],
                 area: ['540px', '520px'],
-                content : PageContext.getUrl("/userSmsSignature/toadd"),
-                success : function(layero, index){
+                content: PageContext.getUrl("/userSmsSignature/toadd"),
+                success: function (layero, index) {
                     var body = layui.layer.getChildFrame('body', index);
-                    if(data){
+                    if (data) {
                         body.find("#id").val(data.id);
                         body.find("#mobile").val(data.mobile);
                         body.find("#signature").val(data.signature);
                         //有效性赋值
-                        body.find("input[name=reviewStatus]").each(function(i,item){
-                            if($(item).val() == data.reviewStatus){
-                                $(item).prop('checked',true);
+                        body.find("input[name=reviewStatus]").each(function (i, item) {
+                            if ($(item).val() == data.reviewStatus) {
+                                $(item).prop('checked', true);
                             }
                         });
                         form.render();
                     }
                 }
             });
-        }else if (obj.event === 'disable') {//禁用
-            layer.confirm('真的拒绝该短信签名么？', function(index) {
+        } else if (obj.event === 'disable') {//禁用
+            layer.confirm('真的拒绝该短信签名么？', function (index) {
                 var ajaxReturnData;
                 $.ajax({
-                    url:   PageContext.getUrl('/userSmsSignature/disable'),
+                    url: PageContext.getUrl('/userSmsSignature/disable'),
                     type: 'post',
                     async: false,
-                    data: {id:data.id},
+                    data: {id: data.id},
                     success: function (data) {
                         ajaxReturnData = data;
                     }
@@ -87,14 +87,14 @@ layui.use(['layer', 'form', 'table'], function() {
                 }
                 layer.close(index);
             });
-        }else if (obj.event === 'enable') {//通过
-            layer.confirm('真的通过该短信签名么？', function(index) {
+        } else if (obj.event === 'enable') {//通过
+            layer.confirm('真的通过该短信签名么？', function (index) {
                 var ajaxReturnData;
                 $.ajax({
                     url: PageContext.getUrl('/userSmsSignature/enable'),
                     type: 'post',
                     async: false,
-                    data: {id:data.id},
+                    data: {id: data.id},
                     success: function (data) {
                         ajaxReturnData = data;
                     }
@@ -107,14 +107,14 @@ layui.use(['layer', 'form', 'table'], function() {
                 }
                 layer.close(index);
             });
-        }else if (obj.event === 'delete') {
-            layer.confirm('真的删除该短信签名么？', function(index) {
+        } else if (obj.event === 'delete') {
+            layer.confirm('真的删除该短信签名么？', function (index) {
                 var ajaxReturnData;
                 $.ajax({
                     url: PageContext.getUrl('/userSmsSignature/delete'),
                     type: 'post',
                     async: false,
-                    data: {id:data.id},
+                    data: {id: data.id},
                     success: function (data) {
                         ajaxReturnData = data;
                     }
@@ -132,17 +132,17 @@ layui.use(['layer', 'form', 'table'], function() {
     });
 
     //按钮事件监听
-    $('.layui-btn').on('click',function(){
+    $('.layui-btn').on('click', function () {
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
 
     //按钮事件定义
     var active = {
-        search:function(){
+        search: function () {
             Common.searchTable('searchForm', initTable);
         },
-        searchFormClear:function(){
+        searchFormClear: function () {
             Common.searchTableClear('searchForm');
         }
     };

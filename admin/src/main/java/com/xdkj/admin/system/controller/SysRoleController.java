@@ -165,7 +165,7 @@ public class SysRoleController extends AbstractBaseController {
         }
         //启用
         if ("enable".equals(operateType)) {
-            sysRoleTemp.setStatus("0");
+            sysRoleTemp.setStatus(GlobalConstant.STATUS_VALID);
             securityService.updateSysRole(sysRoleTemp);
             resultMap.put("flag", "true");
             resultMap.put("msg", "启用成功");
@@ -173,7 +173,7 @@ public class SysRoleController extends AbstractBaseController {
         }
         //禁用
         if ("disable".equals(operateType)) {
-            sysRoleTemp.setStatus("1");
+            sysRoleTemp.setStatus(GlobalConstant.STATUS_INVALID);
             securityService.updateSysRole(sysRoleTemp);
             resultMap.put("flag", "true");
             resultMap.put("msg", "禁用成功");

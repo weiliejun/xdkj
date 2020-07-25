@@ -8,10 +8,8 @@ import com.xdkj.common.constant.GlobalConstant;
 import com.xdkj.common.model.sysMessageTmpl.bean.SysMessageTmpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -50,7 +48,13 @@ public class SysMessageTmplController extends AbstractBaseController {
     }
 
     @RequestMapping("/sysMessageTmpl/toAdd")
-    public String addIndex() {
+    public String addIndex(Model model, @RequestParam(value = "id", required = false) Integer id, HttpServletRequest request) {
+        if (id != null) {
+            SysMessageTmpl sysMessageTmpl = sysMessageTmplService.getSysMessageTmplById(id);
+            model.addAttribute("sysMessageTmpl", sysMessageTmpl);
+        } else {
+            model.addAttribute("sysMessageTmpl", new SysMessageTmpl());
+        }
         return "/system/sysMessageTmpl/add";
     }
 
@@ -103,17 +107,17 @@ public class SysMessageTmplController extends AbstractBaseController {
         temp.setId(id);
         // 删除
         if ("delete".equals(operateType)) {
-            temp.setDataStatus("1");
+            temp.setDataStatus(GlobalConstant.STATUS_INVALID);
             msg = "删除成功";
         }
         // 启用
         if ("enable".equals(operateType)) {
-            temp.setStatus("0");
+            temp.setStatus(GlobalConstant.STATUS_VALID);
             msg = "启用成功";
         }
         // 禁用
         if ("disable".equals(operateType)) {
-            temp.setStatus("1");
+            temp.setStatus(GlobalConstant.STATUS_INVALID);
             msg = "禁用成功";
         }
         sysMessageTmplService.updateSysMessageTmpl(temp);

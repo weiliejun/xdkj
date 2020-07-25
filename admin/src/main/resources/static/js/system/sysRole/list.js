@@ -1,4 +1,4 @@
-layui.use(['layer', 'form', 'table'], function() {
+layui.use(['layer', 'form', 'table'], function () {
     var $ = layui.$,
         layer = layui.layer,
         form = layui.form,
@@ -9,7 +9,7 @@ layui.use(['layer', 'form', 'table'], function() {
             checkbox: true,
             width: 60,
             fixed: true
-        },{
+        }, {
             field: 'name',
             width: 300,
             title: '角色名称',
@@ -25,13 +25,13 @@ layui.use(['layer', 'form', 'table'], function() {
             width: 150,
             title: '状态',
             align: 'center',
-            templet:'#status'
+            templet: '#status'
         }, {
             field: 'createTime',
             width: 300,
             title: '创建时间',
             align: 'center'
-        },{
+        }, {
             title: '常用操作',
             align: 'center',
             fixed: "right",
@@ -41,10 +41,10 @@ layui.use(['layer', 'form', 'table'], function() {
 
 
     // 表格渲染
-    var initTable = Common.initTable('#sysRoleTables','/sysrole/list',cols,table);
+    var initTable = Common.initTable('#sysRoleTables', '/sysrole/list', cols, table);
 
     //监听工具条
-    table.on('tool(sysRoleTables)', function(obj) {
+    table.on('tool(sysRoleTables)', function (obj) {
         var data = obj.data;
         //修改
         if (obj.event === 'update') {
@@ -55,46 +55,46 @@ layui.use(['layer', 'form', 'table'], function() {
                 offset: ['85px', '530px'],
                 area: ['500px', '450px'],
                 content: PageContext.getUrl("/sysrole/toadd"),
-                success : function(layero, index){
+                success: function (layero, index) {
                     var body = layui.layer.getChildFrame('body', index);
-                    if(data){
+                    if (data) {
                         body.find("#id").val(data.id);
                         body.find("#name").val(data.name);
                         body.find("#description").val(data.description);
                         //有效性赋值
-                        body.find("input[name=status]").each(function(i,item){
-                            if($(item).val() == data.status){
-                                $(item).prop('checked',true);
+                        body.find("input[name=status]").each(function (i, item) {
+                            if ($(item).val() == data.status) {
+                                $(item).prop('checked', true);
                             }
                         });
                         form.render();
                     }
                 }
             });
-        }else if(obj.event === 'grantRoleRights'){//设置菜单权限
+        } else if (obj.event === 'grantRoleRights') {//设置菜单权限
             var index = layui.layer.open({
                 title: "设置菜单权限",
                 area: ['263px', '490px'],
                 type: 2,
                 skin: 'layui-layer-molv',
                 content: PageContext.getUrl("/sysrole/grant/rights"),
-                success : function(layero, index){
+                success: function (layero, index) {
                     var body = layui.layer.getChildFrame('body', index);
-                    if(data){
+                    if (data) {
                         body.find("#roleId").val(data.id);
                         var iframeWin = window[layero.find('iframe')[0]['name']];
                         iframeWin.treeInit();
                     }
                 }
             });
-        }else if (obj.event === 'disable') {//禁用
-            layer.confirm('真的禁用该角色么', function(index) {
+        } else if (obj.event === 'disable') {//禁用
+            layer.confirm('真的禁用该角色么', function (index) {
                 var ajaxReturnData;
                 $.ajax({
                     url: PageContext.getUrl('/sysrole/disable'),
                     type: 'post',
                     async: false,
-                    data: {id:data.id},
+                    data: {id: data.id},
                     success: function (data) {
                         ajaxReturnData = data;
                     }
@@ -107,14 +107,14 @@ layui.use(['layer', 'form', 'table'], function() {
                 }
                 layer.close(index);
             });
-        }else if (obj.event === 'enable') {//启用
-            layer.confirm('真的将该角色置为可用么', function(index) {
+        } else if (obj.event === 'enable') {//启用
+            layer.confirm('真的将该角色置为可用么', function (index) {
                 var ajaxReturnData;
                 $.ajax({
                     url: PageContext.getUrl('/sysrole/enable'),
                     type: 'post',
                     async: false,
-                    data: {id:data.id},
+                    data: {id: data.id},
                     success: function (data) {
                         ajaxReturnData = data;
                     }
@@ -127,14 +127,14 @@ layui.use(['layer', 'form', 'table'], function() {
                 }
                 layer.close(index);
             });
-        }else if (obj.event === 'delete') {
-            layer.confirm('真的删除该角色及其关联数据么？', function(index) {
+        } else if (obj.event === 'delete') {
+            layer.confirm('真的删除该角色及其关联数据么？', function (index) {
                 var ajaxReturnData;
                 $.ajax({
                     url: PageContext.getUrl('/sysrole/delete'),
                     type: 'post',
                     async: false,
-                    data: {id:data.id},
+                    data: {id: data.id},
                     success: function (data) {
                         ajaxReturnData = data;
                     }
@@ -152,20 +152,20 @@ layui.use(['layer', 'form', 'table'], function() {
     });
 
     //按钮事件监听
-    $('.layui-btn').on('click',function(){
+    $('.layui-btn').on('click', function () {
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
 
     //按钮事件定义
     var active = {
-        search:function(){
+        search: function () {
             Common.searchTable('searchForm', initTable);
         },
-        searchFormClear:function(){
+        searchFormClear: function () {
             Common.searchTableClear('searchForm');
         },
-        add:function(){
+        add: function () {
             Common.openFrame("/sysrole/toadd", "新增用户", '500px', '450px');
         }
     };

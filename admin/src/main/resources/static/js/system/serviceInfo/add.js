@@ -1,4 +1,4 @@
-layui.use(['form', 'layer', 'jquery','tableSelect'], function () {
+layui.use(['form', 'layer', 'jquery', 'tableSelect'], function () {
     var $ = layui.$,
         form = layui.form,
         layer = layui.layer,
@@ -36,10 +36,10 @@ layui.use(['form', 'layer', 'jquery','tableSelect'], function () {
         checkedKey: 'id',
         searchKey: 'name',
         table: {
-            method:'POST',
+            method: 'POST',
             url: PageContext.getUrl('/serviceInfo/tableSelectAll/list'),
             request: {
-                pageName: 'currentPage' ,
+                pageName: 'currentPage',
                 limitName: 'pageSize'
             },
             response: { //定义后端 json 格式
@@ -50,9 +50,9 @@ layui.use(['form', 'layer', 'jquery','tableSelect'], function () {
                 dataName: 'data' //数据字段
             },
             cols: [[
-                { type: 'radio' },
-                { field: 'name', title: '类型名称',align: 'center' },
-                { field: 'code', title: '类型编号',align: 'center' }
+                {type: 'radio'},
+                {field: 'name', title: '类型名称', align: 'center'},
+                {field: 'code', title: '类型编号', align: 'center'}
             ]]
         },
         done: function (elem, data) {

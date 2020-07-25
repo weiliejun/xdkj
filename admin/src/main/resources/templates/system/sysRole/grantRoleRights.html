@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>设置菜单权限</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/ztree/metroStyle/metroStyle.css}"/>
@@ -71,7 +71,7 @@
                 chkboxType: {"Y": "ps", "N": "ps"},
                 nocheckInherit: true,
                 chkDisabledInherit: true
-            },callback: {
+            }, callback: {
                 onClick: function (e, treeId, treeNode) {
                     treeObj.checkNode(treeNode, !treeNode.checked, true);
                 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>新增权限</title>
 </head>
@@ -40,36 +40,39 @@
         <div class="layui-form-item">
             <label class="layui-form-label">图标</label>
             <div class="layui-input-block" style="overflow:hidden;">
-                <input type="text" id="icon" name="icon"  autocomplete="off" placeholder="请选择图标" class="layui-input" style="width:208px;float:left;" readonly>
+                <input type="text" id="icon" name="icon" placeholder="请选择图标" class="layui-input"
+                       style="width:208px;float:left;" readonly>
                 <button class="layui-btn" id="choseIcon" style="float:left;">选择图标</button>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">菜单编码</label>
             <div class="layui-input-block">
-                <input type="text" id="code" name="code" lay-verify="required" autocomplete="off" placeholder="请输入菜单编码" class="layui-input">
+                <input type="text" id="code" name="code" lay-verify="required" placeholder="请输入菜单编码"
+                       class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">菜单名称</label>
             <div class="layui-input-block">
-                <input type="text" id="name" name="name" lay-verify="required" autocomplete="off" placeholder="请输入菜单名称" class="layui-input">
+                <input type="text" id="name" name="name" lay-verify="required" placeholder="请输入菜单名称"
+                       class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">菜单url</label>
             <div class="layui-input-block">
-                <input type="text" id="url" name="url" autocomplete="off" placeholder="请输入菜单url" class="layui-input">
+                <input type="text" id="url" name="url" placeholder="请输入菜单url" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">有效性</label>
             <div class="layui-input-block">
-                <input type="radio" name="status" value="0" title="有效" checked="true">
-                <input type="radio" name="status" value="1" title="无效">
+                <input type="radio" name="status" value="1" title="有效" checked="true">
+                <input type="radio" name="status" value="0" title="无效">
             </div>
         </div>
-       <div class="layui-form-item">
+        <div class="layui-form-item">
             <label class="layui-form-label">节点类型</label>
             <div class="layui-input-block">
                 <select id="functionType" name="functionType" lay-filter="functionType">
@@ -83,7 +86,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">菜单序号</label>
             <div class="layui-input-block">
-                <input type="text" id="seqnum" name="seqnum" lay-verify="required" autocomplete="off" placeholder="请输入菜单序号" class="layui-input">
+                <input type="text" id="seqnum" name="seqnum" lay-verify="required"
+                       placeholder="请输入菜单序号" class="layui-input">
             </div>
         </div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>公告管理</title>
 </head>
@@ -12,16 +12,17 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">标题</label>
                         <div class="layui-input-block">
-                            <input id="topic" type="text" name="topic" placeholder="请输入标题" autocomplete="off" class="layui-input" th:value="${topic}" />
+                            <input id="topic" type="text" name="topic" placeholder="请输入标题"
+                                   class="layui-input" th:value="${topic}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <a class="layui-btn" lay-submit data-type="search">
-                            <i class="layui-icon layui-icon-search"></i>
-                        </a>
-                        <a  class="layui-btn" data-type="searchFormClear">
-                            <i class="layui-icon layui-icon-delete"></i>
-                        </a>
+                        <button type="button" class="layui-btn" data-type="search"><i
+                                class="layui-icon layui-icon-search"></i>查询
+                        </button>
+                        <button type="button" class="layui-btn" data-type="searchFormClear"><i
+                                class="layui-icon layui-icon-refresh"></i>清空
+                        </button>
                     </div>
                 </div>
             </form>
@@ -37,7 +38,7 @@
                 {{#  if(d.status === undefined){ }}
                 未知
                 {{#  } else { }}
-                {{#  if(d.status === '0'){ }}
+                {{#  if(d.status === '1'){ }}
                 可用
                 {{#  } else { }}
                 禁用
@@ -46,7 +47,7 @@
             </script>
             <script id="websiteBulletinbar" type="text/html">
                 <a class="layui-btn layui-btn-xs" lay-event="update"><i class="layui-icon">&#xe642;</i>修改</a>
-                {{#  if(d.status === '0'){ }}
+                {{#  if(d.status === '1'){ }}
                 <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="disable"><i class="fa fa-ban"></i>&nbsp;禁用</a>
                 {{#  } else { }}
                 <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="enable"><i class="fa fa-circle-o"></i>&nbsp;置为可用</a>

@@ -13,13 +13,13 @@ layui.use(['form', 'layer', 'jquery'], function () {
             type: 'post',
             async: false,
             data: $('#dataForm').serialize(),
-            error:function(){
+            error: function () {
                 layer.msg('系统繁忙，请稍后重试', {icon: 5});
             },
             success: function (data) {
                 //结果回应
                 if (data.flag == 'true') {
-                    layer.msg('保存成功', {icon: 1, time: 1000},function(){
+                    layer.msg('保存成功', {icon: 1, time: 1000}, function () {
                         //先得到当前iframe层的索引
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index); //再执行关闭
@@ -42,7 +42,7 @@ layui.use(['form', 'layer', 'jquery'], function () {
             area: ['95%', '95%'],
             content: PageContext.getUrl('/sysfunction/systemSetting/icons'),
             shadeClose: true,
-            cancel:function(index){//关闭后自动复制
+            cancel: function (index) {//关闭后自动复制
                 var body = top.layer.getChildFrame('body', index);
                 var icon = body.find("#copyText").text();
                 $("#icon").val(icon);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>新增公告</title>
 </head>
@@ -37,20 +37,23 @@
         <div class="layui-form-item">
             <label class="layui-form-label">公告标题</label>
             <div class="layui-input-block">
-                <input id="topic" type="text" name="topic" value="" class="layui-input" lay-verify="required" placeholder="请输入公告标题">
+                <input id="topic" type="text" name="topic" value="" class="layui-input" lay-verify="required"
+                       placeholder="请输入公告标题">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">公告类型</label>
             <div class="layui-input-block">
-                <input id="type" type="text" name="type" value="" class="layui-input" lay-verify="required" placeholder="请输入真实姓名">
+                <input id="type" type="text" name="type" value="" class="layui-input" lay-verify="required"
+                       placeholder="请输入公告类型">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">公告内容</label>
             <div class="layui-input-block">
-             <textarea  id="content" type="text" name="content" value="" class="layui-input " lay-verify="required" placeholder="请输入公告内容">
+             <textarea id="content" type="text" name="content" value="" class="layui-input " lay-verify="required"
+                       placeholder="请输入公告内容">
              </textarea>
             </div>
         </div>
@@ -58,7 +61,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">手机</label>
             <div class="layui-input-block">
-                <input id="mobile" type="tel" name="mobile" value="" class="layui-input" lay-verify="required|phone" placeholder="请输入手机号码">
+                <input id="mobile" type="tel" name="mobile" value="" class="layui-input" lay-verify="required|phone"
+                       placeholder="请输入手机号码">
             </div>
         </div>
 

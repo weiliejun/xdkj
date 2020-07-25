@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>设置用户角色</title>
 </head>
 <style>
-    .myTitle{overflow: hidden;}
-    .myTitle span{width:400px;float:left;text-align:center;font-size:16px;padding-bottom:10px;}
-    .myTitle .title2{float:right;}
+    .myTitle {
+        overflow: hidden;
+    }
+
+    .myTitle span {
+        width: 400px;
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        padding-bottom: 10px;
+    }
+
+    .myTitle .title2 {
+        float: right;
+    }
 </style>
 <body>
 <div class="layui-container" style="margin-top: 15px;">
@@ -24,13 +36,13 @@
 </div>
 </body>
 <script>
-    layui.use(['form', 'layer', 'jquery','transfer'],function () {
-        var transfer = layui.transfer,$ = layui.$,layer = layui.layer;
+    layui.use(['form', 'layer', 'jquery', 'transfer'], function () {
+        var transfer = layui.transfer, $ = layui.$, layer = layui.layer;
 
         //表格列
-        var cols = [{type: 'checkbox', fixed: 'left'},{field: 'name', title: '角色名称'}]
+        var cols = [{type: 'checkbox', fixed: 'left'}, {field: 'name', title: '角色名称'}]
         //表格配置文件
-        var tabConfig = {'page':false,'height':400};
+        var tabConfig = {'page': false, 'height': 400};
         var roleSelectTab = null;
         $.ajax({
             type: "POST",
@@ -43,14 +55,14 @@
                 layer.alert("系统繁忙，请稍后重试");
             },
             success: function (data) {
-               if(data.flag == 'true'){
-                   roleSelectTab = transfer.render({
-                       elem: "#root", //指定元素
-                       cols: cols, //表格列  支持layui数据表格所有配置
-                       data: [data.unSelectRoles,data.selectRoles], //[左表数据,右表数据[非必填]]
-                       tabConfig: tabConfig //表格配置项 支持layui数据表格所有配置
-                   });
-                }else{
+                if (data.flag == 'true') {
+                    roleSelectTab = transfer.render({
+                        elem: "#root", //指定元素
+                        cols: cols, //表格列  支持layui数据表格所有配置
+                        data: [data.unSelectRoles, data.selectRoles], //[左表数据,右表数据[非必填]]
+                        tabConfig: tabConfig //表格配置项 支持layui数据表格所有配置
+                    });
+                } else {
                     layer.msg('加载角色失败', {icon: 5});
                 }
             }
@@ -62,13 +74,13 @@
         });
 
 
-        $('#saveRoleSetting').on('click',function () {
-            var selectRoleIds = transfer.get(roleSelectTab,'right','id');
+        $('#saveRoleSetting').on('click', function () {
+            var selectRoleIds = transfer.get(roleSelectTab, 'right', 'id');
             var selectRoleIdsArr;
-            if(selectRoleIds){
+            if (selectRoleIds) {
                 selectRoleIdsArr = selectRoleIds.split(",");
-            }else{
-                layer.msg("请选择角色",{icon:5});
+            } else {
+                layer.msg("请选择角色", {icon: 5});
                 return false;
             }
             $.ajax({

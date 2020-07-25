@@ -2,6 +2,16 @@ layui.use(['form', 'layer', 'jquery'], function () {
     var $ = layui.$,
         form = layui.form,
         layer = layui.layer;
+
+    var ue = UE.getEditor('editorContent');
+    ue.focus();
+    ue.ready(function () {
+        console.log("add.js执行");
+        ue.setContent($("#content").val());
+    });
+    $('#saveButton').click(function () {
+        $("#content").val(ue.getContent());
+    });
     form.on('submit(add)', function (data) {
         var ajaxReturnData;
         $.ajax({

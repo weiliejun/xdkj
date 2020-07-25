@@ -133,7 +133,7 @@ public class SysMessageTmplServiceImpl implements SysMessageTmplService {
             messageTmpl = messageTmplList.get(0);
         }
         //1表示禁用，后期改为字典获取值
-        if (messageTmpl == null || "1".equals(messageTmpl.getStatus())) {
+        if (messageTmpl == null || "0".equals(messageTmpl.getStatus())) {
             throw new MessageTypeTmplInexistenceException(type);
         }
 

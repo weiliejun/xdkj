@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>角色管理</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/ztree/metroStyle/metroStyle.css}"/>
@@ -8,11 +8,11 @@
 
 </head>
 <body>
-<div  id="setpermisdiv" class="layui-fluid" >
+<div id="setpermisdiv" class="layui-fluid">
     <fieldset class="layui-elem-field layui-field-title site-title">
         <legend>系统功能树</legend>
     </fieldset>
-    <ul id="sysFunctionTree" class="ztree" style="overflow-x:scroll;"></ul>
+    <ul id="sysFunctionTree" class="ztree" style="overflow-x:scroll;width:100%; height:100%;"></ul>
 </div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/ztree/jquery.ztree.all.js}"></script>

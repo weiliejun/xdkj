@@ -2,12 +2,11 @@ package com.xdkj.admin.system.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.xdkj.admin.system.service.UserInfoService;
+import com.xdkj.admin.system.service.UserSmsTemplateApplicationService;
 import com.xdkj.admin.web.base.AbstractBaseController;
 import com.xdkj.common.constant.GlobalConstant;
 import com.xdkj.common.model.userSmsTemplateApplication.bean.UserSmsTemplateApplication;
-import com.xdkj.admin.system.service.UserExpenseService;
-import com.xdkj.admin.system.service.UserInfoService;
-import com.xdkj.admin.system.service.UserSmsTemplateApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,8 +27,7 @@ import java.util.Map;
 @RequestMapping("/userSmsSignature")
 public class UserSmsSignatureController extends AbstractBaseController {
 
-    @Autowired
-    private UserExpenseService userExpenseService;
+
     @Autowired
     private UserInfoService userInfoService;
     @Autowired

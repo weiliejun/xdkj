@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>自定义服务管理</title>
 </head>
@@ -12,28 +12,31 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">类型名称</label>
                         <div class="layui-input-block">
-                            <input id="serviceName" type="text" name="serviceName" placeholder="请输入类型名称" autocomplete="off" class="layui-input" th:value="${serviceName}" />
+                            <input id="serviceName" type="text" name="serviceName" placeholder="请输入类型名称"
+                                   class="layui-input" th:value="${serviceName}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">类型编号</label>
                         <div class="layui-input-block">
-                            <input id="serviceCode" type="text" name="serviceCode" placeholder="请输入类型编号" autocomplete="off" class="layui-input" th:value="${serviceCode}" />
+                            <input id="serviceCode" type="text" name="serviceCode" placeholder="请输入类型编号"
+                                   class="layui-input" th:value="${serviceCode}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">服务模块</label>
                         <div class="layui-input-block">
-                            <itech:code property="serviceModule" parentCode="cloudComputingType" type="select" th:defaultValue="${serviceModule}"/>
+                            <itech:code property="serviceModule" parentCode="cloudComputingType" type="select"
+                                        th:defaultValue="${serviceModule}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <a class="layui-btn" data-type="search">
-                            <i class="layui-icon layui-icon-search"></i>
-                        </a>
-                        <a type="button" class="layui-btn" data-type="searchFormClear">
-                            <i class="layui-icon layui-icon-delete"></i>
-                        </a>
+                        <button type="button" class="layui-btn" data-type="search"><i
+                                class="layui-icon layui-icon-search"></i>查询
+                        </button>
+                        <button type="button" class="layui-btn" data-type="searchFormClear"><i
+                                class="layui-icon layui-icon-refresh"></i>清空
+                        </button>
                     </div>
                 </div>
             </form>
@@ -49,7 +52,7 @@
                 {{#  if(d.status === undefined){ }}
                 未知
                 {{#  } else { }}
-                {{#  if(d.status === '0'){ }}
+                {{#  if(d.status === '1'){ }}
                 启用
                 {{#  } else { }}
                 禁用
@@ -58,7 +61,7 @@
             </script>
             <script id="serviceInfoBar" type="text/html">
                 <a class="layui-btn layui-btn-xs" lay-event="update"><i class="layui-icon">&#xe642;</i>修改</a>
-                {{#  if(d.status === '0'){ }}
+                {{#  if(d.status === '1'){ }}
                 <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="disable"><i class="fa fa-ban"></i>&nbsp;禁用</a>
                 {{#  } else { }}
                 <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="enable"><i class="fa fa-circle-o"></i>&nbsp;置为可用</a>

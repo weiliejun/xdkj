@@ -2,11 +2,11 @@ package com.xdkj.admin.system.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.xdkj.admin.system.service.WebsiteBulletinService;
 import com.xdkj.admin.web.base.AbstractBaseController;
 import com.xdkj.common.constant.GlobalConstant;
 import com.xdkj.common.model.sysManager.bean.SysManager;
 import com.xdkj.common.model.websiteBulletin.bean.WebsiteBulletin;
-import com.xdkj.admin.system.service.WebsiteBulletinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,6 +63,10 @@ public class WebsiteBulletinController extends AbstractBaseController {
         resultMap.put("msg", "查询成功");
         resultMap.put("count", String.valueOf(results.getTotal()));
         resultMap.put("data", results.getResult());
+
+        //记录业务日志
+        saveBusinessLog("网站公告管理", "查询网站公告信息", params);
+
         return resultMap;
     }
 
@@ -80,26 +84,34 @@ public class WebsiteBulletinController extends AbstractBaseController {
         //新增
         if (websiteBulletin.getId() == null) {
             //设置初始化值
-            websiteBulletin.setStatus("0");//使用
+            websiteBulletin.setStatus(GlobalConstant.STATUS_INVALID);//使用
             websiteBulletin.setDataStatus(GlobalConstant.DATA_VALID);
             websiteBulletin.setPublisherId(currentManager.getId());
             websiteBulletin.setPublisherName(currentManager.getName());
-            websiteBulletin.setPublishStatus("0");//默认发布
+            websiteBulletin.setPublishStatus("1");//默认发布
             websiteBulletin.setClicks(0);
-            websiteBulletin.setDataStatus("0");
+            websiteBulletin.setDataStatus("1");
             websiteBulletin.setCreateTime(new Date());
             websiteBulletinService.addWebsiteBulletin(websiteBulletin);
             resultMap.put("flag", "true");
             resultMap.put("msg", "公告保存成功");
+
+            //记录业务日志
+            saveBusinessLog("网站公告管理", "新增公告信息", websiteBulletin);
+
             return resultMap;
         } else {//编辑
             websiteBulletin.setPublisherId(currentManager.getId());
             websiteBulletin.setPublisherName(currentManager.getName());
-            websiteBulletin.setPublishStatus("0");//默认发布
+            websiteBulletin.setPublishStatus("1");//默认发布
             websiteBulletin.setUpdateTime(new Date());
             websiteBulletinService.updateWebsiteBulletin(websiteBulletin);
             resultMap.put("flag", "true");
             resultMap.put("msg", "公告修改成功");
+
+            //记录业务日志
+            saveBusinessLog("网站公告管理", "修改公告信息", websiteBulletin);
+
             return resultMap;
         }
     }
@@ -131,7 +143,7 @@ public class WebsiteBulletinController extends AbstractBaseController {
         }
         //启用（发布）
         if ("enable".equals(operateType)) {
-            websiteBulletinTemp.setStatus("0");
+            websiteBulletinTemp.setStatus("1");
             websiteBulletinService.updateWebsiteBulletin(websiteBulletinTemp);
             resultMap.put("flag", "true");
             resultMap.put("msg", "发布成功");
@@ -139,7 +151,7 @@ public class WebsiteBulletinController extends AbstractBaseController {
         }
         //禁用（停用）
         if ("disable".equals(operateType)) {
-            websiteBulletinTemp.setStatus("1");
+            websiteBulletinTemp.setStatus("0");
             websiteBulletinService.updateWebsiteBulletin(websiteBulletinTemp);
             resultMap.put("flag", "true");
             resultMap.put("msg", "停用成功");

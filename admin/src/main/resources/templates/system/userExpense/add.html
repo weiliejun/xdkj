@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>新增消费</title>
     <script type="text/javascript" th:src="@{/js/layui/layui.all.js}"></script>
@@ -34,42 +34,48 @@
 <div class="layui-fluid">
     <fieldset class="layui-elem-field layui-field-title site-title">
     </fieldset>
-    <form  class="layui-form">
+    <form class="layui-form">
         <input id="id" type="hidden" name="id"/>
         <input id="userId" type="hidden" name="userId"/>
         <input id="serviceCode" type="hidden" name="serviceCode"/>
-       <div class="layui-form-item">
+        <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-block">
-                <input id="userName"  type="text" name="userName" value="" class="layui-input" lay-verify="required" autocomplete="off" placeholder="请输入用户名">
+                <input id="userName" type="text" name="userName" value="" class="layui-input" lay-verify="required"
+                       placeholder="请输入用户名">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">服务名称</label>
             <div class="layui-input-block">
-                <input id="serviceName" type="text" name="serviceName" value="" class="layui-input" lay-verify="required" placeholder="请输入服务名称">
+                <input id="serviceName" type="text" name="serviceName" value="" class="layui-input"
+                       lay-verify="required" placeholder="请输入服务名称">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">服务类型</label>
             <div class="layui-input-block">
-                <input id="expenseType" type="radio" name="expenseType"  lay-filter="expenseType" value="online"  class="layui-input "  title="在线查询">
-                <input  type="radio" name="expenseType" value="api"   lay-filter="expenseType" class="layui-input "  title="api调用">
+                <input id="expenseType" type="radio" name="expenseType" lay-filter="expenseType" value="online"
+                       class="layui-input " title="在线查询">
+                <input type="radio" name="expenseType" value="api" lay-filter="expenseType" class="layui-input "
+                       title="api调用">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">消费金额</label>
             <div class="layui-input-block">
-                <input id="expenseAmount" type="text" name="expenseAmount" lay-verify="required|isDecimal" data-params="{'isDecimal': [0, 99, 2]}"  value="" class="layui-input"  placeholder="请输入消费金额">
+                <input id="expenseAmount" type="text" name="expenseAmount" lay-verify="required|isDecimal"
+                       data-params="{'isDecimal': [0, 99, 2]}" value="" class="layui-input" placeholder="请输入消费金额">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">消费时间</label>
             <div class="layui-input-block">
-                <input id="time" type="text" name="createTime" value="" class="layui-input"  autocomplete="off"  lay-verify="required" placeholder="请选择消费时间">
+                <input id="time" type="text" name="createTime" value="" class="layui-input"
+                       lay-verify="required" placeholder="请选择消费时间">
             </div>
         </div>
 

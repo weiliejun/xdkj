@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>新增消息模板</title>
 </head>
@@ -28,7 +28,9 @@
         color: #aaaaaa;
     }
 
-    .color_f00{color: #f00;}
+    .color_f00 {
+        color: #f00;
+    }
 </style>
 <body>
 <div class="layui-fluid">
@@ -39,32 +41,37 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><i class="color_f00">* </i> 父级类型</label>
             <div class="layui-input-block">
-                <itech:code property="parentCode" parentCode="user.message.parentCode" type="select" lay-verify="required"/>
+                <itech:code property="parentCode" parentCode="user.message.parentCode" type="select"
+                            th:value="${sysMessageTmpl.parentCode}"/>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"><i class="color_f00">* </i> 业务类型</label>
             <div class="layui-input-block">
-                <itech:code property="busiType" parentCode="user.message.busiType" type="select" lay-verify="required"/>
+                <itech:code property="busiType" parentCode="user.message.busiType" type="select"
+                            th:value="${sysMessageTmpl.busiType}"/>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">发送类型</label>
             <div class="layui-input-block">
-                <input type="hidden" id="type" name="type" value="website"/>
-                <itech:code parentCode="user.message.type" type="text" value="website"/>
+                <!--<input type="hidden" id="type" name="type" value="website"/>-->
+                <itech:code property="type" parentCode="user.message.type" type="select"
+                            th:value="${sysMessageTmpl.type}"/>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"><i class="color_f00">* </i> 消息标题</label>
             <div class="layui-input-block">
-                <input id="title" type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入消息标题">
+                <input id="title" type="text" name="title" class="layui-input" lay-verify="required"
+                       placeholder="请输入消息标题" th:value="${sysMessageTmpl.title}">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"><i class="color_f00">* </i> 消息内容</label>
             <div class="layui-input-block">
-                <textarea id="content" name="content" placeholder="请输入消息内容" lay-verify="required" class="layui-textarea"></textarea>
+                <textarea id="content" name="content" placeholder="请输入消息内容" lay-verify="required"
+                          class="layui-textarea"> th:value="${sysMessageTmpl.content}"</textarea>
             </div>
         </div>
 

@@ -2,18 +2,15 @@ package com.xdkj.admin.system.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.xdkj.admin.system.service.SysManagerService;
+import com.xdkj.admin.system.service.SysMessageService;
 import com.xdkj.admin.web.base.AbstractBaseController;
 import com.xdkj.common.constant.GlobalConstant;
 import com.xdkj.common.model.sysMessage.bean.SysMessage;
-import com.xdkj.admin.system.service.SysManagerService;
-import com.xdkj.admin.system.service.SysMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedHashMap;
@@ -34,6 +31,7 @@ public class SysMessageController extends AbstractBaseController {
     @Autowired
     private SysManagerService sysManagerService;
 
+
     /**
      * @Description 新增系统消息
      * @auther: cyp
@@ -47,6 +45,7 @@ public class SysMessageController extends AbstractBaseController {
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String toListSysManagers(HttpServletRequest request, Model model) {
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
+        model.addAttribute("cxmk", request.getParameter("cxmk"));
         return "/system/sysMessage/list";
     }
 
@@ -79,16 +78,16 @@ public class SysMessageController extends AbstractBaseController {
      */
     @RequestMapping(value = "/delete")
     @ResponseBody
-    public Map<String, Object> operate(Integer id) {
+    public Map<String, Object> operate(@RequestParam(value = "id", required = false) String id) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        SysMessage sysMessage = sysMessageService.getSysMessageById(id);
+        SysMessage sysMessage = sysMessageService.getSysMessageById(new Integer(id));
         if (sysMessage == null) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "该消息不存在");
             return resultMap;
         }
         SysMessage sysMessageTemp = new SysMessage();
-        sysMessageTemp.setId(id);
+        sysMessageTemp.setId(new Integer(id));
         //删除
         sysMessageTemp.setDataStatus(GlobalConstant.DATA_INVALID);
         sysMessageService.updateSysMessage(sysMessageTemp);

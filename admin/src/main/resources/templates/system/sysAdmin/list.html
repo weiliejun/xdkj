@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>用户管理</title>
 </head>
@@ -12,19 +12,22 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-block">
-                            <input id="code" type="text" name="code" placeholder="请输入用户名" autocomplete="off" class="layui-input" th:value="${code}" />
+                            <input id="code" type="text" name="code" placeholder="请输入用户名"
+                                   class="layui-input" th:value="${code}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">手机</label>
                         <div class="layui-input-block">
-                            <input id="mobile" type="text" name="mobile" placeholder="请输入手机号" autocomplete="off" class="layui-input" th:value="${mobile}" />
+                            <input id="mobile" type="text" name="mobile" placeholder="请输入手机号"
+                                   class="layui-input" th:value="${mobile}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">邮箱</label>
                         <div class="layui-input-block">
-                            <input id="email" type="text" name="email" placeholder="请输入邮箱地址" autocomplete="off" class="layui-input" th:value="${email}"/>
+                            <input id="email" type="text" name="email" placeholder="请输入邮箱地址"
+                                   class="layui-input" th:value="${email}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -39,12 +42,12 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <a class="layui-btn"  data-type="search">
-                            <i class="layui-icon layui-icon-search"></i>
-                        </a>
-                        <a class="layui-btn" data-type="searchFormClear">
-                            <i class="layui-icon layui-icon-delete"></i>
-                        </a>
+                        <button type="button" class="layui-btn" data-type="search"><i
+                                class="layui-icon layui-icon-search"></i>查询
+                        </button>
+                        <button type="button" class="layui-btn" data-type="searchFormClear"><i
+                                class="layui-icon layui-icon-refresh"></i>清空
+                        </button>
                     </div>
                 </div>
             </form>
@@ -60,7 +63,7 @@
                 {{#  if(d.status === undefined){ }}
                 未知
                 {{#  } else { }}
-                {{#  if(d.status === '0'){ }}
+                {{#  if(d.status === '1'){ }}
                 可用
                 {{# } else if(d.status === '2'){ }}
                 锁定
@@ -71,10 +74,11 @@
             </script>
             <script id="sysManagerbar" type="text/html">
                 <a class="layui-btn layui-btn-xs" lay-event="update"><i class="layui-icon">&#xe642;</i>修改</a>
-                {{#  if(d.status === '0'){ }}
+                {{#  if(d.status === '1'){ }}
                 <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="disable"><i class="fa fa-ban"></i>&nbsp;禁用</a>
                 {{# } else if(d.status === '2'){ }}
-                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="unlock"><i class="fa fa-ban"></i>&nbsp;解锁</a>
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="unlock"><i
+                        class="fa fa-ban"></i>&nbsp;解锁</a>
                 {{#  } else { }}
                 <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="enable"><i class="fa fa-circle-o"></i>&nbsp;置为可用</a>
                 {{#  } }}

@@ -2,10 +2,10 @@ package com.xdkj.admin.system.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.xdkj.admin.system.service.SysDictionaryService;
 import com.xdkj.admin.web.base.AbstractBaseController;
 import com.xdkj.common.constant.GlobalConstant;
 import com.xdkj.common.model.sysdictionary.bean.SysDictionary;
-import com.xdkj.admin.system.service.SysDictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -136,7 +136,7 @@ public class SysDictionaryController extends AbstractBaseController {
         temp.setId(id);
         //删除
         if ("delete".equals(operateType)) {
-            temp.setDataStatus("1");
+            temp.setDataStatus(GlobalConstant.STATUS_INVALID);
             sysDictionaryService.updateSysDictionary(temp);
             resultMap.put("flag", "true");
             resultMap.put("msg", "删除成功");
@@ -179,7 +179,7 @@ public class SysDictionaryController extends AbstractBaseController {
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
         params.put("grade", 1);
-        params.put("status", "0");
+        params.put("status", GlobalConstant.STATUS_VALID);
         final Page<SysDictionary> results = (Page<SysDictionary>) sysDictionaryService.listSysDictionaryByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");

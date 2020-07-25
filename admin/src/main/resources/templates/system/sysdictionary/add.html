@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>数据字典管理</title>
     <script type="text/javascript" th:src="@{/js/layui/layui.all.js}"></script>
@@ -10,18 +10,22 @@
         margin-left: 10px;
         margin-right: 25px;
     }
+
     .one-btn-btn {
         width: 230px;
         padding-top: 10px;
         margin: 0 auto;
     }
+
     .layui-form .layui-form-label {
         padding-left: 15px;
         color: #666666;
     }
+
     .layui-form .layui-input-block {
         width: 300px;
     }
+
     .layui-form .layui-input-block input, .layui-form .layui-input-block textarea {
         color: #aaaaaa;
     }
@@ -29,20 +33,22 @@
 <body>
 <div class="layui-fluid">
     <fieldset class="layui-elem-field layui-field-title site-title">
-       <!-- <legend><a name="methodRender">编辑</a></legend>-->
+        <!-- <legend><a name="methodRender">编辑</a></legend>-->
     </fieldset>
-    <form class="layui-form" autocomplete="off"  >
+    <form class="layui-form">
         <input id="id" type="hidden" name="id"/>
         <div class="layui-form-item">
             <label class="layui-form-label">类型编号</label>
             <div class="layui-input-block">
-                <input type="text" id="code" name="code" value="" class="layui-input linksName" lay-verify="required" placeholder="请输入类型编号">
+                <input type="text" id="code" name="code" value="" class="layui-input linksName" lay-verify="required"
+                       placeholder="请输入类型编号">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">类型名称</label>
             <div class="layui-input-block">
-                <input type="text" id="name"  name="name" value="" class="layui-input" lay-verify="required" placeholder="请输入类型名称">
+                <input type="text" id="name" name="name" value="" class="layui-input" lay-verify="required"
+                       placeholder="请输入类型名称">
             </div>
         </div>
         <div class="layui-form-item">
@@ -58,7 +64,7 @@
         <div class="layui-form-item layui-hide" id="parentCodeDiv">
             <label class="layui-form-label">父级类型</label>
             <div class="layui-input-block">
-                <input id="parentCode" type="text" name="parentCode" value="" class="layui-input"  placeholder="请选择父级类型">
+                <input id="parentCode" type="text" name="parentCode" value="" class="layui-input" placeholder="请选择父级类型">
             </div>
         </div>
         <div class="layui-form-item">
@@ -71,15 +77,15 @@
         <div class="layui-form-item">
             <label class="layui-form-label">有无子节点</label>
             <div class="layui-input-block">
-                <input type="radio" name="hasChild" value="0" title="有" >
-                <input type="radio" name="hasChild" value="1" title="无">
+                <input type="radio" name="hasChild" value="1" title="有">
+                <input type="radio" name="hasChild" value="0" title="无">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">使用状态</label>
             <div class="layui-input-block">
-                <input type="radio" name="status" value="0" title="启用" >
-                <input type="radio" name="status" value="1" title="禁用">
+                <input type="radio" name="status" value="1" title="启用">
+                <input type="radio" name="status" value="0" title="禁用">
             </div>
         </div>
 

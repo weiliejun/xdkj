@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="/common/public :: commonStyle(~{::title},~{},~{})">
     <title>短信签名列表</title>
 </head>
@@ -12,20 +12,22 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">短信签名</label>
                         <div class="layui-input-block">
-                            <input id="signature" type="text" name="signature" placeholder="请输入短信签名" autocomplete="off" class="layui-input" th:value="${servicenName}" />
+                            <input id="signature" type="text" name="signature" placeholder="请输入短信签名"
+                                   class="layui-input" th:value="${servicenName}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">手机号</label>
                         <div class="layui-input-block">
-                            <input id="mobile" type="text" name="mobile" placeholder="请输入手机号" autocomplete="off" class="layui-input" th:value="${mobile}" />
+                            <input id="mobile" type="text" name="mobile" placeholder="请输入手机号"
+                                   class="layui-input" th:value="${mobile}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <a class="layui-btn" lay-submit data-type="search">
                             <i class="layui-icon layui-icon-search"></i>
                         </a>
-                        <a  class="layui-btn" data-type="searchFormClear">
+                        <a class="layui-btn" data-type="searchFormClear">
                             <i class="layui-icon layui-icon-delete"></i>
                         </a>
                     </div>
@@ -40,7 +42,7 @@
                 {{#  if(d.reviewStatus === '2'){ }}
                 待审核
                 {{#  } else { }}
-                {{#  if(d.reviewStatus === '0'){ }}
+                {{#  if(d.reviewStatus === '1'){ }}
                 通过
                 {{#  } else { }}
                 拒绝
@@ -51,8 +53,8 @@
                 {{#  if(d.reviewStatus === '2'){ }}
                 <a class="layui-btn layui-btn-xs" lay-event="update"><i class="layui-icon">&#xe642;</i>审核</a>
                 {{#  } else { }}
-                {{#  if(d.reviewStatus === '0'){ }}
-                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="disable"><i class="fa fa-ban layui-icon" >&#x1006;</i>&nbsp;拒绝</a>
+                {{#  if(d.reviewStatus === '1'){ }}
+                <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="disable"><i class="fa fa-ban layui-icon">&#x1006;</i>&nbsp;拒绝</a>
                 {{#  } else { }}
                 <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="enable"><i class="fa fa-ban layui-icon">&#xe605;</i>&nbsp;通过</a>
                 {{#  } }}

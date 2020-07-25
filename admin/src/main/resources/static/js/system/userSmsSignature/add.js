@@ -1,4 +1,4 @@
-layui.use(['form', 'layer', 'jquery','tableSelect','laydate'], function () {
+layui.use(['form', 'layer', 'jquery', 'tableSelect', 'laydate'], function () {
     var $ = layui.$,
         form = layui.form,
         layer = layui.layer,

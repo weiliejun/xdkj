@@ -1,4 +1,4 @@
-layui.use(['form', 'layer', 'jquery','tableSelect','laydate'], function () {
+layui.use(['form', 'layer', 'jquery', 'tableSelect', 'laydate'], function () {
     var $ = layui.$,
         form = layui.form,
         layer = layui.layer,
@@ -8,7 +8,7 @@ layui.use(['form', 'layer', 'jquery','tableSelect','laydate'], function () {
 
     // 表单校验
     form.verify({
-        isDecimal : function(value, item){
+        isDecimal: function (value, item) {
             return isDecimal(value, item);
         }
     })
@@ -39,17 +39,17 @@ layui.use(['form', 'layer', 'jquery','tableSelect','laydate'], function () {
         return false;
     });
 
-     //用户名的下拉框选择
+    //用户名的下拉框选择
     tableSelect.render({
         elem: '#userName',
         checkedKey: 'userName',
         searchKey: 'mobile',
         table: {
-            method:'POST',
+            method: 'POST',
             url: PageContext.getUrl('/userExpense/tochooseUser/list'),
             request: {
                 pageName: 'currentPage'
-                ,limitName: 'pageSize'
+                , limitName: 'pageSize'
             },
             response: { //定义后端 json 格式
                 statusName: 'flag', //状态字段名称
@@ -59,9 +59,9 @@ layui.use(['form', 'layer', 'jquery','tableSelect','laydate'], function () {
                 dataName: 'data' //数据字段
             },
             cols: [[
-                { type: 'radio' },
-                { field: 'userName', title: '姓名',align: 'center' },
-                { field: 'mobile', title: '手机号',align: 'center' }
+                {type: 'radio'},
+                {field: 'userName', title: '姓名', align: 'center'},
+                {field: 'mobile', title: '手机号', align: 'center'}
             ]]
         },
         done: function (elem, data) {
@@ -81,10 +81,10 @@ layui.use(['form', 'layer', 'jquery','tableSelect','laydate'], function () {
         checkedKey: 'serviceName',
         searchKey: 'serviceName',
         table: {
-            method:'POST',
+            method: 'POST',
             url: PageContext.getUrl('/userExpense/toChooseServiceInfo/list'),
             request: {
-                pageName: 'currentPage' ,
+                pageName: 'currentPage',
                 limitName: 'pageSize'
             },
             response: { //定义后端 json 格式
@@ -95,9 +95,9 @@ layui.use(['form', 'layer', 'jquery','tableSelect','laydate'], function () {
                 dataName: 'data' //数据字段
             },
             cols: [[
-                { type: 'radio' },
-                { field: 'serviceName', title: '服务名称',align: 'center' },
-                { field: 'serviceCode', title: '服务Code',align: 'center' }
+                {type: 'radio'},
+                {field: 'serviceName', title: '服务名称', align: 'center'},
+                {field: 'serviceCode', title: '服务Code', align: 'center'}
             ]]
         },
         done: function (elem, data) {
@@ -120,7 +120,7 @@ layui.use(['form', 'layer', 'jquery','tableSelect','laydate'], function () {
         isInitValue: false,
         lang: 'cn',//语言
         calendar: true,//显示公立
-        change: function(value, date){//监听日期被切换
+        change: function (value, date) {//监听日期被切换
             lay('#createTime').html(new Date(value));
         }
     });
