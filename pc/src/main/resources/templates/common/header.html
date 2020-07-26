@@ -20,9 +20,9 @@
                 </div>
                 <div class="headQQ">
                     <span>在线客服：</span>
-                    <a class="qqOne" target="_blank" href="tencent://message/?uin=113401043&Site=qq&Menu=yes"><img
+                    <a class="qqOne" target="_blank" href="tencent://message/?uin=32828069&Site=qq&Menu=yes"><img
                             th:src="@{/images/publicImg/qqChatIcon.png}"/></a>
-                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=1&uin=279552912&site=qq&menu=yes"><img
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=1&uin=32828069&site=qq&menu=yes"><img
                             th:src="@{/images/publicImg/qqChatIcon.png}"/></a>
                 </div>
             </div>
@@ -31,6 +31,12 @@
     <div class="bigerNavBox">
         <div class="bigerNavCon clearfix">
             <h1 class="logoImg"><a href="/"><img th:src="@{/images/publicImg/bigerLogo.png}"/></a></h1>
+            <div class="col-lg-6" style="horiz-align: right">
+            <div class="input-group " style="horiz-align: right">
+                <input id="ppxh" name="ppxh" type="text" class="form-control" placeholder="请输入型号或品牌搜索" aria-describedby="basic-addon2">
+                <span class="input-group-addon" id="basic-addon2"><a class="freeTrial" id="submitBtn" style="cursor:hand;">搜索</a></span>
+            </div>
+            </div>
             <ul class="navList clearfix">
                 <li><a th:href="@{/}" th:class="${channel eq 'index'} ? 'navActive' : ''">首页</a></li>
                 <!--<li><a th:href="@{/saas}" th:class="${channel eq 'SAAS'} ? 'navActive' : ''">云计算SaaS</a></li>
@@ -68,7 +74,12 @@
         /*]]>*/
 
 
-
+        $("#submitBtn").click(function() {
+            var ppxh=$("#ppxh").val();
+            if(ppxh == "" || ppxh == null || ppxh == undefined){ // "",null,undefined
+                bootbox.alert("请输入查询条件");
+            }
+        });
 
     </script>
 </div>

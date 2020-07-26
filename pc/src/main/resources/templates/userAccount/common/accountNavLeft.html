@@ -196,7 +196,7 @@
 
             //默认查询iaas，paas，定制服务菜单
             AJAX.get(PageContext.contextPath +"/account/serviceCenterData",
-                function(data) {
+                function(data) {alert(data.gxkfServiceList.size());
                    /* console.info(data)*/
                     $('#iaasCenterServiceTmpl').tmpl(data).insertAfter('#iaasCenterLable');
                     $('#paasCenterServiceTmpl').tmpl(data).insertAfter('#paasCenterLable');
