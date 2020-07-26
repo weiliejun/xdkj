@@ -12,6 +12,7 @@ import com.xdkj.common.model.productOtherAttachFile.bean.AttachFileHref;
 import com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile;
 import com.xdkj.common.model.user.bean.UserInfo;
 import com.xdkj.common.util.DateHelper;
+import com.xdkj.common.util.FileHelper;
 import com.xdkj.common.util.StringHelper;
 import com.xdkj.pc.service.deviceInfo.DeviceInfoService;
 import com.xdkj.pc.service.dlsInfo.DlsInfoService;
@@ -29,7 +30,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.*;
 
 /**
@@ -358,6 +364,55 @@ public class DeviceInfoController extends AbstractBaseController {
         } else {
             return "deviceInfo/rjxz";
         }
+    }
+
+    @RequestMapping(value = "/download", method = RequestMethod.GET)
+    public void download(HttpServletRequest request, HttpServletResponse response, Model model) {
+        OutputStream outputStream = null;
+
+        try {
+            String attachFileName = request.getParameter("attachFileName");
+            String attachFilePath = request.getParameter("attachFilePath");
+            URL url = new URL(attachFilePath);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            //设置超时间为3秒
+            conn.setConnectTimeout(3 * 1000);
+            //防止屏蔽程序抓取而返回403错误
+            conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+
+            //得到输入流
+            InputStream inputStream = conn.getInputStream();
+            //获取自己数组
+            byte[] fileBtye = FileHelper.readInputStream(inputStream);
+
+            String fileName = null;
+            String userAgent = request.getHeader("User-Agent");
+            // 基于IE内核
+            if (userAgent.contains("MSIE") || userAgent.contains("Trident")) {
+                fileName = java.net.URLEncoder.encode(attachFileName, "UTF-8");
+            } else {
+                // 非IE内核
+                fileName = new String(attachFileName.getBytes("UTF-8"), "ISO-8859-1");
+            }
+
+            outputStream = response.getOutputStream();
+            response.reset();
+            response.setContentType("application/x-msdownload;charset=UTF-8");
+            response.setHeader("Location", fileName);
+            response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+            outputStream.write(fileBtye);
+            outputStream.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (outputStream != null)
+                    outputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public static Map<String, Object> object2Map(Object object) {
