@@ -1,5 +1,6 @@
 package com.xdkj.pc.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -7,12 +8,16 @@ import com.xdkj.common.components.filesync.FileSynchronizer;
 import com.xdkj.common.constant.GlobalConstant;
 import com.xdkj.common.model.deviceInfo.bean.DeviceInfo;
 import com.xdkj.common.model.dlsInfo.bean.DlsInfo;
+import com.xdkj.common.model.productOtherAttachFile.bean.AttachFileHref;
+import com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile;
 import com.xdkj.common.model.user.bean.UserInfo;
 import com.xdkj.common.util.DateHelper;
 import com.xdkj.common.util.StringHelper;
 import com.xdkj.pc.service.deviceInfo.DeviceInfoService;
 import com.xdkj.pc.service.dlsInfo.DlsInfoService;
+import com.xdkj.pc.service.productOtherAttachFile.ProductOtherAttachFileService;
 import com.xdkj.pc.web.base.AbstractBaseController;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +26,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Field;
 import java.util.*;
 
 /**
@@ -43,6 +50,8 @@ public class DeviceInfoController extends AbstractBaseController {
     private DeviceInfoService deviceInfoService;
     @Autowired
     private DlsInfoService dlsInfoService;
+    @Autowired
+    private ProductOtherAttachFileService productOtherAttachFileService;
     @Autowired
     private FileSynchronizer FileSynchronizer;
 
@@ -302,5 +311,68 @@ public class DeviceInfoController extends AbstractBaseController {
         } else {
             return "deviceInfo/dlsxx";
         }
+    }
+
+    @RequestMapping("/rjxz")
+    public String rjxz(HttpServletRequest request, Model model, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "20") Integer pageSize, String loadingType) {
+        UserInfo userInfo = getUserInfoBySid(request);
+
+        //引入分页查询，使用PageHelper分页功能在查询之前传入当前页，然后多少记录
+        PageHelper.startPage(1, pageSize * pageNum);
+        //startPage后紧跟的这个查询就是分页查询
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
+        List<ProductOtherAttachFile> userExpenseList = productOtherAttachFileService.listWdmbByParams(param);
+        //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
+        PageInfo pageInfo = new PageInfo<ProductOtherAttachFile>(userExpenseList);
+//        final PageInfo<DlsInfo> pageInfo = (PageInfo<DlsInfo>) dlsInfoService.listDlsInfoByParams(param);
+
+        List<ProductOtherAttachFile> rtn = pageInfo.getList();
+        List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
+        for (ProductOtherAttachFile productOtherAttachFile : rtn) {
+            Map<String, Object> map = object2Map(productOtherAttachFile);
+
+            String attachFile = productOtherAttachFile.getAttachFile();
+            if (StringUtils.isNotBlank(attachFile)) {
+                //对去除空格转义符处理
+                String a = HtmlUtils.htmlUnescape(attachFile.replaceAll(" ", ""));
+                Map<String, String> parse = (Map<String, String>) JSON.parse(a);
+                List<AttachFileHref> fileHrefList = new ArrayList<AttachFileHref>();
+                for (Map.Entry<String, String> entry : parse.entrySet()) {
+                    map.put("attachFileName", entry.getKey());
+                    map.put("attachFilePath", entry.getValue());
+                }
+            }
+            data.add(map);
+        }
+        pageInfo.setList(data);
+
+        model.addAttribute("userInfo", userInfo);
+        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("pageNum", pageNum);
+        model.addAttribute("pageSize", pageSize);
+
+        if ("partLoad".equals(loadingType)) {
+            return "deviceInfo/rjxz::recServiceList";
+        } else {
+            return "deviceInfo/rjxz";
+        }
+    }
+
+    public static Map<String, Object> object2Map(Object object) {
+        Map<String, Object> result = new HashMap<String, Object>();
+        //获得类的的属性名 数组
+        Field[] fields = object.getClass().getDeclaredFields();
+        try {
+            for (Field field : fields) {
+                field.setAccessible(true);
+                String name = new String(field.getName());
+                result.put(name, field.get(object));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
