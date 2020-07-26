@@ -104,14 +104,14 @@
         AJAX.get(
             "/islogin",
             function (data) {
-                if(data) {
-                    $("#pageNum").val(pageNum);
-                    // 采用局部刷新
-                    $("#loadingType").val("partLoad");
-                    $('#recServiceDiv').load("/account/index", $("#searchForm").serialize());
-                } else {
-                    window.location.href = "/login";
-                }
+                // if(data) {
+                $("#pageNum").val(pageNum);
+                // 采用局部刷新
+                $("#loadingType").val("partLoad");
+                $('#recServiceDiv').load("/deviceInfo/dlsxx", $("#searchForm").serialize());
+                // } else {
+                //     window.location.href = "/login";
+                // }
             }
         )
     }
