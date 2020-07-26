@@ -35,7 +35,7 @@
                             <tbody class="recordInfo">
                             <tr th:each="deviceInfo : ${pageInfo.list}">
                                 <td th:text="${deviceInfo.attachFileName}"></td>
-                                <td ><a class="layui-btn layui-btn-xs layui-btn-warm" th:href="'/deviceInfo/download?attachFileName='+${deviceInfo.attachFileName}+'&attachFilePath='+${deviceInfo.attachFilePath}"><i
+                                <td ><a class="layui-btn layui-btn-xs layui-btn-warm" th:href="@{/deviceInfo/download(attachFileName=${deviceInfo.attachFileName},attachFilePath=${deviceInfo.attachFilePath})}"><i
                                         class="layui-icon">&#xe66f;</i>下载</a></td>
                                 <!--                    <td th:text="${#dates.format(deviceInfo.CREATE_TIME, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
                             </tr>
