@@ -30,13 +30,22 @@
     </div>
     <div class="bigerNavBox">
         <div class="bigerNavCon clearfix">
-            <h1 class="logoImg"><a href="/"><img th:src="@{/images/publicImg/bigerLogo.png}"/></a></h1>
-            <div class="col-lg-6" style="horiz-align: right">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-8"><h1 class="logoImg"><a href="/"><img th:src="@{/images/publicImg/bigerLogo.png}"/></a></h1></div>
+                <div class="col-xs-6 col-md-4">
+                        <div class="input-group " style="margin-bottom: 0">
+                            <input id="ppxh" name="ppxh" type="text" class="form-control" placeholder="请输入型号或品牌搜索" aria-describedby="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon2"><a class="freeTrial" id="submitBtn" style="cursor:hand;">搜索</a></span>
+                        </div>
+                </div>
+            </div>
+
+            <!--<div class="col-lg-6" style="horiz-align: right">
             <div class="input-group " style="horiz-align: right">
                 <input id="ppxh" name="ppxh" type="text" class="form-control" placeholder="请输入型号或品牌搜索" aria-describedby="basic-addon2">
                 <span class="input-group-addon" id="basic-addon2"><a class="freeTrial" id="submitBtn" style="cursor:hand;">搜索</a></span>
             </div>
-            </div>
+            </div>-->
             <ul class="navList clearfix">
                 <li><a th:href="@{/}" th:class="${channel eq 'index'} ? 'navActive' : ''">首页</a></li>
                 <!--<li><a th:href="@{/saas}" th:class="${channel eq 'SAAS'} ? 'navActive' : ''">云计算SaaS</a></li>
