@@ -234,11 +234,11 @@ public class DeviceInfoController extends AbstractBaseController {
         PageHelper.startPage(1, pageSize * pageNum);
         //startPage后紧跟的这个查询就是分页查询
         Map<String, Object> param = new HashMap<String, Object>();
-        /*param.put("userId", userInfo.getId());
-        List<Map<String, Object>> userExpenseList = deviceInfoService.listDeviceInfoByParams(param);
+        /*param.put("userId", userInfo.getId());*/
+        List<DeviceInfo> userExpenseList = deviceInfoService.listDeviceInfoByParams(param);
         //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
-        PageInfo pageInfo = new PageInfo<Map<String, Object>>(userExpenseList);*/
-        final Page<DeviceInfo> pageInfo = (Page<DeviceInfo>) deviceInfoService.listDeviceInfoByParams(param);
+        PageInfo pageInfo = new PageInfo<DeviceInfo>(userExpenseList);
+//        final Page<DeviceInfo> pageInfo = (Page<DeviceInfo>) deviceInfoService.listDeviceInfoByParams(param);
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("pageNum", pageNum);
@@ -259,11 +259,11 @@ public class DeviceInfoController extends AbstractBaseController {
         PageHelper.startPage(1, pageSize * pageNum);
         //startPage后紧跟的这个查询就是分页查询
         Map<String, Object> param = new HashMap<String, Object>();
-        /*param.put("userId", userInfo.getId());
-        List<Map<String, Object>> userExpenseList = deviceInfoService.listDeviceInfoByParams(param);
+        /*param.put("userId", userInfo.getId());*/
+        List<DeviceInfo> userExpenseList = deviceInfoService.listDeviceInfoByParams(param);
         //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
-        PageInfo pageInfo = new PageInfo<Map<String, Object>>(userExpenseList);*/
-        final Page<DeviceInfo> pageInfo = (Page<DeviceInfo>) deviceInfoService.listDeviceInfoByParams(param);
+        PageInfo pageInfo = new PageInfo<DeviceInfo>(userExpenseList);
+//        final Page<DeviceInfo> pageInfo = (Page<DeviceInfo>) deviceInfoService.listDeviceInfoByParams(param);
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("pageNum", pageNum);
@@ -287,7 +287,10 @@ public class DeviceInfoController extends AbstractBaseController {
         String ppxh=request.getParameter("ppxh");
         param.put("ppxh", ppxh);
         //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
-        final Page<DlsInfo> pageInfo = (Page<DlsInfo>) dlsInfoService.listDlsInfoByParams(param);
+        List<DlsInfo> userExpenseList = dlsInfoService.listDlsInfoByParams(param);
+        //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
+        PageInfo pageInfo = new PageInfo<DlsInfo>(userExpenseList);
+//        final PageInfo<DlsInfo> pageInfo = (PageInfo<DlsInfo>) dlsInfoService.listDlsInfoByParams(param);
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("pageNum", pageNum);
