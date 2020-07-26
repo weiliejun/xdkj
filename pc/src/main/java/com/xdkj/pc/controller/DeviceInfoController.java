@@ -240,7 +240,7 @@ public class DeviceInfoController extends AbstractBaseController {
         PageInfo pageInfo = new PageInfo<Map<String, Object>>(userExpenseList);*/
         final Page<DeviceInfo> pageInfo = (Page<DeviceInfo>) deviceInfoService.listDeviceInfoByParams(param);
         model.addAttribute("userInfo", userInfo);
-        model.addAttribute("pageInfo", pageInfo.getResult());
+        model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("pageNum", pageNum);
         model.addAttribute("pageSize", pageSize);
 
@@ -265,7 +265,7 @@ public class DeviceInfoController extends AbstractBaseController {
         PageInfo pageInfo = new PageInfo<Map<String, Object>>(userExpenseList);*/
         final Page<DeviceInfo> pageInfo = (Page<DeviceInfo>) deviceInfoService.listDeviceInfoByParams(param);
         model.addAttribute("userInfo", userInfo);
-        model.addAttribute("pageInfo", pageInfo.getResult());
+        model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("pageNum", pageNum);
         model.addAttribute("pageSize", pageSize);
 
@@ -289,7 +289,7 @@ public class DeviceInfoController extends AbstractBaseController {
         //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
         final Page<DlsInfo> pageInfo = (Page<DlsInfo>) dlsInfoService.listDlsInfoByParams(param);
         model.addAttribute("userInfo", userInfo);
-        model.addAttribute("pageInfo", pageInfo.getResult());
+        model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("pageNum", pageNum);
         model.addAttribute("pageSize", pageSize);
         model.addAttribute("ppxh", ppxh);

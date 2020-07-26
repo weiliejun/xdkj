@@ -24,7 +24,7 @@
 
                 <div class="xia" th:fragment="recServiceList">
                     <h5>代理商列表</h5>
-                    <div id="recServiceDiv1" th:if="${not #lists.isEmpty(pageInfo)}">
+                    <div id="recServiceDiv1" th:if="${not #lists.isEmpty(pageInfo.getResult())}">
                         <table class="recordCon centerRecordCon">
                             <thead>
                             <tr class="headRecord">
@@ -36,7 +36,7 @@
                             </tr>
                             </thead>
                             <tbody class="recordInfo">
-                            <tr th:each="deviceInfo : ${pageInfo}">
+                            <tr th:each="deviceInfo : ${pageInfo.getResult()}">
                                 <td th:text="${deviceInfo.dlsmc}"></td>
                                 <td th:text="${deviceInfo.lxr}"></td>
                                 <td th:text="${deviceInfo.lxrdh}"></td>
@@ -50,7 +50,7 @@
                                                                              th:onclick="'showMore('+ ${pageNum + 1} +')'">显示更多<img
                                 src="/images/personalCenter/sanjiao.png" alt=""></a></p>
                     </div>
-                    <p class="noneRecord" th:if="${#lists.isEmpty(pageInfo)}">暂无记录</p>
+                    <p class="noneRecord" th:if="${#lists.isEmpty(pageInfo.getResult())}">暂无记录</p>
                 </div>
             </div>
         </div>
