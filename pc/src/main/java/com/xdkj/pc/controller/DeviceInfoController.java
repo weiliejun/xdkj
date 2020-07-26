@@ -6,10 +6,12 @@ import com.github.pagehelper.PageInfo;
 import com.xdkj.common.components.filesync.FileSynchronizer;
 import com.xdkj.common.constant.GlobalConstant;
 import com.xdkj.common.model.deviceInfo.bean.DeviceInfo;
+import com.xdkj.common.model.dlsInfo.bean.DlsInfo;
 import com.xdkj.common.model.user.bean.UserInfo;
 import com.xdkj.common.util.DateHelper;
 import com.xdkj.common.util.StringHelper;
 import com.xdkj.pc.service.deviceInfo.DeviceInfoService;
+import com.xdkj.pc.service.dlsInfo.DlsInfoService;
 import com.xdkj.pc.web.base.AbstractBaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +41,8 @@ public class DeviceInfoController extends AbstractBaseController {
 
     @Autowired
     private DeviceInfoService deviceInfoService;
-
+    @Autowired
+    private DlsInfoService dlsInfoService;
     @Autowired
     private FileSynchronizer FileSynchronizer;
 
@@ -270,6 +273,31 @@ public class DeviceInfoController extends AbstractBaseController {
             return "deviceInfo/sbzn::recServiceList";
         } else {
             return "deviceInfo/sbzn";
+        }
+    }
+
+    @RequestMapping("/dlsxx")
+    public String dlsxx(HttpServletRequest request, Model model, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "20") Integer pageSize, String loadingType) {
+        UserInfo userInfo = getUserInfoBySid(request);
+
+        //引入分页查询，使用PageHelper分页功能在查询之前传入当前页，然后多少记录
+        PageHelper.startPage(1, pageSize * pageNum);
+        //startPage后紧跟的这个查询就是分页查询
+        Map<String, Object> param = new HashMap<String, Object>();
+        String ppxh=request.getParameter("ppxh");
+        param.put("ppxh", ppxh);
+        //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
+        final Page<DlsInfo> pageInfo = (Page<DlsInfo>) dlsInfoService.listDlsInfoByParams(param);
+        model.addAttribute("userInfo", userInfo);
+        model.addAttribute("pageInfo", pageInfo.getResult());
+        model.addAttribute("pageNum", pageNum);
+        model.addAttribute("pageSize", pageSize);
+        model.addAttribute("ppxh", ppxh);
+
+        if ("partLoad".equals(loadingType)) {
+            return "deviceInfo/dlsxx::recServiceList";
+        } else {
+            return "deviceInfo/dlsxx";
         }
     }
 }

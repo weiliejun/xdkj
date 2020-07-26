@@ -188,6 +188,9 @@
       <if test="lxdh != null">
         and LXDH like CONCAT('%',#{lxdh},'%')
       </if>
+      <if test="ppxh != null">
+        and ID IN (SELECT DLS_ID FROM device_info WHERE (PP like CONCAT('%',#{ppxh},'%') OR CPDM like CONCAT('%',#{ppxh},'%')))
+      </if>
     </where>
     ORDER BY CREATE_TIME DESC
   </select>
@@ -205,6 +208,9 @@
       </if>
       <if test="lxdh != null">
         and LXDH like CONCAT('%',#{lxdh},'%')
+      </if>
+      <if test="ppxh != null">
+        and ID IN (SELECT DLS_ID FROM device_info WHERE (PP like CONCAT('%',#{ppxh},'%') OR CPDM like CONCAT('%',#{ppxh},'%')))
       </if>
     </where>
     ORDER BY CREATE_TIME DESC

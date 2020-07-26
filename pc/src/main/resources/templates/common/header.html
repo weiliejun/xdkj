@@ -77,7 +77,10 @@
         $("#submitBtn").click(function() {
             var ppxh=$("#ppxh").val();
             if(ppxh == "" || ppxh == null || ppxh == undefined){ // "",null,undefined
-                bootbox.alert("请输入查询条件");
+                // bootbox.alert("请输入查询条件!");
+                GlobalPrompt.prompt("请输入查询条件再查询!");
+            }else {
+                window.location.href=pageContext.contextPath + "/deviceInfo/dlsxx?ppxh="+ppxh;
             }
         });
 
