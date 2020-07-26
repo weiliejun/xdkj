@@ -50,7 +50,7 @@
                                                                              th:onclick="'showMore('+ ${pageNum + 1} +')'">显示更多<img
                                 src="/images/personalCenter/sanjiao.png" alt=""></a></p>
                     </div>
-                    <p class="noneRecord" th:if="${#lists.isEmpty(pageInfo.list)}">暂无记录</p>
+                    <p class="noneRecord" th:if="${#lists.isEmpty(pageInfo)}">暂无记录</p>
                 </div>
             </div>
         </div>
