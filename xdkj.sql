@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80016
 File Encoding         : 65001
 
-Date: 2020-07-19 22:38:51
+Date: 2020-07-28 20:31:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -338,6 +338,10 @@ CREATE TABLE `product_other_attach_file` (
 -- ----------------------------
 -- Records of product_other_attach_file
 -- ----------------------------
+INSERT INTO `product_other_attach_file` VALUES ('20072120425308122821', '99999', 'wdmbAttachFile', '{\"360截图20200103212702019.jpg\":\"http://127.0.0.1:82/upload/20200721/20072120424928851933.jpg\"}', null, '1', '2020-07-21 20:42:53', '1', '系统管理员', null, null, null);
+INSERT INTO `product_other_attach_file` VALUES ('20072121330547895831', '99999', 'wdmbAttachFile', '{\"360截图20200103212702019.jpg\":\"http://127.0.0.1:82/upload/20200721/20072121515264625264.jpg\"}', null, '1', '2020-07-21 21:33:05', '1', '系统管理员', '2020-07-21 21:51:54', '1', '系统管理员');
+INSERT INTO `product_other_attach_file` VALUES ('20072121585805713827', '99999', 'wdmbAttachFile', '{\"360截图20200103212702019.jpg\":\"http://127.0.0.1:82/upload/20200721/20072121585362744070.jpg\"}', null, '1', '2020-07-21 21:58:58', '1', '系统管理员', null, null, null);
+INSERT INTO `product_other_attach_file` VALUES ('20072122045194380320', '99999', 'wdmbAttachFile', '{\"360截图20200103212702019.jpg\":\"http://127.0.0.1:82/upload/20200726/20072618225543748559.jpg\"}', null, '0', '2020-07-21 22:04:51', '1', '系统管理员', '2020-07-26 18:22:57', '1', '系统管理员');
 
 -- ----------------------------
 -- Table structure for service_call_cost
@@ -994,7 +998,7 @@ CREATE TABLE `sys_business_log` (
   `REMARK` varchar(4000) DEFAULT NULL,
   `IP` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=376 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='业务日志表（充值、查询）';
+) ENGINE=InnoDB AUTO_INCREMENT=498 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='业务日志表（充值、查询）';
 
 -- ----------------------------
 -- Records of sys_business_log
@@ -1374,6 +1378,128 @@ INSERT INTO `sys_business_log` VALUES ('372', '1', 'sysadmin', '系统管理员'
 INSERT INTO `sys_business_log` VALUES ('373', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:30:06', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
 INSERT INTO `sys_business_log` VALUES ('374', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:30:43', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
 INSERT INTO `sys_business_log` VALUES ('375', '1', 'sysadmin', '系统管理员', 'c6b2a97c-b2fa-4268-97c0-69864acd122a', '2020-07-19 22:32:57', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('376', '1', 'sysadmin', '系统管理员', '151b9634-de37-45bd-93d9-2ab057acc9a2', '2020-07-20 20:36:21', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('377', '1', 'sysadmin', '系统管理员', '0cd4e27c-6337-4dde-8666-9eded06ba1fb', '2020-07-20 20:50:02', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('378', '1', 'sysadmin', '系统管理员', '0cd4e27c-6337-4dde-8666-9eded06ba1fb', '2020-07-20 20:55:46', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('379', '1', 'sysadmin', '系统管理员', '29c7e172-8f4e-462a-acc4-ce16ca1bb02f', '2020-07-20 21:14:29', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('380', '1', 'sysadmin', '系统管理员', '84f7c217-7557-4b2c-bcb3-9a859245cc7a', '2020-07-21 20:42:43', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('381', '1', 'sysadmin', '系统管理员', '84f7c217-7557-4b2c-bcb3-9a859245cc7a', '2020-07-21 20:42:53', '文档模板信息管理', '修改文档模板信息', '{\"attachFile\":\"{\\\"360截图20200103212702019.jpg\\\":\\\"http://127.0.0.1:82/upload/20200721/20072120424928851933.jpg\\\"}\",\"createTime\":\"2020-07-21 20:42:53\",\"creatorId\":\"1\",\"creatorName\":\"系统管理员\",\"dataStatus\":\"0\",\"id\":\"20072120425308122821\",\"productId\":\"99999\",\"type\":\"wdmbAttachFile\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('382', '1', 'sysadmin', '系统管理员', '84f7c217-7557-4b2c-bcb3-9a859245cc7a', '2020-07-21 20:42:54', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('383', '1', 'sysadmin', '系统管理员', '84f7c217-7557-4b2c-bcb3-9a859245cc7a', '2020-07-21 20:43:22', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('384', '1', 'sysadmin', '系统管理员', '84f7c217-7557-4b2c-bcb3-9a859245cc7a', '2020-07-21 20:43:48', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('385', '1', 'sysadmin', '系统管理员', '84f7c217-7557-4b2c-bcb3-9a859245cc7a', '2020-07-21 20:44:02', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('386', '1', 'sysadmin', '系统管理员', 'f3d922ad-62af-41e2-8c42-21a3b28836f9', '2020-07-21 21:32:52', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('387', '1', 'sysadmin', '系统管理员', 'f3d922ad-62af-41e2-8c42-21a3b28836f9', '2020-07-21 21:32:54', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('388', '1', 'sysadmin', '系统管理员', 'f3d922ad-62af-41e2-8c42-21a3b28836f9', '2020-07-21 21:32:58', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('389', '1', 'sysadmin', '系统管理员', 'f3d922ad-62af-41e2-8c42-21a3b28836f9', '2020-07-21 21:33:06', '文档模板信息管理', '修改文档模板信息', '{\"attachFile\":\"{\\\"360截图20200103212702019.jpg\\\":\\\"http://127.0.0.1:82/upload/20200721/20072121330396347855.jpg\\\"}\",\"createTime\":\"2020-07-21 21:33:05\",\"creatorId\":\"1\",\"creatorName\":\"系统管理员\",\"dataStatus\":\"0\",\"id\":\"20072121330547895831\",\"productId\":\"99999\",\"type\":\"wdmbAttachFile\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('390', '1', 'sysadmin', '系统管理员', 'f3d922ad-62af-41e2-8c42-21a3b28836f9', '2020-07-21 21:33:06', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('391', '1', 'sysadmin', '系统管理员', 'f3d922ad-62af-41e2-8c42-21a3b28836f9', '2020-07-21 21:35:18', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('392', '1', 'sysadmin', '系统管理员', 'a40b72dd-9f62-495d-b78c-81359c19072e', '2020-07-21 21:40:39', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('393', '1', 'sysadmin', '系统管理员', 'e3daf43f-efc7-49ed-965d-d5376bdef4e6', '2020-07-21 21:51:34', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('394', '1', 'sysadmin', '系统管理员', 'e3daf43f-efc7-49ed-965d-d5376bdef4e6', '2020-07-21 21:51:41', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('395', '1', 'sysadmin', '系统管理员', 'e3daf43f-efc7-49ed-965d-d5376bdef4e6', '2020-07-21 21:51:54', '文档模板信息管理', '修改文档模板信息', '{\"attachFile\":\"{\\\"360截图20200103212702019.jpg\\\":\\\"http://127.0.0.1:82/upload/20200721/20072121515264625264.jpg\\\"}\",\"editTime\":\"2020-07-21 21:51:54\",\"editorId\":\"1\",\"editorName\":\"系统管理员\",\"id\":\"20072121330547895831\",\"productId\":\"99999\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('396', '1', 'sysadmin', '系统管理员', 'e3daf43f-efc7-49ed-965d-d5376bdef4e6', '2020-07-21 21:51:55', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('397', '1', 'sysadmin', '系统管理员', 'e3daf43f-efc7-49ed-965d-d5376bdef4e6', '2020-07-21 21:58:43', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('398', '1', 'sysadmin', '系统管理员', 'e3daf43f-efc7-49ed-965d-d5376bdef4e6', '2020-07-21 21:58:48', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('399', '1', 'sysadmin', '系统管理员', 'e3daf43f-efc7-49ed-965d-d5376bdef4e6', '2020-07-21 21:58:58', '文档模板信息管理', '修改文档模板信息', '{\"attachFile\":\"{\\\"360截图20200103212702019.jpg\\\":\\\"http://127.0.0.1:82/upload/20200721/20072121585362744070.jpg\\\"}\",\"createTime\":\"2020-07-21 21:58:58\",\"creatorId\":\"1\",\"creatorName\":\"系统管理员\",\"dataStatus\":\"0\",\"id\":\"20072121585805713827\",\"productId\":\"99999\",\"type\":\"wdmbAttachFile\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('400', '1', 'sysadmin', '系统管理员', 'e3daf43f-efc7-49ed-965d-d5376bdef4e6', '2020-07-21 21:58:58', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('401', '1', 'sysadmin', '系统管理员', '43fbd822-167b-4ed5-804b-916db1bff4eb', '2020-07-21 22:04:41', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('402', '1', 'sysadmin', '系统管理员', '43fbd822-167b-4ed5-804b-916db1bff4eb', '2020-07-21 22:04:46', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('403', '1', 'sysadmin', '系统管理员', '43fbd822-167b-4ed5-804b-916db1bff4eb', '2020-07-21 22:04:52', '文档模板信息管理', '修改文档模板信息', '{\"attachFile\":\"{\\\"360截图20200103212702019.jpg\\\":\\\"http://127.0.0.1:82/upload/20200721/20072122045079770333.jpg\\\"}\",\"createTime\":\"2020-07-21 22:04:51\",\"creatorId\":\"1\",\"creatorName\":\"系统管理员\",\"dataStatus\":\"0\",\"id\":\"20072122045194380320\",\"productId\":\"99999\",\"type\":\"wdmbAttachFile\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('404', '1', 'sysadmin', '系统管理员', '43fbd822-167b-4ed5-804b-916db1bff4eb', '2020-07-21 22:04:52', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('405', '1', 'sysadmin', '系统管理员', 'fc420feb-978c-4708-b93a-21fae852d5d7', '2020-07-24 22:15:07', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('406', '1', 'sysadmin', '系统管理员', 'fc420feb-978c-4708-b93a-21fae852d5d7', '2020-07-24 22:16:51', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('407', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:22:16', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('408', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:23:33', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('409', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:23:51', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('410', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:24:11', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('411', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:25:33', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('412', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:29:15', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('413', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:30:57', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('414', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:31:00', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('415', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:31:05', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('416', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:31:13', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('417', '1', 'sysadmin', '系统管理员', '6931c9ef-6e31-4d60-8b59-c6b8b3ce836c', '2020-07-24 22:31:42', '用户信息管理', '用户信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('418', '1', 'sysadmin', '系统管理员', '48863eae-12b1-46a9-8519-6901242c7d9f', '2020-07-25 09:10:29', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('419', '1', 'sysadmin', '系统管理员', '48863eae-12b1-46a9-8519-6901242c7d9f', '2020-07-25 09:11:50', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('420', '1', 'sysadmin', '系统管理员', '48863eae-12b1-46a9-8519-6901242c7d9f', '2020-07-25 09:13:10', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('421', '1', 'sysadmin', '系统管理员', '48863eae-12b1-46a9-8519-6901242c7d9f', '2020-07-25 09:14:18', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('422', '1', 'sysadmin', '系统管理员', '48863eae-12b1-46a9-8519-6901242c7d9f', '2020-07-25 09:14:54', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('423', '1', 'sysadmin', '系统管理员', '48863eae-12b1-46a9-8519-6901242c7d9f', '2020-07-25 09:15:47', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('424', '1', 'sysadmin', '系统管理员', '76177c66-f327-48e0-a4ec-75a1ee47952d', '2020-07-25 09:25:23', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('425', '1', 'sysadmin', '系统管理员', '76177c66-f327-48e0-a4ec-75a1ee47952d', '2020-07-25 09:33:05', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('426', '1', 'sysadmin', '系统管理员', '76177c66-f327-48e0-a4ec-75a1ee47952d', '2020-07-25 09:33:06', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('427', '1', 'sysadmin', '系统管理员', '76177c66-f327-48e0-a4ec-75a1ee47952d', '2020-07-25 09:33:07', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('428', '1', 'sysadmin', '系统管理员', '76177c66-f327-48e0-a4ec-75a1ee47952d', '2020-07-25 09:33:09', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('429', '1', 'sysadmin', '系统管理员', '76177c66-f327-48e0-a4ec-75a1ee47952d', '2020-07-25 09:33:55', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('430', '1', 'sysadmin', '系统管理员', '678d5e95-848e-476c-8a66-7a004910c701', '2020-07-25 09:34:32', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('431', '1', 'sysadmin', '系统管理员', '678d5e95-848e-476c-8a66-7a004910c701', '2020-07-25 09:36:34', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('432', '1', 'sysadmin', '系统管理员', '678d5e95-848e-476c-8a66-7a004910c701', '2020-07-25 09:36:36', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('433', '1', 'sysadmin', '系统管理员', 'dad92082-f9f5-4d4f-ad3b-ee405e2b7d32', '2020-07-25 09:40:30', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('434', '1', 'sysadmin', '系统管理员', 'dad92082-f9f5-4d4f-ad3b-ee405e2b7d32', '2020-07-25 09:42:23', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('435', '1', 'sysadmin', '系统管理员', 'dad92082-f9f5-4d4f-ad3b-ee405e2b7d32', '2020-07-25 09:42:43', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('436', '1', 'sysadmin', '系统管理员', 'dad92082-f9f5-4d4f-ad3b-ee405e2b7d32', '2020-07-25 09:43:22', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('437', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:46:54', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('438', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:48:18', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('439', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:51:44', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('440', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:53:12', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('441', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:53:20', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('442', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:53:35', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('443', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:54:21', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('444', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:54:22', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('445', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:54:36', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('446', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:56:29', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('447', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:56:37', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('448', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:56:38', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('449', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:56:39', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('450', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:56:39', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('451', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:56:39', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('452', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:56:39', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('453', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:56:40', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('454', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 09:56:40', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('455', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 10:01:00', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('456', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 10:01:09', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('457', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 10:01:43', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('458', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 10:01:44', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('459', '1', 'sysadmin', '系统管理员', 'f0a1d7e9-b97f-4085-a4bc-2ba47315e0ad', '2020-07-25 10:01:47', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('460', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:17', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('461', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:22', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('462', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:23', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('463', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:23', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('464', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:24', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('465', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:24', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('466', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:24', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('467', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:24', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('468', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:24', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('469', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:25', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('470', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:25', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('471', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:25', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('472', '1', 'sysadmin', '系统管理员', '8ebea8fe-de3c-46fe-85dd-eb518420c434', '2020-07-25 10:02:25', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('473', '1', 'sysadmin', '系统管理员', '59503e50-c6d1-4b8c-b837-cb21680d2c7a', '2020-07-25 10:03:56', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('474', '1', 'sysadmin', '系统管理员', '59503e50-c6d1-4b8c-b837-cb21680d2c7a', '2020-07-25 10:06:10', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('475', '1', 'sysadmin', '系统管理员', '59503e50-c6d1-4b8c-b837-cb21680d2c7a', '2020-07-25 10:06:45', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('476', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:50:06', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('477', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:54:47', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('478', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:54:47', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('479', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:54:48', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('480', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:54:48', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('481', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:54:48', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('482', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:54:48', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('483', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:54:49', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('484', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:54:49', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('485', '1', 'sysadmin', '系统管理员', 'd7dc6af4-3798-4f3d-8c5e-ac12a753b4f3', '2020-07-25 10:54:49', '网站公告管理', '查询网站公告信息', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('486', '1', 'sysadmin', '系统管理员', 'be23f339-d92a-4031-8f19-f7e491f18aa9', '2020-07-25 10:58:14', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('487', '1', 'sysadmin', '系统管理员', '6a9e8aaa-00ab-4942-a8ee-6f4f17b69118', '2020-07-25 16:32:23', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('488', '1', 'sysadmin', '系统管理员', '6a9e8aaa-00ab-4942-a8ee-6f4f17b69118', '2020-07-25 16:32:26', '设备信息管理', '设备信息列表', '\"第4页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('489', '1', 'sysadmin', '系统管理员', '27342023-45ca-45e1-bad3-6ec85e5ee983', '2020-07-26 11:30:45', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('490', '1', 'sysadmin', '系统管理员', '27342023-45ca-45e1-bad3-6ec85e5ee983', '2020-07-26 11:31:28', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('491', '1', 'sysadmin', '系统管理员', '27342023-45ca-45e1-bad3-6ec85e5ee983', '2020-07-26 11:34:50', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('492', '1', 'sysadmin', '系统管理员', '27342023-45ca-45e1-bad3-6ec85e5ee983', '2020-07-26 11:35:30', '代理商信息管理', '代理商信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('493', '1', 'sysadmin', '系统管理员', '7be5423f-6c6c-4c47-a407-8bc208c0823b', '2020-07-26 11:59:01', '设备信息管理', '设备信息列表', '\"第1页list\"', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('494', '1', 'sysadmin', '系统管理员', '376d1f99-1a86-4aff-9a6a-57af00289fdb', '2020-07-26 15:31:38', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('495', '1', 'sysadmin', '系统管理员', '4e13b8e0-a9f8-4d57-a9f7-d948eeb54667', '2020-07-26 18:22:43', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('496', '1', 'sysadmin', '系统管理员', '4e13b8e0-a9f8-4d57-a9f7-d948eeb54667', '2020-07-26 18:22:57', '文档模板信息管理', '修改文档模板信息', '{\"attachFile\":\"{\\\"360截图20200103212702019.jpg\\\":\\\"http://127.0.0.1:82/upload/20200726/20072618225543748559.jpg\\\"}\",\"editTime\":\"2020-07-26 18:22:57\",\"editorId\":\"1\",\"editorName\":\"系统管理员\",\"id\":\"20072122045194380320\",\"productId\":\"99999\"}', null, '0:0:0:0:0:0:0:1');
+INSERT INTO `sys_business_log` VALUES ('497', '1', 'sysadmin', '系统管理员', '4e13b8e0-a9f8-4d57-a9f7-d948eeb54667', '2020-07-26 18:22:58', '文档模板信息管理', '文档模板信息列表', '{}', null, '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for sys_dictionary
@@ -1392,7 +1518,7 @@ CREATE TABLE `sys_dictionary` (
   `UPDATE_TIME` datetime DEFAULT NULL COMMENT '修改时间 yyyy-mm-dd hh24:mi:ss',
   `DATA_STATUS` char(1) NOT NULL COMMENT '数据有效性（0-有效，1-无效）',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='SYS_DICTIONARY  字典表*';
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='SYS_DICTIONARY  字典表*';
 
 -- ----------------------------
 -- Records of sys_dictionary
@@ -1454,6 +1580,9 @@ INSERT INTO `sys_dictionary` VALUES ('56', 'gxfwpt', '共享法务平台', '0', 
 INSERT INTO `sys_dictionary` VALUES ('57', 'sbxx', '设备选型', '0', '0', '4', '2', 'xdkjService', '2020-07-18 14:13:59', null, '0');
 INSERT INTO `sys_dictionary` VALUES ('58', 'sbzn', '设备租赁', '0', '0', '5', '2', 'xdkjService', '2020-07-18 14:13:59', null, '0');
 INSERT INTO `sys_dictionary` VALUES ('59', 'sbwb', '设备维保', '0', '0', '6', '2', 'xdkjService', '2020-07-18 14:13:59', null, '0');
+INSERT INTO `sys_dictionary` VALUES ('60', 'gglx', '公告类型', '0', '1', null, '1', '', '2019-08-07 15:03:23', '2020-07-24 09:20:01', '1');
+INSERT INTO `sys_dictionary` VALUES ('61', 'xtgg', '系统公告', '1', '1', null, '2', 'gglx', '2019-08-07 15:04:25', '2020-07-24 09:20:08', '1');
+INSERT INTO `sys_dictionary` VALUES ('62', 'cpgg', '产品公告', '1', '1', null, '2', 'gglx', '2019-08-07 15:07:18', '2020-07-15 09:20:12', '1');
 
 -- ----------------------------
 -- Table structure for sys_function
@@ -1612,173 +1741,6 @@ CREATE TABLE `sys_message` (
 -- ----------------------------
 -- Records of sys_message
 -- ----------------------------
-INSERT INTO `sys_message` VALUES ('2', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 03:50:24', '修改密码', '1', '18500000010', '629045');
-INSERT INTO `sys_message` VALUES ('3', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 03:57:57', '修改密码', '1', '18500000010', '543656');
-INSERT INTO `sys_message` VALUES ('4', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 04:02:12', '修改密码', '1', '18500000010', '920832');
-INSERT INTO `sys_message` VALUES ('5', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 04:05:37', '修改密码', '0', '18500000010', '204165');
-INSERT INTO `sys_message` VALUES ('6', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 04:10:12', '修改密码', '0', '18500000010', '917227');
-INSERT INTO `sys_message` VALUES ('7', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 04:14:51', '修改密码', '0', '18500000010', '629288');
-INSERT INTO `sys_message` VALUES ('8', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 04:17:07', '修改密码', '1', '18500000010', '546480');
-INSERT INTO `sys_message` VALUES ('9', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 04:18:21', '修改密码', '0', '18500000010', '185118');
-INSERT INTO `sys_message` VALUES ('10', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 20:50:26', '修改密码', '0', '18500000010', '312921');
-INSERT INTO `sys_message` VALUES ('11', '9', '修改密码', '恭喜你修改密码成功', 'user', 'forgotPassword', '0', '2019-01-21 20:54:35', '修改密码', '0', '17700000243', '548869');
-INSERT INTO `sys_message` VALUES ('12', '9', '修改密码', '恭喜你修改密码成功', 'user', 'forgotPassword', '0', '2019-01-21 20:58:46', '修改密码', '0', '17700000243', '196129');
-INSERT INTO `sys_message` VALUES ('13', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 21:43:13', '修改密码', '0', '18500000010', '901846');
-INSERT INTO `sys_message` VALUES ('14', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-21 23:24:43', '修改密码', '0', '18500000010', '872036');
-INSERT INTO `sys_message` VALUES ('15', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 00:30:23', '修改密码', '0', '18500000010', '895233');
-INSERT INTO `sys_message` VALUES ('16', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 00:44:44', '修改密码', '0', '18500000010', '528552');
-INSERT INTO `sys_message` VALUES ('17', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 00:46:00', '修改密码', '0', '18500000010', '788098');
-INSERT INTO `sys_message` VALUES ('18', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 00:55:31', '修改密码', '0', '18500000010', '764967');
-INSERT INTO `sys_message` VALUES ('19', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 01:31:23', '修改密码', '0', '18500000010', '489661');
-INSERT INTO `sys_message` VALUES ('20', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 01:31:27', '修改密码', '0', '18500000010', '422035');
-INSERT INTO `sys_message` VALUES ('21', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 01:34:53', '修改密码', '0', '18500000010', '825141');
-INSERT INTO `sys_message` VALUES ('22', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 02:20:58', '修改密码', '0', '18500000010', '240639');
-INSERT INTO `sys_message` VALUES ('23', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 02:25:33', '修改密码', '0', '18500000010', '676521');
-INSERT INTO `sys_message` VALUES ('24', '9', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 02:45:55', '修改密码', '0', '17700000243', '936581');
-INSERT INTO `sys_message` VALUES ('25', '9', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 02:48:46', '修改密码', '0', '17700000243', '546032');
-INSERT INTO `sys_message` VALUES ('26', '9', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 02:56:11', '修改密码', '0', '17700000243', '175766');
-INSERT INTO `sys_message` VALUES ('27', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-22 21:24:38', '修改密码', '0', '18500000010', '202209');
-INSERT INTO `sys_message` VALUES ('28', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-24 00:54:01', '修改密码', '0', '18500000010', '300106');
-INSERT INTO `sys_message` VALUES ('29', '9', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-24 17:57:53', '修改密码', '0', '17700000243', '319872');
-INSERT INTO `sys_message` VALUES ('30', '9', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-24 18:00:51', '修改密码', '0', '17700000243', '294684');
-INSERT INTO `sys_message` VALUES ('31', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 13:53:24', '修改密码', '0', '18500000010', '964443');
-INSERT INTO `sys_message` VALUES ('33', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 16:31:08', '修改密码', '0', '18500000010', '248325');
-INSERT INTO `sys_message` VALUES ('34', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 16:31:12', '修改密码', '0', '18500000010', '992608');
-INSERT INTO `sys_message` VALUES ('35', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 16:31:17', '修改密码', '0', '18500000010', '712397');
-INSERT INTO `sys_message` VALUES ('36', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 16:40:39', '修改密码', '0', '18500000010', '202939');
-INSERT INTO `sys_message` VALUES ('37', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 16:41:35', '修改密码', '0', '18500000010', '768003');
-INSERT INTO `sys_message` VALUES ('38', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 16:41:43', '修改密码', '0', '18500000010', '479667');
-INSERT INTO `sys_message` VALUES ('39', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 17:09:55', '修改密码', '0', '18500000010', '763420');
-INSERT INTO `sys_message` VALUES ('40', '12', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 17:12:31', '修改密码', '0', '18500000001', '395953');
-INSERT INTO `sys_message` VALUES ('41', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 17:52:20', '修改密码', '0', '18500000010', '998088');
-INSERT INTO `sys_message` VALUES ('42', '1', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-25 18:00:12', '修改密码', '0', '18500000010', '826674');
-INSERT INTO `sys_message` VALUES ('43', '7', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-30 10:47:01', '修改密码', '0', '18800000003', '997287');
-INSERT INTO `sys_message` VALUES ('44', '16', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-01-30 17:58:27', '修改密码', '0', '18810267986', '897834');
-INSERT INTO `sys_message` VALUES ('45', '17', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-01-31 18:19:45', null, '0', '18810267986', '137182');
-INSERT INTO `sys_message` VALUES ('46', '17', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-01-31 18:29:03', null, '0', '18810267986', '917015');
-INSERT INTO `sys_message` VALUES ('47', '17', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-01 09:53:33', null, '0', '18810267986', '309139');
-INSERT INTO `sys_message` VALUES ('48', '17', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-01 10:01:30', null, '0', '18810267986', '278620');
-INSERT INTO `sys_message` VALUES ('49', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-12 10:09:38', null, '0', '18810267986', '731365');
-INSERT INTO `sys_message` VALUES ('50', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-12 17:52:11', null, '0', '18810267986', '752777');
-INSERT INTO `sys_message` VALUES ('51', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-12 17:52:14', null, '0', '18810267986', '128187');
-INSERT INTO `sys_message` VALUES ('52', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-12 17:56:26', null, '0', '18810267986', '555799');
-INSERT INTO `sys_message` VALUES ('53', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-12 17:58:50', null, '0', '18810267986', '952848');
-INSERT INTO `sys_message` VALUES ('54', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-12 18:02:56', null, '0', '18810267986', '458523');
-INSERT INTO `sys_message` VALUES ('55', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-12 18:03:39', null, '0', '18810267986', '150290');
-INSERT INTO `sys_message` VALUES ('56', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-12 18:04:47', null, '0', '18810267986', '739271');
-INSERT INTO `sys_message` VALUES ('57', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-12 18:05:30', null, '0', '18810267986', '298551');
-INSERT INTO `sys_message` VALUES ('58', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-13 10:06:33', null, '0', '18810267986', '131414');
-INSERT INTO `sys_message` VALUES ('59', '18', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-14 09:27:09', null, '0', '18810267986', '561151');
-INSERT INTO `sys_message` VALUES ('60', '9', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-02-14 15:50:22', '修改密码', '0', '17700000243', '693533');
-INSERT INTO `sys_message` VALUES ('61', '19', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-18 14:04:39', null, '0', '18810267986', '643162');
-INSERT INTO `sys_message` VALUES ('62', '19', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-18 17:30:43', null, '0', '18810267986', '727049');
-INSERT INTO `sys_message` VALUES ('63', '19', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-20 15:49:22', null, '0', '18810267986', '159772');
-INSERT INTO `sys_message` VALUES ('64', '19', 'saas服务-API申请', '申请成功', 'sms', 'sssaApiApply', '0', '2019-02-20 15:53:16', null, '0', '18810267986', '491428');
-INSERT INTO `sys_message` VALUES ('65', '19', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '0', '2019-02-26 17:18:30', '修改密码', '0', '18810267986', '173332');
-INSERT INTO `sys_message` VALUES ('66', '8', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '0', '2019-03-04 09:21:36', null, '0', '15736880001', '643259');
-INSERT INTO `sys_message` VALUES ('67', '8', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '0', '2019-03-04 11:07:34', null, '0', '15736880001', '566164');
-INSERT INTO `sys_message` VALUES ('68', '8', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '0', '2019-03-04 11:25:32', null, '0', '15736880001', '133649');
-INSERT INTO `sys_message` VALUES ('69', '8', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '0', '2019-03-04 13:10:06', null, '0', '15736880002', '180837');
-INSERT INTO `sys_message` VALUES ('70', '8', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '0', '2019-03-04 17:13:12', null, '0', '15736880001', '797006');
-INSERT INTO `sys_message` VALUES ('71', '8', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileBind', '0', '2019-03-04 17:13:35', null, '0', '15736880002', '886770');
-INSERT INTO `sys_message` VALUES ('72', '1', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '0', '2019-03-04 18:00:50', null, '0', '18500000010', '472237');
-INSERT INTO `sys_message` VALUES ('73', '1', '测试系统消息', '的环境和手机的呵呵呵', 'sms', 'mobileEdit', '0', '2019-03-04 18:17:52', null, '0', '18500000010', null);
-INSERT INTO `sys_message` VALUES ('74', '1', '修改密码', '修改密码', 'sms', 'mobileEdit', '0', '2019-03-05 10:15:24', null, '0', '18500000010', null);
-INSERT INTO `sys_message` VALUES ('75', '1', '修改密码', '修改密码', 'sms', 'mobileEdit', '0', '2019-03-05 10:17:12', null, '0', '18500000010', null);
-INSERT INTO `sys_message` VALUES ('76', '19', 'saas-API申请', '申请成功', 'sms', 'sssaApiApply', '1', '2019-03-05 11:23:58', 'saas服务-API申请', '0', '18810267986', '960170');
-INSERT INTO `sys_message` VALUES ('77', '19', 'saas-API申请', '申请成功', 'sms', 'sssaApiApply', '1', '2019-03-05 11:25:55', 'saas服务-API申请', '0', '18810267986', '609297');
-INSERT INTO `sys_message` VALUES ('78', '19', 'saas-API申请', '申请成功', 'sms', 'sssaApiApply', '1', '2019-03-05 11:27:41', 'saas服务-API申请', '0', '18810267986', '657730');
-INSERT INTO `sys_message` VALUES ('82', '19', 'saas-API申请', '申请成功', 'sms', 'sssaApiApply', '1', '2019-03-05 11:29:17', 'saas服务-API申请', '0', '18810267986', '819216');
-INSERT INTO `sys_message` VALUES ('83', '19', 'saas-API申请', '申请成功', 'sms', 'sssaApiApply', '1', '2019-03-05 11:30:18', 'saas服务-API申请', '0', '18810267986', '485692');
-INSERT INTO `sys_message` VALUES ('84', '19', 'saas-API申请', '申请成功', 'sms', 'sssaApiApply', '1', '2019-03-05 11:34:12', 'saas服务-API申请', '0', '18810267986', '784658');
-INSERT INTO `sys_message` VALUES ('85', '1', '修改密码', '修改密码', 'sms', 'mobileEdit', '0', '2019-03-05 11:45:40', null, '0', '18500000010', null);
-INSERT INTO `sys_message` VALUES ('86', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-03-05 15:41:56', '手机号注册', '0', '18810267986', '697709');
-INSERT INTO `sys_message` VALUES ('87', '8', '充值', '充值成功，金额227.00元。', 'website', 'topup', '0', '2019-03-12 16:55:01', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('88', '8', '充值', '充值成功，金额216.00元。', 'website', 'topup', '0', '2019-03-12 17:04:52', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('89', '8', 'AppSecrect重置', 'AppSecrect重置成功', 'website', 'resetAppSecret', '0', '2019-03-13 09:43:25', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('90', '8', 'AppSecrect重置', 'AppSecrect重置成功', 'website', 'resetAppSecret', '0', '2019-03-13 09:46:48', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('91', null, 'saas-API申请', '申请成功', 'sms', 'sssaApiApply', '1', '2019-03-13 14:29:05', 'saas服务-API申请', '0', '15736880001', '680164');
-INSERT INTO `sys_message` VALUES ('92', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-03-14 09:34:36', '手机号注册', '0', '15736880001', '214109');
-INSERT INTO `sys_message` VALUES ('93', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-03-14 10:20:12', '手机号注册', '0', '15736880003', '528063');
-INSERT INTO `sys_message` VALUES ('94', '23', '注册', '注册成功', 'website', 'register', '0', '2019-03-14 10:20:36', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('95', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-03-14 10:21:30', '手机号注册', '0', '15039087756', '224752');
-INSERT INTO `sys_message` VALUES ('96', '23', '修改密码', '密码修改成功', 'website', 'editPassword', '0', '2019-03-14 10:23:18', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('97', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-03-27 16:28:05', '手机号注册', '0', '18500000019', '943291');
-INSERT INTO `sys_message` VALUES ('98', '24', '注册', '注册成功', 'website', 'register', '1', '2019-03-27 16:30:44', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('99', '2', 'AppSecrect重置成功', '您于2019-05-17重置AppSecrect成功。', 'website', 'resetAppSecret', '0', '2019-05-17 14:25:10', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('100', '2', 'AppSecrect重置成功', '您于2019-05-17重置AppSecrect成功。', 'website', 'resetAppSecret', '0', '2019-05-17 14:25:15', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('101', '1', 'AppSecrect重置成功', '您于2019-05-17重置AppSecrect成功。', 'website', 'resetAppSecret', '0', '2019-05-17 15:29:19', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('102', '2', '修改密码', '密码修改成功', 'website', 'editPassword', '0', '2019-05-17 16:07:53', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('103', '1', '修改密码', '密码修改成功', 'website', 'editPassword', '0', '2019-05-20 16:21:46', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('104', '1', '修改密码', '密码修改成功', 'website', 'editPassword', '0', '2019-05-20 16:24:24', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('105', '1', '修改密码', '密码修改成功', 'website', 'editPassword', '0', '2019-05-20 16:26:04', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('106', '3', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-21 08:56:07', null, '0', '15039087758', '676352');
-INSERT INTO `sys_message` VALUES ('107', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-05-21 09:00:59', '手机号注册', '0', '13593262370', '899285');
-INSERT INTO `sys_message` VALUES ('108', '25', '注册', '注册成功', 'website', 'register', '0', '2019-05-21 09:01:19', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('109', '25', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-21 09:01:51', null, '0', '13593262370', '199268');
-INSERT INTO `sys_message` VALUES ('110', '25', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileBind', '1', '2019-05-21 09:02:25', null, '0', '17853345063', '131509');
-INSERT INTO `sys_message` VALUES ('111', '25', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-21 09:07:46', '修改密码', '0', '17853345063', '157023');
-INSERT INTO `sys_message` VALUES ('112', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-05-21 09:09:33', '手机号注册', '0', '13593262370', '458433');
-INSERT INTO `sys_message` VALUES ('113', '26', '注册', '注册成功', 'website', 'register', '0', '2019-05-21 09:09:54', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('114', '26', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-22 11:01:23', '修改密码', '0', '13593262370', '332935');
-INSERT INTO `sys_message` VALUES ('115', '26', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-23 10:53:39', '修改密码', '0', '13593262370', '636615');
-INSERT INTO `sys_message` VALUES ('116', '26', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-23 11:19:36', '修改密码', '0', '13593262370', '609748');
-INSERT INTO `sys_message` VALUES ('117', '26', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-23 11:26:14', '修改密码', '0', '13593262370', '584599');
-INSERT INTO `sys_message` VALUES ('118', '26', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-23 11:26:56', '修改密码', '0', '13593262370', '641437');
-INSERT INTO `sys_message` VALUES ('119', '26', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-23 11:38:21', '修改密码', '0', '13593262370', '407249');
-INSERT INTO `sys_message` VALUES ('120', '26', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-23 11:43:14', '修改密码', '0', '13593262370', '412782');
-INSERT INTO `sys_message` VALUES ('121', '25', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-23 11:43:49', '修改密码', '0', '17853345063', '594831');
-INSERT INTO `sys_message` VALUES ('122', '26', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-23 16:16:17', null, '0', '13593262370', '647959');
-INSERT INTO `sys_message` VALUES ('123', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-05-23 17:00:29', '手机号注册', '0', '17853345063', '713476');
-INSERT INTO `sys_message` VALUES ('124', '27', '注册', '注册成功', 'website', 'register', '1', '2019-05-23 17:00:50', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('125', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-05-23 17:27:37', '手机号注册', '0', '13593262370', '212014');
-INSERT INTO `sys_message` VALUES ('126', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-05-23 17:32:09', '手机号注册', '0', '13593262370', '222058');
-INSERT INTO `sys_message` VALUES ('127', '28', '注册', '注册成功', 'website', 'register', '1', '2019-05-23 17:32:24', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('128', null, '手机号注册', '注册成功', 'sms', 'register', '1', '2019-05-23 17:42:15', '手机号注册', '0', '13593262370', '800698');
-INSERT INTO `sys_message` VALUES ('129', '29', '注册', '注册成功', 'website', 'register', '1', '2019-05-23 17:42:25', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('130', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-23 17:45:35', null, '0', '13593262370', '617411');
-INSERT INTO `sys_message` VALUES ('131', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 09:18:16', null, '0', '13593262370', '853078');
-INSERT INTO `sys_message` VALUES ('132', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 10:31:10', null, '0', '13593262370', '327691');
-INSERT INTO `sys_message` VALUES ('133', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 10:36:32', null, '0', '13593262370', '279741');
-INSERT INTO `sys_message` VALUES ('134', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 10:38:14', null, '0', '13593262370', '345244');
-INSERT INTO `sys_message` VALUES ('135', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 10:48:24', null, '0', '13593262370', '427889');
-INSERT INTO `sys_message` VALUES ('136', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 10:55:34', null, '0', '13593262370', '465551');
-INSERT INTO `sys_message` VALUES ('137', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileBind', '1', '2019-05-24 10:56:17', null, '0', '17853345063', '114513');
-INSERT INTO `sys_message` VALUES ('138', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 11:11:47', null, '0', '17853345063', '760998');
-INSERT INTO `sys_message` VALUES ('139', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 11:30:11', null, '0', '17853345063', '963184');
-INSERT INTO `sys_message` VALUES ('140', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileBind', '1', '2019-05-24 11:30:47', null, '0', '13593262370', '147812');
-INSERT INTO `sys_message` VALUES ('141', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileBind', '1', '2019-05-24 11:31:59', null, '0', '13593262370', '924766');
-INSERT INTO `sys_message` VALUES ('142', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 11:45:40', null, '0', '17853345063', '335564');
-INSERT INTO `sys_message` VALUES ('143', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileBind', '1', '2019-05-24 11:46:09', null, '0', '13593262370', '322895');
-INSERT INTO `sys_message` VALUES ('144', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 11:51:22', null, '0', '17853345063', '166706');
-INSERT INTO `sys_message` VALUES ('145', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileBind', '1', '2019-05-24 11:51:37', null, '0', '13593262370', '590156');
-INSERT INTO `sys_message` VALUES ('146', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 13:17:08', null, '0', '17853345063', '612711');
-INSERT INTO `sys_message` VALUES ('147', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileBind', '1', '2019-05-24 13:17:51', null, '0', '13593262370', '815806');
-INSERT INTO `sys_message` VALUES ('148', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-05-24 13:37:22', null, '0', '17853345063', '660687');
-INSERT INTO `sys_message` VALUES ('149', '28', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileBind', '1', '2019-05-24 13:37:57', null, '0', '13593262370', '304076');
-INSERT INTO `sys_message` VALUES ('150', '29', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-24 14:07:13', '修改密码', '0', '17853345063', '624529');
-INSERT INTO `sys_message` VALUES ('151', '29', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-24 14:35:51', '修改密码', '0', '17853345063', '832184');
-INSERT INTO `sys_message` VALUES ('152', '29', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-24 14:40:59', '修改密码', '0', '17853345063', '790658');
-INSERT INTO `sys_message` VALUES ('153', '29', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-24 15:14:28', '修改密码', '0', '17853345063', '744200');
-INSERT INTO `sys_message` VALUES ('154', '29', '修改密码', '恭喜你修改密码成功', 'sms', 'forgotPassword', '1', '2019-05-24 15:21:30', '修改密码', '0', '17853345063', '420148');
-INSERT INTO `sys_message` VALUES ('155', null, '鎵嬫満鍙锋敞鍐�', '娉ㄥ唽鎴愬姛', 'sms', 'register', '1', '2019-05-27 17:09:26', '鎵嬫満鍙锋敞鍐�', '0', '18800000001', '220030');
-INSERT INTO `sys_message` VALUES ('156', null, '鎵嬫満鍙锋敞鍐�', '娉ㄥ唽鎴愬姛', 'sms', 'register', '1', '2019-05-27 17:11:31', '鎵嬫満鍙锋敞鍐�', '0', '18800000001', '586595');
-INSERT INTO `sys_message` VALUES ('157', null, '鎵嬫満鍙锋敞鍐�', '娉ㄥ唽鎴愬姛', 'sms', 'register', '1', '2019-05-31 17:25:19', '鎵嬫満鍙锋敞鍐�', '0', '18900000001', '110195');
-INSERT INTO `sys_message` VALUES ('158', null, '鎵嬫満鍙锋敞鍐�', '娉ㄥ唽鎴愬姛', 'sms', 'register', '1', '2019-05-31 17:26:52', '鎵嬫満鍙锋敞鍐�', '0', '18900000001', '785293');
-INSERT INTO `sys_message` VALUES ('159', null, '鎵嬫満鍙锋敞鍐�', '娉ㄥ唽鎴愬姛', 'sms', 'register', '1', '2019-05-31 17:28:02', '鎵嬫満鍙锋敞鍐�', '0', '18900000001', '604490');
-INSERT INTO `sys_message` VALUES ('160', null, '鎵嬫満鍙锋敞鍐�', '娉ㄥ唽鎴愬姛', 'sms', 'register', '1', '2019-05-31 17:30:36', '鎵嬫満鍙锋敞鍐�', '0', '18900000001', '139706');
-INSERT INTO `sys_message` VALUES ('161', '26', '充值成功', '您于2019-06-05成功充值10.00元。', 'website', 'topup', '1', '2019-06-05 09:34:29', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('162', '26', '充值成功', '您于2019-06-06成功充值1.00元。', 'website', 'topup', '1', '2019-06-06 10:29:50', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('163', '26', '充值成功', '您于2019-06-06成功充值10.00元。', 'website', 'topup', '1', '2019-06-06 14:06:05', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('164', '26', '充值成功', '您于2019-06-06成功充值9999991.00元。', 'website', 'topup', '1', '2019-06-06 15:29:55', null, '0', null, null);
-INSERT INTO `sys_message` VALUES ('165', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:23:52', null, '0', '13593262370', '374719');
-INSERT INTO `sys_message` VALUES ('166', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:25:42', null, '0', '13593262370', '333673');
-INSERT INTO `sys_message` VALUES ('167', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:32:32', null, '0', '13593262370', '777232');
-INSERT INTO `sys_message` VALUES ('168', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:45:51', null, '0', '13593262370', '139560');
-INSERT INTO `sys_message` VALUES ('169', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:46:47', null, '0', '13593262370', '107928');
-INSERT INTO `sys_message` VALUES ('170', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:48:56', null, '0', '13593262370', '174180');
-INSERT INTO `sys_message` VALUES ('171', '29', '修改手机号', '恭喜你修改手机号成功', 'sms', 'mobileEdit', '1', '2019-06-19 17:59:25', null, '0', '13593262370', '560076');
-INSERT INTO `sys_message` VALUES ('172', '30', '注册', '注册成功', 'website', 'register', '0', '2020-07-13 21:25:02', null, '0', null, null);
 
 -- ----------------------------
 -- Table structure for sys_message_tmpl
@@ -1802,9 +1764,9 @@ CREATE TABLE `sys_message_tmpl` (
 -- ----------------------------
 -- Records of sys_message_tmpl
 -- ----------------------------
-INSERT INTO `sys_message_tmpl` VALUES ('1', null, 'test', 'website', 'ee', 'ee', '2019-03-11 13:12:42', '0', '0', '1', '1');
-INSERT INTO `sys_message_tmpl` VALUES ('2', 'test', 'test1', 'website', 'ee', 'ee', '2019-03-11 13:12:42', '0', '0', '1', '1');
-INSERT INTO `sys_message_tmpl` VALUES ('3', 'test', 'test2', 'website', 'ee', 'ee', '2019-03-11 13:12:42', '0', '1', '1', '1');
+INSERT INTO `sys_message_tmpl` VALUES ('1', null, 'test', 'website', 'ee', 'ee', '2019-03-11 13:12:42', '1', '0', '1', '1');
+INSERT INTO `sys_message_tmpl` VALUES ('2', 'test', 'test1', 'website', 'ee', 'ee', '2019-03-11 13:12:42', '1', '0', '1', '1');
+INSERT INTO `sys_message_tmpl` VALUES ('3', 'test', 'test2', 'website', 'ee', 'ee', '2019-03-11 13:12:42', '1', '1', '1', '1');
 INSERT INTO `sys_message_tmpl` VALUES ('4', 'system', 'topup', 'website', '充值成功', '您于${date}成功充值${amount}元。', '2019-03-12 11:45:26', '0', '0', '4', 'spicerXu');
 INSERT INTO `sys_message_tmpl` VALUES ('5', 'system', 'resetAppSecret', 'website', 'AppSecrect重置成功', '您于${date}重置AppSecrect成功。', '2019-03-13 09:17:46', '0', '0', '4', 'spicerXu');
 INSERT INTO `sys_message_tmpl` VALUES ('6', 'system', 'register', 'website', '注册', '注册成功', '2019-03-14 10:14:29', '0', '0', '4', 'spicerXu');
@@ -1848,7 +1810,7 @@ CREATE TABLE `sys_role_function` (
   `CREATOR_ID` int(11) NOT NULL,
   `CREATOR_NAME` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1047 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of sys_role_function
@@ -1866,31 +1828,7 @@ INSERT INTO `sys_role_function` VALUES ('556', '11', 'dictionary', '2019-03-11 1
 INSERT INTO `sys_role_function` VALUES ('557', '11', 'userExpense', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('558', '11', 'userExpenseList', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('565', '11', 'sysMesage', '2019-03-11 13:41:46', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('566', '11', 'sysMessageList', '2019-03-11 13:41:46', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('567', '11', 'websiteBulletinList', '2019-03-11 13:41:46', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('964', '1', 'root', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('965', '1', 'business', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('966', '1', 'userList', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('967', '1', 'userPortal', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('968', '1', 'insuranceOrderManage', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('969', '1', 'insuranceOrderList', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('970', '1', 'userExpense', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('971', '1', 'userExpenseList', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('972', '1', 'rechargeManage', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('973', '1', 'userTopUp', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('974', '1', 'system', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('975', '1', 'securityManager', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('976', '1', 'menu', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('977', '1', 'role', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('978', '1', 'user', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('979', '1', 'sysMesage', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('980', '1', 'sysMessageList', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('981', '1', 'websiteBulletinList', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('982', '1', 'sysMessageTmpl', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('983', '1', 'dictionary', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('984', '1', 'sqlmonitor', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('985', '1', 'appSetting', '2020-07-19 22:19:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('986', '1', 'websiteAdvertiseList', '2020-07-19 22:19:27', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('987', '4', 'root', '2020-07-19 22:20:27', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('988', '4', 'business', '2020-07-19 22:20:27', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('989', '4', 'insuranceOrderManage', '2020-07-19 22:20:27', '1', '系统管理员');
@@ -1905,7 +1843,6 @@ INSERT INTO `sys_role_function` VALUES ('997', '4', 'menu', '2020-07-19 22:20:27
 INSERT INTO `sys_role_function` VALUES ('998', '4', 'role', '2020-07-19 22:20:27', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('999', '4', 'user', '2020-07-19 22:20:27', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1000', '4', 'sysMesage', '2020-07-19 22:20:27', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('1001', '4', 'sysMessageList', '2020-07-19 22:20:27', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1002', '4', 'websiteBulletinList', '2020-07-19 22:20:27', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1003', '4', 'sysMessageTmpl', '2020-07-19 22:20:27', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1004', '4', 'dictionary', '2020-07-19 22:20:27', '1', '系统管理员');
@@ -1923,11 +1860,33 @@ INSERT INTO `sys_role_function` VALUES ('1015', '2', 'menu', '2020-07-19 22:21:1
 INSERT INTO `sys_role_function` VALUES ('1016', '2', 'role', '2020-07-19 22:21:12', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1017', '2', 'user', '2020-07-19 22:21:12', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1018', '2', 'sysMesage', '2020-07-19 22:21:12', '1', '系统管理员');
-INSERT INTO `sys_role_function` VALUES ('1019', '2', 'sysMessageList', '2020-07-19 22:21:12', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1020', '2', 'websiteBulletinList', '2020-07-19 22:21:12', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1021', '2', 'sysMessageTmpl', '2020-07-19 22:21:12', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1022', '2', 'dictionary', '2020-07-19 22:21:12', '1', '系统管理员');
 INSERT INTO `sys_role_function` VALUES ('1023', '2', 'sqlmonitor', '2020-07-19 22:21:12', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1024', '1', 'root', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1025', '1', 'business', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1026', '1', 'userList', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1027', '1', 'userPortal', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1028', '1', 'insuranceOrderManage', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1029', '1', 'insuranceOrderList', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1030', '1', 'userExpense', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1031', '1', 'userExpenseList', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1032', '1', 'rechargeManage', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1033', '1', 'userTopUp', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1034', '1', 'system', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1035', '1', 'securityManager', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1036', '1', 'menu', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1037', '1', 'role', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1038', '1', 'user', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1039', '1', 'sysMesage', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1040', '1', 'sysMessageList', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1041', '1', 'websiteBulletinList', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1042', '1', 'sysMessageTmpl', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1043', '1', 'dictionary', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1044', '1', 'sqlmonitor', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1045', '1', 'appSetting', '2020-07-25 09:10:00', '1', '系统管理员');
+INSERT INTO `sys_role_function` VALUES ('1046', '1', 'websiteAdvertiseList', '2020-07-25 09:10:00', '1', '系统管理员');
 
 -- ----------------------------
 -- Table structure for user_expense
@@ -2537,7 +2496,7 @@ CREATE TABLE `website_bulletin` (
 -- Records of website_bulletin
 -- ----------------------------
 INSERT INTO `website_bulletin` VALUES ('1', '网站公告', 'website', '联网身份证二要素实名核验，返回：认证结果、姓名、身份证号码、性别、领证地区以及出生日期。', '5', '小常', '0', '1', '0', '8', '0', '2019-01-24 10:17:21', '2019-03-11 14:18:40');
-INSERT INTO `website_bulletin` VALUES ('2', '网站公告1', 'website', '如果point是int类型，则得到的结果是不可能是null的。 如果插入一条数据时没有插入给字段，而数据库里默认是null的值的话，可以使用 Integer point= GiftInfo.getPoints(); 然后判断point是否等于空。 示例代码：Integer point= GiftInfo.getPoints();if(point == null){ // do something...}PS：GiftInfo.getPoints返回的是Integer类型，Integer类型是包括基本类型的包装类，不给赋值的时候为null。', null, null, '0', '0', null, '17', '0', '2019-01-24 10:54:32', null);
+INSERT INTO `website_bulletin` VALUES ('2', '网站公告1', 'website', '如果point是int类型，则得到的结果是不可能是null的。 如果插入一条数据时没有插入给字段，而数据库里默认是null的值的话，可以使用 Integer point= GiftInfo.getPoints(); 然后判断point是否等于空。 示例代码：Integer point= GiftInfo.getPoints();if(point == null){ // do something...}PS：GiftInfo.getPoints返回的是Integer类型，Integer类型是包括基本类型的包装类，不给赋值的时候为null。', null, null, '0', '1', null, '17', '0', '2019-01-24 10:54:32', null);
 INSERT INTO `website_bulletin` VALUES ('3', '网站公告2', 'website', '　定义一个int类型的sum，然后，输入几个string类型的数据，运用for循环进行数据的输出和加法运算（加法运算时用到强制类型转换），最后输出sum。', null, null, '0', '0', null, '9', '0', '2019-02-15 13:54:31', null);
 INSERT INTO `website_bulletin` VALUES ('4', '1', 'ww', 'ww', '1', '系统管理员', '0', '0', null, '7', '0', '2019-02-27 14:10:44', null);
 INSERT INTO `website_bulletin` VALUES ('5', '11', '11', '11      1', '1', '系统管理员', '0', '0', '1', '7', '0', '2019-02-27 14:13:57', '2019-02-27 14:19:30');
