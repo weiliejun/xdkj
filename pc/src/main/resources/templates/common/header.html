@@ -89,7 +89,7 @@
                 // bootbox.alert("请输入查询条件!");
                 GlobalPrompt.prompt("请输入查询条件再查询!");
             }else {
-                window.location.href=pageContext.contextPath + "/deviceInfo/dlsxx?ppxh="+ppxh;
+                window.location.href=pageContext.contextPath + "/deviceInfo/dlsxx?ppxh="+encodeURI(ppxh);
             }
         });
 

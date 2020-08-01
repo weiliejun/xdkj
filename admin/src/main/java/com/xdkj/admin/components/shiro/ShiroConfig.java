@@ -118,6 +118,7 @@ public class ShiroConfig {
     @Bean
     public DefaultWebSessionManager sessionManager() {  //配置默认的sesssion管理器
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+        sessionManager.setSessionIdCookie(sessionIdCookie());
         sessionManager.setGlobalSessionTimeout(30 * 60 * 1000);
         sessionManager.setSessionIdUrlRewritingEnabled(false);
         sessionManager.setSessionDAO(sessionDAO());
@@ -128,6 +129,23 @@ public class ShiroConfig {
     @Bean
     public SessionDAO sessionDAO() {
         return new MemorySessionDAO();//使用默认的MemorySessionDAO
+    }
+
+    /**
+     * @return
+     * @描述：自定义cookie中session名称等配置 发布以后运行以后发现老是会出现：org.apache.shiro.session.UnknownSessionException: There is no session with id [xxxx]的问题，
+     * 只所以出现这个问题是因为在shiro的DefaultWebSessionManager类中，默认Cookie名称是JSESSIONID，这样的话与servlet容器名冲突, 如jetty, tomcat等默认JSESSIONID, 当跳出shiro servlet时如error-page容器会为JSESSIONID重新分配值导致登录会话丢失!
+     * 　　明白了出现这个问题的原因，就好办了，我们只需要自己指定一个与项目运行容器不冲突的sessionID就好了
+     */
+    @Bean
+    public SimpleCookie sessionIdCookie() {
+        SimpleCookie simpleCookie = new SimpleCookie();
+        //如果在Cookie中设置了"HttpOnly"属性，那么通过程序(JS脚本、Applet等)将无法读取到Cookie信息，这样能有效的防止XSS攻击。
+        simpleCookie.setHttpOnly(true);
+        simpleCookie.setName("shiro.sesssion");
+        //单位秒
+        simpleCookie.setMaxAge(86400);
+        return simpleCookie;
     }
 
     /**

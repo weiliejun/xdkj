@@ -73,7 +73,33 @@ a:active, a:focus { outline: none }
 .teamPaddBott{padding-bottom:0;}
 
 
-
+/*contact.html start*/
+.contact_banner {background:url(../images/contact_banner.jpg) no-repeat center top;height:350px;}
+.contact{padding:40px 0px 0px 0px;font-family:"微软雅黑";}
+.contact_type{width:1200px;margin:0 auto;overflow:hidden;}
+.contact_type_ul{width:1300px;margin:0 auto;padding:40px 0;}
+.contact_type_ul ul li{width:305px;height:360px;text-align:center;float:left;}
+.contact_type_ad{background:url(../images/contact_item_bg.gif) no-repeat 0px 0px;}
+.contact_type_tel{background:url(../images/contact_item_bg.gif) no-repeat -450px 0px;margin:0 143px;_display:inline;}
+.contact_type_mail{background:url(../images/contact_item_bg.gif) no-repeat -899px 0px;}
+.contact_type_ad_title{padding-top:140px;font-size:16px;font-weight:bold;padding-bottom:20px;}
+.contact_type_ad_int{line-height:24px;font-size:14px;}
+.contact_type_ad_button{width:95px;height:35px;background:#333;margin:0 auto;display:block;color:#fff;text-align:center;line-height:35px;font-size:14px;font-family:Arial;margin-top:20px;}
+.contact_arrive{width:1200px;margin:0 auto;padding:40px 0;border-top:1px dotted #ccc;}
+.contact_arrive h2{height:42px;line-height:42px;font-size:18px;color:#333;font-weight:normal;}
+.contact_arrive_left{width:650px;float:left;}
+.contact_arrive_left dt{font-size:14px;color:#333;height:24px;line-height:24px;margin:13px 0px;padding-left:24px;font-family:"微软雅黑";}
+.contact_arrive_left .bus dt{ background:url(../images/contact_icon_bg.gif) no-repeat 0px 5px;}
+.contact_arrive_left .car dt{ background:url(../images/contact_icon_bg.gif) no-repeat 0px -24px;}
+.contact_arrive_left .train dt{ background:url(../images/contact_icon_bg.gif) no-repeat 0px -53px;}
+.contact_arrive_left dd{font-size:14px;color:#666666;line-height:24px;}
+.contact_arrive_right{ float:left;padding-left:30px;}
+.contact_table table{ border-collapse:collapse; padding:0px; margin:0px;}
+.contact_table td{ padding:9px 0px;}
+.contact_table input{width:230px;height:36px;line-height:36px;border:1px solid #dddddd; font-size:12px;color:#999999;  margin-right:7px; padding:0px 6px;}
+.contact_table textarea{width:420px; height:120px;border:1px solid #dddddd; font-size:12px;color:#999999; padding:5px; line-height:24px;}
+.contact_table .btn_submit{ border:none;background:url(../images/contact_icon_bg.gif) no-repeat 0px -88px;width:133px;height:36px; cursor:pointer;}
+/*contact.html end*/
 
 
 

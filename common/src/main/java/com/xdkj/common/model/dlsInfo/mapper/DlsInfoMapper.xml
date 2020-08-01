@@ -182,6 +182,9 @@
       <if test="dlsmc != null">
         and DLSMC like CONCAT('%',#{dlsmc},'%')
       </if>
+      <if test="dlsjc != null">
+        and DLSJC like CONCAT('%',#{dlsjc},'%')
+      </if>
       <if test="lxr != null">
         and LXR like CONCAT('%',#{lxr},'%')
       </if>
@@ -189,7 +192,7 @@
         and LXDH like CONCAT('%',#{lxdh},'%')
       </if>
       <if test="ppxh != null">
-        and ID IN (SELECT DLS_ID FROM device_info WHERE (PP like CONCAT('%',#{ppxh},'%') OR CPDM like CONCAT('%',#{ppxh},'%')))
+        and (DLSMC like CONCAT('%',#{ppxh},'%') OR DLSJC like CONCAT('%',#{ppxh},'%') OR ID IN (SELECT DLS_ID FROM device_info WHERE (PP like CONCAT('%',#{ppxh},'%') OR CPDM like CONCAT('%',#{ppxh},'%'))))
       </if>
     </where>
     ORDER BY CREATE_TIME DESC
@@ -203,6 +206,9 @@
       <if test="dlsmc != null">
         and DLSMC like CONCAT('%',#{dlsmc},'%')
       </if>
+      <if test="dlsjc != null">
+        and DLSJC like CONCAT('%',#{dlsjc},'%')
+      </if>
       <if test="lxr != null">
         and LXR like CONCAT('%',#{lxr},'%')
       </if>
@@ -210,7 +216,7 @@
         and LXDH like CONCAT('%',#{lxdh},'%')
       </if>
       <if test="ppxh != null">
-        and ID IN (SELECT DLS_ID FROM device_info WHERE (PP like CONCAT('%',#{ppxh},'%') OR CPDM like CONCAT('%',#{ppxh},'%')))
+        and (DLSMC like CONCAT('%',#{ppxh},'%') OR DLSJC like CONCAT('%',#{ppxh},'%') OR ID IN (SELECT DLS_ID FROM device_info WHERE (PP like CONCAT('%',#{ppxh},'%') OR CPDM like CONCAT('%',#{ppxh},'%'))))
       </if>
     </where>
     ORDER BY CREATE_TIME DESC
