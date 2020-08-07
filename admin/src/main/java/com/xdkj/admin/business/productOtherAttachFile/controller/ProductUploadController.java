@@ -102,7 +102,7 @@ public class ProductUploadController extends AbstractBaseController {
                     .getOriginalFilename());
             String extension = StringHelper.unqualify(fileName).toLowerCase();
             int type = ImageHelper.IMAGE_UNKNOWN;
-            if (uploadFile.getSize() > 20480000) {
+            if (uploadFile.getSize() > 20480000000L) {
                 map.put("code", "big");
                 map.put("tmpFileName", fileName);
             } else if (extension.equals("jpg") || extension.equals("jpeg")
@@ -112,6 +112,8 @@ public class ProductUploadController extends AbstractBaseController {
                     "pdf".equals(extension) ||
                     "xls".equals(extension) ||
                     "xlsx".equals(extension) ||
+                    "rar".equals(extension) ||
+                    "zip".equals(extension) ||
                     "ppt".equals(extension) ||
                     "pptx".equals(extension)) {
 

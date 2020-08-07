@@ -34,12 +34,12 @@
     <fieldset class="layui-elem-field layui-field-title site-title">
     </fieldset>
     <form class="layui-form">
-        <input id="id" type="hidden" name="id"/>
+        <input id="id" type="hidden" name="id" th:value="${websiteBulletin.id}"/>
         <div class="layui-form-item">
             <label class="layui-form-label">公告标题</label>
             <div class="layui-input-block">
                 <input id="topic" type="text" name="topic" value="" class="layui-input"
-                       lay-verify="required"
+                       lay-verify="required" th:value="${websiteBulletin.topic}"
                        placeholder="请输入公告标题">
             </div>
         </div>
@@ -47,7 +47,7 @@
             <label class="layui-form-label">公告类型</label>
             <div class="layui-input-block">
                 <itech:code property="type" parentCode="gglx" type="radio"
-                            th:value="${type}"/>
+                            th:value="${websiteBulletin.type}"/>
             </div>
         </div>
 
@@ -55,25 +55,23 @@
             <label class="layui-form-label">公告内容</label>
             <div class="layui-input-block">
                 <script id="editorContent" type="text/plain" style="width:500px;height:300px;"></script>
-                <input type="hidden" name="content" id="content"/>
+                <input type="hidden" name="content" id="content" th:value="${websiteBulletin.content}"/>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">发布状态</label>
             <div class="layui-input-block">
-                <input id="publishStatus" type="radio" name="publishStatus" class="layui-ch" value="1" title="发布">
-                <input type="radio" name="publishStatus" class="layui-ch" value="0" title="暂不发布">
-                <input type="radio" name="publishStatus" class="layui-ch" value="2" title="停用">
+                    <itech:code property="publishStatus" parentCode="publishStatus" type="radio"
+                th:value="${websiteBulletin.publishStatus}"/>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">是否置顶</label>
             <div class="layui-input-block">
-                <input id="topMark" type="radio" name="topMark" class="layui-input" value="1" title="是"/>
-                <input type="radio" name="topMark" class="layui-input" value="0" title="否"/>
-
+                    <itech:code property="topMark" parentCode="yesNo" type="radio"
+                    th:value="${websiteBulletin.topMark}"/>
             </div>
         </div>
 

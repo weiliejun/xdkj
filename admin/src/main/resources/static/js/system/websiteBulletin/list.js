@@ -54,8 +54,9 @@ layui.use(['layer', 'form', 'table'], function () {
         var data = obj.data;
         //修改
         if (obj.event === 'update') {
-
-            var index = layui.layer.open({
+            // window.location.href = PageContext.getUrl("/websiteBulletin/system/toAdd?id=" + data.id);
+            Common.openFrame("/websiteBulletin/system/toAdd?id=" + data.id, "修改公告", '800px', '600px');
+            /*var index = layui.layer.open({
                 title: "修改公告",
                 type: 2,
                 skin: '',
@@ -90,7 +91,7 @@ layui.use(['layer', 'form', 'table'], function () {
                         form.render();
                     }
                 }
-            });
+            });*/
         } else if (obj.event === 'disable') {//禁用
             layer.confirm('真的禁用公告么？', function (index) {
                 var ajaxReturnData;
@@ -170,7 +171,7 @@ layui.use(['layer', 'form', 'table'], function () {
             Common.searchTableClear('searchForm');
         },
         add: function () {
-            Common.openFrame("/websiteBulletin/toadd", "新增公告", '800px', '600px');
+            Common.openFrame("/websiteBulletin/system/toAdd", "新增公告", '800px', '600px');
         }
     };
 });

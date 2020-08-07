@@ -34,7 +34,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-8"><h1 class="logoImg"><a href="/"><img th:src="@{/images/publicImg/bigerLogo.png}"/></a></h1></div>
                 <div class="col-xs-6 col-md-4">
                         <div class="input-group " style="margin-bottom: 0">
-                            <input id="ppxh" name="ppxh" type="text" class="form-control" placeholder="请输入型号或品牌搜索" aria-describedby="basic-addon2">
+                            <input id="ppxh" name="ppxh" type="text"  th:value="${ppxh}" class="form-control" placeholder="请输入型号或品牌搜索" aria-describedby="basic-addon2">
                             <span class="input-group-addon" id="basic-addon2"><a class="freeTrial" id="submitBtn" style="cursor:hand;">搜索</a></span>
                         </div>
                 </div>
@@ -46,12 +46,14 @@
                 <span class="input-group-addon" id="basic-addon2"><a class="freeTrial" id="submitBtn" style="cursor:hand;">搜索</a></span>
             </div>
             </div>-->
+
             <ul class="navList clearfix">
                 <li><a th:href="@{/}" th:class="${channel eq 'index'} ? 'navActive' : ''">首页</a></li>
                 <!--<li><a th:href="@{/saas}" th:class="${channel eq 'SAAS'} ? 'navActive' : ''">云计算SaaS</a></li>
                 <li><a th:href="@{/paas}" th:class="${channel eq 'PAAS'} ? 'navActive' : ''">云计算PaaS</a></li>
                 <li><a th:href="@{/iaas}" th:class="${channel eq 'IAAS'} ? 'navActive' : ''">云计算IaaS</a></li>
                 <li><a th:href="@{/customization}" th:class="${channel eq 'customization'} ? 'navActive' : ''">定制研发</a>-->
+
                 <li><a th:href="@{/zjpt}" th:class="${channel eq 'ZJPT'} ? 'navActive' : ''">资金平台</a></li>
                 <li><a th:href="@{/gxkf}" th:class="${channel eq 'GXKF'} ? 'navActive' : ''">库房平台</a></li>
                 <li><a th:href="@{/gxfwpt}" th:class="${channel eq 'GXFWPT'} ? 'navActive' : ''">风险管控</a></li>

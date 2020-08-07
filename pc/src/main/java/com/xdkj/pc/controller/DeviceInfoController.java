@@ -11,11 +11,13 @@ import com.xdkj.common.model.dlsInfo.bean.DlsInfo;
 import com.xdkj.common.model.productOtherAttachFile.bean.AttachFileHref;
 import com.xdkj.common.model.productOtherAttachFile.bean.ProductOtherAttachFile;
 import com.xdkj.common.model.user.bean.UserInfo;
+import com.xdkj.common.model.websiteBulletin.bean.WebsiteBulletin;
 import com.xdkj.common.util.DateHelper;
 import com.xdkj.common.util.FileHelper;
 import com.xdkj.common.util.StringHelper;
 import com.xdkj.pc.service.deviceInfo.DeviceInfoService;
 import com.xdkj.pc.service.dlsInfo.DlsInfoService;
+import com.xdkj.pc.service.infoPublishManage.WebsiteBulletinService;
 import com.xdkj.pc.service.productOtherAttachFile.ProductOtherAttachFileService;
 import com.xdkj.pc.web.base.AbstractBaseController;
 import org.apache.commons.lang.StringUtils;
@@ -58,6 +60,8 @@ public class DeviceInfoController extends AbstractBaseController {
     private DlsInfoService dlsInfoService;
     @Autowired
     private ProductOtherAttachFileService productOtherAttachFileService;
+    @Autowired
+    private WebsiteBulletinService websiteBulletinService;
     @Autowired
     private FileSynchronizer FileSynchronizer;
 
@@ -429,5 +433,57 @@ public class DeviceInfoController extends AbstractBaseController {
             e.printStackTrace();
         }
         return result;
+    }
+
+    @RequestMapping("/hyzx")
+    public String hyzx(HttpServletRequest request, Model model, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "20") Integer pageSize, String loadingType) {
+        UserInfo userInfo = getUserInfoBySid(request);
+
+        //引入分页查询，使用PageHelper分页功能在查询之前传入当前页，然后多少记录
+        PageHelper.startPage(1, pageSize * pageNum);
+        //startPage后紧跟的这个查询就是分页查询
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("type", "cpgg");
+        param.put("publishStatus", "1");
+        param.put("status", "1");
+        List<WebsiteBulletin> userExpenseList = websiteBulletinService.listWebsiteBulletinByParams(param);
+        //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
+        PageInfo pageInfo = new PageInfo<WebsiteBulletin>(userExpenseList);
+        model.addAttribute("userInfo", userInfo);
+        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("pageNum", pageNum);
+        model.addAttribute("pageSize", pageSize);
+
+        if ("partLoad".equals(loadingType)) {
+            return "deviceInfo/hyzx::recServiceList";
+        } else {
+            return "deviceInfo/hyzx";
+        }
+    }
+
+    @RequestMapping("/xtgg")
+    public String xtgg(HttpServletRequest request, Model model, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "20") Integer pageSize, String loadingType) {
+        UserInfo userInfo = getUserInfoBySid(request);
+
+        //引入分页查询，使用PageHelper分页功能在查询之前传入当前页，然后多少记录
+        PageHelper.startPage(1, pageSize * pageNum);
+        //startPage后紧跟的这个查询就是分页查询
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("type", "xtgg");
+        param.put("publishStatus", "1");
+        param.put("status", "1");
+        List<WebsiteBulletin> userExpenseList = websiteBulletinService.listWebsiteBulletinByParams(param);
+        //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
+        PageInfo pageInfo = new PageInfo<WebsiteBulletin>(userExpenseList);
+        model.addAttribute("userInfo", userInfo);
+        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("pageNum", pageNum);
+        model.addAttribute("pageSize", pageSize);
+
+        if ("partLoad".equals(loadingType)) {
+            return "deviceInfo/xtgg::recServiceList";
+        } else {
+            return "deviceInfo/xtgg";
+        }
     }
 }

@@ -18,7 +18,7 @@ import java.util.Set;
  * 自定义会话Cookie属性
  */
 @Order(2)
-@WebFilter(urlPatterns = {"/*"}, filterName = "customCookieFilter")
+//@WebFilter(urlPatterns = {"/*"}, filterName = "customCookieFilter")
 public class CustomCookieFilter implements Filter {
     private static final Log log = LogFactory.getLog(CustomCookieFilter.class);
     private static final String CUSTOM_SESSION_ID = "JSESSIONID";

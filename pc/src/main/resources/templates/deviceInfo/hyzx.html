@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:itech="http://www.thymeleaf.org/mytag/itech">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>IT服务网-行业资讯</title>
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
+
+</head>
+<body>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('index')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <!--<div class="shang">
+                <h5 class="">欢迎您，<span th:text="${userInfo.nickName}"></span></h5>
+            </div>-->
+            <div id="recServiceDiv">
+
+
+                <div class="xia" th:fragment="recServiceList">
+                    <h5>行业资讯</h5>
+                    <div id="recServiceDiv1" th:if="${not #lists.isEmpty(pageInfo.list)}">
+                        <table class="recordCon centerRecordCon">
+                            <thead>
+                            <tr class="headRecord">
+                                <th width="15%">标题</th>
+                                <th width="70%">内容</th>
+                                <th width="15%">发布时间</th>
+                            </tr>
+                            </thead>
+                            <tbody class="recordInfo">
+                            <tr th:each="deviceInfo : ${pageInfo.list}">
+                                <td th:text="${deviceInfo.topic}"></td>
+                                <td th:text="${deviceInfo.content}"></td>
+                                <!--<td th:text="${deviceInfo.createTime}"></td>-->
+                                <td th:text="${#dates.format(deviceInfo.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p class="more_p" th:if="${pageInfo.hasNextPage}"><a href="javascript:void(0)"
+                                                                             th:onclick="'showMore('+ ${pageNum + 1} +')'">显示更多<img
+                                src="/images/personalCenter/sanjiao.png" alt=""></a></p>
+                    </div>
+                    <p class="noneRecord" th:if="${#lists.isEmpty(pageInfo.list)}">暂无记录</p>
+                </div>
+            </div>
+        </div>
+        <form id="searchForm" action="/account/index" method="post">
+            <input type="hidden" name="pageNum" id="pageNum"/>
+            <input type="hidden" name="loadingType" id="loadingType"/>
+        </form>
+    </div>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start -->
+<div th:replace="common/prompt"></div>
+<!-- 弹框 end -->
+
+<script type="text/javascript" th:inline="javascript">
+    //小眼睛开关
+    $('.closeIcon').click(function(){
+        var appSecret = $("#appSecretInput").val();
+        if($(this).hasClass('openIcon') == false){
+            $(this).addClass('openIcon');
+            $("#appSecret").html("************************");
+        }else{
+            $(this).removeClass('openIcon');
+            $("#appSecret").html(appSecret);
+        }
+    });
+    // 重置AppSecret
+    function resetAppSecret() {
+        GlobalPrompt.prompt("重置后API文档中相对应参数也需要改变，确定要重置吗？", function(){
+            $.ajax({
+                type : "GET",
+                url : PageContext.contextPath+"/account/resetAppSecret",
+                async: false,
+                dataType : "json",
+                success : function(data) {
+                    if (data.flag = "true") {
+                        $("#appSecretInput").val(data.appSecret);
+                        if ($('.closeIcon').hasClass('openIcon') == false) {
+                            $("#appSecret").html(data.appSecret);
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+    //查看更多
+    function showMore(pageNum) {
+        AJAX.get(
+            "/islogin",
+            function (data) {
+                // if(data) {
+                    $("#pageNum").val(pageNum);
+                    // 采用局部刷新
+                    $("#loadingType").val("partLoad");
+                    $('#recServiceDiv').load("/deviceInfo/hyzx", $("#searchForm").serialize());
+                // } else {
+                //     window.location.href = "/login";
+                // }
+            }
+        )
+    }
+
+    //APPKEY 小问号提示
+    $(function(){
+        var timer=null;
+        $('.quesIcon,.resetBox').mouseover(function(){
+            clearTimeout(timer);
+            timer=setTimeout(function(){
+                $('.resetBox').css('display','block');
+            },400);
+        });
+
+        $('.quesIcon,.resetBox').mouseout(function(){
+            clearTimeout(timer);
+            timer=setTimeout(function(){
+                $('.resetBox').css('display','none');
+            },400);
+        });
+    });
+
+</script>
+
+</body>
+</html>
+
+
+

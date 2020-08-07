@@ -176,6 +176,7 @@
         <if test="topMark != null">
             AND TOP_MARK = #{topMark,jdbcType=CHAR}
         </if>
+        ORDER BY TOP_MARK DESC,CREATE_TIME DESC
     </sql>
 
     <select id="listWebsiteBulletinsByParams" resultType="java.util.Map" parameterType="hashmap">

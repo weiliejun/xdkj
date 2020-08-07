@@ -15,6 +15,9 @@ public interface WebsiteBulletinService {
 
     int countWebsiteBulletinsByParams(Map<String, Object> params);
 
-    public List<Map<String, Object>> listWebsiteBulletinsByParams(Map<String, Object> params);
+    List<Map<String, Object>> listWebsiteBulletinsByParams(Map<String, Object> params);
+
+    List<WebsiteBulletin> listWebsiteBulletinByParams(Map<String, Object> params);
+
 
 }

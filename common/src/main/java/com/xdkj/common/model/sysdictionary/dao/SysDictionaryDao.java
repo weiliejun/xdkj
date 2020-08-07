@@ -34,7 +34,7 @@ public class SysDictionaryDao extends AbstractBaseDao {
         return queryForList("sysdictionary.listSysDictionarysByParams", params);
     }
 
-    @Cacheable(key = "#parentCode", unless = "#result == null")
+//    @Cacheable(key = "#parentCode", unless = "#result == null")
     public List<SysDictionary> getSysDictionarysByParentCode(String parentCode) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("parentCode", parentCode);

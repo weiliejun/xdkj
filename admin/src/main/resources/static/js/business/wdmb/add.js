@@ -58,7 +58,7 @@ layui.use(['form', 'layer', 'laydate', 'jquery', 'laytpl', 'upload'], function (
         elem: '#test2'
         , url: PageContext.getUrl('/fuJian/upload/')
         , accept: 'file'
-        , exts: 'jpg|jpeg|gif|png|doc|docx|pdf|xlsx|xls|pptx|ppt'
+        , exts: 'jpg|jpeg|gif|png|doc|docx|pdf|xlsx|xls|pptx|ppt|rar|zip'
         // , multiple: true
         , before: function (obj) {
             //预读本地文件示例，不支持ie8

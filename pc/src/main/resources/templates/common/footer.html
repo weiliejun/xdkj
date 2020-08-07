@@ -10,19 +10,33 @@
         <div class="footCenter">
             <div class="footNavList clearfix">
                 <a href="/aboutUs">关于我们</a><i></i>
-                <a href="javascript:;">服务协议</a><i></i>
-                <a href="javascript:;">行业资讯</a><i></i>
-                <a href="#swhz">商务合作</a>
+                <a href="javascript:;" target="_blank" data-target="#agreementModal" data-toggle="modal">服务协议</a><i></i>
+                <!--<a href="javascript:;">服务协议</a><i></i>-->
+                <a href="/deviceInfo/hyzx">行业资讯</a><i></i>
+                <a href="/deviceInfo/xtgg">网站公告</a><i></i>
+                <!--<a href="#swhz">商务合作</a>-->
             </div>
             <p class="recordNumber">中小企业IT服务网　Copyright ©2020 All rights reserved　京ICP备XXXXXXXX号</p>
         </div>
         <div class="footRight">
             <div class="footTwoCode">
-                <img th:src="@{/images/publicImg/weChatCode.jpg}"/>
-                <p>扫一扫，关注公众号</p>
+                <img th:src="@{/images/liwei_weixin.jpg}"/>
+                <p>扫一扫，联系我&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             </div>
         </div>
     </div>
+
+<!-- 注册 服务协议 模态框 -->
+<div class="modal fade" id="agreementModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content agreeModal">
+            <div class="modal-body" th:replace="/common/agreement/agreementContent"><!--协议内容  -->
+
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <!--foot end-->
 </html>

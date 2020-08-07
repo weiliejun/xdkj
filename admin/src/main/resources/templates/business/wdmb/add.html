@@ -19,7 +19,7 @@
             <input type="hidden" id="id" name="id" th:value="${productOtherAttachFile.id}">
             <input type="hidden" id="productId" name="productId" th:value="99999">
             <div id="dataTwo" class="proCon">
-                <p class="upTip"><i>*</i>请上传文件(jpg、jpeg、gif、png、doc、docx、pdf、xls、xlsx、ppt、pptx)，附件大小20M以下</p>
+                <p class="upTip"><i>*</i>请上传文件(jpg、jpeg、gif、png、doc、docx、pdf、xls、xlsx、ppt、pptx、rar、zip)，附件大小20M以下</p>
                 <div class="pdfList layui-clear" id="demo2">
                     <div th:each="att : ${AttachFileList}">
                         <a th:href="${att.fileUrl}" target="_blank"><i class="layui-icon layui-icon-close"></i><span
