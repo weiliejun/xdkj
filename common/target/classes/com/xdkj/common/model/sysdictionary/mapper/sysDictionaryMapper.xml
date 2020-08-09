@@ -140,7 +140,7 @@
         select
         <include refid="sysDictionaryColumn"/>
         from SYS_DICTIONARY
-        where DATA_STATUS = '0'
+        where DATA_STATUS = '1'
         <if test="likeCode != null">/* 查询条件匹配 code */
             AND CODE like CONCAT('%',#{likeCode},'%')
         </if>
