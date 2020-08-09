@@ -1,10 +1,11 @@
-layui.use(['layer', 'form', 'table'], function () {
+layui.use(['layer', 'form', 'table','util'], function () {
     var $ = layui.$,
         layer = layui.layer,
         form = layui.form,
-        table = layui.table;
+        table = layui.table,
+        util = layui.util;
 
-    var cols = [[
+        var cols = [[
         {
             field: 'topic',
             width: 220,
@@ -35,7 +36,7 @@ layui.use(['layer', 'form', 'table'], function () {
             width: 250,
             title: '创建时间',
             align: 'center',
-            templet: '#createTime',
+            templet : "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>",
             sort: true
         }, {
             title: '常用操作',
